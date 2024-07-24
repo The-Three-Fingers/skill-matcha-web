@@ -2,11 +2,11 @@
 
 import { useRouter } from 'next/navigation';
 
-const DeleteGuestbookEntry = (props: { id: number }) => {
+const DeleteProfileEntry = (props: { id: number }) => {
   const router = useRouter();
 
   const handleDelete = async () => {
-    await fetch(`/api/guestbook`, {
+    await fetch(`/api/profiles`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -41,4 +41,4 @@ const DeleteGuestbookEntry = (props: { id: number }) => {
   );
 };
 
-export { DeleteGuestbookEntry };
+export { DeleteProfileEntry };

@@ -2,12 +2,12 @@
 
 import { useState } from 'react';
 
-import { GuestbookForm } from './GuestbookForm';
+import { ProfileForm } from './ProfileForm';
 
-const EditableGuestbookEntry = (props: {
+const EditableProfileEntry = (props: {
   id: number;
-  username: string;
-  body: string;
+  name: string;
+  lastName: string;
 }) => {
   const [isEditing, setIsEditing] = useState(false);
 
@@ -38,15 +38,15 @@ const EditableGuestbookEntry = (props: {
 
       <div className="ml-1 grow">
         {isEditing ? (
-          <GuestbookForm
+          <ProfileForm
             edit
             id={props.id}
             defaultValues={{
-              username: props.username,
-              body: props.body,
+              name: props.name,
+              lastName: props.lastName,
             }}
             onValid={async (data) => {
-              await fetch(`/api/guestbook`, {
+              await fetch(`/api/profiles`, {
                 method: 'PUT',
                 headers: {
                   'Content-Type': 'application/json',
@@ -61,14 +61,13 @@ const EditableGuestbookEntry = (props: {
             }}
           />
         ) : (
-          <>
-            <span className="text-gray-500">{props.username}:</span>{' '}
-            <span className="text-gray-800">{props.body}</span>
-          </>
+          <span className="text-gray-500">
+            {props.name} {props.lastName}
+          </span>
         )}
       </div>
     </>
   );
 };
 
-export { EditableGuestbookEntry };
+export { EditableProfileEntry };

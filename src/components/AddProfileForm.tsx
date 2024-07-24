@@ -1,11 +1,11 @@
 'use client';
 
-import { GuestbookForm } from './GuestbookForm';
+import { ProfileForm } from './ProfileForm';
 
-const AddGuestbookForm = () => (
-  <GuestbookForm
+const AddProfileForm = () => (
+  <ProfileForm
     onValid={async (data) => {
-      await fetch(`/api/guestbook`, {
+      await fetch(`/api/profiles`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -16,4 +16,4 @@ const AddGuestbookForm = () => (
   />
 );
 
-export { AddGuestbookForm };
+export { AddProfileForm };

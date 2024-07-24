@@ -1,0 +1,54 @@
+{
+  "RootLayout": {
+    "home_link": "Главная",
+    "about_link": "О нас",
+    "profiles_link": "Профили",
+    "sign_in_link": "Войти",
+    "sign_up_link": "Зарегистрироваться"
+  },
+  "BaseTemplate": {
+    "description": "Найдите партнера по бизнесу быстрее с нашей платформой"
+  },
+  "Index": {
+    "meta_title": "Описание шаблона Next.js",
+    "meta_description": "Next.js Boilerplate - идеальный стартовый код для вашего проекта. Стройте свое React-приложение с помощью фреймворка Next.js."
+  },
+  "Profiles": {
+    "meta_title": "Профили",
+    "meta_description": "Пример работы CRUD",
+    "database_powered_by": "База данных предоставлена",
+    "loading_profiles": "Загрузка профилей...",
+    "error_reporting_powered_by": "Отчет об ошибках предоставлен"
+  },
+  "ProfileForm": {
+    "name": "Имя",
+    "last_name": "Фамилия",
+    "save": "Сохранить"
+  },
+  "About": {
+    "meta_title": "О нас",
+    "meta_description": "Описание о нас",
+    "about_paragraph": "Добро пожаловать на нашу страницу 'О нас'! Мы команда энтузиастов, преданных созданию программного обеспечения.",
+    "translation_powered_by": "Перевод предоставлен"
+  },
+  "SignIn": {
+    "meta_title": "Войти",
+    "meta_description": "Легко войдите в свою учетную запись."
+  },
+  "SignUp": {
+    "meta_title": "Зарегистрироваться",
+    "meta_description": "Создайте учетную запись без усилий с помощью нашего интуитивного процесса регистрации."
+  },
+  "Dashboard": {
+    "meta_title": "Панель управления",
+    "hello_message": "Привет, {email}!"
+  },
+  "UserProfile": {
+    "meta_title": "Профиль пользователя"
+  },
+  "DashboardLayout": {
+    "dashboard_link": "Панель управления",
+    "user_profile_link": "Управление профилем",
+    "sign_out": "Выйти"
+  }
+}
