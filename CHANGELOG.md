@@ -1,3 +1,10 @@
+# 1.0.0 (2024-07-24)
+
+
+### Features
+
+* add profiles table ([75ccf1a](https://github.com/Sponom/cofounder-tinder/commit/75ccf1a576be9a1fb80278e03cbc5a818d5f6cbb))
+
 # [3.54.0](https://github.com/ixartz/Next-js-Boilerplate/compare/v3.53.0...v3.54.0) (2024-07-23)
 
 
