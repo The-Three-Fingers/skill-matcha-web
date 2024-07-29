@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 
+import LocaleSwitcher from '@/components/LocaleSwitcher';
 import { AppConfig } from '@/utils/AppConfig';
 
 const BaseTemplate = (props: {
@@ -12,26 +13,21 @@ const BaseTemplate = (props: {
   return (
     <div className="w-full px-1 text-gray-700 antialiased">
       <div className="mx-auto flex min-h-screen max-w-screen-md flex-col">
-        <header className="border-b border-gray-300">
-          <div className="pb-8 pt-16">
-            <h1 className="text-3xl font-bold text-gray-900">
-              {AppConfig.name}
-            </h1>
-            <h2 className="text-xl">{t('description')}</h2>
+        <header>
+          <div className="flex justify-between pb-8 pt-16">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900">
+                {AppConfig.name}
+              </h1>
+              <h2 className="text-xl">{t('description')}</h2>
+            </div>
+            <LocaleSwitcher />
           </div>
 
           <div className="flex justify-between">
-            <nav>
-              <ul className="flex flex-wrap gap-x-5 text-xl">
-                {props.leftNav}
-              </ul>
-            </nav>
+            {props.leftNav}
 
-            <nav>
-              <ul className="flex flex-wrap gap-x-5 text-xl">
-                {props.rightNav}
-              </ul>
-            </nav>
+            {props.rightNav}
           </div>
         </header>
 

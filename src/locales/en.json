@@ -10,13 +10,12 @@
     "description": "Find a cofounder faster with our platform"
   },
   "Index": {
-    "meta_title": "Next.js Boilerplate Presentation",
-    "meta_description": "Next js Boilerplate is the perfect starter code for your project. Build your React application with the Next.js framework."
+    "meta_title": "Find a cofounder faster",
+    "meta_description": "Find a cofounder faster with our platform"
   },
   "Profiles": {
     "meta_title": "Profiles",
     "meta_description": "An example of CRUD operation",
-    "database_powered_by": "Database powered by",
     "loading_profiles": "Loading profiles...",
     "error_reporting_powered_by": "Error reporting powered by"
   },
@@ -28,8 +27,7 @@
   "About": {
     "meta_title": "About",
     "meta_description": "About page description",
-    "about_paragraph": "Welcome to our About page! We are a team of passionate individuals dedicated to creating amazing software.",
-    "translation_powered_by": "Translation powered by"
+    "about_paragraph": "Welcome to our About page! We are a team of passionate individuals dedicated to creating amazing software."
   },
   "Portfolio": {
     "meta_title": "Portfolio",

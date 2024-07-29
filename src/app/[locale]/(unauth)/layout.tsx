@@ -1,8 +1,7 @@
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { unstable_setRequestLocale } from 'next-intl/server';
 
-import LocaleSwitcher from '@/components/LocaleSwitcher';
+import { NavigationBar } from '@/components/NavigationBar';
 import { BaseTemplate } from '@/templates/BaseTemplate';
 
 export default function Layout(props: {
@@ -15,60 +14,28 @@ export default function Layout(props: {
   return (
     <BaseTemplate
       leftNav={
-        <>
-          <li>
-            <Link
-              href="/"
-              className="border-none text-gray-700 hover:text-gray-900"
-            >
-              {t('home_link')}
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/about/"
-              className="border-none text-gray-700 hover:text-gray-900"
-            >
-              {t('about_link')}
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/profiles/"
-              className="border-none text-gray-700 hover:text-gray-900"
-            >
-              {t('profiles_link')}
-            </Link>
-          </li>
-        </>
+        <NavigationBar
+          items={[
+            { label: t('home_link'), href: '/' },
+            { label: t('about_link'), href: '/about/' },
+            { label: t('profiles_link'), href: '/profiles/' },
+          ]}
+        />
       }
       rightNav={
-        <>
-          <li>
-            <Link
-              href="/sign-in/"
-              className="border-none text-gray-700 hover:text-gray-900"
-            >
-              {t('sign_in_link')}
-            </Link>
-          </li>
-
-          <li>
-            <Link
-              href="/sign-up/"
-              className="border-none text-gray-700 hover:text-gray-900"
-            >
-              {t('sign_up_link')}
-            </Link>
-          </li>
-
-          <li>
-            <LocaleSwitcher />
-          </li>
-        </>
+        <NavigationBar
+          items={[
+            { label: t('sign_in_link'), href: '/sign-in/' },
+            { label: t('sign_up_link'), href: '/sign-up/' },
+          ]}
+        />
       }
     >
       <div className="py-5 text-xl [&_p]:my-6">{props.children}</div>
     </BaseTemplate>
   );
 }
+
+// <li>
+// <LocaleSwitcher />
+// </li>

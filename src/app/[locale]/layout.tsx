@@ -1,10 +1,17 @@
 import '@/styles/global.css';
 
 import type { Metadata } from 'next';
+import { Open_Sans } from 'next/font/google';
 import { NextIntlClientProvider, useMessages } from 'next-intl';
 import { unstable_setRequestLocale } from 'next-intl/server';
 
+import { cn } from '@/libs/utils';
 import { AppConfig } from '@/utils/AppConfig';
+
+const fontSans = Open_Sans({
+  subsets: ['latin', 'cyrillic'],
+  variable: '--font-sans',
+});
 
 export const metadata: Metadata = {
   icons: [
@@ -46,7 +53,12 @@ export default function RootLayout(props: {
 
   return (
     <html lang={props.params.locale}>
-      <body>
+      <body
+        className={cn(
+          'min-h-screen bg-background font-sans antialiased',
+          fontSans.variable,
+        )}
+      >
         <NextIntlClientProvider
           locale={props.params.locale}
           messages={messages}
