@@ -10,3 +10,9 @@ export const profilesSchema = pgTable('profiles', {
     .notNull(),
   createdAt: timestamp('created_at', { mode: 'date' }).defaultNow().notNull(),
 });
+
+const schema = {
+  profilesSchema,
+};
+
+export default schema;
