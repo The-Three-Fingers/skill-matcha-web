@@ -13,15 +13,7 @@ export default function Layout(props: {
 
   return (
     <BaseTemplate
-      leftNav={
-        <NavigationBar
-          items={[
-            { label: t('home_link'), href: '/' },
-            { label: t('about_link'), href: '/about/' },
-            { label: t('profiles_link'), href: '/profiles/' },
-          ]}
-        />
-      }
+      leftNav={<NavigationBar items={[{ label: t('home_link'), href: '/' }]} />}
       rightNav={
         <NavigationBar
           items={[

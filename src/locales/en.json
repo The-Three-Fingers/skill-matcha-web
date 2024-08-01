@@ -7,17 +7,15 @@
     "sign_up_link": "Sign up"
   },
   "BaseTemplate": {
-    "description": "Find a cofounder faster with our platform"
+    "description": "Match by your skills faster with our platform"
   },
   "Index": {
-    "meta_title": "Find a cofounder faster",
-    "meta_description": "Find a cofounder faster with our platform"
+    "meta_title": "Match by your skills faster",
+    "meta_description": "Match by your skills faster with our platform"
   },
-  "Profiles": {
-    "meta_title": "Profiles",
-    "meta_description": "An example of CRUD operation",
-    "loading_profiles": "Loading profiles...",
-    "error_reporting_powered_by": "Error reporting powered by"
+  "CreateProfile": {
+    "meta_title": "Create profile",
+    "meta_description": "Create your profile"
   },
   "ProfileForm": {
     "name": "Name",
@@ -27,22 +25,7 @@
   "About": {
     "meta_title": "About",
     "meta_description": "About page description",
-    "about_paragraph": "Welcome to our About page! We are a team of passionate individuals dedicated to creating amazing software."
-  },
-  "Portfolio": {
-    "meta_title": "Portfolio",
-    "meta_description": "Welcome to my portfolio page!",
-    "presentation": "Welcome to my portfolio page! Here you will find a carefully curated collection of my work and accomplishments. Through this portfolio, I'm to showcase my expertise, creativity, and the value I can bring to your projects.",
-    "portfolio_name": "Portfolio {name}",
-    "error_reporting_powered_by": "Error reporting powered by",
-    "coverage_powered_by": "Code coverage powered by"
-  },
-  "PortfolioSlug": {
-    "meta_title": "Portfolio {slug}",
-    "meta_description": "Portfolio {slug} description",
-    "header": "Portfolio {slug}",
-    "content": "Created a set of promotional materials and branding elements for a corporate event. Crafted a visually unified theme, encompassing a logo, posters, banners, and digital assets. Integrated the client's brand identity while infusing it with a contemporary and innovative approach. Garnered favorable responses from event attendees, resulting in a successful event with heightened participant engagement and increased brand visibility.",
-    "log_management_powered_by": "Log management powered by"
+    "about_paragraph": "Welcome to our About page!"
   },
   "SignIn": {
     "meta_title": "Sign in",

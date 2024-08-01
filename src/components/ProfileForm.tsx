@@ -13,11 +13,11 @@ type IGuestbookFormProps =
       edit: true;
       id: number;
       defaultValues: z.infer<typeof ProfileValidation>;
-      onValid: SubmitHandler<z.infer<typeof ProfileValidation>>;
+      onSubmit: SubmitHandler<z.infer<typeof ProfileValidation>>;
     }
   | {
       edit?: false;
-      onValid: SubmitHandler<z.infer<typeof ProfileValidation>>;
+      onSubmit: SubmitHandler<z.infer<typeof ProfileValidation>>;
     };
 
 const ProfileForm = (props: IGuestbookFormProps) => {
@@ -34,7 +34,7 @@ const ProfileForm = (props: IGuestbookFormProps) => {
   const t = useTranslations('ProfileForm');
 
   const handleCreate = handleSubmit(async (data) => {
-    await props.onValid(data);
+    await props.onSubmit(data);
 
     reset();
     router.refresh();

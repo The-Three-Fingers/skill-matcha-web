@@ -4,7 +4,7 @@ import { ProfileForm } from './ProfileForm';
 
 const AddProfileForm = () => (
   <ProfileForm
-    onValid={async (data) => {
+    onSubmit={async (data) => {
       await fetch(`/api/profiles`, {
         method: 'POST',
         headers: {

@@ -13,6 +13,8 @@ const intlMiddleware = createMiddleware({
 const isProtectedRoute = createRouteMatcher([
   '/dashboard(.*)',
   '/:locale/dashboard(.*)',
+  '/create-profile(.*)',
+  '/:locale/create-profile(.*)',
 ]);
 
 export default function middleware(
