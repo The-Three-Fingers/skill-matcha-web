@@ -45,7 +45,7 @@ const EditableProfileEntry = (props: {
               name: props.name,
               lastName: props.lastName,
             }}
-            onValid={async (data) => {
+            onSubmit={async (data) => {
               await fetch(`/api/profiles`, {
                 method: 'PUT',
                 headers: {
