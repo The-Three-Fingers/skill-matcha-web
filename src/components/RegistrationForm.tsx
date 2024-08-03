@@ -6,42 +6,72 @@ import { useTranslations } from 'next-intl';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 import type { z } from 'zod';
 
-import { ProfileValidation } from '@/validations/ProfileValidation';
+import { RegistrationFormValidation } from '@/validations/ProfileValidation';
+
+import type { RegistrationFormSettings } from './types';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from './ui/select';
 
 type IGuestbookFormProps =
   | {
       edit: true;
       id: number;
-      defaultValues: z.infer<typeof ProfileValidation>;
-      onSubmit: SubmitHandler<z.infer<typeof ProfileValidation>>;
+      defaultValues: z.infer<typeof RegistrationFormValidation>;
+      onSubmit: SubmitHandler<z.infer<typeof RegistrationFormValidation>>;
     }
   | {
       edit?: false;
-      onSubmit: SubmitHandler<z.infer<typeof ProfileValidation>>;
+      onSubmit: SubmitHandler<z.infer<typeof RegistrationFormValidation>>;
     };
 
-const ProfileForm = (props: IGuestbookFormProps) => {
+const RegistrationForm = (props: IGuestbookFormProps) => {
   const {
     handleSubmit,
     register,
     reset,
     formState: { errors },
-  } = useForm<z.infer<typeof ProfileValidation>>({
-    resolver: zodResolver(ProfileValidation),
+  } = useForm<z.infer<typeof RegistrationFormValidation>>({
+    resolver: zodResolver(RegistrationFormValidation),
     defaultValues: props.edit ? props.defaultValues : undefined,
   });
-  const router = useRouter();
-  const t = useTranslations('ProfileForm');
 
-  const handleCreate = handleSubmit(async (data) => {
-    await props.onSubmit(data);
+  const router = useRouter();
+  const t = useTranslations('RegistrationForm');
+
+  const onSubmit = async (data: RegistrationFormSettings) => {
+    await onSubmit(data);
 
     reset();
     router.refresh();
-  });
+  };
+
+  const roleOptions = {
+    developer: t('role_options.developer'),
+    designer: t('role_options.designer'),
+    product_manager: t('role_options.product_manager'),
+    founder: t('role_options.founder'),
+    marketing_specialist: t('role_options.marketing_specialist'),
+    cto: t('role_options.cto'),
+    other: t('role_options.other'),
+  };
+
+  const roleOptionsArray = Object.values(roleOptions);
+
+  const getRoleOptionsArray = () => {
+    return roleOptionsArray.map((role) => (
+      <SelectItem value={role} key={role}>
+        {role}
+      </SelectItem>
+    ));
+  };
 
   return (
-    <form onSubmit={handleCreate}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div>
         <label
           className="text-sm font-bold text-gray-700"
@@ -54,6 +84,7 @@ const ProfileForm = (props: IGuestbookFormProps) => {
             {...register('name')}
           />
         </label>
+
         {errors.name?.message && (
           <div className="my-2 text-xs italic text-red-500">
             {errors.name?.message}
@@ -80,6 +111,17 @@ const ProfileForm = (props: IGuestbookFormProps) => {
         )}
       </div>
 
+      <div className="mt-3">
+        <p className="mb-2 text-sm font-bold text-gray-700">Your role</p>
+        <Select>
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder={t('choose_your_role')} />
+          </SelectTrigger>
+
+          <SelectContent>{getRoleOptionsArray()}</SelectContent>
+        </Select>
+      </div>
+
       <div className="mt-5">
         <button
           className="rounded bg-blue-500 px-5 py-1 font-bold text-white hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300/50"
@@ -92,4 +134,4 @@ const ProfileForm = (props: IGuestbookFormProps) => {
   );
 };
 
-export { ProfileForm };
+export { RegistrationForm };

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { ProfileForm } from './ProfileForm';
+import { RegistrationForm } from './RegistrationForm';
 
 const EditableProfileEntry = (props: {
   id: number;
@@ -38,12 +38,13 @@ const EditableProfileEntry = (props: {
 
       <div className="ml-1 grow">
         {isEditing ? (
-          <ProfileForm
+          <RegistrationForm
             edit
             id={props.id}
             defaultValues={{
               name: props.name,
               lastName: props.lastName,
+              role: '',
             }}
             onSubmit={async (data) => {
               await fetch(`/api/profiles`, {

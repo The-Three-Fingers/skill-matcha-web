@@ -1,9 +1,9 @@
 'use client';
 
-import { ProfileForm } from './ProfileForm';
+import { RegistrationForm } from './RegistrationForm';
 
-const AddProfileForm = () => (
-  <ProfileForm
+const AddRegistrationForm = () => (
+  <RegistrationForm
     onSubmit={async (data) => {
       await fetch(`/api/profiles`, {
         method: 'POST',
@@ -16,4 +16,4 @@ const AddProfileForm = () => (
   />
 );
 
-export { AddProfileForm };
+export { AddRegistrationForm };
