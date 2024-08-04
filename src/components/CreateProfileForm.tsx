@@ -6,9 +6,9 @@ import { useTranslations } from 'next-intl';
 import { type SubmitHandler, useForm } from 'react-hook-form';
 import type { z } from 'zod';
 
-import { RegistrationFormValidation } from '@/validations/ProfileValidation';
+import { CreateProfileFormValidation } from '@/validations/ProfileValidation';
 
-import type { RegistrationFormSettings } from './types';
+import type { CreateProfileFormSettings } from './types';
 import {
   Select,
   SelectContent,
@@ -21,29 +21,29 @@ type IGuestbookFormProps =
   | {
       edit: true;
       id: number;
-      defaultValues: z.infer<typeof RegistrationFormValidation>;
-      onSubmit: SubmitHandler<z.infer<typeof RegistrationFormValidation>>;
+      defaultValues: z.infer<typeof CreateProfileFormValidation>;
+      onSubmit: SubmitHandler<z.infer<typeof CreateProfileFormValidation>>;
     }
   | {
       edit?: false;
-      onSubmit: SubmitHandler<z.infer<typeof RegistrationFormValidation>>;
+      onSubmit: SubmitHandler<z.infer<typeof CreateProfileFormValidation>>;
     };
 
-const RegistrationForm = (props: IGuestbookFormProps) => {
+const CreateProfileForm = (props: IGuestbookFormProps) => {
   const {
     handleSubmit,
     register,
     reset,
     formState: { errors },
-  } = useForm<z.infer<typeof RegistrationFormValidation>>({
-    resolver: zodResolver(RegistrationFormValidation),
+  } = useForm<z.infer<typeof CreateProfileFormValidation>>({
+    resolver: zodResolver(CreateProfileFormValidation),
     defaultValues: props.edit ? props.defaultValues : undefined,
   });
 
   const router = useRouter();
-  const t = useTranslations('RegistrationForm');
+  const t = useTranslations('CreateProfileForm');
 
-  const onSubmit = async (data: RegistrationFormSettings) => {
+  const onSubmit = async (data: CreateProfileFormSettings) => {
     await onSubmit(data);
 
     reset();
@@ -134,4 +134,4 @@ const RegistrationForm = (props: IGuestbookFormProps) => {
   );
 };
 
-export { RegistrationForm };
+export { CreateProfileForm };

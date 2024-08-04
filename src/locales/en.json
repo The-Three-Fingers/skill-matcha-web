@@ -17,9 +17,8 @@
         "meta_title": "Create profile",
         "meta_description": "Create your profile"
     },
-    "RegistrationForm": {
+    "CreateProfileForm": {
         "name": "Name",
-        "array": ["a", "b", "c"],
         "last_name": "Last name",
         "choose_your_role": "Choose your role",
         "role_options": {

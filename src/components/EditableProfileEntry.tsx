@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { RegistrationForm } from './RegistrationForm';
+import { CreateProfileForm } from './CreateProfileForm';
 
 const EditableProfileEntry = (props: {
   id: number;
@@ -38,7 +38,7 @@ const EditableProfileEntry = (props: {
 
       <div className="ml-1 grow">
         {isEditing ? (
-          <RegistrationForm
+          <CreateProfileForm
             edit
             id={props.id}
             defaultValues={{

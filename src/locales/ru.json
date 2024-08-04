@@ -16,10 +16,9 @@
     "CreateProfile": {
         "meta_title": "Создать профиль"
     },
-    "RegistrationForm": {
+    "CreateProfileForm": {
         "name": "Имя",
         "last_name": "Фамилия",
-        "array": ["a", "b", "c"],
         "choose_your_role": "Выберете вашу роль",
         "role_options": {
             "developer": "Разработчик",
