@@ -18,8 +18,10 @@
     },
     "CreateProfileForm": {
         "name": "Имя",
+        "name_placeholder": "Введите ваше имя",
         "last_name": "Фамилия",
-        "choose_your_role": "Выберете вашу роль",
+        "last_name_placeholder": "Введите вашу фамилию",
+        "select_your_role": "Выберете вашу роль",
         "role_options": {
             "developer": "Разработчик",
             "designer": "Дизайнер",

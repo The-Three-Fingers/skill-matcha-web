@@ -19,15 +19,17 @@
     },
     "CreateProfileForm": {
         "name": "Name",
+        "name_placeholder": "Enter your name",
         "last_name": "Last name",
-        "choose_your_role": "Choose your role",
+        "last_name_placeholder": "Enter your last name",
+        "select_your_role": "Select your role",
         "role_options": {
             "developer": "Developer",
             "designer": "Designer",
             "product_manager": "Product Manager",
             "founder": "Founder",
             "marketing_specialist": "Marketing Specialist",
-            "CTO": "CTO",
+            "cto": "CTO",
             "other": "Other"
         },
         "save": "Save"
