@@ -1,7 +1,4 @@
-import { SignUp } from '@clerk/nextjs';
 import { getTranslations } from 'next-intl/server';
-
-import { getI18nPath } from '@/utils/Helpers';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
   const t = await getTranslations({
@@ -16,7 +13,7 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 }
 
 const SignUpPage = (props: { params: { locale: string } }) => (
-  <SignUp path={getI18nPath('/sign-up', props.params.locale)} />
+  <div>Sign up page {props.params.locale}</div>
 );
 
 export default SignUpPage;

@@ -1,5 +1,5 @@
 {
-  "name": "next-js-boilerplate",
+  "name": "skill-matcha-web",
   "version": "1.0.0",
   "scripts": {
     "dev:spotlight": "spotlight-sidecar",
@@ -14,9 +14,6 @@
     "check-types": "tsc --noEmit --pretty",
     "test": "vitest run",
     "commit": "cz",
-    "db:generate": "drizzle-kit generate",
-    "db:migrate": "dotenv -c production -- drizzle-kit migrate",
-    "db:studio": "dotenv -c production -- drizzle-kit studio",
     "test:e2e": "playwright test",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build",
@@ -26,9 +23,6 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@clerk/localizations": "^2.4.8",
-    "@clerk/nextjs": "^5.2.4",
-    "@electric-sql/pglite": "^0.1.5",
     "@hookform/resolvers": "^3.9.0",
     "@logtail/pino": "^0.4.22",
     "@radix-ui/react-checkbox": "^1.1.1",
@@ -41,11 +35,10 @@
     "@t3-oss/env-nextjs": "^0.11.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "drizzle-orm": "^0.32.0",
+    "firebase": "^10.12.5",
     "lucide-react": "^0.417.0",
     "next": "^14.2.5",
     "next-intl": "^3.17.2",
-    "pg": "^8.12.0",
     "pino": "^9.3.1",
     "pino-pretty": "^11.2.1",
     "react": "^18.3.1",
@@ -79,7 +72,6 @@
     "@testing-library/jest-dom": "^6.4.7",
     "@testing-library/react": "^16.0.0",
     "@types/node": "^20.14.11",
-    "@types/pg": "^8.11.6",
     "@types/react": "^18.3.3",
     "@typescript-eslint/eslint-plugin": "^7.17.0",
     "@typescript-eslint/parser": "^7.17.0",
@@ -92,7 +84,6 @@
     "cross-env": "^7.0.3",
     "cssnano": "^7.0.4",
     "dotenv-cli": "^7.4.2",
-    "drizzle-kit": "^0.23.0",
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^18.0.0",
@@ -157,6 +148,5 @@
       "@semantic-release/git",
       "@semantic-release/github"
     ]
-  },
-  "author": "Ixartz (https://github.com/ixartz)"
+  }
 }

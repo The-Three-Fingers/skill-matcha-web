@@ -13,7 +13,6 @@ export default function Layout(props: {
 
   return (
     <BaseTemplate
-      leftNav={<NavigationBar items={[{ label: t('home_link'), href: '/' }]} />}
       rightNav={
         <NavigationBar
           items={[
@@ -27,7 +26,3 @@ export default function Layout(props: {
     </BaseTemplate>
   );
 }
-
-// <li>
-// <LocaleSwitcher />
-// </li>

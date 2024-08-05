@@ -64,8 +64,7 @@
     "meta_title": "Профиль пользователя"
   },
   "DashboardLayout": {
-    "dashboard_link": "Панель управления",
-    "user_profile_link": "Управление профилем",
+    "dashboard_link": "Главная",
     "sign_out": "Выйти"
   }
 }

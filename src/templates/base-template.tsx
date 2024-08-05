@@ -1,42 +1,34 @@
-import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 
 import LocaleSwitcher from '@/components/locale-switcher';
 import { AppConfig } from '@/utils/AppConfig';
 
 const BaseTemplate = (props: {
-  leftNav: React.ReactNode;
   rightNav?: React.ReactNode;
   children: React.ReactNode;
 }) => {
-  const t = useTranslations('BaseTemplate');
-
   return (
-    <div className="w-full px-1 text-gray-700 antialiased">
-      <div className="mx-auto flex min-h-screen max-w-screen-md flex-col">
-        <header>
-          <div className="flex justify-between pb-8 pt-16">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900">
-                {AppConfig.name}
-              </h1>
-              <h2 className="text-xl">{t('description')}</h2>
-            </div>
+    <div className="size-full px-1 text-gray-700 antialiased">
+      <header className="h-14 bg-white">
+        <div className="mx-auto flex h-full max-w-screen-xl items-center justify-between">
+          <Link href="/">
+            <h1 className="text-2xl font-bold text-lime-600/70">
+              {AppConfig.name}
+            </h1>
+          </Link>
+
+          <div className="flex items-center gap-2">
+            {props.rightNav}
             <LocaleSwitcher />
           </div>
+        </div>
+      </header>
 
-          <div className="flex justify-between">
-            {props.leftNav}
-
-            {props.rightNav}
-          </div>
-        </header>
-
-        <main className="flex-1">{props.children}</main>
-
-        <footer className="border-t border-gray-300 py-8 text-center text-sm">
-          © Copyright {new Date().getFullYear()} {AppConfig.name}.
-        </footer>
-      </div>
+      <main className="flex-1">
+        <div className="mx-auto flex max-w-screen-lg justify-between">
+          {props.children}
+        </div>
+      </main>
     </div>
   );
 };

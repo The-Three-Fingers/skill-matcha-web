@@ -55,7 +55,7 @@ export default function RootLayout(props: {
     <html lang={props.params.locale}>
       <body
         className={cn(
-          'min-h-screen bg-background font-sans antialiased',
+          'h-screen bg-slate-100 font-sans antialiased',
           fontSans.variable,
         )}
       >
