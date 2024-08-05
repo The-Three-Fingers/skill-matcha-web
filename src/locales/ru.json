@@ -1,71 +1,71 @@
 {
-    "RootLayout": {
-        "home_link": "Главная",
-        "about_link": "О нас",
-        "profiles_link": "Профили",
-        "sign_in_link": "Войти",
-        "sign_up_link": "Зарегистрироваться"
+  "RootLayout": {
+    "home_link": "Главная",
+    "about_link": "О нас",
+    "profiles_link": "Профили",
+    "sign_in_link": "Войти",
+    "sign_up_link": "Зарегистрироваться"
+  },
+  "BaseTemplate": {
+    "description": "Совпадите по скиллам быстрее с нашей платформой"
+  },
+  "Index": {
+    "meta_title": "Совпадите по скиллам быстрее с нашей платформой",
+    "meta_description": "Совпадите по скиллам быстрее с нашей платформой"
+  },
+  "CreateProfile": {
+    "meta_title": "Создать профиль"
+  },
+  "CreateProfileForm": {
+    "name": "Имя",
+    "name_placeholder": "Введите ваше имя",
+    "last_name": "Фамилия",
+    "last_name_placeholder": "Введите вашу фамилию",
+    "select_your_role": "Выберете вашу роль",
+    "select_search_role": "Кого вы ищете?",
+    "role_options": {
+      "developer": "Разработчик",
+      "designer": "Дизайнер",
+      "product_manager": "Менеджер продукта",
+      "founder": "Основатель",
+      "marketing_specialist": "Маркетолог",
+      "cto": "CTO",
+      "other": "Другое"
     },
-    "BaseTemplate": {
-        "description": "Совпадите по скиллам быстрее с нашей платформой"
+    "search_options": {
+      "developer": "Разработчик",
+      "designer": "Дизайнер",
+      "product_manager": "Менеджер продукта",
+      "founder": "Основатель",
+      "marketing_specialist": "Маркетолог",
+      "cto": "CTO",
+      "other": "Другое"
     },
-    "Index": {
-        "meta_title": "Совпадите по скиллам быстрее с нашей платформой",
-        "meta_description": "Совпадите по скиллам быстрее с нашей платформой"
-    },
-    "CreateProfile": {
-        "meta_title": "Создать профиль"
-    },
-    "CreateProfileForm": {
-        "name": "Имя",
-        "name_placeholder": "Введите ваше имя",
-        "last_name": "Фамилия",
-        "last_name_placeholder": "Введите вашу фамилию",
-        "select_your_role": "Выберете вашу роль",
-        "select_search_role": "Кого вы ищете?",
-        "role_options": {
-            "developer": "Разработчик",
-            "designer": "Дизайнер",
-            "product_manager": "Менеджер продукта",
-            "founder": "Основатель",
-            "marketing_specialist": "Маркетолог",
-            "cto": "CTO",
-            "other": "Другое"
-        },
-        "search_options": {
-            "developer": "Разработчик",
-            "designer": "Дизайнер",
-            "product_manager": "Менеджер продукта",
-            "founder": "Основатель",
-            "marketing_specialist": "Маркетолог",
-            "cto": "CTO",
-            "other": "Другое"
-        },
-        "save": "Сохранить"
-    },
-    "About": {
-        "meta_title": "О нас",
-        "meta_description": "Описание о нас",
-        "about_paragraph": "Добро пожаловать на нашу страницу 'О нас'!"
-    },
-    "SignIn": {
-        "meta_title": "Войти",
-        "meta_description": "Легко войдите в свою учетную запись."
-    },
-    "SignUp": {
-        "meta_title": "Зарегистрироваться",
-        "meta_description": "Создайте учетную запись без усилий с помощью нашего интуитивного процесса регистрации."
-    },
-    "Dashboard": {
-        "meta_title": "Панель управления",
-        "hello_message": "Привет, {email}!"
-    },
-    "UserProfile": {
-        "meta_title": "Профиль пользователя"
-    },
-    "DashboardLayout": {
-        "dashboard_link": "Панель управления",
-        "user_profile_link": "Управление профилем",
-        "sign_out": "Выйти"
-    }
+    "save": "Сохранить"
+  },
+  "About": {
+    "meta_title": "О нас",
+    "meta_description": "Описание о нас",
+    "about_paragraph": "Добро пожаловать на нашу страницу 'О нас'!"
+  },
+  "SignIn": {
+    "meta_title": "Войти",
+    "meta_description": "Легко войдите в свою учетную запись."
+  },
+  "SignUp": {
+    "meta_title": "Зарегистрироваться",
+    "meta_description": "Создайте учетную запись без усилий с помощью нашего интуитивного процесса регистрации."
+  },
+  "Dashboard": {
+    "meta_title": "Панель управления",
+    "hello_message": "Привет, {email}!"
+  },
+  "UserProfile": {
+    "meta_title": "Профиль пользователя"
+  },
+  "DashboardLayout": {
+    "dashboard_link": "Панель управления",
+    "user_profile_link": "Управление профилем",
+    "sign_out": "Выйти"
+  }
 }

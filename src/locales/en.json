@@ -1,72 +1,72 @@
 {
-    "RootLayout": {
-        "home_link": "Home",
-        "about_link": "About",
-        "profiles_link": "Profiles",
-        "sign_in_link": "Sign in",
-        "sign_up_link": "Sign up"
+  "RootLayout": {
+    "home_link": "Home",
+    "about_link": "About",
+    "profiles_link": "Profiles",
+    "sign_in_link": "Sign in",
+    "sign_up_link": "Sign up"
+  },
+  "BaseTemplate": {
+    "description": "Match by your skills faster with our platform"
+  },
+  "Index": {
+    "meta_title": "Match by your skills faster",
+    "meta_description": "Match by your skills faster with our platform"
+  },
+  "CreateProfile": {
+    "meta_title": "Create profile",
+    "meta_description": "Create your profile"
+  },
+  "CreateProfileForm": {
+    "name": "Name",
+    "name_placeholder": "Enter your name",
+    "last_name": "Last name",
+    "last_name_placeholder": "Enter your last name",
+    "select_your_role": "Select your role",
+    "select_search_role": "What are you looking for?",
+    "role_options": {
+      "developer": "Developer",
+      "designer": "Designer",
+      "product_manager": "Product Manager",
+      "founder": "Founder",
+      "marketing_specialist": "Marketing Specialist",
+      "cto": "CTO",
+      "other": "Other"
     },
-    "BaseTemplate": {
-        "description": "Match by your skills faster with our platform"
+    "search_options": {
+      "developer": "Developer",
+      "designer": "Designer",
+      "product_manager": "Product Manager",
+      "founder": "Founder",
+      "marketing_specialist": "Marketing Specialist",
+      "cto": "CTO",
+      "other": "Other"
     },
-    "Index": {
-        "meta_title": "Match by your skills faster",
-        "meta_description": "Match by your skills faster with our platform"
-    },
-    "CreateProfile": {
-        "meta_title": "Create profile",
-        "meta_description": "Create your profile"
-    },
-    "CreateProfileForm": {
-        "name": "Name",
-        "name_placeholder": "Enter your name",
-        "last_name": "Last name",
-        "last_name_placeholder": "Enter your last name",
-        "select_your_role": "Select your role",
-        "select_search_role": "What are you looking for?",
-        "role_options": {
-            "developer": "Developer",
-            "designer": "Designer",
-            "product_manager": "Product Manager",
-            "founder": "Founder",
-            "marketing_specialist": "Marketing Specialist",
-            "cto": "CTO",
-            "other": "Other"
-        },
-        "search_options": {
-            "developer": "Developer",
-            "designer": "Designer",
-            "product_manager": "Product Manager",
-            "founder": "Founder",
-            "marketing_specialist": "Marketing Specialist",
-            "cto": "CTO",
-            "other": "Other"
-        },
-        "save": "Save"
-    },
-    "About": {
-        "meta_title": "About",
-        "meta_description": "About page description",
-        "about_paragraph": "Welcome to our About page!"
-    },
-    "SignIn": {
-        "meta_title": "Sign in",
-        "meta_description": "Seamlessly sign in to your account with our user-friendly login process."
-    },
-    "SignUp": {
-        "meta_title": "Sign up",
-        "meta_description": "Effortlessly create an account through our intuitive sign-up process."
-    },
-    "Dashboard": {
-        "meta_title": "Dashboard",
-        "hello_message": "Hello {email}!"
-    },
-    "UserProfile": {
-        "meta_title": "User Profile"
-    },
-    "DashboardLayout": {
-        "dashboard_link": "Dashboard",
-        "user_profile_link": "Manage your profile",
-        "sign_out": "Sign out"
-    }
+    "save": "Save"
+  },
+  "About": {
+    "meta_title": "About",
+    "meta_description": "About page description",
+    "about_paragraph": "Welcome to our About page!"
+  },
+  "SignIn": {
+    "meta_title": "Sign in",
+    "meta_description": "Seamlessly sign in to your account with our user-friendly login process."
+  },
+  "SignUp": {
+    "meta_title": "Sign up",
+    "meta_description": "Effortlessly create an account through our intuitive sign-up process."
+  },
+  "Dashboard": {
+    "meta_title": "Dashboard",
+    "hello_message": "Hello {email}!"
+  },
+  "UserProfile": {
+    "meta_title": "User Profile"
+  },
+  "DashboardLayout": {
+    "dashboard_link": "Dashboard",
+    "user_profile_link": "Manage your profile",
+    "sign_out": "Sign out"
+  }
 }
