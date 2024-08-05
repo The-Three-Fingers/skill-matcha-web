@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import { CreateProfileForm } from './CreateProfileForm';
+import { CreateProfileForm } from './create-profile-form/CreateProfileForm';
 
 const EditableProfileEntry = (props: {
   id: number;
@@ -44,7 +44,8 @@ const EditableProfileEntry = (props: {
             defaultValues={{
               name: props.name,
               lastName: props.lastName,
-              role: '',
+              roles: '',
+              searchRoles: '',
             }}
             onSubmit={async (data) => {
               await fetch(`/api/profiles`, {

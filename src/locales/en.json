@@ -23,7 +23,17 @@
         "last_name": "Last name",
         "last_name_placeholder": "Enter your last name",
         "select_your_role": "Select your role",
+        "select_search_role": "What are you looking for?",
         "role_options": {
+            "developer": "Developer",
+            "designer": "Designer",
+            "product_manager": "Product Manager",
+            "founder": "Founder",
+            "marketing_specialist": "Marketing Specialist",
+            "cto": "CTO",
+            "other": "Other"
+        },
+        "search_options": {
             "developer": "Developer",
             "designer": "Designer",
             "product_manager": "Product Manager",

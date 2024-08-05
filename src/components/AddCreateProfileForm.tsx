@@ -1,6 +1,6 @@
 'use client';
 
-import { CreateProfileForm } from './CreateProfileForm';
+import { CreateProfileForm } from './create-profile-form/CreateProfileForm';
 
 const AddCreateProfileForm = () => (
   <CreateProfileForm

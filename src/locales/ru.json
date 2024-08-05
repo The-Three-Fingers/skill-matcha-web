@@ -22,7 +22,17 @@
         "last_name": "Фамилия",
         "last_name_placeholder": "Введите вашу фамилию",
         "select_your_role": "Выберете вашу роль",
+        "select_search_role": "Кого вы ищете?",
         "role_options": {
+            "developer": "Разработчик",
+            "designer": "Дизайнер",
+            "product_manager": "Менеджер продукта",
+            "founder": "Основатель",
+            "marketing_specialist": "Маркетолог",
+            "cto": "CTO",
+            "other": "Другое"
+        },
+        "search_options": {
             "developer": "Разработчик",
             "designer": "Дизайнер",
             "product_manager": "Менеджер продукта",
