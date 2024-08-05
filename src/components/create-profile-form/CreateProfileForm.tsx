@@ -3,23 +3,21 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { type SubmitHandler, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import type { z } from 'zod';
 
 import { CreateProfileFormValidation } from '@/validations/ProfileValidation';
 
-import type { CreateProfileFormSettings } from '../types';
+import type {
+    CreateProfileFormSettings,
+    RoleKey,
+    SearchRoleKey,
+} from '../types';
 import { Form } from '../ui/form';
-import LastNameField from './LastNameField';
-import NameField from './NameField';
-import RoleField from './RoleField';
-import SearcField from './SearcField';
+import InputField from './InputField';
+import MultiSelectField from './MultiSelectField';
 
-type CreateProfileFormProps = {
-    onSubmit: SubmitHandler<z.infer<typeof CreateProfileFormValidation>>;
-};
-
-const CreateProfileForm = (props: CreateProfileFormProps) => {
+const CreateProfileForm = () => {
     const form = useForm<z.infer<typeof CreateProfileFormValidation>>({
         resolver: zodResolver(CreateProfileFormValidation),
         defaultValues: {
@@ -42,10 +40,37 @@ const CreateProfileForm = (props: CreateProfileFormProps) => {
 
     const onSubmit = async (data: CreateProfileFormSettings) => {
         console.log('data', data);
-        await props.onSubmit(data);
+
+        await fetch(`/api/profiles`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
 
         reset();
         router.refresh();
+    };
+
+    const roleOptions: Record<RoleKey, string> = {
+        developer: t('role_options.developer'),
+        designer: t('role_options.designer'),
+        product_manager: t('role_options.product_manager'),
+        founder: t('role_options.founder'),
+        marketing_specialist: t('role_options.marketing_specialist'),
+        cto: t('role_options.cto'),
+        other: t('role_options.other'),
+    };
+
+    const searchOptions: Record<SearchRoleKey, string> = {
+        developer: t('search_options.developer'),
+        designer: t('search_options.designer'),
+        product_manager: t('search_options.product_manager'),
+        founder: t('search_options.founder'),
+        marketing_specialist: t('search_options.marketing_specialist'),
+        cto: t('search_options.cto'),
+        other: t('search_options.other'),
     };
 
     const watchedValues = watch(['name', 'lastName', 'roles', 'searchRoles']);
@@ -63,12 +88,28 @@ const CreateProfileForm = (props: CreateProfileFormProps) => {
             <form
                 className="flex w-full p-20 md:w-2/3 lg:w-3/5 xl:w-1/2 2xl:w-1/3 flex-col gap-y-4"
                 onSubmit={handleSubmit(onSubmit)}>
-                <NameField />
-                <LastNameField />
+                <InputField
+                    fieldName="name"
+                    labelContent="name"
+                    inputPlaceholder="name_placeholder"
+                />
+                <InputField
+                    fieldName="lastName"
+                    labelContent="last_name"
+                    inputPlaceholder="last_name_placeholder"
+                />
 
                 <div className="flex justify-between">
-                    <RoleField />
-                    <SearcField />
+                    <MultiSelectField
+                        name="roles"
+                        label={t('select_your_role')}
+                        options={roleOptions}
+                    />
+                    <MultiSelectField
+                        name="searchRoles"
+                        label={t('select_search_role')}
+                        options={searchOptions}
+                    />
                 </div>
 
                 <div className="mt-5">

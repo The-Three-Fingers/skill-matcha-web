@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl';
 import { useFormContext } from 'react-hook-form';
 
 import { Checkbox } from '../ui/checkbox';
@@ -9,44 +8,37 @@ import {
   FormLabel,
   FormMessage,
 } from '../ui/form';
-import type { RoleKey } from '../types';
 
-const RoleField = () => {
+type MultiSelectFieldProps<T extends string | number | symbol> = {
+  name: string;
+  label: string;
+  options: Record<T, string>;
+};
+
+const MultiSelectField = <T extends string | number | symbol>({ name, label, options }: MultiSelectFieldProps<T>) => {
   const { control } = useFormContext();
-  const t = useTranslations('CreateProfileForm');
 
-  const roleOptions: Record<RoleKey, string> = {
-    developer: t('role_options.developer'),
-    designer: t('role_options.designer'),
-    product_manager: t('role_options.product_manager'),
-    founder: t('role_options.founder'),
-    marketing_specialist: t('role_options.marketing_specialist'),
-    cto: t('role_options.cto'),
-    other: t('role_options.other'),
-  };
-
-  const roleKeys = Object.keys(roleOptions) as RoleKey[];
+  const optionKeys = Object.keys(options) as T[];
 
   return (
     <FormField
       control={control}
-      name="roles"
+      name={name}
       render={() => (
         <FormItem>
           <div className="mb-4">
-            <FormLabel className="text-base">{t('select_your_role')}</FormLabel>
+            <FormLabel className="text-base">{label}</FormLabel>
           </div>
-
-          {roleKeys.map((roleKey) => (
+          {optionKeys.map((optionKey) => (
             <FormField
-              key={roleKey}
+              key={optionKey.toString()}
               control={control}
-              name="roles"
+              name={name}
               render={({ field }) => {
-                const isChecked = field.value?.includes(roleKey);
+                const isChecked = field.value?.includes(optionKey);
                 return (
                   <FormItem
-                    key={roleKey}
+                    key={optionKey.toString()}
                     className="flex flex-row items-start space-x-3 space-y-0"
                   >
                     <FormControl>
@@ -54,16 +46,16 @@ const RoleField = () => {
                         checked={isChecked}
                         onCheckedChange={(checked) => {
                           return checked
-                            ? field.onChange([...field.value, roleKey])
+                            ? field.onChange([...field.value, optionKey])
                             : field.onChange(
                                 field.value?.filter(
-                                  (value: RoleKey) => value !== roleKey,
+                                  (value: T) => value !== optionKey,
                                 ),
                               );
                         }}
                       />
                     </FormControl>
-                    <FormLabel className="font-normal">{roleOptions[roleKey]}</FormLabel>
+                    <FormLabel className="font-normal">{options[optionKey]}</FormLabel>
                   </FormItem>
                 );
               }}
@@ -76,4 +68,4 @@ const RoleField = () => {
   );
 };
 
-export default RoleField;
+export default MultiSelectField;

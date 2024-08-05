@@ -17,8 +17,14 @@ export const EditProfileValidation = z.object({
   id: z.coerce.number(),
   name: z.string().min(1),
   lastName: z.string().min(1),
+  roles: z.array(z.string()),
+  searchRoles: z.array(z.string()),
 });
 
 export const DeleteCreateProfileFormValidation = z.object({
   id: z.coerce.number(),
+  name: z.string().min(1),
+  lastName: z.string().min(1),
+  roles: z.array(z.string()),
+  searchRoles: z.array(z.string()),
 });
