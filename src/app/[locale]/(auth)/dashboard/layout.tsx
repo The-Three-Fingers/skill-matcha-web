@@ -1,8 +1,8 @@
 import { useTranslations } from 'next-intl';
 
-import { LogOutButton } from '@/components/LogOutButton';
-import { NavigationBar } from '@/components/NavigationBar';
-import { BaseTemplate } from '@/templates/BaseTemplate';
+import { LogOutButton } from '@/components/logout-button';
+import { NavigationBar } from '@/components/navigation-bar';
+import { BaseTemplate } from '@/templates/base-template';
 
 export default function DashboardLayout(props: { children: React.ReactNode }) {
   const t = useTranslations('DashboardLayout');

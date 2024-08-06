@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 
-import { AddProfileForm } from '@/components/AddProfileForm';
+import CreateProfileForm from '@/components/create-profile-form';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
   const t = await getTranslations({
@@ -14,7 +14,7 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 }
 
 const CreateProfile = () => {
-  return <AddProfileForm />;
+  return <CreateProfileForm />;
 };
 
 export const dynamic = 'force-dynamic';
