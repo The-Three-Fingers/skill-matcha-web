@@ -5,7 +5,7 @@ import { GoogleLoginButton } from '@/components/google-login-button';
 export async function generateMetadata(props: { params: { locale: string } }) {
   const t = await getTranslations({
     locale: props.params.locale,
-    namespace: 'SignIn',
+    namespace: 'LogIn',
   });
 
   return {
@@ -14,8 +14,12 @@ export async function generateMetadata(props: { params: { locale: string } }) {
   };
 }
 
-const SignInPage = async () => {
-  return <GoogleLoginButton />;
+const LogInPage = async () => {
+  return (
+    <div className="mx-auto flex flex-col justify-center">
+      <GoogleLoginButton />
+    </div>
+  );
 };
 
-export default SignInPage;
+export default LogInPage;

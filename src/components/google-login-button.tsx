@@ -1,33 +1,22 @@
 'use client';
 
-import type { User } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 
-import { useUserSession } from '@/hooks/use-user-session';
 import { signInWithGoogle } from '@/libs/firebase/auth';
 
-const GoogleLoginButton = ({
-  initialUser = null,
-}: {
-  initialUser?: User | null;
-}) => {
-  const router = useRouter();
+import { Button } from './ui/button';
 
-  // TODO: move this hook to header across the app
-  useUserSession(initialUser);
+const GoogleLoginButton = () => {
+  const router = useRouter();
 
   const handleClick = async () => {
     await signInWithGoogle();
     router.refresh();
   };
   return (
-    <button
-      className="border-none text-gray-700 hover:text-gray-900"
-      type="button"
-      onClick={handleClick}
-    >
+    <Button variant="outline" onClick={handleClick}>
       Login with Google
-    </button>
+    </Button>
   );
 };
 

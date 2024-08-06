@@ -5,7 +5,6 @@ import { Open_Sans } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
 
-import { getAuthenticatedAppForUser } from '@/libs/firebase/serverApp';
 import { cn } from '@/libs/utils';
 import { AppConfig } from '@/utils/AppConfig';
 
@@ -47,9 +46,6 @@ export default async function RootLayout(props: {
   children: React.ReactNode;
   params: { locale: string };
 }) {
-  const { currentUser } = await getAuthenticatedAppForUser();
-
-  console.log(currentUser?.toJSON());
   unstable_setRequestLocale(props.params.locale);
 
   // Using internationalization in Client Components

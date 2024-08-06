@@ -14,9 +14,7 @@ export default function Layout(props: {
   return (
     <BaseTemplate
       rightNav={
-        <NavigationBar
-          items={[{ label: t('sign_in_link'), href: '/sign-in' }]}
-        />
+        <NavigationBar items={[{ label: t('log_in_link'), href: '/login' }]} />
       }
     >
       <div className="py-5 text-xl [&_p]:my-6">{props.children}</div>

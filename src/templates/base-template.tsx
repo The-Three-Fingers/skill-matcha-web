@@ -7,10 +7,10 @@ const BaseTemplate = (props: {
   children: React.ReactNode;
 }) => {
   return (
-    <div className="size-full text-gray-700 antialiased">
+    <div className="flex size-full flex-col text-gray-700 antialiased">
       <header className="h-14 bg-white px-2">
-        <div className="mx-auto flex h-full max-w-screen-xl items-center justify-between">
-          <Link href="/">
+        <div className="mx-auto flex h-full max-w-screen-xl items-center">
+          <Link href="/" className="mr-auto">
             <h1 className="text-2xl font-bold text-lime-600/70">
               {AppConfig.name}
             </h1>
@@ -21,7 +21,7 @@ const BaseTemplate = (props: {
       </header>
 
       <main className="flex-1 px-2">
-        <div className="mx-auto flex max-w-screen-lg justify-between">
+        <div className="mx-auto flex h-full max-w-screen-lg justify-between">
           {props.children}
         </div>
       </main>

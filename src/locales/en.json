@@ -1,10 +1,7 @@
 {
   "RootLayout": {
     "home_link": "Home",
-    "about_link": "About",
-    "profiles_link": "Profiles",
-    "sign_in_link": "Sign in",
-    "sign_up_link": "Sign up"
+    "log_in_link": "Log in"
   },
   "BaseTemplate": {
     "description": "Match by your skills faster with our platform"
@@ -49,23 +46,16 @@
     "meta_description": "About page description",
     "about_paragraph": "Welcome to our About page!"
   },
-  "SignIn": {
-    "meta_title": "Sign in",
-    "meta_description": "Seamlessly sign in to your account with our user-friendly login process."
-  },
-  "SignUp": {
-    "meta_title": "Sign up",
-    "meta_description": "Effortlessly create an account through our intuitive sign-up process."
+  "LogIn": {
+    "meta_title": "Log in",
+    "meta_description": "Seamlessly log in to your account."
   },
   "Dashboard": {
     "meta_title": "Dashboard",
     "hello_message": "Hello {email}!"
   },
-  "UserProfile": {
-    "meta_title": "User Profile"
-  },
   "DashboardLayout": {
     "dashboard_link": "Home",
-    "sign_out": "Sign out"
+    "log_out": "Log out"
   }
 }

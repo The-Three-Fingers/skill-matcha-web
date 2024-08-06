@@ -20,7 +20,7 @@ const LogOutButton = () => {
       type="button"
       onClick={handleClick}
     >
-      {t('sign_out')}
+      {t('log_out')}
     </button>
   );
 };
