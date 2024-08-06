@@ -2,9 +2,10 @@ import '@/styles/global.css';
 
 import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
-import { NextIntlClientProvider, useMessages } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
 
+import { getAuthenticatedAppForUser } from '@/libs/firebase/serverApp';
 import { cn } from '@/libs/utils';
 import { AppConfig } from '@/utils/AppConfig';
 
@@ -42,14 +43,17 @@ export function generateStaticParams() {
   return AppConfig.locales.map((locale) => ({ locale }));
 }
 
-export default function RootLayout(props: {
+export default async function RootLayout(props: {
   children: React.ReactNode;
   params: { locale: string };
 }) {
+  const { currentUser } = await getAuthenticatedAppForUser();
+
+  console.log(currentUser?.toJSON());
   unstable_setRequestLocale(props.params.locale);
 
   // Using internationalization in Client Components
-  const messages = useMessages();
+  const messages = await getMessages();
 
   return (
     <html lang={props.params.locale}>

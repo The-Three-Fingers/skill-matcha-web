@@ -1,16 +1,22 @@
-export default function AuthLayout(props: {
-  children: React.ReactNode;
-  // params: { locale: string };
-}) {
-  // let signInUrl = '/sign-in';
-  // let signUpUrl = '/sign-up';
-  // let dashboardUrl = '/dashboard';
+// import { redirect } from 'next/navigation';
 
-  // if (props.params.locale !== 'en') {
-  //   signInUrl = `/${props.params.locale}${signInUrl}`;
-  //   signUpUrl = `/${props.params.locale}${signUpUrl}`;
-  //   dashboardUrl = `/${props.params.locale}${dashboardUrl}`;
-  // }
+import { redirect } from 'next/navigation';
 
-  return <div>{props.children}</div>;
+import { LogOutButton } from '@/components/LogOutButton';
+import { getAuthenticatedAppForUser } from '@/libs/firebase/serverApp';
+// import { getAuthenticatedAppForUser } from '@/libs/firebase/serverApp';
+import { BaseTemplate } from '@/templates/BaseTemplate';
+
+export default async function AuthLayout(props: { children: React.ReactNode }) {
+  const { currentUser } = await getAuthenticatedAppForUser();
+
+  if (!currentUser) {
+    redirect('/sign-in');
+  }
+
+  return (
+    <BaseTemplate rightNav={<LogOutButton />}>{props.children}</BaseTemplate>
+  );
 }
+
+export const dynamic = 'force-dynamic';

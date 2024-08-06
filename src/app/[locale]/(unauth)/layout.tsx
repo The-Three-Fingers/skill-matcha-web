@@ -15,10 +15,7 @@ export default function Layout(props: {
     <BaseTemplate
       rightNav={
         <NavigationBar
-          items={[
-            { label: t('sign_in_link'), href: '/sign-in/' },
-            { label: t('sign_up_link'), href: '/sign-up/' },
-          ]}
+          items={[{ label: t('sign_in_link'), href: '/sign-in' }]}
         />
       }
     >

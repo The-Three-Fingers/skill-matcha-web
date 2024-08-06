@@ -1,9 +1,11 @@
 import { getTranslations } from 'next-intl/server';
 
+import { GoogleLoginButton } from '@/components/google-login-button';
+
 export async function generateMetadata(props: { params: { locale: string } }) {
   const t = await getTranslations({
     locale: props.params.locale,
-    namespace: 'SignUp',
+    namespace: 'SignIn',
   });
 
   return {
@@ -12,8 +14,8 @@ export async function generateMetadata(props: { params: { locale: string } }) {
   };
 }
 
-const SignUpPage = (props: { params: { locale: string } }) => (
-  <div>Sign up page {props.params.locale}</div>
-);
+const SignInPage = async () => {
+  return <GoogleLoginButton />;
+};
 
-export default SignUpPage;
+export default SignInPage;
