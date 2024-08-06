@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 
-import { Hello } from '@/components/Hello';
+import { Hello } from '@/components/hello';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
   const t = await getTranslations({

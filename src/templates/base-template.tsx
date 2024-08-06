@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 
-import LocaleSwitcher from '@/components/LocaleSwitcher';
+import LocaleSwitcher from '@/components/locale-switcher';
 import { AppConfig } from '@/utils/AppConfig';
 
 const BaseTemplate = (props: {

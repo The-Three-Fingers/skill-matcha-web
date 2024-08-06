@@ -5,6 +5,20 @@ export type CreateProfileFormSettings = {
   searchRoles: string[];
 };
 
-export type RoleKey = 'developer' | 'designer' | 'product_manager' | 'founder' | 'marketing_specialist' | 'cto' | 'other';
+export type RoleKey =
+  | 'developer'
+  | 'designer'
+  | 'product_manager'
+  | 'founder'
+  | 'marketing_specialist'
+  | 'cto'
+  | 'other';
 
-export type SearchRoleKey = 'developer' | 'designer' | 'product_manager' | 'founder' | 'marketing_specialist' | 'cto' | 'other';
+export type SearchRoleKey =
+  | 'developer'
+  | 'designer'
+  | 'product_manager'
+  | 'founder'
+  | 'marketing_specialist'
+  | 'cto'
+  | 'other';

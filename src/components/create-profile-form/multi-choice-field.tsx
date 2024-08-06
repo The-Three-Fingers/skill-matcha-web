@@ -15,7 +15,11 @@ type MultiSelectFieldProps<T extends string | number | symbol> = {
   options: Record<T, string>;
 };
 
-const MultiSelectField = <T extends string | number | symbol>({ name, label, options }: MultiSelectFieldProps<T>) => {
+const MultiChoiceField = <T extends string | number | symbol>({
+  name,
+  label,
+  options,
+}: MultiSelectFieldProps<T>) => {
   const { control } = useFormContext();
 
   const optionKeys = Object.keys(options) as T[];
@@ -44,7 +48,7 @@ const MultiSelectField = <T extends string | number | symbol>({ name, label, opt
                     <FormControl>
                       <Checkbox
                         checked={isChecked}
-                        onCheckedChange={(checked) => {
+                        onCheckedChange={(checked: boolean) => {
                           return checked
                             ? field.onChange([...field.value, optionKey])
                             : field.onChange(
@@ -55,7 +59,9 @@ const MultiSelectField = <T extends string | number | symbol>({ name, label, opt
                         }}
                       />
                     </FormControl>
-                    <FormLabel className="font-normal">{options[optionKey]}</FormLabel>
+                    <FormLabel className="font-normal">
+                      {options[optionKey]}
+                    </FormLabel>
                   </FormItem>
                 );
               }}
@@ -68,4 +74,4 @@ const MultiSelectField = <T extends string | number | symbol>({ name, label, opt
   );
 };
 
-export default MultiSelectField;
+export default MultiChoiceField;
