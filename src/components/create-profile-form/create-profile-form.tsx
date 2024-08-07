@@ -85,7 +85,7 @@ const CreateProfileForm = () => {
   return (
     <Form {...form}>
       <form
-        className="flex w-full flex-col gap-y-4 p-20 md:w-2/3 lg:w-3/5 xl:w-1/2 2xl:w-1/3"
+        className="flex w-full flex-col gap-y-4 p-20 md:w-2/3"
         onSubmit={handleSubmit(onSubmit)}
       >
         <InputField
