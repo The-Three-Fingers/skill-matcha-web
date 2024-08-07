@@ -36,10 +36,9 @@ const FormField = <
 >({
   ...props
 }: ControllerProps<TFieldValues, TName>) => {
-  const value = React.useMemo(() => ({ name: props.name }), [props.name]);
-
   return (
-    <FormFieldContext.Provider value={value}>
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
+    <FormFieldContext.Provider value={{ name: props.name }}>
       <Controller {...props} />
     </FormFieldContext.Provider>
   );
@@ -74,10 +73,9 @@ const FormItem = React.forwardRef<
 >(({ className, ...props }, ref) => {
   const id = React.useId();
 
-  const value = React.useMemo(() => ({ id }), [id]);
-
   return (
-    <FormItemContext.Provider value={value}>
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
+    <FormItemContext.Provider value={{ id }}>
       <div ref={ref} className={cn('space-y-2', className)} {...props} />
     </FormItemContext.Provider>
   );
@@ -93,7 +91,7 @@ const FormLabel = React.forwardRef<
   return (
     <Label
       ref={ref}
-      className={cn(error && 'text-red-500 dark:text-red-900', className)}
+      className={cn(error && 'text-destructive', className)}
       htmlFor={formItemId}
       {...props}
     />
@@ -134,7 +132,7 @@ const FormDescription = React.forwardRef<
     <p
       ref={ref}
       id={formDescriptionId}
-      className={cn('text-sm text-slate-500 dark:text-slate-400', className)}
+      className={cn('text-sm text-muted-foreground', className)}
       {...props}
     />
   );
@@ -156,10 +154,7 @@ const FormMessage = React.forwardRef<
     <p
       ref={ref}
       id={formMessageId}
-      className={cn(
-        'text-sm font-medium text-red-500 dark:text-red-900',
-        className,
-      )}
+      className={cn('text-sm font-medium text-destructive', className)}
       {...props}
     >
       {body}

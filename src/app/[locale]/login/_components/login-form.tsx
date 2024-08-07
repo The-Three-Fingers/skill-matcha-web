@@ -7,6 +7,7 @@ import { useLoadingCallback } from 'react-loading-hook';
 import { loginWithCredential } from '@/api';
 import { getFirebaseAuth } from '@/auth/firebase';
 import { Button } from '@/components/ui/button';
+import { Icons } from '@/components/ui/icons';
 import { useRedirectAfterLogin } from '@/shared/useRedirectAfterLogin';
 import { useRedirectParam } from '@/shared/useRedirectParam';
 
@@ -49,6 +50,7 @@ export function LoginForm() {
           disabled={isGoogleLoading}
           onClick={handleLoginWithGoogle}
         >
+          <Icons.Google className="mr-2 size-4" />
           Log in with Google
         </Button>
       )}
