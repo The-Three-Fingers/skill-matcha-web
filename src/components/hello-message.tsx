@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 
 import { useAuth } from '@/auth/AuthContext';
 
-const HelloMessage = async () => {
+const HelloMessage = () => {
   const t = useTranslations('Dashboard');
 
   const { user } = useAuth();
