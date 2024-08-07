@@ -15,6 +15,8 @@ const BaseTemplate = (props: { children: React.ReactNode }) => {
 
   const isLoginPage = pathname.includes('/login');
 
+  const logInButton = isLoginPage ? null : <LogInButton />;
+
   return (
     <div className="flex size-full flex-col text-gray-700 antialiased">
       <header className="h-14 flex-none bg-white px-2">
@@ -25,7 +27,7 @@ const BaseTemplate = (props: { children: React.ReactNode }) => {
             </h1>
           </Link>
 
-          {user ? <LogOutButton /> : !isLoginPage ? <LogInButton /> : null}
+          {user ? <LogOutButton /> : logInButton}
         </div>
       </header>
 
