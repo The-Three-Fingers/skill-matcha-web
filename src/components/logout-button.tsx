@@ -1,27 +1,40 @@
 'use client';
 
+import { signOut } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { useState } from 'react';
+import { useLoadingCallback } from 'react-loading-hook';
 
-import { signOut } from '@/libs/firebase/auth';
+import { logout } from '@/api';
+import { getFirebaseAuth } from '@/auth/firebase';
+import { Button } from '@/components/ui/button';
 
 const LogOutButton = () => {
   const router = useRouter();
-  const t = useTranslations('DashboardLayout');
+  const t = useTranslations('RootLayout');
 
-  const handleClick = async () => {
-    await signOut();
+  const [hasLoggedOut, setHasLoggedOut] = useState(false);
 
-    router.replace('/');
-  };
+  const [handleLogout, isLogoutLoading] = useLoadingCallback(async () => {
+    const auth = getFirebaseAuth();
+    await signOut(auth);
+    await logout();
+
+    router.push('/login');
+    router.refresh();
+
+    setHasLoggedOut(true);
+  });
+
   return (
-    <button
-      className="border-none text-gray-700 hover:text-gray-900"
-      type="button"
-      onClick={handleClick}
+    <Button
+      variant="outline"
+      disabled={isLogoutLoading || hasLoggedOut}
+      onClick={handleLogout}
     >
-      {t('log_out')}
-    </button>
+      {t('log_out_link')}
+    </Button>
   );
 };
 

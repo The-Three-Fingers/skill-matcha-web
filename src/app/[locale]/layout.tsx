@@ -2,10 +2,15 @@ import '@/styles/global.css';
 
 import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
+import { cookies, headers } from 'next/headers';
+import { getTokens } from 'next-firebase-auth-edge';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
 
+import { AuthProvider } from '@/auth/AuthProvider';
+import { authConfig } from '@/config/server-config';
 import { cn } from '@/libs/utils';
+import { toUser } from '@/shared/user';
 import { AppConfig } from '@/utils/AppConfig';
 
 const fontSans = Open_Sans({
@@ -51,6 +56,12 @@ export default async function RootLayout(props: {
   // Using internationalization in Client Components
   const messages = await getMessages();
 
+  const tokens = await getTokens(cookies(), {
+    ...authConfig,
+    headers: headers(),
+  });
+  const user = tokens ? toUser(tokens) : null;
+
   return (
     <html lang={props.params.locale}>
       <body
@@ -63,7 +74,7 @@ export default async function RootLayout(props: {
           locale={props.params.locale}
           messages={messages}
         >
-          {props.children}
+          <AuthProvider user={user}>{props.children}</AuthProvider>
         </NextIntlClientProvider>
       </body>
     </html>

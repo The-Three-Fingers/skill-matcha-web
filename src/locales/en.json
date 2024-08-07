@@ -1,7 +1,8 @@
 {
   "RootLayout": {
     "home_link": "Home",
-    "log_in_link": "Log in"
+    "log_in_link": "Log in",
+    "log_out_link": "Log out"
   },
   "BaseTemplate": {
     "description": "Match by your skills faster with our platform"
@@ -52,10 +53,6 @@
   },
   "Dashboard": {
     "meta_title": "Dashboard",
-    "hello_message": "Hello {email}!"
-  },
-  "DashboardLayout": {
-    "dashboard_link": "Home",
-    "log_out": "Log out"
+    "hello_message": "Hello, {name}!"
   }
 }

@@ -11,6 +11,7 @@ import type {
   RoleKey,
   SearchRoleKey,
 } from '@/components/types';
+import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { CreateProfileFormValidation } from '@/validations/profile-validation';
 
@@ -112,13 +113,9 @@ const CreateProfileForm = () => {
         </div>
 
         <div className="mt-5">
-          <button
-            disabled={isButtonDisabled}
-            className="w-full rounded bg-blue-500 px-5 py-1 font-bold text-white hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300/50 disabled:opacity-50 disabled:hover:bg-blue-500"
-            type="submit"
-          >
+          <Button className="w-full" disabled={isButtonDisabled} type="submit">
             {t('save')}
-          </button>
+          </Button>
         </div>
       </form>
     </Form>

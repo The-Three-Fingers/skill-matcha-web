@@ -1,14 +1,23 @@
-import Link from 'next/link';
+'use client';
 
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+import { useAuth } from '@/auth/AuthContext';
+import { LogInButton } from '@/components/login-button';
+import { LogOutButton } from '@/components/logout-button';
 import { AppConfig } from '@/utils/AppConfig';
 
-const BaseTemplate = (props: {
-  rightNav?: React.ReactNode;
-  children: React.ReactNode;
-}) => {
+const BaseTemplate = (props: { children: React.ReactNode }) => {
+  const pathname = usePathname();
+
+  const { user } = useAuth();
+
+  const isLoginPage = pathname.includes('/login');
+
   return (
     <div className="flex size-full flex-col text-gray-700 antialiased">
-      <header className="h-14 bg-white px-2">
+      <header className="h-14 flex-none bg-white px-2">
         <div className="mx-auto flex h-full max-w-screen-xl items-center">
           <Link href="/" className="mr-auto">
             <h1 className="text-2xl font-bold text-lime-600/70">
@@ -16,7 +25,7 @@ const BaseTemplate = (props: {
             </h1>
           </Link>
 
-          {props.rightNav}
+          {user ? <LogOutButton /> : !isLoginPage ? <LogInButton /> : null}
         </div>
       </header>
 

@@ -1,14 +1,15 @@
-import { getTranslations } from 'next-intl/server';
+'use client';
+
+import { useTranslations } from 'next-intl';
+
+import { useAuth } from '@/auth/AuthContext';
 
 const HelloMessage = async () => {
-  const t = await getTranslations('Dashboard');
+  const t = useTranslations('Dashboard');
 
-  return (
-    <p>
-      {/* 👋 {t('hello_message', { email: user?.emailAddresses[0]?.emailAddress })} */}
-      👋 {t('hello_message', { email: 'test@test.test' })}
-    </p>
-  );
+  const { user } = useAuth();
+
+  return <p>👋 {t('hello_message', { name: user?.displayName })}</p>;
 };
 
 export { HelloMessage };
