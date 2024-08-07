@@ -1,12 +1,11 @@
-import { SignUp } from '@clerk/nextjs';
 import { getTranslations } from 'next-intl/server';
 
-import { getI18nPath } from '@/utils/Helpers';
+import { BaseTemplate } from '@/templates/base-template';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
   const t = await getTranslations({
     locale: props.params.locale,
-    namespace: 'SignUp',
+    namespace: 'LogIn',
   });
 
   return {
@@ -15,8 +14,10 @@ export async function generateMetadata(props: { params: { locale: string } }) {
   };
 }
 
-const SignUpPage = (props: { params: { locale: string } }) => (
-  <SignUp path={getI18nPath('/sign-up', props.params.locale)} />
-);
+export default async function LoginLayout(props: {
+  children: React.ReactNode;
+}) {
+  return <BaseTemplate>{props.children}</BaseTemplate>;
+}
 
-export default SignUpPage;
+export const dynamic = 'force-dynamic';

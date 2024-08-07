@@ -1,15 +1,15 @@
-import { currentUser } from '@clerk/nextjs/server';
-import { getTranslations } from 'next-intl/server';
+'use client';
 
-const HelloMessage = async () => {
-  const t = await getTranslations('Dashboard');
-  const user = await currentUser();
+import { useTranslations } from 'next-intl';
 
-  return (
-    <p>
-      👋 {t('hello_message', { email: user?.emailAddresses[0]?.emailAddress })}
-    </p>
-  );
+import { useAuth } from '@/auth/AuthContext';
+
+const HelloMessage = () => {
+  const t = useTranslations('Dashboard');
+
+  const { user } = useAuth();
+
+  return <p>👋 {t('hello_message', { name: user?.displayName })}</p>;
 };
 
 export { HelloMessage };

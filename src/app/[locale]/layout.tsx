@@ -2,10 +2,15 @@ import '@/styles/global.css';
 
 import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
-import { NextIntlClientProvider, useMessages } from 'next-intl';
-import { unstable_setRequestLocale } from 'next-intl/server';
+import { cookies, headers } from 'next/headers';
+import { getTokens } from 'next-firebase-auth-edge';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
 
+import { AuthProvider } from '@/auth/AuthProvider';
+import { authConfig } from '@/config/server-config';
 import { cn } from '@/libs/utils';
+import { toUser } from '@/shared/user';
 import { AppConfig } from '@/utils/AppConfig';
 
 const fontSans = Open_Sans({
@@ -42,20 +47,26 @@ export function generateStaticParams() {
   return AppConfig.locales.map((locale) => ({ locale }));
 }
 
-export default function RootLayout(props: {
+export default async function RootLayout(props: {
   children: React.ReactNode;
   params: { locale: string };
 }) {
   unstable_setRequestLocale(props.params.locale);
 
   // Using internationalization in Client Components
-  const messages = useMessages();
+  const messages = await getMessages();
+
+  const tokens = await getTokens(cookies(), {
+    ...authConfig,
+    headers: headers(),
+  });
+  const user = tokens ? toUser(tokens) : null;
 
   return (
     <html lang={props.params.locale}>
       <body
         className={cn(
-          'min-h-screen bg-background font-sans antialiased',
+          'h-screen bg-slate-100 font-sans antialiased',
           fontSans.variable,
         )}
       >
@@ -63,7 +74,7 @@ export default function RootLayout(props: {
           locale={props.params.locale}
           messages={messages}
         >
-          {props.children}
+          <AuthProvider user={user}>{props.children}</AuthProvider>
         </NextIntlClientProvider>
       </body>
     </html>
