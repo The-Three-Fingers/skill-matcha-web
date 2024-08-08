@@ -12,6 +12,7 @@ export const Icons = {
       <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z" />
     </svg>
   ),
+
   GitHub: (props: IconProps) => (
     <svg viewBox="0 0 438.549 438.549" {...props}>
       <path
@@ -48,6 +49,7 @@ export const Icons = {
       </defs>
     </svg>
   ),
+
   Apple: (props: IconProps) => (
     <svg role="img" viewBox="0 0 24 24" {...props}>
       <path
@@ -71,6 +73,17 @@ export const Icons = {
       {...props}
     >
       <path d="M21 12a9 9 0 1 1-6.219-8.56" />
+    </svg>
+  ),
+
+  HeartIcon: (props: IconProps) => (
+    <svg role="img" viewBox="0 0 24 24" width="24" height="24" {...props}>
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+      />
     </svg>
   ),
 };
