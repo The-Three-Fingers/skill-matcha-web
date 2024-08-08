@@ -18,11 +18,11 @@ const BaseTemplate = (props: { children: React.ReactNode }) => {
   const logInButton = isLoginPage ? null : <LogInButton />;
 
   return (
-    <div className="flex size-full flex-col text-gray-700 antialiased">
-      <header className="h-14 flex-none bg-white px-2">
+    <div className="flex size-full flex-col antialiased">
+      <header className="h-14 flex-none bg-white px-4">
         <div className="mx-auto flex h-full max-w-screen-xl items-center">
           <Link href="/" className="mr-auto">
-            <h1 className="text-2xl font-bold text-lime-600/70">
+            <h1 className="text-xl font-bold uppercase text-foreground">
               {AppConfig.name}
             </h1>
           </Link>
@@ -31,7 +31,7 @@ const BaseTemplate = (props: { children: React.ReactNode }) => {
         </div>
       </header>
 
-      <main className="flex-1 px-2">
+      <main className="flex-1 p-3">
         <div className="mx-auto flex h-full max-w-screen-lg justify-between">
           {props.children}
         </div>
