@@ -5,7 +5,7 @@ import { BaseTemplate } from '@/templates/base-template';
 export async function generateMetadata(props: { params: { locale: string } }) {
   const t = await getTranslations({
     locale: props.params.locale,
-    namespace: 'LogIn',
+    namespace: 'SignUp',
   });
 
   return {
