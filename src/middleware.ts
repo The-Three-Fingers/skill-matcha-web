@@ -9,7 +9,8 @@ import createMiddleware from 'next-intl/middleware';
 import { authConfig } from './config/server-config';
 import { AppConfig } from './utils/AppConfig';
 
-const PUBLIC_PATHS = ['/login', '/'];
+const SIGNIN_PATHS = ['/login', '/sign-up'];
+const PUBLIC_PATHS = ['/'];
 const LOCALE_LIST = AppConfig.locales;
 const LOCALE_REGEXP = /^\/([a-z]{2})(\/.+)?$/;
 const LOCALE_SET = new Set(LOCALE_LIST);
@@ -75,8 +76,8 @@ export async function middleware(request: NextRequest) {
     cookieSignatureKeys: authConfig.cookieSignatureKeys,
     serviceAccount: authConfig.serviceAccount,
     handleValidToken: async ({ decodedToken }) => {
-      // Authenticated user should not be able to access /login route
-      if (request.nextUrl.pathname === '/login') {
+      // Authenticated user should not be able to access SIGNIN_PATHS routes
+      if (SIGNIN_PATHS.includes(request.nextUrl.pathname)) {
         return redirectToHome(request);
       }
 
@@ -87,7 +88,10 @@ export async function middleware(request: NextRequest) {
       return intlMiddleware(request);
     },
     handleInvalidToken: async (_reason) => {
-      if (PUBLIC_PATHS.includes(request.nextUrl.pathname)) {
+      if (
+        PUBLIC_PATHS.includes(request.nextUrl.pathname) ||
+        SIGNIN_PATHS.includes(request.nextUrl.pathname)
+      ) {
         return intlMiddleware(request);
       }
 
@@ -96,7 +100,10 @@ export async function middleware(request: NextRequest) {
     handleError: async (error) => {
       console.error('Unhandled authentication error', { error });
 
-      if (PUBLIC_PATHS.includes(request.nextUrl.pathname)) {
+      if (
+        PUBLIC_PATHS.includes(request.nextUrl.pathname) ||
+        SIGNIN_PATHS.includes(request.nextUrl.pathname)
+      ) {
         return intlMiddleware(request);
       }
 

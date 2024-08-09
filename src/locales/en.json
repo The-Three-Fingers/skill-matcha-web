@@ -1,8 +1,16 @@
 {
   "RootLayout": {
-    "home_link": "Home",
+    "home_link": "Home"
+  },
+  "Auth": {
     "log_in_link": "Log in",
-    "log_out_link": "Log out"
+    "sign_up_link": "Sign up",
+    "log_out_link": "Log out",
+    "log_in_form_title": "Sign In to {appName}",
+    "sign_up_form_title": "Create an account",
+    "continue_with_google": "Continue with Google",
+    "dont_have_account": "Don't have an account?",
+    "already_have_account": "Already have an account?"
   },
   "BaseTemplate": {
     "description": "Match by your skills faster with our platform"
@@ -50,6 +58,10 @@
   "LogIn": {
     "meta_title": "Log in",
     "meta_description": "Seamlessly log in to your account."
+  },
+  "SignUp": {
+    "meta_title": "Sign up",
+    "meta_description": "Create an account to get started."
   },
   "Dashboard": {
     "meta_title": "Dashboard",
