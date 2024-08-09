@@ -1,4 +1,4 @@
-// TODO переделать структуру. некоторые вложенные данные не подходят для нестинга или по смыслу 
+// TODO переделать структуру. некоторые вложенные данные не подходят для нестинга или по смыслу
 
 export const MOCK_PROFILE = {
   idea: true,
@@ -15,7 +15,8 @@ export const MOCK_PROFILE = {
   },
   experience: {
     yearsOfExperience: 8, // select
-    aboutMe: 'I am a product manager with a passion for sustainability and green technology.  am a product manager with a passion for sustainability and green technology.  am a product manager with a passion for sustainability and green technology.  am a product manager with a passion for sustainability and green technology.  am a product manager with a passion for sustainability and green technology.  am a product manager with a passion for sustainability and green technology. am a product manager with a passion for sustainability and green technology.', // textarea
+    aboutMe:
+      'I am a product manager with a passion for sustainability and green technology.  am a product manager with a passion for sustainability and green technology.  am a product manager with a passion for sustainability and green technology.  am a product manager with a passion for sustainability and green technology.  am a product manager with a passion for sustainability and green technology.  am a product manager with a passion for sustainability and green technology. am a product manager with a passion for sustainability and green technology.', // textarea
     background:
       'Over 8 years of experience in leading cross-functional teams in product management and user experience design, specializing in developing intuitive and scalable digital products for tech startups.', // textarea
     expertise:

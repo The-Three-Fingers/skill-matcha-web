@@ -1,6 +1,6 @@
 // import { getTranslations } from 'next-intl/server';
 
-import { BaseTemplate } from '@/templates/base-template';
+import { ProfileCardTemplate } from '@/templates/profile-card-template';
 
 // !! todo разобраться какую мету нужно на страницу вывода профайлов
 
@@ -19,7 +19,7 @@ import { BaseTemplate } from '@/templates/base-template';
 export default async function LoginLayout(props: {
   children: React.ReactNode;
 }) {
-  return <BaseTemplate>{props.children}</BaseTemplate>;
+  return <ProfileCardTemplate>{props.children}</ProfileCardTemplate>;
 }
 
 // export const dynamic = 'force-dynamic';

@@ -79,6 +79,19 @@ const config = {
           '20%,50%': { opacity: '0' },
         },
       },
+
+      boxShadow: {
+        'soft-outline':
+          '0px 0px 8px rgba(112, 144, 176, 0.12), 0px 8px 24px rgba(112, 144, 176, 0.24)',
+        blur: 'blur(4px)',
+        'soft-emboss':
+          '-3px -3px 6px rgba(112, 144, 176, 0.08), 2px 2px 6px rgba(112, 144, 176, 0.16)',
+        'neutral-modal':
+          '0px 8px 24px 0px rgba(112, 144, 176, 0.28), 0px 0px 8px 0px rgba(112, 144, 176, 0.18)',
+        'hover-glow':
+          '0px 0px 8px 0px rgba(112, 144, 176, 0.18), 0px 8px 24px 0px  rgba(112, 144, 176, 0.28)',
+      },
+
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
