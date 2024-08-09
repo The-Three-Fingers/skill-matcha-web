@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MOCK_PROFILE } from './mockProfile';
+import { MOCK_PROFILE } from './mock-profile';
 
 const CardDetails = () => {
   return (

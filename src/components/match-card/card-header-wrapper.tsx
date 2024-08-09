@@ -2,8 +2,8 @@ import Image from 'next/image';
 import React from 'react';
 
 import { CardDescription, CardHeader, CardTitle } from '../ui/card';
-import { MOCK_PROFILE } from './mockProfile';
-import mockImage from './mockProfilePhoto.jpg';
+import { MOCK_PROFILE } from './mock-profile';
+import mockImage from './mock-profile-photo.jpg';
 
 const CardHeaderWrapper = () => {
   return (
