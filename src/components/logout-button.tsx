@@ -12,7 +12,7 @@ import { Button } from '@/components/ui/button';
 
 const LogOutButton = () => {
   const router = useRouter();
-  const t = useTranslations('RootLayout');
+  const t = useTranslations('Auth');
 
   const [hasLoggedOut, setHasLoggedOut] = useState(false);
 

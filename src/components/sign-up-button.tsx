@@ -5,14 +5,14 @@ import { useTranslations } from 'next-intl';
 
 import { Button } from './ui/button';
 
-const LogInButton = () => {
+const SignUpButton = () => {
   const t = useTranslations('Auth');
 
   return (
-    <Button asChild variant="ghost">
-      <Link href="/login">{t('log_in_link')}</Link>
+    <Button asChild>
+      <Link href="/sign-up">{t('sign_up_link')}</Link>
     </Button>
   );
 };
 
-export { LogInButton };
+export { SignUpButton };

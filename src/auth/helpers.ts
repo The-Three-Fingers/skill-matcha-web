@@ -1,9 +1,4 @@
-import type {
-  Auth,
-  AuthError,
-  AuthProvider,
-  UserCredential,
-} from 'firebase/auth';
+import type { Auth, AuthProvider, UserCredential } from 'firebase/auth';
 import {
   browserPopupRedirectResolver,
   GoogleAuthProvider,
@@ -11,10 +6,6 @@ import {
   signOut,
   useDeviceLanguage,
 } from 'firebase/auth';
-
-const CREDENTIAL_ALREADY_IN_USE_ERROR = 'auth/credential-already-in-use';
-export const isCredentialAlreadyInUseError = (e: AuthError) =>
-  e?.code === CREDENTIAL_ALREADY_IN_USE_ERROR;
 
 export const logout = async (auth: Auth): Promise<void> => {
   return signOut(auth);

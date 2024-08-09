@@ -1,7 +1,7 @@
 import '@/styles/global.css';
 
 import type { Metadata } from 'next';
-import { Open_Sans } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import { cookies, headers } from 'next/headers';
 import { getTokens } from 'next-firebase-auth-edge';
 import { NextIntlClientProvider } from 'next-intl';
@@ -13,8 +13,8 @@ import { cn } from '@/libs/utils';
 import { toUser } from '@/shared/user';
 import { AppConfig } from '@/utils/AppConfig';
 
-const fontSans = Open_Sans({
-  subsets: ['latin', 'cyrillic'],
+const fontSans = Montserrat({
+  subsets: ['latin'],
   variable: '--font-sans',
 });
 
@@ -64,12 +64,7 @@ export default async function RootLayout(props: {
 
   return (
     <html lang={props.params.locale}>
-      <body
-        className={cn(
-          'h-screen bg-slate-100 font-sans antialiased',
-          fontSans.variable,
-        )}
-      >
+      <body className={cn('h-screen font-sans antialiased', fontSans.variable)}>
         <NextIntlClientProvider
           locale={props.params.locale}
           messages={messages}

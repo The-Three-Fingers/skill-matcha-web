@@ -15,5 +15,9 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 export default function Index(props: { params: { locale: string } }) {
   unstable_setRequestLocale(props.params.locale);
 
-  return <h2 className="mt-5 text-2xl font-bold">Welcome!</h2>;
+  return (
+    <div className="size-full">
+      <h2 className="text-2xl font-bold">Welcome!</h2>
+    </div>
+  );
 }
