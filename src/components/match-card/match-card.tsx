@@ -9,7 +9,6 @@ import FooterButtons from './footer-buttons';
 
 type ButtonDirection = 'left' | 'right';
 
-// TODO нужно положить переменные в en locale
 const MatchCard = () => {
   const handleChevronClick = (direction: ButtonDirection) => () => {
     console.log(`Chevron ${direction} `);

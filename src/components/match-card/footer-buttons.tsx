@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Button } from '../ui/button';
 import { Icons } from '../ui/icons';
+import { useTranslations } from 'next-intl';
 
 type ButtonDirection = 'contact' | 'save';
 
@@ -14,6 +15,8 @@ const FooterButtons: React.FC<FooterButtonsProps> = ({ onClick }) => {
     onClick(type);
   };
 
+  const t = useTranslations('matchesProfiles');
+
   return (
     <div className="fixed bottom-0 left-0 flex h-16 w-full items-center justify-center gap-4 bg-white shadow-soft-outline">
       <Button
@@ -23,14 +26,14 @@ const FooterButtons: React.FC<FooterButtonsProps> = ({ onClick }) => {
         <div className="flex size-4 items-center justify-center">
           <Icons.PencilIcon className="size-full" />
         </div>
-        Contact
+        {t('contact_button')}
       </Button>
 
       <Button className="w-56 gap-2 rounded-3xl" onClick={handleClick('save')}>
         <div className="flex size-4 items-center justify-center">
           <Icons.HeartIcon className="size-full" />
         </div>
-        Save
+        {t('save_button')}
       </Button>
     </div>
   );
