@@ -1,20 +1,21 @@
 'use client';
 
-import Link from 'next/link';
-import React from 'react';
-import { Button } from '@/components/ui/button';
-import { Icons } from '@/components/ui/icons';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@radix-ui/react-dropdown-menu';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import React from 'react';
+
+import { useAuth } from '@/auth/AuthContext';
 import { LogInButton } from '@/components/login-button';
 import { LogOutButton } from '@/components/logout-button';
 import { SignUpButton } from '@/components/sign-up-button';
-import { useAuth } from '@/auth/AuthContext';
-import { usePathname } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { Icons } from '@/components/ui/icons';
 
 type NavItem = {
   icon: React.ComponentType<{ className?: string }>;
@@ -52,7 +53,7 @@ const NavbarButtons: React.FC = () => {
       ))}
 
       <DropdownMenu>
-        <DropdownMenuTrigger className="flex size-10 justify-center items-center">
+        <DropdownMenuTrigger className="flex size-10 items-center justify-center">
           <Icons.AccountSettings className="size-5" />
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56 bg-purple-100 p-4">

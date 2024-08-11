@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+
 import { AppConfig } from '@/utils/AppConfig';
 
 import NavbarButtons from './navbar-buttons';
