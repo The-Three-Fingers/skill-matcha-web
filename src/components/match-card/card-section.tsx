@@ -1,4 +1,4 @@
-import { CardSubtitle, CardDescription } from '../ui/card';
+import { CardDescription, CardSubtitle } from '../ui/card';
 
 type CardSectionProps = {
   title: string;

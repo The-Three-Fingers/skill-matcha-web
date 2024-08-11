@@ -1,8 +1,8 @@
+import { useTranslations } from 'next-intl';
 import React from 'react';
 
 import { Button } from '../ui/button';
 import { Icons } from '../ui/icons';
-import { useTranslations } from 'next-intl';
 
 type ButtonDirection = 'contact' | 'save';
 

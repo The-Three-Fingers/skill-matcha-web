@@ -1,5 +1,6 @@
-import { ProfileCardTemplate } from '@/templates/profile-card-template';
 import { getTranslations } from 'next-intl/server';
+
+import { ProfileCardTemplate } from '@/templates/profile-card-template';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
   const t = await getTranslations({

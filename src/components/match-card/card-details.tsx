@@ -1,10 +1,10 @@
+import { useTranslations } from 'next-intl';
 import React from 'react';
 
-import { MOCK_PROFILE } from './mock-profile';
-import CardSection from './card-section';
-import CardDetailItem from './card-detail-item';
 import { CardSubtitle } from '../ui/card';
-import { useTranslations } from 'next-intl';
+import CardDetailItem from './card-detail-item';
+import CardSection from './card-section';
+import { MOCK_PROFILE } from './mock-profile';
 
 const CardDetails = () => {
   const t = useTranslations('matchesProfiles');
@@ -32,9 +32,9 @@ const CardDetails = () => {
   return (
     <div className="flex w-full justify-center gap-6 bg-zinc-300 p-10 px-6 md:px-24 lg:mx-auto">
       <div className="flex flex-col gap-6 rounded-sm lg:w-10/12 xl:w-[800px]">
-        {cardSectionsContent.map((section, index) => (
+        {cardSectionsContent.map((section) => (
           <CardSection
-            key={index}
+            key={section.title}
             title={section.title}
             content={section.content}
           />
@@ -48,7 +48,7 @@ const CardDetails = () => {
           <div className="flex flex-col gap-2 rounded-b-sm bg-white p-6">
             {cardDetailItems.map((item, index) => (
               <CardDetailItem
-                key={index}
+                key={item.label}
                 label={item.label}
                 value={item.value}
               />
