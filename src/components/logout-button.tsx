@@ -29,7 +29,7 @@ const LogOutButton = () => {
 
   return (
     <Button
-      variant="outline"
+      variant="ghost"
       disabled={isLogoutLoading || hasLoggedOut}
       onClick={handleLogout}
     >
