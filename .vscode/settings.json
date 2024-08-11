@@ -4,8 +4,8 @@
   "search.exclude": {
     "package-lock.json": true
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.formatOnSave": false,
   "editor.codeActionsOnSave": [
     "source.addMissingImports",
     "source.fixAll.eslint"
@@ -28,14 +28,5 @@
   },
   "prettier.ignorePath": ".gitignore", // Don't run prettier for files listed in .gitignore
   "i18n-ally.localesPaths": ["src/locales"],
-  "i18n-ally.keystyle": "nested",
-  "files.autoSaveDelay": 0,
-  "files.autoSaveWhenNoErrors": true,
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "html.format.wrapAttributes": "auto",
-  "html.format.enable": true,
-  "html.format.preserveNewLines": true,
-  "prettier.bracketSameLine": false
+  "i18n-ally.keystyle": "nested"
 }
