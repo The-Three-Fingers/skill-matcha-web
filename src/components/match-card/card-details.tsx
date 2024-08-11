@@ -46,7 +46,7 @@ const CardDetails = () => {
           </CardSubtitle>
 
           <div className="flex flex-col gap-2 rounded-b-sm bg-white p-6">
-            {cardDetailItems.map((item, index) => (
+            {cardDetailItems.map((item) => (
               <CardDetailItem
                 key={item.label}
                 label={item.label}
