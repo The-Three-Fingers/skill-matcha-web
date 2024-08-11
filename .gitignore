@@ -41,6 +41,9 @@ pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# firebase emulators debug logs
+*-debug.log
+
 # local env files
 .env*.local
 

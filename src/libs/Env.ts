@@ -8,6 +8,8 @@ export const Env = createEnv({
     FIREBASE_PROJECT_ID: z.string().optional(),
     FIREBASE_ADMIN_CLIENT_EMAIL: z.string().optional(),
     FIREBASE_ADMIN_PRIVATE_KEY: z.string().optional(),
+    FIRESTORE_EMULATOR_HOST: z.string().optional(),
+    FIREBASE_AUTH_EMULATOR_HOST: z.string().optional(),
     USE_SECURE_COOKIES: z.enum(['true', 'false']).optional(),
     COOKIE_SECRET_CURRENT: z.string().optional(),
     COOKIE_SECRET_PREVIOUS: z.string().optional(),
@@ -20,6 +22,7 @@ export const Env = createEnv({
     NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: z.string().optional(),
     NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: z.string().optional(),
     NEXT_PUBLIC_FIREBASE_APP_ID: z.string().optional(),
+    NEXT_PUBLIC_AUTH_EMULATOR_HOST: z.string().optional(),
   },
   shared: {
     NODE_ENV: z.enum(['development', 'production']),
@@ -30,6 +33,9 @@ export const Env = createEnv({
     FIREBASE_PROJECT_ID: process.env.FIREBASE_PROJECT_ID,
     FIREBASE_ADMIN_CLIENT_EMAIL: process.env.FIREBASE_ADMIN_CLIENT_EMAIL,
     FIREBASE_ADMIN_PRIVATE_KEY: process.env.FIREBASE_ADMIN_PRIVATE_KEY,
+    FIREBASE_AUTH_EMULATOR_HOST: process.env.FIREBASE_AUTH_EMULATOR_HOST,
+    FIRESTORE_EMULATOR_HOST: process.env.FIRESTORE_EMULATOR_HOST,
+    NEXT_PUBLIC_AUTH_EMULATOR_HOST: process.env.NEXT_PUBLIC_AUTH_EMULATOR_HOST,
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
     NEXT_PUBLIC_FIREBASE_API_KEY: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
     NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN:
