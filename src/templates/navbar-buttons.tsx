@@ -7,13 +7,9 @@ import {
   DropdownMenuTrigger,
 } from '@radix-ui/react-dropdown-menu';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import React from 'react';
 
-import { useAuth } from '@/auth/AuthContext';
-import { LogInButton } from '@/components/login-button';
 import { LogOutButton } from '@/components/logout-button';
-import { SignUpButton } from '@/components/sign-up-button';
 import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/ui/icons';
 
@@ -24,9 +20,6 @@ type NavItem = {
 };
 
 const NavbarButtons: React.FC = () => {
-  const { user } = useAuth();
-  const isAuthPage = ['/login', '/sign-up'].includes(usePathname());
-
   const navItems: NavItem[] = [
     { icon: Icons.Home, href: '/', onClick: () => console.log('home clicked') },
     { icon: Icons.Mail, onClick: () => console.log('mail clicked') },
@@ -67,16 +60,7 @@ const NavbarButtons: React.FC = () => {
             </Button>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            {user ? (
-              <LogOutButton />
-            ) : (
-              !isAuthPage && (
-                <>
-                  <LogInButton />
-                  <SignUpButton />
-                </>
-              )
-            )}
+            <LogOutButton />
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

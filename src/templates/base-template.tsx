@@ -1,12 +1,20 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
+import { useAuth } from '@/auth/AuthContext';
+import { LogInButton } from '@/components/login-button';
+import { SignUpButton } from '@/components/sign-up-button';
 import { AppConfig } from '@/utils/AppConfig';
 
 import NavbarButtons from './navbar-buttons';
 
 const BaseTemplate = (props: { children: React.ReactNode }) => {
+  const pathname = usePathname();
+  const { user } = useAuth();
+  const isAuthPage = pathname === '/login' || pathname === '/sign-up';
+
   return (
     <div className="flex size-full flex-col antialiased">
       <header className="h-14 flex-none border-b bg-white px-4">
@@ -18,7 +26,16 @@ const BaseTemplate = (props: { children: React.ReactNode }) => {
           </Link>
 
           <div className="flex items-center gap-2">
-            <NavbarButtons />
+            {user ? (
+              <NavbarButtons />
+            ) : (
+              !isAuthPage && (
+                <>
+                  <LogInButton />
+                  <SignUpButton />
+                </>
+              )
+            )}
           </div>
         </div>
       </header>

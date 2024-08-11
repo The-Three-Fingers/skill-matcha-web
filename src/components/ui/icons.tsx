@@ -22,7 +22,7 @@ export const Icons = {
   ),
 
   Google: (props: IconProps) => (
-    <svg width="20" height="20" viewBox="0 0 20 20" {...props}>
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" {...props}>
       <g clipPath="url(#clip0_95:967)">
         <path
           d="M20.0001 10.2216C20.0122 9.53416 19.9397 8.84776 19.7844 8.17725H10.2042V11.8883H15.8277C15.7211 12.539 15.4814 13.1618 15.1229 13.7194C14.7644 14.2769 14.2946 14.7577 13.7416 15.1327L13.722 15.257L16.7512 17.5567L16.961 17.5772C18.8883 15.8328 19.9997 13.266 19.9997 10.2216"
@@ -63,7 +63,7 @@ export const Icons = {
       width="24"
       height="24"
       viewBox="0 0 24 24"
-      fill="currentColor"
+      fill="none"
       stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
