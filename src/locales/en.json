@@ -66,5 +66,19 @@
   "Dashboard": {
     "meta_title": "Dashboard",
     "hello_message": "Hello, {name}!"
+  },
+  "MatchesProfiles": {
+    "meta_title": "matches",
+    "meta_description": "Find your matches",
+    "save_button": "Save",
+    "contact_button": "Contact",
+    "my_ideas": "My ideas",
+    "background": "Background",
+    "about_me": "About me",
+    "languages": "Languages",
+    "availability": "Available time per week",
+    "location": "Location",
+    "years_of_experience": "Years of experience",
+    "personal_interests": "Personal interests"
   }
 }

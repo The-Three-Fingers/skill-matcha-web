@@ -5,6 +5,8 @@ export type CreateProfileFormSettings = {
   searchRoles: string[];
 };
 
+export type AccountSwitchDirection = 'left' | 'right';
+
 export type RoleKey =
   | 'developer'
   | 'designer'
