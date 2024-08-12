@@ -1,22 +1,29 @@
 'use client';
 
-import type { ReactNode } from 'react';
 import React from 'react';
 
-import { Button } from '../ui/button';
+import { Button } from '@/components/ui/button';
+
+import type { AccountSwitchDirection } from '../types';
 
 type ChevronButtonProps = {
-  className?: string;
-  onClick: () => void;
-  icon: ReactNode;
+  direction: AccountSwitchDirection;
+  IconComponent: React.ElementType;
+  onClick: (direction: AccountSwitchDirection) => void;
 };
 
-const ChevronButton = ({ className, onClick, icon }: ChevronButtonProps) => (
+const ChevronButton = ({
+  direction,
+  IconComponent,
+  onClick,
+}: ChevronButtonProps) => (
   <Button
-    className={`fixed bottom-1/2 flex size-12 items-center justify-center gap-10 rounded-full bg-white p-0 shadow-hover-glow ${className} hover:cursor-pointer hover:bg-white hover:shadow-blur`}
-    onClick={onClick}
+    size="icon"
+    variant="ghost"
+    className="rounded-full bg-white shadow-hover-glow hover:shadow-blur"
+    onClick={() => onClick(direction)}
   >
-    <div className="flex items-center justify-center text-black">{icon}</div>
+    <IconComponent />
   </Button>
 );
 

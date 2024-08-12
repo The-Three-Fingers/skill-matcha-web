@@ -1,4 +1,4 @@
-import MatchCard from '@/components/match-card';
+import { MatchCard } from '@/components/match-card';
 
 const SwipePage = () => {
   return (

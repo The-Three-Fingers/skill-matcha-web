@@ -4,14 +4,14 @@ import React from 'react';
 
 import { Button } from '../ui/button';
 
-type ButtonDirection = 'contact' | 'save';
+type FooterButtonType = 'contact' | 'save';
 
 type FooterButtonsProps = {
-  onClick: (buttonType: ButtonDirection) => void;
+  onClick: (buttonType: FooterButtonType) => void;
 };
 
 const FooterButtons: React.FC<FooterButtonsProps> = ({ onClick }) => {
-  const handleClick = (type: ButtonDirection) => () => {
+  const handleClick = (type: FooterButtonType) => () => {
     onClick(type);
   };
 
@@ -23,16 +23,12 @@ const FooterButtons: React.FC<FooterButtonsProps> = ({ onClick }) => {
         className="w-56 gap-2 rounded-3xl"
         onClick={handleClick('contact')}
       >
-        <div className="flex size-4 items-center justify-center">
-          <Pencil className="size-full" />
-        </div>
+        <Pencil className="size-4" />
         {t('contact_button')}
       </Button>
 
       <Button className="w-56 gap-2 rounded-3xl" onClick={handleClick('save')}>
-        <div className="flex size-4 items-center justify-center">
-          <Heart className="size-full" />
-        </div>
+        <Heart className="size-4" />
         {t('save_button')}
       </Button>
     </div>
