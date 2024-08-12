@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { CardDescription, CardSubtitle, CardTitle } from '../ui/card';
+import { CardTitle } from '../ui/card';
+import { TypographyH4, TypographySmall } from '../ui/typography';
 import { MOCK_PROFILE } from './mock-profile';
 import mockImage from './mock-profile-photo.jpg';
 
@@ -27,36 +28,32 @@ const CardHeaderWrapper = () => {
                 ))}
               </ul>
             </div>
-            <CardDescription>
-              <h4>Im a: {MOCK_PROFILE.role}</h4>
+            <TypographySmall>I am a: {MOCK_PROFILE.role}</TypographySmall>
 
-              <h4>
-                Im looking for:
-                <ul>
-                  {MOCK_PROFILE.seeking.who.map((seekingProfile) => (
-                    <li key={seekingProfile}>
-                      <p>{seekingProfile}</p>
-                    </li>
-                  ))}
-                </ul>
-              </h4>
+            <h4>
+              I am looking for:
+              {MOCK_PROFILE.seeking.who.map((seekingProfile) => (
+                <TypographySmall key={seekingProfile}>
+                  {seekingProfile}
+                </TypographySmall>
+              ))}
+            </h4>
 
-              <h4>
-                My idea in industry:
-                <ul>
-                  {MOCK_PROFILE.ideaArea.map((ideaArea) => (
-                    <li key={ideaArea}>
-                      <p>{ideaArea}</p>
-                    </li>
-                  ))}
-                </ul>
-              </h4>
-            </CardDescription>
+            <h4>
+              My idea in industry:
+              <ul>
+                {MOCK_PROFILE.ideaArea.map((ideaArea) => (
+                  <li key={ideaArea}>
+                    <p>{ideaArea}</p>
+                  </li>
+                ))}
+              </ul>
+            </h4>
           </div>
         </div>
 
         <div className="w-48">
-          <CardSubtitle className="mb-2">Matching with you</CardSubtitle>
+          <TypographyH4 className="mb-2">Matching with you</TypographyH4>
           <ul className="flex flex-wrap gap-2">
             {MOCK_PROFILE.howICanHelp.map((howICanHelp) => (
               <li

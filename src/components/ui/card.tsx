@@ -45,24 +45,11 @@ const CardTitle = React.forwardRef<
 ));
 CardTitle.displayName = 'CardTitle';
 
-const CardSubtitle = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
-  // eslint-disable-next-line jsx-a11y/heading-has-content
-  <h3
-    ref={ref}
-    className={cn('text-base leading-none tracking-tight', className)}
-    {...props}
-  />
-));
-CardSubtitle.displayName = 'CardSubtitle';
-
 const CardDescription = React.forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLParagraphElement>
 >(({ className, ...props }, ref) => (
-  <div
+  <p
     ref={ref}
     className={cn('text-sm text-muted-foreground', className)}
     {...props}
@@ -96,6 +83,5 @@ export {
   CardDescription,
   CardFooter,
   CardHeader,
-  CardSubtitle,
   CardTitle,
 };

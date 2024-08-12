@@ -1,13 +1,13 @@
 import { useTranslations } from 'next-intl';
 import React from 'react';
 
-import { CardSubtitle } from '../ui/card';
+import { TypographySmall } from '../ui/typography';
 import CardDetailItem from './card-detail-item';
 import CardSection from './card-section';
 import { MOCK_PROFILE } from './mock-profile';
 
 const CardDetails = () => {
-  const t = useTranslations('matchesProfiles');
+  const t = useTranslations('MatchesProfiles');
 
   const cardSectionsContent = [
     { title: t('my_ideas'), content: MOCK_PROFILE.ideaDescription },
@@ -41,9 +41,9 @@ const CardDetails = () => {
         ))}
 
         <div className="flex flex-col">
-          <CardSubtitle className="rounded-t-sm bg-neutral-400 px-4 py-2">
+          <TypographySmall className="rounded-t-sm bg-neutral-400 px-4 py-2">
             Additional Information
-          </CardSubtitle>
+          </TypographySmall>
 
           <div className="flex flex-col gap-2 rounded-b-sm bg-white p-6">
             {cardDetailItems.map((item) => (

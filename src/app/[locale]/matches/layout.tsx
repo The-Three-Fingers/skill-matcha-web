@@ -5,7 +5,7 @@ import { ProfileCardTemplate } from '@/templates/profile-card-template';
 export async function generateMetadata(props: { params: { locale: string } }) {
   const t = await getTranslations({
     locale: props.params.locale,
-    namespace: 'matchesProfiles',
+    namespace: 'MatchesProfiles',
   });
 
   return {

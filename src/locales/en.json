@@ -67,7 +67,7 @@
     "meta_title": "Dashboard",
     "hello_message": "Hello, {name}!"
   },
-  "matchesProfiles": {
+  "MatchesProfiles": {
     "meta_title": "matches",
     "meta_description": "Find your matches",
     "save_button": "Save",
