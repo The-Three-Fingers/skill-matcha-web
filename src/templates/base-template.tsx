@@ -5,15 +5,14 @@ import { usePathname } from 'next/navigation';
 
 import { useAuth } from '@/auth/AuthContext';
 import { LogInButton } from '@/components/login-button';
-import { LogOutButton } from '@/components/logout-button';
 import { SignUpButton } from '@/components/sign-up-button';
 import { AppConfig } from '@/utils/AppConfig';
 
+import NavbarButtons from './navbar-buttons';
+
 const BaseTemplate = (props: { children: React.ReactNode }) => {
   const pathname = usePathname();
-
   const { user } = useAuth();
-
   const isAuthPage = pathname === '/login' || pathname === '/sign-up';
 
   return (
@@ -28,7 +27,7 @@ const BaseTemplate = (props: { children: React.ReactNode }) => {
 
           <div className="flex items-center gap-2">
             {user ? (
-              <LogOutButton />
+              <NavbarButtons />
             ) : (
               !isAuthPage && (
                 <>
