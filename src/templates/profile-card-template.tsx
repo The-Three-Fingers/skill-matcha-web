@@ -1,22 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
-import { useAuth } from '@/auth/AuthContext';
-import { LogInButton } from '@/components/login-button';
-import { LogOutButton } from '@/components/logout-button';
 import { AppConfig } from '@/utils/AppConfig';
 
+import NavbarButtons from './navbar-buttons';
+
 const ProfileCardTemplate = (props: { children: React.ReactNode }) => {
-  const pathname = usePathname();
-
-  const { user } = useAuth();
-
-  const isLoginPage = pathname.includes('/login');
-
-  const logInButton = isLoginPage ? null : <LogInButton />;
-
   return (
     <div className="flex size-full flex-col text-gray-700 antialiased">
       <header className="h-14 flex-none bg-white px-6">
@@ -27,7 +17,7 @@ const ProfileCardTemplate = (props: { children: React.ReactNode }) => {
             </h1>
           </Link>
 
-          {user ? <LogOutButton /> : logInButton}
+          <NavbarButtons />
         </div>
       </header>
 
