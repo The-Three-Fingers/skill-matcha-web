@@ -49,7 +49,7 @@ const NavbarButtons: React.FC = () => {
         <DropdownMenuTrigger className="flex size-10 items-center justify-center">
           <Icons.AccountSettings className="size-5" />
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="w-56 bg-purple-100 p-4">
+        <DropdownMenuContent className="z-50 w-56 bg-purple-100 p-4">
           <DropdownMenuItem>
             <Button
               size="sm"
