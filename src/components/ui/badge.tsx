@@ -26,13 +26,16 @@ const badgeVariants = cva(
   },
 );
 
+const CheckIcon = () => <Check className="mr-1.5 size-4 text-primary" />;
+const XIcon = () => <X className="mr-1.5 size-4 text-destructive" />;
+
 const variantIcons = {
   default: null,
   secondary: null,
   destructive: null,
   outline: null,
-  matched: <Check className="size-4 text-primary" />,
-  mismatched: <X className="size-4 text-destructive" />,
+  matched: () => <CheckIcon />,
+  mismatched: () => <XIcon />,
 };
 
 export interface BadgeProps
@@ -42,9 +45,9 @@ export interface BadgeProps
 function Badge({ className, variant, ...props }: BadgeProps) {
   return (
     <div className={cn(badgeVariants({ variant }), className)} {...props}>
-      {variant && variantIcons[variant] && (
-        <span className="mr-1.5">{variantIcons[variant]}</span>
-      )}
+      {variant &&
+        variantIcons[variant] &&
+        React.createElement(variantIcons[variant])}
       {props.children}
     </div>
   );
