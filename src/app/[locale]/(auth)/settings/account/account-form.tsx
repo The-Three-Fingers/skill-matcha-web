@@ -1,11 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const AccountForm = () => {
-  return (
-    <div>
-      AccountForm
-    </div>
-  )
-}
+  return <div>AccountForm</div>;
+};
 
-export { AccountForm }
+export { AccountForm };

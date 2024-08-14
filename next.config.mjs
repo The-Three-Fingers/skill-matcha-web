@@ -2,7 +2,6 @@
 import { fileURLToPath } from 'node:url';
 
 import withBundleAnalyzer from '@next/bundle-analyzer';
-import { withSentryConfig } from '@sentry/nextjs';
 import createJiti from 'jiti';
 import withNextIntl from 'next-intl/plugin';
 

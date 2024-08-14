@@ -14,9 +14,7 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 }
 
 const AccountPage = () => {
-  return (
-      <AccountForm />
-  );
+  return <AccountForm />;
 };
 
 export const dynamic = 'force-dynamic';

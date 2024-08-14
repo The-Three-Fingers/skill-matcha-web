@@ -1,10 +1,11 @@
-import { getTranslations } from 'next-intl/server';
-
 import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import React from 'react';
-import { SidebarNav } from './components/sidebar-nav';
-import { TypographyH3 } from '@/components/ui/typography';
+
 import { Separator } from '@/components/ui/separator';
+import { TypographyH3 } from '@/components/ui/typography';
+
+import { SidebarNav } from './components/sidebar-nav';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
   const t = await getTranslations({
@@ -38,14 +39,16 @@ const Settings = ({ children }: SettingsProps) => {
   return (
     <div className="space-y-6 p-10 pb-16">
       <div className="space-y-0.5">
-      <TypographyH3 className="text-2xl font-bold tracking-tight">{t('page_title')}</TypographyH3>
+        <TypographyH3 className="text-2xl font-bold tracking-tight">
+          {t('page_title')}
+        </TypographyH3>
         <p className="text-muted-foreground">{t('page_description')}</p>
       </div>
-      
+
       <Separator className="my-6" />
 
       <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
-        <aside className="-mx-4 lg:w-1/5 w-full shrink-0">
+        <aside className="-mx-4 w-full shrink-0 lg:w-1/5">
           <SidebarNav items={sidebarNavItems} />
         </aside>
 
