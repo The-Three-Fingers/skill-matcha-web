@@ -8,7 +8,7 @@ import { UserProfile } from './_components/user-profile';
 
 export default async function Profile() {
   return (
-    <div>
+    <div className="p-3">
       <UserProfile />
     </div>
   );
