@@ -7,6 +7,7 @@ import {
   DropdownMenuTrigger,
 } from '@radix-ui/react-dropdown-menu';
 import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 import React from 'react';
 
 import { LogOutButton } from '@/components/logout-button';
@@ -24,6 +25,8 @@ const NavbarButtons: React.FC = () => {
     { icon: Icons.Home, href: '/', onClick: () => console.log('home clicked') },
     { icon: Icons.Mail, onClick: () => console.log('mail clicked') },
   ];
+
+  const t = useTranslations('Navigation');
 
   return (
     <div className="flex gap-2">
@@ -51,7 +54,7 @@ const NavbarButtons: React.FC = () => {
         </DropdownMenuTrigger>
         <DropdownMenuContent className="z-50 w-56 bg-purple-100 p-4">
           <DropdownMenuItem>
-            <Link href="/settings">Settings</Link>
+            <Link href="/settings">{t('settings')}</Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <LogOutButton />

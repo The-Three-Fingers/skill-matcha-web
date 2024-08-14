@@ -3,7 +3,7 @@ import { getTranslations } from 'next-intl/server';
 import React from 'react';
 
 import { Separator } from '@/components/ui/separator';
-import { TypographyH3 } from '@/components/ui/typography';
+import { TypographyH3, TypographyP } from '@/components/ui/typography';
 
 import { SidebarNav } from './components/sidebar-nav';
 
@@ -39,10 +39,8 @@ const Settings = ({ children }: SettingsProps) => {
   return (
     <div className="space-y-6 p-10 pb-16">
       <div className="space-y-0.5">
-        <TypographyH3 className="text-2xl font-bold tracking-tight">
-          {t('page_title')}
-        </TypographyH3>
-        <p className="text-muted-foreground">{t('page_description')}</p>
+        <TypographyH3>{t('page_title')}</TypographyH3>
+        <TypographyP>{t('page_description')}</TypographyP>
       </div>
 
       <Separator className="my-6" />

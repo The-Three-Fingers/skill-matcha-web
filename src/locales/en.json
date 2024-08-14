@@ -88,5 +88,9 @@
     "account_settings": "Account settings",
     "page_title": "Settings",
     "page_description": "Manage your profile and account settings"
+  },
+  "Navigation": {
+    "settings": "Settings",
+    "log_out": "Log out"
   }
 }
