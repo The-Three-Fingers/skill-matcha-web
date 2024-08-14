@@ -51,13 +51,9 @@ const NavbarButtons: React.FC = () => {
         </DropdownMenuTrigger>
         <DropdownMenuContent className="z-50 w-56 bg-purple-100 p-4">
           <DropdownMenuItem>
-            <Button
-              size="sm"
-              variant="ghost"
-              onClick={() => console.log('profile settings clicked')}
-            >
-              Profile settings
-            </Button>
+            <Link href='/settings'>
+              Settings
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
             <LogOutButton />
