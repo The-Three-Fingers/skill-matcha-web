@@ -16,7 +16,7 @@ export default function Index(props: { params: { locale: string } }) {
   unstable_setRequestLocale(props.params.locale);
 
   return (
-    <div className="size-full">
+    <div className="size-full p-3">
       <h2 className="text-2xl font-bold">Welcome!</h2>
     </div>
   );

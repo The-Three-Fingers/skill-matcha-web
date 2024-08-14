@@ -15,6 +15,9 @@ const BaseTemplate = (props: { children: React.ReactNode }) => {
   const { user } = useAuth();
   const isAuthPage = pathname === '/login' || pathname === '/sign-up';
 
+  // TODO: Add a loading spinner
+  // TODO посмотреть нужно ли будет создать доп template, закомментила пока классы
+
   return (
     <div className="flex size-full flex-col antialiased">
       <header className="h-14 flex-none border-b bg-white px-4">
@@ -40,11 +43,13 @@ const BaseTemplate = (props: { children: React.ReactNode }) => {
         </div>
       </header>
 
-      <main className="flex-1 p-3">
+      {/* <main className="flex-1 p-3">
         <div className="mx-auto flex h-full max-w-screen-lg">
           {props.children}
         </div>
-      </main>
+      </main> */}
+
+      <main className="flex-1">{props.children}</main>
     </div>
   );
 };
