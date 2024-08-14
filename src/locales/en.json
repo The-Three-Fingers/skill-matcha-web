@@ -80,5 +80,17 @@
     "location": "Location",
     "years_of_experience": "Years of experience",
     "personal_interests": "Personal interests"
+  },
+  "Settings": {
+    "meta_title": "Profile settings",
+    "meta_description": "Update your profile settings",
+    "profile_settings": "Profile settings",
+    "account_settings": "Account settings",
+    "page_title": "Settings",
+    "page_description": "Manage your profile and account settings"
+  },
+  "Navigation": {
+    "settings": "Settings",
+    "log_out": "Log out"
   }
 }
