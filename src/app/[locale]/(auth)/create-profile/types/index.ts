@@ -1,12 +1,3 @@
-export type CreateProfileFormSettings = {
-  name: string;
-  lastName: string;
-  roles: string[];
-  searchRoles: string[];
-};
-
-export type AccountSwitchDirection = 'left' | 'right';
-
 export type RoleKey =
   | 'developer'
   | 'designer'
@@ -24,3 +15,10 @@ export type SearchRoleKey =
   | 'marketing_specialist'
   | 'cto'
   | 'other';
+
+export type CreateProfileFormSettings = {
+  name: string;
+  lastName: string;
+  roles: string[];
+  searchRoles: string[];
+};

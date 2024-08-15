@@ -1,13 +1,13 @@
 import { useFormContext } from 'react-hook-form';
 
-import { Checkbox } from '../ui/checkbox';
+import { Checkbox } from '@/components/ui/checkbox';
 import {
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from '../ui/form';
+} from '@/components/ui/form';
 
 type MultiSelectFieldProps<T extends string | number | symbol> = {
   name: string;

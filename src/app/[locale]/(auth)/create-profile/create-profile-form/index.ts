@@ -1,3 +1,3 @@
 import { CreateProfileForm } from './create-profile-form';
 
-export default CreateProfileForm;
+export { CreateProfileForm };

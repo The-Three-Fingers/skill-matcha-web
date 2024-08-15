@@ -2,7 +2,7 @@ import { Heart, Pencil } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import React from 'react';
 
-import { Button } from '../ui/button';
+import { Button } from '@/components/ui/button';
 
 type FooterButtonType = 'contact' | 'save';
 

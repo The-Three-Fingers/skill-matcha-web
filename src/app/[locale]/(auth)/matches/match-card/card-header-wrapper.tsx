@@ -1,8 +1,9 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { CardTitle } from '../ui/card';
-import { TypographyH4, TypographySmall } from '../ui/typography';
+import { CardTitle } from '@/components/ui/card';
+import { TypographyH4, TypographySmall } from '@/components/ui/typography';
+
 import { MOCK_PROFILE } from './mock-profile';
 import mockImage from './mock-profile-photo.jpg';
 
