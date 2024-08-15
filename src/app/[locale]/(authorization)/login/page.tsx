@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 
-import { BaseTemplate } from '@/templates/base-template';
+import { LoginForm } from './login-form';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
   const t = await getTranslations({
@@ -14,10 +14,10 @@ export async function generateMetadata(props: { params: { locale: string } }) {
   };
 }
 
-export default async function LoginLayout(props: {
-  children: React.ReactNode;
-}) {
-  return <BaseTemplate>{props.children}</BaseTemplate>;
-}
+const LogInPage = () => (
+  <div className="mx-auto flex size-full max-w-screen-xl flex-col items-center justify-center p-4">
+    <LoginForm />
+  </div>
+);
 
-export const dynamic = 'force-dynamic';
+export default LogInPage;

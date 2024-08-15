@@ -1,6 +1,6 @@
 import { BaseTemplate } from '@/templates/base-template';
 
-export default async function AuthLayout(props: { children: React.ReactNode }) {
+export default async function Layout(props: { children: React.ReactNode }) {
   return <BaseTemplate>{props.children}</BaseTemplate>;
 }
 

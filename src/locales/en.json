@@ -48,7 +48,11 @@
       "cto": "CTO",
       "other": "Other"
     },
-    "save": "Save"
+    "idea": "Idea",
+    "idea_placeholder": "Enter your idea",
+    "back": "Back",
+    "next": "Next",
+    "create": "Create profile"
   },
   "About": {
     "meta_title": "About",

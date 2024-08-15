@@ -20,8 +20,8 @@ const BaseTemplate = (props: { children: React.ReactNode }) => {
 
   return (
     <div className="flex size-full flex-col antialiased">
-      <header className="h-14 flex-none border-b bg-white px-4">
-        <div className="mx-auto flex h-full max-w-screen-xl items-center">
+      <header className="h-14 flex-none border-b bg-white">
+        <div className="mx-auto flex h-full max-w-screen-xl items-center px-4">
           <Link href="/" className="mr-auto">
             <h1 className="text-xl font-bold uppercase text-primary">
               {AppConfig.name}
