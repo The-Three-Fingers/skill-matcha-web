@@ -26,13 +26,16 @@ export const ProfileValidation = z.object({
   roles: z
     .array(z.string())
     .min(1, {
-      message: 'At least one item is required',
+      message: 'Please choose one role',
     })
     .max(1),
-  subRoles: z.array(z.string()).default([]),
-  services: z.array(z.string()).min(1, {
-    message: 'At least one item is required',
-  }),
+  subRoles: z.array(z.string()).max(5).default([]),
+  services: z
+    .array(z.string())
+    .min(1, {
+      message: 'At least one item is required',
+    })
+    .max(10),
   // Idea
   idea: z
     .object({
@@ -46,8 +49,8 @@ export const ProfileValidation = z.object({
     .optional(),
   // Search preferences
   searchRoles: z.array(z.string()).default([]),
-  searchSubRoles: z.array(z.string()).default([]),
-  searchServices: z.array(z.string()).default([]),
+  searchSubRoles: z.array(z.string()).max(5).default([]),
+  searchServices: z.array(z.string()).max(10).default([]),
   // Others
   availabilityTime: z.number().min(0).optional(),
 });
