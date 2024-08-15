@@ -29,7 +29,7 @@
     "last_name": "Last name",
     "last_name_placeholder": "Enter your last name",
     "select_your_role": "Select your role",
-    "select_search_role": "What are you looking for?",
+    "select_search_role": "Who are you looking for?",
     "role_options": {
       "developer": "Developer",
       "designer": "Designer",
