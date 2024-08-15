@@ -3,10 +3,11 @@ import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
 import { verifyIdToken } from '@/auth/verifyIdToken';
+import { CreateProfileFormValidation } from '@/validations/profile-validation';
 
 import { getFirebaseAdminApp } from '../../firebase';
 
-export async function GET(_request: NextRequest) {
+export async function GET() {
   try {
     const decodedToken = await verifyIdToken();
 
@@ -63,18 +64,11 @@ export async function POST(request: NextRequest) {
 
     const db = getFirestore(getFirebaseAdminApp());
 
-    const data = await request.json();
-    const { name, lastName } = data;
+    const requestData = await request.json();
+    const parse = CreateProfileFormValidation.safeParse(requestData);
 
-    if (!name || !lastName) {
-      return new NextResponse(
-        JSON.stringify({
-          error: 'Missing required fields',
-        }),
-        {
-          status: 400,
-        },
-      );
+    if (!parse.success) {
+      return NextResponse.json(parse.error.format(), { status: 422 });
     }
 
     const query = await db.collection('profiles').doc(decodedToken.uid).get();
@@ -84,8 +78,7 @@ export async function POST(request: NextRequest) {
     if (!query.exists || !profile) {
       const newProfile = {
         id: decodedToken.uid,
-        name,
-        lastName,
+        ...parse.data,
       };
 
       await query.ref.create(newProfile);
@@ -94,8 +87,7 @@ export async function POST(request: NextRequest) {
 
     const updatedProfile = {
       ...profile,
-      name,
-      lastName,
+      ...parse.data,
     };
 
     await query.ref.update(updatedProfile);
