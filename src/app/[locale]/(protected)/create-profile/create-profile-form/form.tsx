@@ -3,7 +3,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
-import type { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
@@ -32,7 +31,7 @@ const CreateForm = ({
   onBack: () => void;
   onSubmit: (data?: CreateProfileFormSettings) => void;
 }) => {
-  const form = useForm<z.infer<typeof ProfileValidation>>({
+  const form = useForm<CreateProfileFormSettings>({
     resolver: zodResolver(ProfileValidation),
     defaultValues: {
       name: '',
