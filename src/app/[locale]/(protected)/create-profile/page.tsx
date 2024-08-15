@@ -15,10 +15,8 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 
 const CreateProfile = () => {
   return (
-    <div className="mx-auto flex h-full max-w-screen-lg">
-      <div className="flex size-full items-center justify-center">
-        <CreateProfileForm />
-      </div>
+    <div className="mx-auto flex size-full max-w-screen-xl items-center justify-center p-4">
+      <CreateProfileForm />
     </div>
   );
 };

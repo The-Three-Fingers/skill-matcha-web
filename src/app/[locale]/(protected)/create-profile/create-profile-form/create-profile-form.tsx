@@ -8,6 +8,7 @@ import type { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
+import InputField from '@/components/ui/input-field';
 import { ProfileValidation } from '@/validations/profile-validation';
 
 import type {
@@ -15,7 +16,6 @@ import type {
   RoleKey,
   SearchRoleKey,
 } from '../types';
-import InputField from './input-field';
 import MultiSelectField from './multi-choice-field';
 
 const CreateProfileForm = () => {
@@ -74,7 +74,7 @@ const CreateProfileForm = () => {
   return (
     <Form {...form}>
       <form
-        className="flex w-full flex-col gap-y-4 p-20 md:w-2/3"
+        className="lg: flex w-full flex-col gap-y-4 p-5 sm:w-4/5 lg:w-1/2"
         onSubmit={handleSubmit(onSubmit)}
       >
         <InputField

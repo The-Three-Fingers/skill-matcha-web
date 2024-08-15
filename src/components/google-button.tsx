@@ -1,8 +1,8 @@
-import { Loader2 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 import { Button } from '@/components/ui/button';
 import { Icons } from '@/components/ui/icons';
+import { Spinner } from '@/components/ui/spinner';
 
 const GoogleButton = ({
   disabled,
@@ -17,15 +17,15 @@ const GoogleButton = ({
 
   return (
     <Button
-      className="w-full"
+      className="w-full gap-2"
       variant="outline"
       disabled={disabled ?? isLoading}
       onClick={onClick}
     >
       {isLoading ? (
-        <Loader2 className="mr-2 size-5 animate-spin" />
+        <Spinner className="size-5" />
       ) : (
-        <Icons.Google className="mr-2 size-5" />
+        <Icons.Google className="size-5" />
       )}
       {t('continue_with_google')}
     </Button>
