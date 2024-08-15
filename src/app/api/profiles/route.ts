@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
 import { verifyIdToken } from '@/auth/verifyIdToken';
-import { CreateProfileFormValidation } from '@/validations/profile-validation';
+import { ProfileValidation } from '@/validations/profile-validation';
 
 import { getFirebaseAdminApp } from '../../firebase';
 
@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
     const db = getFirestore(getFirebaseAdminApp());
 
     const requestData = await request.json();
-    const parse = CreateProfileFormValidation.safeParse(requestData);
+    const parse = ProfileValidation.safeParse(requestData);
 
     if (!parse.success) {
       return NextResponse.json(parse.error.format(), { status: 422 });

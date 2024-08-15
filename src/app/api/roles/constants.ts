@@ -1,7 +1,7 @@
 export const rolesList = [
   {
     id: 'developer',
-    specialties: {
+    subRoles: {
       frontend: ['ui', 'prototyping', 'spa', 'crossBrowser'],
       backend: [
         'api',
@@ -46,7 +46,7 @@ export const rolesList = [
   },
   {
     id: 'designer',
-    specialties: {
+    subRoles: {
       uiUx: [
         'interface',
         'userResearch',
@@ -119,7 +119,7 @@ export const rolesList = [
   },
   {
     id: 'analyst',
-    specialties: {
+    subRoles: {
       dataAnalyst: [
         'dataAnalysis',
         'dataVisualization',
@@ -148,7 +148,7 @@ export const rolesList = [
   },
   {
     id: 'entrepreneur',
-    specialties: {
+    subRoles: {
       startupFounder: [
         'startupIdeas',
         'conceptValidation',
@@ -188,7 +188,7 @@ export const rolesList = [
   },
   {
     id: 'contentCreator',
-    specialties: {
+    subRoles: {
       copywriter: [
         'contentWriting',
         'blogContent',

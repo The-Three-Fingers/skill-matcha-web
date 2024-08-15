@@ -8,7 +8,7 @@ import type { z } from 'zod';
 
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
-import { CreateProfileFormValidation } from '@/validations/profile-validation';
+import { ProfileValidation } from '@/validations/profile-validation';
 
 import type {
   CreateProfileFormSettings,
@@ -19,8 +19,8 @@ import InputField from './input-field';
 import MultiSelectField from './multi-choice-field';
 
 const CreateProfileForm = () => {
-  const form = useForm<z.infer<typeof CreateProfileFormValidation>>({
-    resolver: zodResolver(CreateProfileFormValidation),
+  const form = useForm<z.infer<typeof ProfileValidation>>({
+    resolver: zodResolver(ProfileValidation),
     defaultValues: {
       name: '',
       lastName: '',
@@ -31,9 +31,8 @@ const CreateProfileForm = () => {
 
   const {
     handleSubmit,
-    watch,
     reset,
-    formState: { errors },
+    formState: { isValid },
   } = form;
 
   const router = useRouter();
@@ -72,16 +71,6 @@ const CreateProfileForm = () => {
     other: t('search_options.other'),
   };
 
-  const watchedValues = watch(['name', 'lastName', 'roles', 'searchRoles']);
-  const [name, lastName, roles, searchRoles] = watchedValues;
-
-  const isButtonDisabled =
-    !name ||
-    !lastName ||
-    roles.length === 0 ||
-    searchRoles.length === 0 ||
-    Object.keys(errors).length > 0;
-
   return (
     <Form {...form}>
       <form
@@ -113,7 +102,7 @@ const CreateProfileForm = () => {
         </div>
 
         <div className="mt-5">
-          <Button className="w-full" disabled={isButtonDisabled} type="submit">
+          <Button className="w-full" disabled={!isValid} type="submit">
             {t('save')}
           </Button>
         </div>
