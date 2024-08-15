@@ -3,8 +3,9 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import React from 'react';
 
+import { Card } from '@/components/ui/card';
+
 import type { AccountSwitchDirection } from '../types';
-import { Card } from '../ui/card';
 import CardDetails from './card-details';
 import CardHeaderWrapper from './card-header-wrapper';
 import ChevronButton from './chevron-button';

@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 
-import CreateProfileForm from '@/components/create-profile-form';
+import { CreateProfileForm } from './create-profile-form';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
   const t = await getTranslations({

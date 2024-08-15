@@ -6,15 +6,15 @@ import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
 import type { z } from 'zod';
 
-import type {
-  CreateProfileFormSettings,
-  RoleKey,
-  SearchRoleKey,
-} from '@/components/types';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { CreateProfileFormValidation } from '@/validations/profile-validation';
 
+import type {
+  CreateProfileFormSettings,
+  RoleKey,
+  SearchRoleKey,
+} from '../types';
 import InputField from './input-field';
 import MultiSelectField from './multi-choice-field';
 

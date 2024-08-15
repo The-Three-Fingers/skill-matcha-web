@@ -1,7 +1,8 @@
 import { useTranslations } from 'next-intl';
 import React from 'react';
 
-import { TypographySmall } from '../ui/typography';
+import { TypographySmall } from '@/components/ui/typography';
+
 import CardDetailItem from './card-detail-item';
 import CardSection from './card-section';
 import { MOCK_PROFILE } from './mock-profile';
