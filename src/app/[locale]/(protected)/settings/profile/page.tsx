@@ -1,22 +1,31 @@
 import { getTranslations } from 'next-intl/server';
 
+import { Separator } from '@/components/ui/separator';
+
 import { ProfileForm } from './profile-form';
+import { ProfileHeaderContent } from './profile-header-content';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
   const t = await getTranslations({
     locale: props.params.locale,
-    namespace: 'Settings',
+    namespace: 'profile',
   });
 
   return {
-    title: t('meta_title'),
+    title: t('metaTitle'),
   };
 }
 
-const AccountPage = () => {
-  return <ProfileForm />;
+const SettingsProfilePage = () => {
+  return (
+    <div className="space-y-6">
+      <ProfileHeaderContent />
+      <Separator />
+      <ProfileForm />
+    </div>
+  );
 };
 
 export const dynamic = 'force-dynamic';
 
-export default AccountPage;
+export default SettingsProfilePage;

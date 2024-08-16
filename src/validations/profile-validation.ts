@@ -1,5 +1,7 @@
 import { z } from 'zod';
 
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
+
 export const ProfileValidation = z.object({
   // Personal info
   name: z
@@ -18,7 +20,14 @@ export const ProfileValidation = z.object({
     .max(150, {
       message: 'Last name must be maximum 150 characters',
     }),
-  avatarURL: z.string().optional(),
+
+  avatarURL: z
+    .custom<FileList | null>()
+    .transform((file) => (file && file.length > 0 ? file.item(0) : null))
+    .refine((file) => !file || (!!file && file.size <= MAX_FILE_SIZE), {
+      message: 'The profile picture must be a maximum of 10MB.',
+    }),
+
   aboutInfo: z.string().max(1000).min(10).optional(),
   languages: z.array(z.string().min(2).max(5)).default([]),
   location: z.string().min(2).max(2).optional(),
@@ -52,5 +61,10 @@ export const ProfileValidation = z.object({
   searchSubRoles: z.array(z.string()).max(5).default([]),
   searchServices: z.array(z.string()).max(10).default([]),
   // Others
-  availabilityTime: z.number().min(0).optional(),
+  availabilityTime: z
+    .number()
+    .int()
+    .or(z.string())
+    .pipe(z.coerce.number().int())
+    .optional(),
 });
