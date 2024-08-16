@@ -74,4 +74,4 @@ const MultiChoiceField = <T extends string | number | symbol>({
   );
 };
 
-export default MultiChoiceField;
+export { MultiChoiceField };

@@ -6,9 +6,11 @@ import { FormField, FormItem } from '@/components/ui/form';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 
 const ToggleGroupField = ({
+  isMultiple = false,
   name,
   options,
 }: {
+  isMultiple?: boolean;
   name: string;
   options: Record<string, string>;
 }) => {
@@ -22,9 +24,9 @@ const ToggleGroupField = ({
       render={({ field }) => (
         <FormItem>
           <ToggleGroup
-            type="single"
+            type={isMultiple ? 'multiple' : 'single'}
             value={field.value}
-            onValueChange={(value) => field.onChange(value)}
+            onValueChange={field.onChange}
           >
             {optionKeys.map((optionKey) => (
               <ToggleGroupItem

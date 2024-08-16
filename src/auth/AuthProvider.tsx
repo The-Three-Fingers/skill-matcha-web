@@ -10,10 +10,7 @@ export interface AuthProviderProps {
   children: React.ReactNode;
 }
 
-export const AuthProvider: React.FunctionComponent<AuthProviderProps> = ({
-  user,
-  children,
-}) => {
+export const AuthProvider = ({ user, children }: AuthProviderProps) => {
   return (
     <AuthContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values

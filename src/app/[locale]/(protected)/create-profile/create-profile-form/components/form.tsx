@@ -1,15 +1,31 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
+import { useCreateProfile } from '@/hooks/mutations/use-create-profile';
 import { ProfileValidation } from '@/validations/profile-validation';
 
-import type { CreateProfileFormSettings } from '../types';
+import type { CreateProfileFormFields } from '../types';
 import { Idea, PersonalInfo, Roles, SearchRoles } from './steps';
+
+const defaultValues = {
+  name: '',
+  lastName: '',
+  languages: [],
+  location: '',
+  avatarURL: '',
+  roles: [],
+  subRoles: [],
+  services: [],
+  searchRoles: [],
+  searchSubRoles: [],
+  searchServices: [],
+};
 
 const stepRenreders = {
   personal: PersonalInfo,
@@ -23,39 +39,39 @@ const CreateForm = ({
   isBackButtonVisible,
   isLastStep,
   onBack,
-  onSubmit,
+  onNext,
 }: {
   activeStep: keyof typeof stepRenreders;
   isBackButtonVisible: boolean;
   isLastStep: boolean;
   onBack: () => void;
-  onSubmit: (data?: CreateProfileFormSettings) => void;
+  onNext: () => void;
 }) => {
-  const form = useForm<CreateProfileFormSettings>({
-    resolver: zodResolver(ProfileValidation),
-    defaultValues: {
-      name: '',
-      lastName: '',
-      languages: [],
-      location: '',
-      roles: [],
-      subRoles: [],
-      services: [],
-      searchRoles: [],
-      searchSubRoles: [],
-      searchServices: [],
-    },
-  });
-
-  const { handleSubmit } = form;
+  const router = useRouter();
 
   const t = useTranslations('CreateProfileForm');
 
-  const StepComponent = stepRenreders[activeStep];
+  const { mutateAsync } = useCreateProfile();
 
-  const handeNext = () => {
-    onSubmit();
+  const form = useForm({
+    resolver: zodResolver(ProfileValidation),
+    defaultValues,
+  });
+
+  const {
+    handleSubmit,
+    reset,
+    formState: { isValid },
+  } = form;
+
+  const createProfile = async (data: CreateProfileFormFields) => {
+    await mutateAsync(data);
+
+    reset();
+    router.refresh();
   };
+
+  const StepComponent = stepRenreders[activeStep];
 
   if (!StepComponent) {
     return null;
@@ -64,8 +80,8 @@ const CreateForm = ({
   return (
     <Form {...form}>
       <form
-        className="lg: flex w-full flex-col gap-y-4 p-5 sm:w-4/5 lg:w-1/2"
-        onSubmit={handleSubmit(onSubmit)}
+        className="flex w-full flex-col gap-y-4 p-5 sm:w-4/5 lg:w-1/2"
+        onSubmit={handleSubmit(createProfile)}
       >
         <div className="flex flex-col gap-2">
           <StepComponent />
@@ -79,7 +95,8 @@ const CreateForm = ({
           )}
           <Button
             className="w-full"
-            onClick={isLastStep ? undefined : handeNext}
+            disabled={isLastStep && !isValid}
+            onClick={isLastStep ? undefined : onNext}
             type={isLastStep ? 'submit' : 'button'}
           >
             {isLastStep ? t('create') : t('next')}

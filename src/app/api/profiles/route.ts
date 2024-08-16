@@ -1,4 +1,4 @@
-import { getFirestore } from 'firebase-admin/firestore';
+import { FieldValue, getFirestore } from 'firebase-admin/firestore';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
@@ -78,6 +78,8 @@ export async function POST(request: NextRequest) {
     if (!query.exists || !profile) {
       const newProfile = {
         id: decodedToken.uid,
+        createdAt: FieldValue.serverTimestamp(),
+        updatedAt: FieldValue.serverTimestamp(),
         ...parse.data,
       };
 
@@ -87,6 +89,7 @@ export async function POST(request: NextRequest) {
 
     const updatedProfile = {
       ...profile,
+      updatedAt: FieldValue.serverTimestamp(),
       ...parse.data,
     };
 

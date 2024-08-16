@@ -10,6 +10,7 @@ import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
 import { AuthProvider } from '@/auth/AuthProvider';
 import { authConfig } from '@/config/server-config';
 import { cn } from '@/libs/utils';
+import { ReactQueryProvider } from '@/providers/ReactQueryProvider';
 import { toUser } from '@/shared/user';
 import { AppConfig } from '@/utils/AppConfig';
 
@@ -69,7 +70,9 @@ export default async function RootLayout(props: {
           locale={props.params.locale}
           messages={messages}
         >
-          <AuthProvider user={user}>{props.children}</AuthProvider>
+          <AuthProvider user={user}>
+            <ReactQueryProvider>{props.children}</ReactQueryProvider>
+          </AuthProvider>
         </NextIntlClientProvider>
       </body>
     </html>
