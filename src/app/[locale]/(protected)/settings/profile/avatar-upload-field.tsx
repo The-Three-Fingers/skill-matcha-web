@@ -22,9 +22,9 @@ const AvatarUploadField = ({
 }) => {
   const t = useTranslations('profile');
 
-  const acceptablesFiles = 'image/*, application/pdf';
+  const supportedFileFormats = 'image/*, application/pdf';
 
-  const handleAddAvatar = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const updateAvatarPreview = (event: React.ChangeEvent<HTMLInputElement>) => {
     const imgFile = event.target.files?.[0] || null;
 
     if (imgFile) {
@@ -42,9 +42,9 @@ const AvatarUploadField = ({
             <FormControl>
               <Input
                 type="file"
-                accept={acceptablesFiles}
+                accept={supportedFileFormats}
                 {...field}
-                onChange={handleAddAvatar}
+                onChange={updateAvatarPreview}
                 value=""
               />
             </FormControl>

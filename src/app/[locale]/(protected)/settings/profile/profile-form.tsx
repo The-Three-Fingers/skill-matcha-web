@@ -7,15 +7,12 @@ import { FormProvider, useForm } from 'react-hook-form';
 import { type z } from 'zod';
 
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import InputField from '@/components/ui/input-field';
 import { Separator } from '@/components/ui/separator';
-import TextareaField from '@/components/ui/textarea-field';
-import { TypographySmall } from '@/components/ui/typography';
 import { useToast } from '@/components/ui/use-toast';
 import { ProfileValidation } from '@/validations/profile-validation';
 
-import { AvatarUploadField } from './avatar-upload-field';
+import ProfileEmailSection from './profile-email-section';
+import ProfileFormFields from './profile-form-fields';
 
 type ProfileFormValues = z.infer<typeof ProfileValidation>;
 
@@ -28,7 +25,6 @@ type ProfileFormValues = z.infer<typeof ProfileValidation>;
 // services
 // idea
 
-// !! TODO тосты не работают
 // !! TODO дописать логику отвязки профайла
 
 const ProfileForm = () => {
@@ -86,21 +82,7 @@ const ProfileForm = () => {
     <div className="flex flex-col gap-10">
       <FormProvider {...form}>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-          <TextareaField
-            name="aboutInfo"
-            label={t('aboutMe')}
-            placeholder={t('aboutMePlaceholder')}
-          />
-
-          <InputField
-            type="number"
-            name="availabilityTime"
-            label={t('availabilityTime')}
-            placeholder={t('availabilityTimeDescription')}
-          />
-
-          <AvatarUploadField file={file} setFile={setFile} />
-
+          <ProfileFormFields file={file} setFile={setFile} />
           <Button type="submit" disabled={!isValid} className="w-full">
             {t('submitButton')}
           </Button>
@@ -109,24 +91,7 @@ const ProfileForm = () => {
 
       <Separator />
 
-      <div className="flex gap-16">
-        <div className="flex flex-1 flex-col gap-3">
-          <TypographySmall>{t('emailDescription')}</TypographySmall>
-          <Input value={mockEmail} disabled className="mt-auto" />
-        </div>
-
-        <div className="flex flex-1 flex-col gap-3">
-          <TypographySmall>{t('unlinkEmailDescription')}</TypographySmall>
-          <Button
-            type="button"
-            className="mt-auto"
-            variant="destructive"
-            onClick={handleUnlinkClick}
-          >
-            {t('unlinkEmail')}
-          </Button>
-        </div>
-      </div>
+      <ProfileEmailSection onUnlinkClick={handleUnlinkClick} />
     </div>
   );
 };
