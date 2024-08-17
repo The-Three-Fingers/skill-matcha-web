@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { useAuth } from '@/auth/AuthContext';
 import { LogInButton } from '@/components/login-button';
 import { SignUpButton } from '@/components/sign-up-button';
+import { Toaster } from '@/components/ui/toaster';
 import { AppConfig } from '@/utils/AppConfig';
 
 import NavbarButtons from './navbar-buttons';
@@ -50,6 +51,7 @@ const BaseTemplate = (props: { children: React.ReactNode }) => {
       </main> */}
 
       <main className="flex-1">{props.children}</main>
+      <Toaster />
     </div>
   );
 };

@@ -38,7 +38,6 @@ const CreateForm = ({
       lastName: '',
       languages: [],
       location: '',
-      avatarURL: '',
       roles: [],
       subRoles: [],
       services: [],

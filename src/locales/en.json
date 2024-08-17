@@ -93,6 +93,29 @@
     "page_title": "Settings",
     "page_description": "Manage your profile and account settings"
   },
+  "profile": {
+    "metaTitle": "Profile",
+    "metaDescription": "This is how others will see you on the site.",
+    "aboutMe": "About Me",
+    "aboutMeDescription": "Use this space to tell others more about who you. Share your passions, hobbies, or a fun fact!",
+    "aboutMePlaceholder": "Share a bit about yourself – hobbies, interests, or fun facts!",
+    "submitButton": "Update profile",
+    "availabilityTime": "Availability time",
+    "availabilityTimeDescription": "How many hours per week are you available to work on a project?",
+    "availabilityTimePlaceholder": "Enter the number of hours you're available per week",
+    "avatar": "Avatar",
+    "avatarDescription": "Upload a photo of yourself to personalize your profile.",
+    "email": "Your email",
+    "emailDescription": "Your email address will not be visible to others. You can't change your email address.",
+    "unlinkEmail": "Unlink email",
+    "unlinkEmailDescription": "You can unlink your email address from your account.",
+    "unlinkToastTitle": "You successfully unlinked your email",
+    "unlinkToastDescription": "You can now log in with a different email address."
+  },
+  "account": {
+    "metaTitle": "Account",
+    "metaDescription": "Manage your account settings."
+  },
   "Navigation": {
     "settings": "Settings",
     "log_out": "Log out"
