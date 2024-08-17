@@ -18,7 +18,6 @@ const defaultValues = {
   lastName: '',
   languages: [],
   location: '',
-  avatarURL: '',
   roles: [],
   subRoles: [],
   services: [],
