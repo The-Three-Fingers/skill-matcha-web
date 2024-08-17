@@ -103,7 +103,6 @@ const PersonalInfo = () => {
             <FormControl>
               <MultiCombobox
                 isClearable
-                width={400}
                 placeholder={t('languages_placeholder')}
                 options={languagesOptions}
                 {...field}
