@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 
-type InputFieldProps = {
+type NumberInputFieldProps = {
   name: string;
   label: string;
   placeholder: string;
@@ -17,7 +17,11 @@ type InputFieldProps = {
 
 const maxValue = 1_000_000_000_000;
 
-const NumberInputField = ({ name, label, placeholder }: InputFieldProps) => {
+const NumberInputField = ({
+  name,
+  label,
+  placeholder,
+}: NumberInputFieldProps) => {
   const { control } = useFormContext();
 
   return (
