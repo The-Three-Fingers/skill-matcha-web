@@ -26,7 +26,8 @@ export const ProfileValidation = z.object({
     .transform((file) => (file && file.length > 0 ? file.item(0) : null))
     .refine((file) => !file || (!!file && file.size <= MAX_FILE_SIZE), {
       message: 'The profile picture must be a maximum of 10MB.',
-    }),
+    })
+    .optional(),
 
   aboutInfo: z.string().max(1000).min(10).optional(),
   languages: z.array(z.string().min(2).max(5)).default([]),

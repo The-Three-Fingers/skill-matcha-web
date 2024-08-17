@@ -28,7 +28,7 @@ type ProfileFormValues = z.infer<typeof ProfileValidation>;
 // !! TODO дописать логику отвязки профайла
 
 const ProfileForm = () => {
-  const form = useForm<z.infer<typeof ProfileValidation>>({
+  const form = useForm<ProfileFormValues>({
     resolver: zodResolver(ProfileValidation),
     defaultValues: {
       // name: '',
@@ -40,7 +40,6 @@ const ProfileForm = () => {
       // services: [],
       // idea: [],
       aboutInfo: '',
-      avatarURL: null,
       availabilityTime: 20,
     },
     mode: 'onChange',
@@ -57,8 +56,6 @@ const ProfileForm = () => {
   const { toast } = useToast();
 
   function onSubmit(data: ProfileFormValues) {
-    console.log('data', data);
-
     toast({
       title: 'You submitted the following values:',
       description: (
