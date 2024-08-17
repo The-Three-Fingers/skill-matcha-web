@@ -17,9 +17,8 @@ export async function generateMetadata(props: { params: { locale: string } }) {
   };
 }
 
-const t = useTranslations('account');
-
 const SettingsAccountPage = () => {
+  const t = useTranslations('account');
   return (
     <div className="space-y-6">
       <div>

@@ -51,8 +51,6 @@ const ProfileForm = () => {
     formState: { isValid },
   } = form;
 
-  const mockEmail = 'emailFromBackend@gmail.com';
-
   const [file, setFile] = useState<string | undefined>(undefined);
   const t = useTranslations('profile');
 
