@@ -17,11 +17,5 @@ export const useCountries = () => {
     queryKey: ['countries'],
     queryFn: fetchCountries,
     staleTime: Infinity,
-    select: (data) =>
-      data.map(({ name, code, flag }) => ({
-        label: name,
-        value: code,
-        icon: flag,
-      })),
   });
 };

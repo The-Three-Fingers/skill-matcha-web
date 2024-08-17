@@ -30,6 +30,8 @@
     "last_name_placeholder": "Enter your last name",
     "location": "Location",
     "location_placeholder": "Select your location",
+    "languages": "Languages",
+    "languages_placeholder": "Select languages you speak",
     "select_your_role": "Select your role",
     "select_search_role": "Who are you looking for?",
     "role_options": {

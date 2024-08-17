@@ -1,6 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
+import { type QueryFunction, useQuery } from '@tanstack/react-query';
 
-const fetchLanguages = async () => {
+const fetchLanguages: QueryFunction<
+  { name: string; code: string }[]
+> = async () => {
   const response = await fetch('/api/languages');
   return response.json();
 };

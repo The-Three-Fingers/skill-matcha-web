@@ -1,7 +1,7 @@
 'use client';
 
-import { Check, ChevronsUpDown } from 'lucide-react';
-import { useState } from 'react';
+import { ChevronsUpDown, X } from 'lucide-react';
+import { type MouseEventHandler, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -22,21 +22,26 @@ import { cn } from '@/libs/utils';
 const Combobox = ({
   className,
   components,
+  isClearable,
   onChange,
   options,
   placeholder = 'Select ...',
   searchPlaceholder = 'Search ...',
   value,
+  width,
 }: {
   className?: string;
   components?: {
-    Option: React.ElementType;
+    Option?: React.ElementType;
+    SelectedValue?: React.ElementType;
   };
+  isClearable?: boolean;
   onChange?: (value: string) => void;
   options: Record<string, any>[];
   placeholder: string;
   searchPlaceholder?: string;
   value?: string;
+  width?: number;
 }) => {
   const [open, setOpen] = useState(false);
   const [currentvalue, setCurrentValue] = useState(value);
@@ -48,27 +53,66 @@ const Combobox = ({
     setOpen(false);
   };
 
-  const { Option } = components || {};
+  const handleClear: MouseEventHandler = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    setCurrentValue('');
+
+    onChange?.('');
+  };
+
+  const { Option, SelectedValue } = components || {};
+
+  const selectedOption = options.find((option) => option.value === value);
+
+  const defaultSelectedValueRender = selectedOption ? (
+    <span className="truncate">{selectedOption.label}</span>
+  ) : null;
+
+  const selectedValueRender =
+    SelectedValue && selectedOption ? (
+      <SelectedValue option={selectedOption} />
+    ) : (
+      defaultSelectedValueRender
+    );
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
-          variant="outline"
+          variant="ring"
           role="combobox"
           aria-expanded={open}
-          className={cn('w-52 justify-between', className)}
+          style={{
+            width: width ?? 350,
+          }}
+          className={cn(
+            'justify-between',
+            value ? 'text-foreground' : '',
+            className,
+          )}
         >
-          <span className="truncate">
-            {value
-              ? options.find((option) => option.value === value)?.label
-              : placeholder}
-          </span>
-          <ChevronsUpDown className="ml-2 size-4 shrink-0 opacity-50" />
+          {selectedValueRender ?? placeholder}
+          <div className="flex items-center gap-2">
+            {isClearable && value && (
+              <X
+                onClick={handleClear}
+                className="size-4 shrink-0 opacity-50 hover:bg-accent hover:opacity-80"
+              />
+            )}
+            <ChevronsUpDown className="size-4 shrink-0 opacity-50" />
+          </div>
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-52 p-0">
+      <PopoverContent
+        className="p-0"
+        style={{
+          width: width ?? 350,
+        }}
+      >
         <Command>
+          {/* Fix bug with search */}
           <CommandInput placeholder={searchPlaceholder} />
           <CommandList>
             <CommandEmpty>Nothing found.</CommandEmpty>
@@ -78,13 +122,11 @@ const Combobox = ({
                   key={option.value}
                   value={option.value}
                   onSelect={handleChange}
+                  className={cn({
+                    'bg-primary text-primary-foreground data-[selected=true]:bg-primary data-[selected=true]:text-primary-foreground':
+                      value === option.value,
+                  })}
                 >
-                  <Check
-                    className={cn(
-                      'mr-2 h-4 w-4',
-                      value === option.value ? 'opacity-100' : 'opacity-0',
-                    )}
-                  />
                   {Option ? <Option option={option} /> : option.label}
                 </CommandItem>
               ))}
