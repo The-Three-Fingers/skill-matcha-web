@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import React from 'react';
 
-import InputField from '@/components/ui/input-field';
+import NumberInputField from '@/components/ui/number-input-field';
 import TextareaField from '@/components/ui/textarea-field';
 
 import { AvatarUploadField } from './avatar-upload-field';
@@ -26,8 +26,7 @@ const ProfileFormFields: React.FC<ProfileFormFieldsProps> = ({
         label={t('aboutMe')}
         placeholder={t('aboutMePlaceholder')}
       />
-      <InputField
-        type="number"
+      <NumberInputField
         name="availabilityTime"
         label={t('availabilityTime')}
         placeholder={t('availabilityTimeDescription')}

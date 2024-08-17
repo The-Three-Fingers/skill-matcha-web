@@ -15,7 +15,9 @@ type InputFieldProps = {
   placeholder: string;
 };
 
-const InputField = ({ name, label, placeholder }: InputFieldProps) => {
+const maxValue = 1_000_000_000_000;
+
+const NumberInputField = ({ name, label, placeholder }: InputFieldProps) => {
   const { control } = useFormContext();
 
   return (
@@ -26,7 +28,16 @@ const InputField = ({ name, label, placeholder }: InputFieldProps) => {
         <FormItem>
           <FormLabel>{label}</FormLabel>
           <FormControl>
-            <Input placeholder={placeholder} {...field} />
+            <Input
+              placeholder={placeholder}
+              {...field}
+              onChange={(e) => {
+                let { value } = e.target;
+                value = value.replace(/[^0-9]/g, '').replace(/^0+/, '');
+
+                field.onChange(Math.min(maxValue, Number(value)) || '');
+              }}
+            />
           </FormControl>
           <FormMessage />
         </FormItem>
@@ -35,4 +46,4 @@ const InputField = ({ name, label, placeholder }: InputFieldProps) => {
   );
 };
 
-export default InputField;
+export default NumberInputField;
