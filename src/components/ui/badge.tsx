@@ -1,5 +1,4 @@
 import { cva, type VariantProps } from 'class-variance-authority';
-import { Check, X } from 'lucide-react';
 import * as React from 'react';
 
 import { cn } from '@/libs/utils';
@@ -16,8 +15,8 @@ const badgeVariants = cva(
         destructive:
           'border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80',
         outline: 'text-foreground',
-        matched: 'border-primary',
-        mismatched: 'border-destructive',
+        'primary-border': 'border-primary',
+        'destructive-border': 'border-destructive',
       },
     },
     defaultVariants: {
@@ -26,24 +25,13 @@ const badgeVariants = cva(
   },
 );
 
-const CheckIcon = () => <Check className="size-4 text-primary" />;
-const XIcon = () => <X className="size-4 text-destructive" />;
-
 export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof badgeVariants> {}
 
-const variantIcons: Record<string, React.FunctionComponent> = {
-  matched: CheckIcon,
-  mismatched: XIcon,
-};
-
 function Badge({ className, variant, ...props }: BadgeProps) {
-  const IconComponent = variant ? variantIcons[variant] : null;
-
   return (
     <div className={cn(badgeVariants({ variant }), className)} {...props}>
-      {IconComponent && <IconComponent />}
       {props.children}
     </div>
   );

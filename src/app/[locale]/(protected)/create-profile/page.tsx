@@ -13,7 +13,7 @@ export async function generateMetadata(props: { params: { locale: string } }) {
   };
 }
 
-const CreateProfile = () => {
+const CreateProfilePage = () => {
   return (
     <div className="mx-auto flex size-full max-w-screen-xl items-center justify-center p-4">
       <CreateProfileForm />
@@ -23,4 +23,4 @@ const CreateProfile = () => {
 
 export const dynamic = 'force-dynamic';
 
-export default CreateProfile;
+export default CreateProfilePage;

@@ -1,17 +1,17 @@
 'use client';
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@radix-ui/react-dropdown-menu';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import React from 'react';
 
 import { LogOutButton } from '@/components/logout-button';
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { Icons } from '@/components/ui/icons';
 
 type NavItem = {
@@ -49,10 +49,12 @@ const NavbarButtons: React.FC = () => {
       ))}
 
       <DropdownMenu>
-        <DropdownMenuTrigger className="flex size-10 items-center justify-center">
-          <Icons.AccountSettings className="size-5" />
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" size="icon">
+            <Icons.AccountSettings className="size-5" />
+          </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className="z-50 w-56 bg-purple-100 p-4">
+        <DropdownMenuContent align="end">
           <DropdownMenuItem>
             <Link href="/settings">{t('settings')}</Link>
           </DropdownMenuItem>

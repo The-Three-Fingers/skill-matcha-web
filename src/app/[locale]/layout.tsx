@@ -10,6 +10,8 @@ import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
 import { AuthProvider } from '@/auth/AuthProvider';
 import { authConfig } from '@/config/server-config';
 import { cn } from '@/libs/utils';
+import { ReactQueryProvider } from '@/providers/ReactQueryProvider';
+import { ThemeProvider } from '@/providers/ThemeProvider';
 import { toUser } from '@/shared/user';
 import { AppConfig } from '@/utils/AppConfig';
 
@@ -64,13 +66,27 @@ export default async function RootLayout(props: {
 
   return (
     <html lang={props.params.locale}>
-      <body className={cn('h-screen font-sans antialiased', fontSans.variable)}>
-        <NextIntlClientProvider
-          locale={props.params.locale}
-          messages={messages}
+      <body
+        className={cn(
+          'h-screen font-sans antialiased selection:bg-primary selection:text-primary-foreground',
+          fontSans.variable,
+        )}
+      >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
         >
-          <AuthProvider user={user}>{props.children}</AuthProvider>
-        </NextIntlClientProvider>
+          <NextIntlClientProvider
+            locale={props.params.locale}
+            messages={messages}
+          >
+            <AuthProvider user={user}>
+              <ReactQueryProvider>{props.children}</ReactQueryProvider>
+            </AuthProvider>
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

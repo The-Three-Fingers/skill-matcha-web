@@ -4,37 +4,64 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 96 42% 61%;
+    --background: 91 0% 95%;
+    --foreground: 91 0% 10%;
+    --card: 91 0% 94%;
+    --card-foreground: 91 0% 15%;
+    --popover: 91 0% 95%;
+    --popover-foreground: 91 95% 10%;
+    --primary: 91 66% 53%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 96 7% 92%;
-    --secondary-foreground: 96 7% 32%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 96 42% 61%;
-    --radius: 0.5rem;
+    --secondary: 91 10% 90%;
+    --secondary-foreground: 0 0% 0%;
+    --muted: 53 10% 94%;
+    --muted-foreground: 91 0% 40%;
+    --accent: 53 10% 90%;
+    --accent-foreground: 91 0% 15%;
+    --destructive: 0 50% 50%;
+    --destructive-foreground: 91 0% 94%;
+    --border: 91 20% 82%;
+    --input: 91 20% 50%;
+    --ring: 91 66% 53%;
+    --radius: 1rem;
   }
+  .dark {
+    --background: 107 10% 10%;
+    --foreground: 107 0% 100%;
+    --card: 107 0% 10%;
+    --card-foreground: 107 0% 100%;
+    --popover: 107 10% 5%;
+    --popover-foreground: 107 0% 100%;
+    --primary: 107 57.1% 42.9%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 107 10% 20%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 69 10% 25%;
+    --muted-foreground: 107 0% 65%;
+    --accent: 69 10% 25%;
+    --accent-foreground: 107 0% 95%;
+    --destructive: 0 50% 50%;
+    --destructive-foreground: 107 0% 100%;
+    --border: 107 20% 50%;
+    --input: 107 20% 50%;
+    --ring: 107 57.1% 42.9%;
+    --radius: 1rem;
+   }
 }
 
 @layer base {
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-muted text-foreground;
     font-feature-settings:
       'rlig' 1,
       'calt' 1;
+  }
+
+  .dark body {
+    @apply bg-background text-foreground;
   }
 }

@@ -2,6 +2,12 @@
   "RootLayout": {
     "home_link": "Home"
   },
+  "notFound": {
+    "metaTitle": "Page not found",
+    "heading": "Sorry, the page can’t be found",
+    "description": "The page you were looking for appears to have been moved, deleted or does not exist.",
+    "goBack": "Back to Homepage"
+  },
   "Auth": {
     "log_in_link": "Log in",
     "sign_up_link": "Sign up",
@@ -28,6 +34,10 @@
     "name_placeholder": "Enter your name",
     "last_name": "Last name",
     "last_name_placeholder": "Enter your last name",
+    "location": "Location",
+    "location_placeholder": "Select your location",
+    "languages": "Languages",
+    "languages_placeholder": "Select languages you speak",
     "select_your_role": "Select your role",
     "select_search_role": "Who are you looking for?",
     "role_options": {

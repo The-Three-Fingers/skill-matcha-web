@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 
-import MultiSelectField from '../multi-choice-field';
+import { MultiChoiceField } from '@/components/ui/multi-choice-field';
 
 const Roles = () => {
   const t = useTranslations('CreateProfileForm');
@@ -16,7 +16,7 @@ const Roles = () => {
   };
 
   return (
-    <MultiSelectField
+    <MultiChoiceField
       name="roles"
       label={t('select_your_role')}
       options={roleOptions}

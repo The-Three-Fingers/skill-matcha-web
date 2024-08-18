@@ -8,15 +8,14 @@ import { useLoadingCallback } from 'react-loading-hook';
 
 import { logout } from '@/api';
 import { getFirebaseAuth } from '@/auth/firebase';
-import { Button } from '@/components/ui/button';
 
 const LogOutButton = () => {
   const router = useRouter();
   const t = useTranslations('Auth');
 
-  const [hasLoggedOut, setHasLoggedOut] = useState(false);
+  const [, setHasLoggedOut] = useState(false);
 
-  const [handleLogout, isLogoutLoading] = useLoadingCallback(async () => {
+  const [handleLogout] = useLoadingCallback(async () => {
     const auth = getFirebaseAuth();
     await signOut(auth);
     await logout();
@@ -28,13 +27,9 @@ const LogOutButton = () => {
   });
 
   return (
-    <Button
-      variant="ghost"
-      disabled={isLogoutLoading || hasLoggedOut}
-      onClick={handleLogout}
-    >
+    <button type="button" onClick={handleLogout}>
       {t('log_out_link')}
-    </Button>
+    </button>
   );
 };
 
