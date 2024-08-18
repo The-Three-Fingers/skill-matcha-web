@@ -41,7 +41,7 @@ const BaseTemplate = (props: { children: React.ReactNode }) => {
                 </>
               )
             )}
-            <ThemeToggle />
+            <ThemeToggle className="ml-2" />
           </div>
         </div>
       </header>
