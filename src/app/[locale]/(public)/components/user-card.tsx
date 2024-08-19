@@ -1,14 +1,14 @@
 import Image from 'next/image';
 import React from 'react';
 
-interface BaseStageCardProps {
+interface BaseUserCardProps {
   index: number;
   title: string;
   className?: string;
   textClassname?: string;
 }
 
-type StageCardProps = BaseStageCardProps &
+type UserCardProps = BaseUserCardProps &
   (
     | {
         active: true;
@@ -20,14 +20,14 @@ type StageCardProps = BaseStageCardProps &
       }
   );
 
-function StageCard({
+function UserCard({
   index,
   className,
   brandColor,
   textClassname,
   title,
   active,
-}: StageCardProps) {
+}: UserCardProps) {
   // we need to include these classes for tailwind
   // const classes = [
   //   'bg-primary-500',
@@ -46,17 +46,15 @@ function StageCard({
 
   return (
     <div
-      className={`s:size-h9x600 max:size-h9X1920 s:gap-g2X600 max:gap-g2X1920 group inline-flex size-h9X0 flex-col items-center
-                        justify-center gap-g2X0 rounded-lg p-4 transition
-                        ${className} ${
-                          active
-                            ? `bg-${brandColor} border- border-2 border-solid${brandColor} bg-opacity-[0.01]`
-                            : 'bg-white bg-opacity-[0.01]'
-                        }`}
+      className={`max:size-[200px] group inline-flex size-32 flex-col items-center justify-center gap-1 rounded-lg p-2 transition md:size-36 md:p-3 lg:gap-3 xl:p-4 ${className} ${
+        active
+          ? `bg-${brandColor} border-2 border-solid${brandColor} bg-opacity-[0.01]`
+          : 'bg-white bg-opacity-[0.01]'
+      }`}
     >
       <div className="inline-flex items-center justify-center gap-2">
         <div
-          className={`s:text-h2X600 max:text-h2X1920 relative text-h2X0 transition ${
+          className={`relative transition ${
             active
               ? `[&>svg>path]:fill-${brandColor} [&>svg>g>path]:fill-${brandColor} ${textClassname}`
               : '[&>svg>g>path]:fill-neutral-500 [&>svg>path]:fill-neutral-500'
@@ -65,6 +63,7 @@ function StageCard({
           <Image
             width={50}
             height={50}
+            className="w-[30px] h-[30px] md:w-[40px] md:h-[40px] lg:w-[50px] lg:h-[50px] xl:w-[60px] xl:h-[60px]"
             alt="avatar"
             src={`https://avatar.iran.liara.run/public/${index % 2 === 0 ? index + 1 : 100 - (index + 1)}`}
           />
@@ -72,7 +71,7 @@ function StageCard({
       </div>
       <div className="inline-flex items-center justify-start gap-2 self-stretch">
         <div
-          className={`s:text-descriptionX600 max:text-descriptionX1920 shrink grow basis-0 text-center text-descriptionX0 transition ${
+          className={`shrink grow basis-0 text-center transition ${
             active ? `text-${brandColor}` : `text-neutral-500 ${textClassname}`
           }`}
         >
@@ -83,4 +82,4 @@ function StageCard({
   );
 }
 
-export default StageCard;
+export default UserCard;

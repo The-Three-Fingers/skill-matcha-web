@@ -1,6 +1,5 @@
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
-
-import CTASection from './CTASection';
+import { LandingPage } from './components';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
   const t = await getTranslations({
@@ -17,5 +16,7 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 export default function Index(props: { params: { locale: string } }) {
   unstable_setRequestLocale(props.params.locale);
 
-  return <CTASection />;
+  return (
+    <LandingPage />
+  );
 }
