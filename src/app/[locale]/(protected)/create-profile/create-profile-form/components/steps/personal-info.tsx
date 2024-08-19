@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { useFormContext } from 'react-hook-form';
 
+import { AvatarUploadField } from '@/components/ui/avatar-upload-field';
 import { Combobox } from '@/components/ui/combobox';
 import {
   FormControl,
@@ -16,6 +17,8 @@ import { MultiCombobox } from '@/components/ui/multi-combobox';
 import { TypographySmall } from '@/components/ui/typography';
 import { useCountries } from '@/hooks/queries/use-countries';
 import { useLanguages } from '@/hooks/queries/use-languages';
+
+import type { CreateProfileFormFields } from '../../types';
 
 const CountryOption = ({
   option,
@@ -40,8 +43,9 @@ const CountrySelectedValue = ({
 );
 
 const PersonalInfo = () => {
-  const { control } = useFormContext();
-  const t = useTranslations('CreateProfileForm');
+  const { control } = useFormContext<CreateProfileFormFields>();
+
+  const t = useTranslations('createProfileForm');
 
   const { data: countries = [] } = useCountries();
   const { data: languages = [] } = useLanguages();
@@ -58,7 +62,9 @@ const PersonalInfo = () => {
   }));
 
   return (
-    <>
+    <div className="flex flex-col gap-4">
+      <AvatarUploadField name="avatarURL" />
+
       <InputField
         name="name"
         label={t('name')}
@@ -112,7 +118,7 @@ const PersonalInfo = () => {
           </FormItem>
         )}
       />
-    </>
+    </div>
   );
 };
 

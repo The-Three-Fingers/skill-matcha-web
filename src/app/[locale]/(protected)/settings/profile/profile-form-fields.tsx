@@ -3,24 +3,16 @@
 import { useTranslations } from 'next-intl';
 import React from 'react';
 
+import { AvatarUploadField } from '@/components/ui/avatar-upload-field';
 import NumberInputField from '@/components/ui/number-input-field';
 import TextareaField from '@/components/ui/textarea-field';
 
-import { AvatarUploadField } from './avatar-upload-field';
-
-interface ProfileFormFieldsProps {
-  file: string | undefined;
-  setFile: React.Dispatch<React.SetStateAction<string | undefined>>;
-}
-
-const ProfileFormFields: React.FC<ProfileFormFieldsProps> = ({
-  file,
-  setFile,
-}) => {
+const ProfileFormFields = () => {
   const t = useTranslations('profile');
 
   return (
     <div className="space-y-8">
+      <AvatarUploadField name="avatarURL" />
       <TextareaField
         name="aboutInfo"
         label={t('aboutMe')}
@@ -31,7 +23,6 @@ const ProfileFormFields: React.FC<ProfileFormFieldsProps> = ({
         label={t('availabilityTime')}
         placeholder={t('availabilityTimeDescription')}
       />
-      <AvatarUploadField file={file} setFile={setFile} />
     </div>
   );
 };

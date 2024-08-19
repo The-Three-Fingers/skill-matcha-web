@@ -29,7 +29,13 @@
     "meta_title": "Create profile",
     "meta_description": "Create your profile"
   },
-  "CreateProfileForm": {
+  "createProfileForm": {
+    "stepTitles": {
+      "personal": "Tell us about yourself",
+      "roles": "What is your role",
+      "idea": "Do you have a project idea?",
+      "searchRoles": "Who are you looking for?"
+    },
     "name": "Name",
     "name_placeholder": "Enter your name",
     "last_name": "Last name",
