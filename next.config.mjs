@@ -28,18 +28,34 @@ const withRedirectConfig = (nextConfig = {}) => ({
   ...nextConfig,
 });
 
+const withRemotePatterns = (nextConfig = {}) => ({
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'avatar.iran.liara.run',
+        port: '',
+        pathname: '/public/**',
+      },
+    ],
+  },
+  ...nextConfig,
+});
+
 /** @type {import('next').NextConfig} */
-export default withRedirectConfig(
-  bundleAnalyzer(
-    withNextIntlConfig({
-      eslint: {
-        dirs: ['.'],
-      },
-      poweredByHeader: false,
-      reactStrictMode: true,
-      experimental: {
-        serverComponentsExternalPackages: ['@electric-sql/pglite'],
-      },
-    }),
+export default withRemotePatterns(
+  withRedirectConfig(
+    bundleAnalyzer(
+      withNextIntlConfig({
+        eslint: {
+          dirs: ['.'],
+        },
+        poweredByHeader: false,
+        reactStrictMode: true,
+        experimental: {
+          serverComponentsExternalPackages: ['@electric-sql/pglite'],
+        },
+      }),
+    ),
   ),
 );

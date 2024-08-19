@@ -65,3 +65,22 @@
     @apply bg-background text-foreground;
   }
 }
+
+.marquee-vertical {
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.marquee-vertical .marquee-vertical__child{
+  padding-top: 50%;
+  animation: marquee 15s linear infinite;
+}
+
+.marquee-vertical_down .marquee-vertical__child {
+  animation-direction: reverse;
+}
+
+@keyframes marquee {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-48.5%); }
+}
+
