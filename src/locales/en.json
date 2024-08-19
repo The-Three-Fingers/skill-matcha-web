@@ -46,14 +46,15 @@
     "languages_placeholder": "Select languages you speak",
     "select_your_role": "Select your role",
     "select_search_role": "Who are you looking for?",
-    "role_options": {
+    "roleOptions": {
       "developer": "Developer",
       "designer": "Designer",
-      "product_manager": "Product Manager",
-      "founder": "Founder",
-      "marketing_specialist": "Marketing Specialist",
-      "cto": "CTO",
-      "other": "Other"
+      "qa": "QA",
+      "analyst": "Analyst",
+      "productManager": "Product Manager",
+      "entrepreneur": "Entrepreneur",
+      "marketer": "Marketer",
+      "contentCreator": "Content Creator"
     },
     "search_options": {
       "developer": "Developer",

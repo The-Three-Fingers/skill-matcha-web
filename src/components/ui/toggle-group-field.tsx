@@ -12,10 +12,9 @@ const ToggleGroupField = ({
 }: {
   isMultiple?: boolean;
   name: string;
-  options: Record<string, string>;
+  options: { label: string; value: string }[];
 }) => {
   const { control } = useFormContext();
-  const optionKeys = Object.keys(options);
 
   return (
     <FormField
@@ -28,13 +27,13 @@ const ToggleGroupField = ({
             value={field.value}
             onValueChange={field.onChange}
           >
-            {optionKeys.map((optionKey) => (
+            {options.map((option) => (
               <ToggleGroupItem
-                key={optionKey}
-                value={optionKey}
-                aria-label={options[optionKey]}
+                key={option.value}
+                value={option.value}
+                aria-label={option.label}
               >
-                {options[optionKey]}
+                {option.label}
               </ToggleGroupItem>
             ))}
           </ToggleGroup>
