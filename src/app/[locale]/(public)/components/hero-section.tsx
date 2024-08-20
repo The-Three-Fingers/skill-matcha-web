@@ -8,7 +8,7 @@ export default function HeroSection() {
   const t = useTranslations('landing');
 
   return (
-    <section className="flex w-full flex-col items-start justify-start gap-10 sm:w-full md:gap-16 xl:mx-auto">
+    <section className="flex w-full flex-col items-start justify-start gap-10 md:gap-16">
       <TypographyH2 className="border-none leading-10 sm:text-5xl xl:text-6xl">
         {t('heroTitle1')} <br />
         {t('heroTitle2')}

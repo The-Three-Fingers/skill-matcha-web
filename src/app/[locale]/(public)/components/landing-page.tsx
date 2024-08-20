@@ -4,7 +4,6 @@ import CTASection from './CTA-section';
 import FeaturesHighlights from './features-highlights';
 import FooterSection from './footer-section';
 import HeroSection from './hero-section';
-import SectionAppear from './section-appear';
 
 function LandingPage() {
   // sm - 640
@@ -22,18 +21,16 @@ function LandingPage() {
   // карточки в линии вполтную по высоте и не видно границ на экранах больше ~md, скорректировать стили
 
   return (
-    <div className="flex h-full min-h-screen flex-col items-center justify-start gap-20 py-20 text-slate-800 dark:text-neutral-200 md:gap-24 lg:gap-28 xl:gap-32">
-      <div className="mx-auto max-w-screen-xl px-4">
-        <HeroSection />
+    <div className="flex h-full min-h-screen flex-col items-center justify-start text-slate-800 dark:text-neutral-200">
+      <div className="w-full bg-primary/15 bg-landing bg-[length:50%_100%] bg-right bg-no-repeat">
+        <div className="mx-auto max-w-screen-lg px-4 py-16 lg:py-32">
+          <HeroSection />
+        </div>
       </div>
 
       <CTASection />
 
-      <div className="mx-auto max-w-screen-xl px-4">
-        <SectionAppear>
-          <FeaturesHighlights />
-        </SectionAppear>
-      </div>
+      <FeaturesHighlights />
 
       {/* {showDemoInterface && (
           <SectionAppear>
