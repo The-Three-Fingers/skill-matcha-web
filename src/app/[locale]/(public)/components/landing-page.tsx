@@ -10,15 +10,10 @@ function LandingPage() {
   // md - 768
   // lg - 1024
   // xl - 1280
+  // 2xl - '1536px',
 
   // TODO:
-  // дописать форму для модалки lead
-  // текст модалки в локалях (+форма)
-  // прибраться
-
-  // сделать отправку email
-  // в data контент/текст для карточек подредактировать
-  // карточки в линии вполтную по высоте и не видно границ на экранах больше ~md, скорректировать стили
+  // api модалки sendLead
 
   return (
     <div className="flex h-full min-h-screen flex-col items-center justify-start text-slate-800 dark:text-neutral-200">

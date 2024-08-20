@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { TypographyH4 } from '@/components/ui/typography';
 
 export default function FooterSection() {
-  const t = useTranslations('landing');
+  const t = useTranslations('externalLinks');
 
   const year = new Date().getFullYear();
 

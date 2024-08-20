@@ -316,6 +316,12 @@
     "featuresCardDescription2": "Use our AI to find compatible partners and streamline your path to startup success",
     "featuresCardTitle3": "Expand Your Network",
     "featuresCardDescription3": "Tap into a vast talent pool to build your dream team and create the best product together.",
+    "dialogTitle": "Get Early Access",
+    "dialogDescription": "Send request to stay in the loop and be among the first to experience our platform when it launches",
+    "dialogSuccessTitle": "Thank you!",
+    "dialogSuccessDescription": "We will reach out to you shortly 🚀"
+  },
+  "externalLinks": {
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Use"
   },

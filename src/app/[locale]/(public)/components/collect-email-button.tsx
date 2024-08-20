@@ -1,8 +1,9 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
+import type { z } from 'zod';
 
 import { Button, type ButtonProps } from '@/components/ui/button';
 import {
@@ -18,18 +19,14 @@ import { Form } from '@/components/ui/form';
 import InputField from '@/components/ui/input-field';
 import { TypographyH3, TypographyP } from '@/components/ui/typography';
 
+import { useSendLead } from './hooks/use-send-lead';
+import { sendLeadForm } from './validation';
+
 const defaultValues = {
   email: '',
 };
 
-const schema = z.object({
-  email: z
-    .string()
-    .email('Invalid email address')
-    .min(1, { message: 'Email is required' }),
-});
-
-type FormData = z.infer<typeof schema>;
+type FormData = z.infer<typeof sendLeadForm>;
 
 const CollectEmailButton = ({
   children,
@@ -40,19 +37,11 @@ const CollectEmailButton = ({
   className?: string;
   size?: ButtonProps['size'];
 }) => {
-  // !!TODO создать useSendLead
-  // const { mutateAsync } = useSendLead();
-
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors, isSubmitting, isSubmitSuccessful },
-  // } = useForm<FormData>({
-  //   resolver: zodResolver(schema),
-  // });
+  const { mutateAsync } = useSendLead();
+  const t = useTranslations('landing');
 
   const form = useForm({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(sendLeadForm),
     defaultValues,
   });
 
@@ -63,9 +52,7 @@ const CollectEmailButton = ({
   } = form;
 
   const onSubmit = async (data: FormData) => {
-    console.log('data', data);
-
-    // await mutateAsync(data);
+    await mutateAsync(data);
 
     reset();
   };
@@ -84,20 +71,17 @@ const CollectEmailButton = ({
             className="flex w-full flex-col gap-4"
           >
             <DialogHeader>
-              <DialogTitle>Get Early Access</DialogTitle>
+              <DialogTitle>{t('dialogTitle')}</DialogTitle>
               {!isSubmitSuccessful && (
-                <DialogDescription>
-                  Send request to stay in the loop and be among the first to
-                  experience our platform when it launches
-                </DialogDescription>
+                <DialogDescription>{t('dialogDescription')}</DialogDescription>
               )}
             </DialogHeader>
             {!isSubmitSuccessful ? (
               <InputField name="email" placeholder="Email" />
             ) : (
               <>
-                <TypographyH3>Thank you!</TypographyH3>
-                <TypographyP>We will reach out to you shortly 🚀</TypographyP>
+                <TypographyH3>{t('dialogSuccessTitle')}</TypographyH3>
+                <TypographyP>{t('dialogSuccessDescription')}</TypographyP>
               </>
             )}
             {!isSubmitSuccessful && (

@@ -75,16 +75,23 @@ export default function CTASection() {
         <StagesLines line={stagesLines[0] as Line} />
         <StagesLines line={stagesLines[1] as Line} />
       </div>
+
       <div className="flex flex-1 flex-col justify-center text-center">
-        <TypographyH2 className="">{t('ctaTitle')}</TypographyH2>
-        <TypographyP className="mb-4 lg:mb-6 xl:mb-16">
+        <TypographyH2 className="border-none leading-10 md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl">
+          {t('ctaTitle')}
+        </TypographyH2>
+
+        <TypographyP className="mb-6 md:text-lg lg:mb-6 lg:text-xl xl:mb-16 xl:text-2xl 2xl:text-3xl">
           {t('ctaDescription1')}
           <br />
           {t('ctaDescription2')}
           <br />
           {t('ctaDescription3')}
         </TypographyP>
-        <CollectEmailButton size="lg" className="mx-auto w-1/2 xl:text-xl">
+        <CollectEmailButton
+          size="lg"
+          className="mx-auto w-1/2 lg:h-14 lg:text-xl xl:text-2xl 2xl:w-2/3 2xl:text-3xl"
+        >
           {t('descriptionButton')}
         </CollectEmailButton>
       </div>
