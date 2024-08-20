@@ -1,13 +1,10 @@
 import { useTranslations } from 'next-intl';
 
-import { Button } from '@/components/ui/button';
 import { TypographyH2, TypographyH4 } from '@/components/ui/typography';
 
-interface HeroProps {
-  onSignUp: () => void;
-}
+import { CollectEmailButton } from './collect-email-button';
 
-export default function HeroSection({ onSignUp }: HeroProps) {
+export default function HeroSection() {
   const t = useTranslations('landing');
 
   return (
@@ -23,13 +20,9 @@ export default function HeroSection({ onSignUp }: HeroProps) {
         {t('heroDescription1')} <br />
         {t('heroDescription2')}
       </TypographyH4>
-      <Button
-        size="lg"
-        className="w-1/3 xl:w-1/5 xl:text-xl"
-        onClick={onSignUp}
-      >
+      <CollectEmailButton size="lg" className="w-1/3 xl:w-1/4 xl:text-xl">
         {t('heroButton')}
-      </Button>
+      </CollectEmailButton>
     </section>
   );
 }
