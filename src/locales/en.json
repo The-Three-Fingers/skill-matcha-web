@@ -297,6 +297,28 @@
     "metaTitle": "Account",
     "metaDescription": "Manage your account settings."
   },
+  "landing": {
+    "heroTitle1": "Find Your",
+    "heroTitle2": "Perfect Startup Partner",
+    "heroTitle3": "with AI",
+    "heroDescription1": "Let AI match your ideas with the right talent for your startup.",
+    "heroDescription2": "Effortlessly find, select, and team up to build your unicorn.",
+    "heroButton": "Get Started",
+    "ctaTitle": "Get Early Access",
+    "ctaDescription1": "Sign up to stay in the loop",
+    "ctaDescription2": "Be the first to know when we launch",
+    "ctaDescription3": "Experience our platform before anyone else",
+    "descriptionButton": "Sign up",
+    "featuresTitle": "Why Choose Us?",
+    "featuresCardTitle1": "Find Your Perfect Match",
+    "featuresCardDescription1": "Discover co-founders with the skills you need and align your startup vision for success.",
+    "featuresCardTitle2": "AI-Powered Matching",
+    "featuresCardDescription2": "Use our AI to find compatible partners and streamline your path to startup success",
+    "featuresCardTitle3": "Expand Your Network",
+    "featuresCardDescription3": "Tap into a vast talent pool to build your dream team and create the best product together.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Use"
+  },
   "Navigation": {
     "settings": "Settings",
     "log_out": "Log out"

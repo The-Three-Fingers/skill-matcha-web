@@ -3,11 +3,11 @@
 import { useState } from 'react';
 
 import CTASection from './CTA-section';
-import FeaturesHighlights from './FeaturesHighlights';
-import Footer from './Footer';
+import FeaturesHighlights from './features-highlights';
+import FooterSection from './footer-section';
+import LandingFormPage from './form-modal';
 import HeroSection from './hero-section';
-import LandingFormPage from './LandingFormPage';
-import SectionAppear from './SectionAppear';
+import SectionAppear from './section-appear';
 
 function LandingPage() {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -25,20 +25,18 @@ function LandingPage() {
   // lg - 1024
   // xl - 1280
 
-  // TODO в UserCard поменять верстку в том числе адаптивную
-  // в data стили поменять
-  // проверить все в темной и светлой теме
-  // сделать отправку email
-  // Footer попарвить отступы
-  // карточки Why Choose Us? не одной высоты
-  // положить в локали
-  // переименовать файлы под стили
+  // TODO:
   // дописать форму для модалки lead
+  // текст модалки в локалях (+форма)
   // прибраться
+
+  // сделать отправку email
+  // в data контент/текст для карточек подредактировать
+  // карточки в линии вполтную по высоте и не видно границ на экранах больше ~md, скорректировать стили
 
   return (
     <>
-      <div className="mx-auto flex h-full min-h-screen max-w-screen-xl flex-col items-center justify-start gap-20 px-4 py-20 text-slate-800 dark:text-neutral-200 md:gap-28 lg:gap-28 xl:gap-32">
+      <div className="mx-auto flex h-full min-h-screen max-w-screen-xl flex-col items-center justify-start gap-20 px-4 py-20 text-slate-800 dark:text-neutral-200 md:gap-24 lg:gap-28 xl:gap-32">
         <HeroSection onSignUp={onSignUp} />
         <CTASection onSignUp={onSignUp} />
 
@@ -57,7 +55,7 @@ function LandingPage() {
             </div>
           </SectionAppear>
         )} */}
-        <Footer />
+        <FooterSection />
       </div>
 
       {isFormOpen && <LandingFormPage onClose={closeForm} />}

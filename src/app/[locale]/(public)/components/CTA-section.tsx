@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import Marquee from 'react-fast-marquee';
 
 import { Button } from '@/components/ui/button';
@@ -40,9 +41,9 @@ function StagesLines(props: StagesLinesProps) {
   };
 
   return (
-    <div className="max:w-fit max:h-screen w-full overflow-hidden p-4">
+    <div className="max:w-fit max:h-screen size-full overflow-hidden p-1 md:p-2">
       {['right', 'left'].includes(direction) ? (
-        <Marquee {...marqueeProps} className="w-full overflow-hidden">
+        <Marquee {...marqueeProps} className="size-full overflow-hidden">
           <UserCards line={line} />
         </Marquee>
       ) : (
@@ -65,28 +66,30 @@ interface CTASectionProps {
 }
 
 export default function CTASection({ onSignUp }: CTASectionProps) {
+  const t = useTranslations('landing');
+
   const stagesLines = lines.map((line) => ({
     ...line,
     stages: [...line.stages, ...line.stages, ...line.stages, ...line.stages],
   }));
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-between">
-      <div className="max:h-screen flex h-1/3 flex-col justify-start gap-4 overflow-hidden lg:gap-5">
+    <div className="lg:gap-18 flex min-h-screen flex-col items-center gap-10 md:gap-14 xl:gap-20">
+      <div className="max:h-screen flex h-1/3 flex-col justify-start gap-1 overflow-hidden lg:gap-5">
         <StagesLines line={stagesLines[2] as Line} />
         <StagesLines line={stagesLines[0] as Line} />
       </div>
       <div className="flex flex-col justify-center text-center">
-        <TypographyH2 className="">Get Early Access</TypographyH2>
+        <TypographyH2 className="">{t('ctaTitle')}</TypographyH2>
         <TypographyP className="mb-4 lg:mb-6 xl:mb-20">
-          Sign up to stay in the loop
+          {t('ctaDescription1')}
           <br />
-          Be the first to know when we launch
+          {t('ctaDescription2')}
           <br />
-          Experience our platform before anyone else
+          {t('ctaDescription3')}
         </TypographyP>
         <Button className="mx-auto w-3/5" onClick={onSignUp}>
-          Sign up
+          {t('descriptionButton')}
         </Button>
       </div>
       <div className="max:h-screen flex h-1/3 flex-col justify-start gap-4 overflow-hidden lg:gap-5">

@@ -2,17 +2,18 @@ import type Marquee from 'react-fast-marquee';
 
 interface BaseStage {
   title: string;
+  hasIdea?: string;
 }
 
 type Stage = BaseStage &
   (
     | {
         active: true;
-        brandColor: 'primary-500' | 'secondary' | 'gray';
+        brandColor: 'primary' | 'secondary';
       }
     | {
         active?: false;
-        brandColor?: 'primary-500' | 'secondary' | 'gray';
+        brandColor?: 'primary' | 'secondary';
       }
   );
 
@@ -29,22 +30,29 @@ export const lines: Line[] = [
     },
     stages: [
       {
-        title: 'Basic Interview',
+        title: 'Developer',
+        hasIdea: 'Fresh Idea',
+        active: true,
+        brandColor: 'primary',
       },
       {
-        title: 'AI Video Interview',
-
+        title: 'Marketing Specialist',
+      },
+      {
+        title: 'CTO',
         active: true,
         brandColor: 'secondary',
       },
       {
-        title: 'NDA',
+        title: 'Designer',
+        active: true,
+        brandColor: 'secondary',
+        hasIdea: 'Startup Guru',
       },
       {
-        title: 'Group Interview',
-      },
-      {
-        title: 'Job Offer',
+        title: 'Product Manager',
+        active: true,
+        brandColor: 'primary',
       },
     ],
   },
@@ -55,22 +63,27 @@ export const lines: Line[] = [
     },
     stages: [
       {
-        title: 'NDA',
-      },
-      {
-        title: 'Group Interview',
-      },
-      {
-        title: 'Resume Screening',
-
+        title: 'Founder',
         active: true,
-        brandColor: 'primary-500',
+        brandColor: 'primary',
+        hasIdea: 'Innovation Pro',
       },
       {
-        title: 'AI Video Interview',
+        title: 'Developer',
       },
       {
-        title: 'NDA',
+        title: 'CTO',
+        brandColor: 'primary',
+      },
+      {
+        title: 'Product Manager',
+        active: true,
+        brandColor: 'secondary',
+        hasIdea: 'Ready to Go',
+      },
+      {
+        title: 'Marketing Specialist',
+        brandColor: 'primary',
       },
     ],
   },
@@ -81,25 +94,32 @@ export const lines: Line[] = [
     },
     stages: [
       {
-        title: 'NDA',
-
+        title: 'Developer',
+        hasIdea: 'Have a stunning idea',
         active: true,
-        brandColor: 'primary-500',
+        brandColor: 'primary',
       },
       {
-        title: 'Job Offer',
-      },
-      {
-        title: 'Resume Screening',
-      },
-      {
-        title: 'Basic Interview',
-
-        active: true,
+        title: 'Product Manager',
         brandColor: 'secondary',
       },
       {
-        title: 'Group Interview',
+        title: 'Founder',
+        active: true,
+        brandColor: 'secondary',
+        hasIdea: 'Concept Live',
+      },
+      {
+        title: 'Marketing Specialist',
+      },
+      {
+        title: 'Developer',
+        active: true,
+        brandColor: 'secondary',
+        hasIdea: 'Bold Idea',
+      },
+      {
+        title: 'Designer',
       },
     ],
   },
@@ -110,25 +130,26 @@ export const lines: Line[] = [
     },
     stages: [
       {
-        title: 'NDA',
-
+        title: 'CTO',
+      },
+      {
+        title: 'Designer',
+        brandColor: 'primary',
+      },
+      {
+        title: 'Product Manager',
         active: true,
-        brandColor: 'primary-500',
+        brandColor: 'primary',
+        hasIdea: 'Ready to Go',
       },
       {
-        title: 'Job Offer',
+        title: 'Marketing Specialist',
       },
       {
-        title: 'Resume Screening',
-      },
-      {
-        title: 'Basic Interview',
-
+        title: 'Founder',
         active: true,
-        brandColor: 'secondary',
-      },
-      {
-        title: 'Group Interview',
+        brandColor: 'primary',
+        hasIdea: 'Concept Live',
       },
     ],
   },

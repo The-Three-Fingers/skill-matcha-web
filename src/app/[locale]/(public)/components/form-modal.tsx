@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 
-import LandingForm from './LandingForm';
+import LandingForm from './landing-form';
 
 export default function LandingFormPage({ onClose }: { onClose?: () => void }) {
   const [isOpen, setIsOpen] = useState(true);

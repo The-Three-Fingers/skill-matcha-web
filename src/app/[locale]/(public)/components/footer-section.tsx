@@ -1,27 +1,28 @@
 import { Linkedin } from 'lucide-react';
+import Link from 'next/link';
+import { useTranslations } from 'next-intl';
 
-export default function Footer() {
+import { TypographyH4 } from '@/components/ui/typography';
+
+export default function FooterSection() {
+  const t = useTranslations('landing');
+
   const year = new Date().getFullYear();
 
   return (
-    <footer
-      className="bg-neutral-1000 s:p-m4X600 max:p-m3X1920
-                                s:text-bodyX600 max:text-bodyX1920 flex
-                                flex-col items-center justify-center gap-8 border-t-2
-                                border-t-neutral-500 p-m3X0
-                                text-center text-bodyX0 font-bold text-neutral-500"
-    >
-      <div className="s:gap-g3X600 max:gap-g3X1920 s:flex-row flex flex-col gap-g3X0">
-        <div>© {year} SkillMatcha</div>
-        <a href="" className="hover:text-primary-500 transition">
-          Terms of Use
-        </a>
-        <a href="" className="hover:text-primary-500 transition">
-          Privacy Policy
-        </a>
+    <footer className="flex flex-col items-center justify-center gap-8 border-t-2 border-t-neutral-500 p-10 text-center text-neutral-500 lg:pt-14">
+      <div className="s:gap-g3X600 max:gap-g3X1920 s:flex-row gap-g3X0 flex flex-col">
+        <TypographyH4>© {year} SkillMatcha</TypographyH4>
+        <Link href="/" className="hover:text-primary-500 transition">
+          {t('termsOfService')}
+        </Link>
+
+        <Link href="/" className="hover:text-primary-500 transition">
+          {t('privacyPolicy')}
+        </Link>
       </div>
 
-      <div className="s:gap-g3X600 max:gap-g3X1920 flex justify-center gap-g3X0">
+      <div className="flex justify-center">
         {/* <a
           href="/"
           className="group block size-fit transition"
@@ -34,11 +35,15 @@ export default function Footer() {
         >
           <Twitter className="group-hover:[&_path]:fill-primary-500 size-8 [&_path]:transition " />
         </a> */}
+
         <a
           href="https://www.linkedin.com/company/the-three-fingers/about/?viewAsMember=true"
           className="group block size-fit transition"
+          target="_blank"
+          // rel="noopener noreferrer"
+          aria-label="Visit our LinkedIn page"
         >
-          <Linkedin className="group-hover:[&_path]:fill-primary-500 size-8 [&_path]:transition " />
+          <Linkedin className="group-hover:[&_path]:fill-primary-500 size-8 [&_path]:transition" />
         </a>
         {/* <Tooltip title="Closed HR Community">
           <a

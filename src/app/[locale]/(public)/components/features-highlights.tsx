@@ -1,4 +1,5 @@
-import { Network, Bot, Handshake } from 'lucide-react';
+import { Bot, Handshake, Network } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { TypographyH2 } from '@/components/ui/typography';
 
@@ -25,7 +26,7 @@ function FeatureHighlightCard({
       <div className="absolute -right-full left-0 top-[calc(50%_-_1px)] z-20 h-px w-full border-2 border-dashed border-primary xl:hidden" />
 
       <div
-        className={`relative z-40 flex w-4/5 flex-col items-start justify-start rounded-lg shadow-md ${className || 'bg-white'}`}
+        className={`relative z-40 flex w-full flex-col items-start justify-start rounded-lg shadow-md ${className || 'bg-white'}`}
       >
         <div className="flex flex-col items-start justify-center gap-4 self-stretch p-4">
           {icon}
@@ -50,10 +51,12 @@ function FeatureHighlightCard({
 }
 
 export default function FeaturesHighlights() {
+  const t = useTranslations('landing');
+
   return (
     <section className="overflow-hidden py-16">
       <TypographyH2 className="mb-8 border-none text-center">
-        Why Choose Us?
+        {t('featuresTitle')}
       </TypographyH2>
 
       <div className="flex w-full flex-col items-center justify-center gap-8 xl:relative xl:w-auto xl:flex-row">
@@ -62,29 +65,23 @@ export default function FeaturesHighlights() {
                         h-px w-full border-2 border-dashed border-primary xl:block"
         />
         <FeatureHighlightCard
-          title="Find Your Perfect Match"
-          description="Discover co-founders with the skills you need and align your startup vision for success."
-          icon={
-            <Handshake height={32} width={32} className={iconClasses} />
-          }
+          title={t('featuresCardTitle1')}
+          description={t('featuresCardDescription1')}
+          icon={<Handshake height={32} width={32} className={iconClasses} />}
           className="group bg-white hover:bg-primary "
           handleClassName="group-hover:bg-gray-100"
         />
         <FeatureHighlightCard
-          title="AI-Powered Matching"
-          description="Use our AI to find compatible partners and streamline your path to startup success"
-          icon={
-            <Bot height={32} width={32} className={iconClasses} />
-          }
+          title={t('featuresCardTitle2')}
+          description={t('featuresCardDescription2')}
+          icon={<Bot height={32} width={32} className={iconClasses} />}
           className="group bg-white hover:bg-primary hover:text-white "
           handleClassName="group-hover:bg-white"
         />
         <FeatureHighlightCard
-          title="Expand Your Network"
-          description="Tap into a vast talent pool to build your dream team and create the best product together."
-          icon={
-            <Network height={32} width={32} className={iconClasses} />
-          }
+          title={t('featuresCardTitle3')}
+          description={t('featuresCardDescription3')}
+          icon={<Network height={32} width={32} className={iconClasses} />}
           className="group bg-white hover:bg-primary hover:text-white "
           handleClassName="group-hover:bg-white"
         />
