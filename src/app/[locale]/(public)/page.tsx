@@ -1,4 +1,5 @@
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
+
 import { LandingPage } from './components';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
@@ -16,7 +17,5 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 export default function Index(props: { params: { locale: string } }) {
   unstable_setRequestLocale(props.params.locale);
 
-  return (
-    <LandingPage />
-  );
+  return <LandingPage />;
 }

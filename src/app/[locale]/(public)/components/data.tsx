@@ -1,21 +1,10 @@
 import type Marquee from 'react-fast-marquee';
 
-interface BaseStage {
-  title: string;
-  hasIdea?: string;
+export interface Stage {
+  name: string;
+  role: string;
+  idea?: string;
 }
-
-type Stage = BaseStage &
-  (
-    | {
-        active: true;
-        brandColor: 'primary' | 'secondary';
-      }
-    | {
-        active?: false;
-        brandColor?: 'primary' | 'secondary';
-      }
-  );
 
 export interface Line {
   stages: Stage[];
@@ -30,29 +19,26 @@ export const lines: Line[] = [
     },
     stages: [
       {
-        title: 'Developer',
-        hasIdea: 'Fresh Idea',
-        active: true,
-        brandColor: 'primary',
+        name: 'Alex',
+        role: 'Developer',
+        idea: 'Virtual Assistant App',
       },
       {
-        title: 'Marketing Specialist',
+        name: 'Robin',
+        role: 'Marketing Specialist',
       },
       {
-        title: 'CTO',
-        active: true,
-        brandColor: 'secondary',
+        name: 'Casey',
+        role: 'CTO',
       },
       {
-        title: 'Designer',
-        active: true,
-        brandColor: 'secondary',
-        hasIdea: 'Startup Guru',
+        name: 'Max',
+        role: 'Designer',
       },
       {
-        title: 'Product Manager',
-        active: true,
-        brandColor: 'primary',
+        name: 'Cameron',
+        role: 'Product Manager',
+        idea: 'E-commerce Platform',
       },
     ],
   },
@@ -63,93 +49,86 @@ export const lines: Line[] = [
     },
     stages: [
       {
-        title: 'Founder',
-        active: true,
-        brandColor: 'primary',
-        hasIdea: 'Innovation Pro',
+        name: 'Charlie',
+        role: 'Founder',
+        idea: 'Remote Workspace Platform',
       },
       {
-        title: 'Developer',
+        name: 'Taylor',
+        role: 'Developer',
       },
       {
-        title: 'CTO',
-        brandColor: 'primary',
+        name: 'Riley',
+        role: 'CEO',
+        idea: 'Mental Wellness Product',
       },
       {
-        title: 'Product Manager',
-        active: true,
-        brandColor: 'secondary',
-        hasIdea: 'Ready to Go',
+        name: 'Ellis',
+        role: 'Product Manager',
       },
       {
-        title: 'Marketing Specialist',
-        brandColor: 'primary',
-      },
-    ],
-  },
-  {
-    marqueeElementProps: {
-      direction: 'left',
-      speed: 27,
-    },
-    stages: [
-      {
-        title: 'Developer',
-        hasIdea: 'Have a stunning idea',
-        active: true,
-        brandColor: 'primary',
-      },
-      {
-        title: 'Product Manager',
-        brandColor: 'secondary',
-      },
-      {
-        title: 'Founder',
-        active: true,
-        brandColor: 'secondary',
-        hasIdea: 'Concept Live',
-      },
-      {
-        title: 'Marketing Specialist',
-      },
-      {
-        title: 'Developer',
-        active: true,
-        brandColor: 'secondary',
-        hasIdea: 'Bold Idea',
-      },
-      {
-        title: 'Designer',
+        name: 'Jordan',
+        role: 'Marketing Specialist',
       },
     ],
   },
   {
     marqueeElementProps: {
       direction: 'right',
+      speed: 27,
+    },
+    stages: [
+      {
+        name: 'Charlie',
+        role: 'Founder',
+        idea: 'Remote Workspace Platform',
+      },
+      {
+        name: 'Taylor',
+        role: 'Developer',
+      },
+      {
+        name: 'Riley',
+        role: 'CEO',
+        idea: 'Mental Wellness Product',
+      },
+      {
+        name: 'Ellis',
+        role: 'Product Manager',
+      },
+      {
+        name: 'Jordan',
+        role: 'Marketing Specialist',
+      },
+    ],
+  },
+  {
+    marqueeElementProps: {
+      direction: 'left',
       speed: 29,
     },
     stages: [
       {
-        title: 'CTO',
+        name: 'Alex',
+        role: 'Developer',
+        idea: 'Virtual Assistant App',
       },
       {
-        title: 'Designer',
-        brandColor: 'primary',
+        name: 'Robin',
+        role: 'Marketing Specialist',
       },
       {
-        title: 'Product Manager',
-        active: true,
-        brandColor: 'primary',
-        hasIdea: 'Ready to Go',
+        name: 'Casey',
+        role: 'CTO',
       },
       {
-        title: 'Marketing Specialist',
+        name: 'Max',
+        role: 'Designer',
       },
       {
-        title: 'Founder',
-        active: true,
-        brandColor: 'primary',
-        hasIdea: 'Concept Live',
+        name: 'Cameron',
+        role: 'Product Manager',
+        idea: 'E-commerce Platform',
       },
     ],
   },

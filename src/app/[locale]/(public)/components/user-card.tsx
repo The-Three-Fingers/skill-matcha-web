@@ -1,105 +1,85 @@
-import { TypographySmall } from '@/components/ui/typography';
-import Image from 'next/image';
-import React from 'react';
-import { Zap } from 'lucide-react';
+'use client';
 
-interface BaseUserCardProps {
-  index: number;
-  title: string;
-  hasIdea?: string;
+/* eslint-disable jsx-a11y/control-has-associated-label */
+import { Heart, X } from 'lucide-react';
+import Image from 'next/image';
+import React, { useState } from 'react';
+
+import { Button } from '@/components/ui/button';
+import { TypographySmall } from '@/components/ui/typography';
+import { cn } from '@/libs/utils';
+
+import type { Stage } from './data';
+
+interface UserCardProps {
+  stage: Stage;
   className?: string;
-  textClassname?: string;
 }
 
-export type UserCardProps = BaseUserCardProps &
-  (
-    | {
-        active: true;
-        brandColor: 'primary' | 'secondary';
-      }
-    | {
-        active?: false;
-        brandColor?: 'primary' | 'secondary';
-      }
-  );
+function UserCard({ className, stage }: UserCardProps) {
+  const { name, idea } = stage;
 
-function UserCard({
-  index,
-  className,
-  brandColor: brandColor = 'primary',
-  textClassname,
-  title,
-  hasIdea,
-  active: active = false,
-}: UserCardProps) {
-  // we need to include these classes for tailwind
-  // const classes = [
-  //   'bg-primary-500',
-  //   'bg-secondary',
-  //   'bg-gray',
-  //   '[&>svg>path]:fill-primary-500 [&>svg>g>path]:fill-primary-500',
-  //   '[&>svg>path]:fill-secondary [&>svg>g>path]:fill-secondary',
-  //   '[&>svg>path]:fill-gray [&>svg>g>path]:fill-gray',
-  //   'text-primary-500',
-  //   'text-secondary',
-  //   'text-gray',
-  //   'border-primary-500',
-  //   'border-secondary',
-  //   'border-gray',
-  // ];
+  const [isDisliked, setIsDisliked] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
+
+  const handleLike = () => {
+    setIsDisliked(false);
+    setIsLiked(true);
+  };
+
+  const handleDislike = () => {
+    setIsLiked(false);
+    setIsDisliked(true);
+  };
 
   return (
     <div
-      className={`text-slate-800 dark:text-neutral-200 group inline-flex rounded-lg flex-col items-center 
-        size-32 md:size-30 md:size-36 max:size-[200px] gap-1 p-2 transition md:p-3 lg:gap-2 xl:p-4 shadow-soft-outline bg-opacity-[0.01] ${className} ${
-        active
-          ? `border-${brandColor} border-2 border-solid${brandColor} bg-opacity-[0.01]`
-          : 'bg-white dark:bg-green-950 '
-      }`}
+      className={cn(
+        'relative size-44 gap-1 p-4 transition md:p-3 lg:gap-2',
+        'group inline-flex flex-col items-center justify-between rounded-lg bg-background border-2 border-background dark:border-accent text-foreground cursor-pointer shadow-soft-outline',
+        'dark:shadow-none',
+        {
+          'bg-accent': isDisliked,
+          'border-2 border-primary': isLiked,
+        },
+        className,
+      )}
     >
-      <div
-        className={`inline-flex items-center justify-center gap-2 relative transition ${
-          active
-            ? `[&>svg>path]:fill-${brandColor} [&>svg>g>path]:fill-${brandColor} ${textClassname}`
-            : '[&>svg>g>path]:fill-neutral-500 [&>svg>path]:fill-neutral-500'
-        }`}
+      <Image
+        width={56}
+        height={56}
+        className="size-14"
+        alt="avatar"
+        src={`https://avatar.iran.liara.run/public/${Math.floor(Math.random() * 100) + 1}`}
+      />
+
+      <TypographySmall className="w-full overflow-hidden truncate whitespace-nowrap text-center">
+        {name}
+      </TypographySmall>
+
+      <TypographySmall
+        className={cn('line-clamp-2 gap-1 text-center text-foreground/40', {
+          'text-primary': idea,
+        })}
       >
-        <Image
-          width={50}
-          height={50}
-          className="w-[65px] h-[65px] md:w-[40px] md:h-[40px] lg:w-[50px] lg:h-[50px] xl:w-[60px] xl:h-[60px]"
-          alt="avatar"
-          src={`https://avatar.iran.liara.run/public/${index % 2 === 0 ? index + 1 : 100 - (index + 1)}`}
-        />
-      </div>
-
-      <div className="items-center text-center justify-start gap-2 self-stretch hidden sm:inline-flex">
-        <TypographySmall
-          className={`truncate whitespace-nowrap overflow-hidden grow basis-0 transition ${textClassname}`}
+        {idea ?? 'Co-Founder Candidate'}
+      </TypographySmall>
+      <div className="absolute left-0 top-0 flex size-full items-center justify-center gap-5 rounded-lg bg-foreground/50 opacity-0 transition-all group-hover:opacity-100 dark:bg-background/80">
+        <Button
+          className="-translate-x-4 scale-125 text-destructive/80 opacity-0 transition-all hover:text-destructive group-hover:translate-x-0 group-hover:opacity-100"
+          onClick={handleDislike}
+          variant="link"
         >
-          {title}
-        </TypographySmall>
+          <X className="size-8" />
+        </Button>
+        <Button
+          className="translate-x-4 scale-125 text-primary/80 opacity-0 transition-all hover:text-primary group-hover:translate-x-0 group-hover:opacity-100"
+          variant="link"
+          onClick={handleLike}
+        >
+          <Heart strokeWidth={3} className="size-8" />
+        </Button>
       </div>
-
-
-        <div className="flex flex-col items-center gap-1.5">
-          <div className="inline-flex items-center text-center justify-start gap-2 self-stretch">
-            <TypographySmall
-              className={`line-clamp-1 md:line-clamp-2 grow basis-0 transition ${
-                active
-                  ? `text-${brandColor}`
-                  : `text-neutral-500 ${textClassname}
-              ${hasIdea && `text-primary`}`
-              }`}
-            >
-              {hasIdea ? hasIdea : 'Co-Founder Candidate'}
-            </TypographySmall>
-          </div>
-          {/* <div className="hidden md:inline-flex">
-            <Zap className="size-4" />
-          </div> */}
-        </div>
-
     </div>
   );
 }

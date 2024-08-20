@@ -36,13 +36,18 @@ function LandingPage() {
 
   return (
     <>
-      <div className="mx-auto flex h-full min-h-screen max-w-screen-xl flex-col items-center justify-start gap-20 px-4 py-20 text-slate-800 dark:text-neutral-200 md:gap-24 lg:gap-28 xl:gap-32">
-        <HeroSection onSignUp={onSignUp} />
+      <div className="flex h-full min-h-screen flex-col items-center justify-start gap-20 py-20 text-slate-800 dark:text-neutral-200 md:gap-24 lg:gap-28 xl:gap-32">
+        <div className="mx-auto max-w-screen-xl px-4">
+          <HeroSection onSignUp={onSignUp} />
+        </div>
+
         <CTASection onSignUp={onSignUp} />
 
-        <SectionAppear>
-          <FeaturesHighlights />
-        </SectionAppear>
+        <div className="mx-auto max-w-screen-xl px-4">
+          <SectionAppear>
+            <FeaturesHighlights />
+          </SectionAppear>
+        </div>
 
         {/* {showDemoInterface && (
           <SectionAppear>

@@ -14,7 +14,7 @@ interface StagesLinesProps {
 function UserCards({ line }: StagesLinesProps) {
   return line.stages.map((stage, index) => (
     // eslint-disable-next-line react/no-array-index-key
-    <UserCard key={index} className="mx-2" {...stage} index={index} />
+    <UserCard key={index} className="mx-2" stage={stage} />
   ));
 }
 
@@ -41,9 +41,9 @@ function StagesLines(props: StagesLinesProps) {
   };
 
   return (
-    <div className="max:w-fit max:h-screen size-full overflow-hidden p-1 md:p-2">
+    <div className="size-full overflow-hidden py-1 md:py-2">
       {['right', 'left'].includes(direction) ? (
-        <Marquee {...marqueeProps} className="size-full overflow-hidden">
+        <Marquee {...marqueeProps} className="size-full overflow-hidden py-8">
           <UserCards line={line} />
         </Marquee>
       ) : (
@@ -74,10 +74,11 @@ export default function CTASection({ onSignUp }: CTASectionProps) {
   }));
 
   return (
-    <div className="lg:gap-18 flex min-h-screen flex-col items-center gap-10 md:gap-14 xl:gap-20">
-      <div className="max:h-screen flex h-1/3 flex-col justify-start gap-1 overflow-hidden lg:gap-5">
-        <StagesLines line={stagesLines[2] as Line} />
+    <div className="lg:gap-18 flex min-h-screen w-full flex-col items-center gap-10 md:gap-14 xl:gap-20">
+      <div className="flex h-1/3 w-full flex-col justify-start gap-1 overflow-hidden lg:gap-5">
         <StagesLines line={stagesLines[0] as Line} />
+        <StagesLines line={stagesLines[1] as Line} />
+        {/* <StagesLines line={stagesLines[0] as Line} /> */}
       </div>
       <div className="flex flex-col justify-center text-center">
         <TypographyH2 className="">{t('ctaTitle')}</TypographyH2>
@@ -92,8 +93,9 @@ export default function CTASection({ onSignUp }: CTASectionProps) {
           {t('descriptionButton')}
         </Button>
       </div>
-      <div className="max:h-screen flex h-1/3 flex-col justify-start gap-4 overflow-hidden lg:gap-5">
-        <StagesLines line={stagesLines[1] as Line} />
+      <div className="flex h-1/3 w-full flex-col justify-start gap-4 overflow-hidden lg:gap-5">
+        {/* <StagesLines line={stagesLines[1] as Line} /> */}
+        <StagesLines line={stagesLines[2] as Line} />
         <StagesLines line={stagesLines[3] as Line} />
       </div>
     </div>
