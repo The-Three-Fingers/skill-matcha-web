@@ -10,9 +10,9 @@ export default function FooterSection() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="flex flex-col items-center justify-center gap-8 border-t-2 border-t-neutral-500 p-10 text-center text-neutral-500 lg:pt-14">
-      <div className="s:gap-g3X600 max:gap-g3X1920 s:flex-row gap-g3X0 flex flex-col">
-        <TypographyH4>© {year} SkillMatcha</TypographyH4>
+    <footer className="flex flex-col items-center justify-center gap-8 p-10 text-center text-foreground lg:pt-14">
+      <div className="gap-2 flex flex-col">
+        <TypographyH4>© {year} SKILLMATCHA</TypographyH4>
         <Link href="/" className="hover:text-primary-500 transition">
           {t('termsOfService')}
         </Link>
@@ -37,7 +37,7 @@ export default function FooterSection() {
         </a> */}
 
         <a
-          href="https://www.linkedin.com/company/the-three-fingers/about/?viewAsMember=true"
+          href="https://www.linkedin.com/company/the-three-fingers/about"
           className="group block size-fit transition"
           target="_blank"
           // rel="noopener noreferrer"
@@ -45,14 +45,6 @@ export default function FooterSection() {
         >
           <Linkedin className="group-hover:[&_path]:fill-primary-500 size-8 [&_path]:transition" />
         </a>
-        {/* <Tooltip title="Closed HR Community">
-          <a
-            href="/"
-            className="group block size-fit"
-          >
-            <People className="group-hover:[&_path]:fill-primary-500 size-8 [&_path]:transition " />
-          </a>
-        </Tooltip> */}
       </div>
     </footer>
   );

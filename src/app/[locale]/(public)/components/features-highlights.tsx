@@ -35,8 +35,8 @@ export default function FeaturesHighlights() {
   const t = useTranslations('landing');
 
   return (
-    <section className="relative mb-10 w-full bg-primary/15 bg-landing bg-[length:50%_100%] bg-right-bottom bg-no-repeat py-32 lg:py-56">
-      <TypographyH2 className="mb-8 border-none text-center">
+    <section className="relative mb-10 w-full bg-primary/15 bg-landing bg-[length:45%_100%] bg-right-bottom bg-no-repeat py-32 lg:py-56">
+      <TypographyH2 className="mb-8 border-none text-center md:text-4xl lg:text-5xl xl:text-5xl 2xl:text-6xl">
         {t('featuresTitle')}
       </TypographyH2>
 
