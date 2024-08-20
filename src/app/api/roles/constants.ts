@@ -2,7 +2,7 @@ export const rolesList = [
   {
     id: 'developer',
     subRoles: {
-      frontend: ['ui', 'prototyping', 'spa', 'crossBrowser'],
+      frontend: ['prototyping', 'spa', 'crossBrowser'],
       backend: [
         'api',
         'database',

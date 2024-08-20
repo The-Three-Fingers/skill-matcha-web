@@ -32,17 +32,15 @@ export const ProfileValidation = z.object({
   languages: z.array(z.string().min(2).max(5)).default([]),
   location: z.string().optional(),
   // Role
-  roles: z
-    .array(z.string())
-    .min(1, {
-      message: 'Please choose one role',
-    })
-    .max(1),
+  // TODO: make it as array later for multi roles
+  roles: z.string({
+    message: 'Please choose one role',
+  }),
   subRoles: z.array(z.string()).max(5).default([]),
   services: z
     .array(z.string())
     .min(1, {
-      message: 'At least one item is required',
+      message: 'At least one service is required',
     })
     .max(10),
   // Idea

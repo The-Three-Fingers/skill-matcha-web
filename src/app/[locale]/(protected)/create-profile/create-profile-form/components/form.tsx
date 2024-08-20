@@ -8,7 +8,6 @@ import { useForm } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { Progress } from '@/components/ui/progress';
-import { TypographyH3 } from '@/components/ui/typography';
 import { useCreateProfile } from '@/hooks/mutations/use-create-profile';
 import { ProfileValidation } from '@/validations/profile-validation';
 
@@ -21,7 +20,7 @@ const defaultValues = {
   lastName: '',
   languages: [],
   location: '',
-  roles: [],
+  roles: '',
   subRoles: [],
   services: [],
   searchRoles: [],
@@ -87,9 +86,7 @@ const CreateForm = ({
         className="relative flex size-full w-full flex-col justify-between"
         onSubmit={handleSubmit(createProfile)}
       >
-        <div className="mx-auto flex w-full max-w-lg flex-col gap-10 p-5">
-          <TypographyH3>{t(`stepTitles.${activeStep}`)}</TypographyH3>
-
+        <div className="mx-auto flex w-full max-w-lg p-5">
           <StepComponent key={activeStep} />
         </div>
 
