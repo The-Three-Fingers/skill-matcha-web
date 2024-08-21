@@ -1,11 +1,11 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 import { TypographyH2, TypographyH4 } from '@/components/ui/typography';
 
 import { CollectEmailButton } from './collect-email-button';
 
-export default function HeroSection() {
-  const t = useTranslations('landing');
+export default async function HeroSection() {
+  const t = await getTranslations('landing');
 
   return (
     <section className="flex w-full flex-col items-start justify-start gap-10 md:gap-16">

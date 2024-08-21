@@ -13,7 +13,13 @@ import { AppConfig } from '@/utils/AppConfig';
 
 import NavbarButtons from './navbar-buttons';
 
-const BaseTemplate = (props: { children: React.ReactNode }) => {
+const BaseTemplate = ({
+  children,
+  isPublicPage,
+}: {
+  children: React.ReactNode;
+  isPublicPage?: boolean;
+}) => {
   const pathname = usePathname();
   const { user } = useAuth();
   const isAuthPage = pathname === '/login' || pathname === '/sign-up';
@@ -34,18 +40,22 @@ const BaseTemplate = (props: { children: React.ReactNode }) => {
             </h1>
           </Link>
 
-          <div className="flex items-center gap-2">
-            {user ? (
-              <NavbarButtons />
-            ) : (
-              !isAuthPage && (
-                <>
-                  <LogInButton />
-                  <SignUpButton />
-                </>
-              )
+          <div className="flex items-center gap-4">
+            {!isPublicPage && (
+              <div className="flex items-center gap-2">
+                {user ? (
+                  <NavbarButtons />
+                ) : (
+                  !isAuthPage && (
+                    <>
+                      <LogInButton />
+                      <SignUpButton />
+                    </>
+                  )
+                )}
+              </div>
             )}
-            <ThemeToggle className="ml-2" />
+            <ThemeToggle />
           </div>
         </div>
       </header>
@@ -56,7 +66,7 @@ const BaseTemplate = (props: { children: React.ReactNode }) => {
         </div>
       </main> */}
 
-      <main className="flex-1">{props.children}</main>
+      <main className="flex-1">{children}</main>
       <Toaster />
     </div>
   );

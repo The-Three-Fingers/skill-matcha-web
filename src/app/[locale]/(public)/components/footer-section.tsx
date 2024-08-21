@@ -1,17 +1,17 @@
 import { Linkedin } from 'lucide-react';
 import Link from 'next/link';
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 
 import { TypographyH4 } from '@/components/ui/typography';
 
-export default function FooterSection() {
-  const t = useTranslations('externalLinks');
+export default async function FooterSection() {
+  const t = await getTranslations('externalLinks');
 
   const year = new Date().getFullYear();
 
   return (
     <footer className="flex flex-col items-center justify-center gap-8 p-10 text-center text-foreground lg:pt-14">
-      <div className="gap-2 flex flex-col">
+      <div className="flex flex-col gap-2">
         <TypographyH4>© {year} SKILLMATCHA</TypographyH4>
         <Link href="/" className="hover:text-primary-500 transition">
           {t('termsOfService')}

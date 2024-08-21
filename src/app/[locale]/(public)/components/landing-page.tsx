@@ -1,5 +1,3 @@
-'use client';
-
 import CTASection from './CTA-section';
 import FeaturesHighlights from './features-highlights';
 import FooterSection from './footer-section';
@@ -27,17 +25,6 @@ function LandingPage() {
 
       <FeaturesHighlights />
 
-      {/* {showDemoInterface && (
-          <SectionAppear>
-            <div className="center-content w-full">
-              <Image
-                src={interfaceSrc}
-                alt="interface"
-                className="my-4 w-4/5 max-w-screen-xl object-cover sm:my-6 xl:my-8"
-              />
-            </div>
-          </SectionAppear>
-        )} */}
       <FooterSection />
     </div>
   );

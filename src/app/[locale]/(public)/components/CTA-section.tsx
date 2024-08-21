@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import Marquee from 'react-fast-marquee';
 
 import { TypographyH2, TypographyP } from '@/components/ui/typography';
@@ -61,8 +61,8 @@ function StagesLines(props: StagesLinesProps) {
   );
 }
 
-export default function CTASection() {
-  const t = useTranslations('landing');
+export default async function CTASection() {
+  const t = await getTranslations('landing');
 
   const stagesLines = lines.map((line) => ({
     ...line,

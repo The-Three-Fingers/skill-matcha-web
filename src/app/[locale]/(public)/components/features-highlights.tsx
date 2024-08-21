@@ -23,10 +23,6 @@ function FeatureHighlightCard({
           <p className="text-base font-normal text-gray-700">{description}</p>
         </div>
       </div>
-
-      {/* Handles */}
-      <div className="absolute left-0 top-[calc(50%_-_16px)] h-8 w-2 rounded-r-3xl bg-primary transition group-hover:bg-white" />
-      <div className="absolute right-0 top-[calc(50%_-_16px)] h-8 w-2 rounded-l-3xl bg-primary transition group-hover:bg-white" />
     </div>
   );
 }
@@ -41,10 +37,6 @@ export default function FeaturesHighlights() {
       </TypographyH2>
 
       <div className="flex w-full flex-col items-center justify-center gap-6 px-4 md:relative md:flex-row md:gap-4 lg:gap-10">
-        <div
-          className="absolute left-0 top-[calc(50%_-_1px)] z-20 hidden
-                        h-px w-full border-2 border-dashed border-primary md:block"
-        />
         <FeatureHighlightCard
           title={t('featuresCardTitle1')}
           description={t('featuresCardDescription1')}

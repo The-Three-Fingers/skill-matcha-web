@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const sendLeadForm = z.object({
+export const SendLeadForm = z.object({
   email: z
     .string()
     .email('Invalid email address')
