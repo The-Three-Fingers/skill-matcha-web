@@ -36,7 +36,7 @@ function UserCard({ index, className, stage }: UserCardProps) {
   return (
     <div
       className={cn(
-        'relative size-44 gap-1 overflow-hidden p-4 transition md:p-3 lg:gap-2',
+        'relative size-44 gap-1 p-4 transition md:p-3 lg:gap-2',
         'group inline-flex flex-col items-center justify-between rounded-lg bg-background border-2 border-background dark:border-accent text-foreground cursor-pointer shadow-soft-outline',
         'dark:shadow-none',
         {
@@ -66,7 +66,7 @@ function UserCard({ index, className, stage }: UserCardProps) {
         {idea ?? 'Co-Founder Candidate'}
       </TypographySmall>
 
-      <div className="absolute left-0 top-0 flex size-full items-center justify-center gap-5 bg-foreground/50 opacity-0 transition-all group-hover:opacity-100 dark:bg-background/80">
+      <div className="absolute -inset-0.5 flex  items-center justify-center gap-5 rounded-lg bg-foreground/50 opacity-0 transition-all group-hover:opacity-100 dark:bg-background/80">
         <Button
           className="-translate-x-4 scale-125 text-destructive/80 opacity-0 transition-all hover:text-destructive group-hover:translate-x-0 group-hover:opacity-100"
           onClick={handleDislike}

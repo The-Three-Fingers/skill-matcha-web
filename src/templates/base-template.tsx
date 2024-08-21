@@ -1,6 +1,5 @@
 'use client';
 
-import { UserRoundCheck } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -9,6 +8,7 @@ import { LogInButton } from '@/components/login-button';
 import { SignUpButton } from '@/components/sign-up-button';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Toaster } from '@/components/ui/toaster';
+import { cn } from '@/libs/utils';
 import { AppConfig } from '@/utils/AppConfig';
 
 import NavbarButtons from './navbar-buttons';
@@ -29,13 +29,18 @@ const BaseTemplate = ({
 
   return (
     <div className="flex size-full flex-col antialiased">
-      <header className="h-14 flex-none border-b bg-white dark:bg-background">
-        <div className="mx-auto flex h-full max-w-screen-xl items-center px-4">
+      <header
+        className={cn('h-20 flex-none bg-primary/15', {
+          'border-b bg-white dark:bg-background h-14': !isPublicPage,
+        })}
+      >
+        <div className="mx-auto flex h-full max-w-screen-lg items-center px-4">
           <Link href="/" className="mr-auto">
-            <h1 className="flex items-center gap-2 text-xl font-bold uppercase text-primary">
-              {/* <Logo className="size-10" /> */}
-              {/* <UsersRound  /> */}
-              <UserRoundCheck className="size-10 -rotate-6" />
+            <h1
+              className={cn('font-bold uppercase text-primary text-3xl', {
+                'text-xl': !isPublicPage,
+              })}
+            >
               {AppConfig.name}
             </h1>
           </Link>
@@ -55,7 +60,11 @@ const BaseTemplate = ({
                 )}
               </div>
             )}
-            <ThemeToggle />
+            <ThemeToggle
+              className={cn({
+                'hover:bg-primary/20 size-12': isPublicPage,
+              })}
+            />
           </div>
         </div>
       </header>

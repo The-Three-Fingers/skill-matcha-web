@@ -43,7 +43,7 @@ export default async function FooterSection() {
           // rel="noopener noreferrer"
           aria-label="Visit our LinkedIn page"
         >
-          <Linkedin className="group-hover:[&_path]:fill-primary-500 size-8 [&_path]:transition" />
+          <Linkedin className="size-8 transition-colors group-hover:text-primary" />
         </a>
       </div>
     </footer>
