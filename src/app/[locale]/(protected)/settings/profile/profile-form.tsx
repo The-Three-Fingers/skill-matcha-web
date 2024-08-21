@@ -2,7 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
-import React, { useState } from 'react';
+import React from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { type z } from 'zod';
 
@@ -50,7 +50,6 @@ const ProfileForm = () => {
     formState: { isValid },
   } = form;
 
-  const [file, setFile] = useState<string | undefined>(undefined);
   const t = useTranslations('profile');
 
   const { toast } = useToast();
@@ -77,7 +76,7 @@ const ProfileForm = () => {
     <div className="flex flex-col gap-10">
       <FormProvider {...form}>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-          <ProfileFormFields file={file} setFile={setFile} />
+          <ProfileFormFields />
           <Button type="submit" disabled={!isValid} className="w-full">
             {t('submitButton')}
           </Button>

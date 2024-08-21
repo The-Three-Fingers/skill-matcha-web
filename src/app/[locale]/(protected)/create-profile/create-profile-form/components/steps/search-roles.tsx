@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import { MultiChoiceField } from '@/components/ui/multi-choice-field';
 
 const SearchRoles = () => {
-  const t = useTranslations('CreateProfileForm');
+  const t = useTranslations('createProfileForm');
 
   const searchOptions = {
     developer: t('search_options.developer'),

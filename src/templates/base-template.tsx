@@ -1,5 +1,6 @@
 'use client';
 
+import { UserRoundCheck } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -25,7 +26,10 @@ const BaseTemplate = (props: { children: React.ReactNode }) => {
       <header className="h-14 flex-none border-b bg-white dark:bg-background">
         <div className="mx-auto flex h-full max-w-screen-xl items-center px-4">
           <Link href="/" className="mr-auto">
-            <h1 className="text-xl font-bold uppercase text-primary">
+            <h1 className="flex items-center gap-2 text-xl font-bold uppercase text-primary">
+              {/* <Logo className="size-10" /> */}
+              {/* <UsersRound  /> */}
+              <UserRoundCheck className="size-10 -rotate-6" />
               {AppConfig.name}
             </h1>
           </Link>

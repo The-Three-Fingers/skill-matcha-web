@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import InputField from '@/components/ui/input-field';
 
 const Idea = () => {
-  const t = useTranslations('CreateProfileForm');
+  const t = useTranslations('createProfileForm');
 
   return (
     <InputField

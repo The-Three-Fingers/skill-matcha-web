@@ -9,7 +9,7 @@ import { useLoadingCallback } from 'react-loading-hook';
 import { logout } from '@/api';
 import { getFirebaseAuth } from '@/auth/firebase';
 
-const LogOutButton = () => {
+const LogOutButton = ({ className }: { className?: string }) => {
   const router = useRouter();
   const t = useTranslations('Auth');
 
@@ -27,7 +27,7 @@ const LogOutButton = () => {
   });
 
   return (
-    <button type="button" onClick={handleLogout}>
+    <button type="button" className={className} onClick={handleLogout}>
       {t('log_out_link')}
     </button>
   );

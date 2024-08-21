@@ -56,10 +56,12 @@ const NavbarButtons: React.FC = () => {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuItem>
-            <Link href="/settings">{t('settings')}</Link>
+            <Link href="/settings" className="w-full">
+              {t('settings')}
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuItem>
-            <LogOutButton />
+            <LogOutButton className="w-full text-left" />
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

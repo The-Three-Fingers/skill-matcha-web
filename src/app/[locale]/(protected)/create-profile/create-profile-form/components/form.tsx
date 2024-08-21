@@ -7,9 +7,11 @@ import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
+import { Progress } from '@/components/ui/progress';
 import { useCreateProfile } from '@/hooks/mutations/use-create-profile';
 import { ProfileValidation } from '@/validations/profile-validation';
 
+import { steps } from '../constants';
 import type { CreateProfileFormFields } from '../types';
 import { Idea, PersonalInfo, Roles, SearchRoles } from './steps';
 
@@ -18,7 +20,7 @@ const defaultValues = {
   lastName: '',
   languages: [],
   location: '',
-  roles: [],
+  roles: '',
   subRoles: [],
   services: [],
   searchRoles: [],
@@ -48,7 +50,7 @@ const CreateForm = ({
 }) => {
   const router = useRouter();
 
-  const t = useTranslations('CreateProfileForm');
+  const t = useTranslations('createProfileForm');
 
   const { mutateAsync } = useCreateProfile();
 
@@ -76,30 +78,47 @@ const CreateForm = ({
     return null;
   }
 
+  const progressValue = ((steps.indexOf(activeStep) + 1) / steps.length) * 100;
+
   return (
     <Form {...form}>
       <form
-        className="flex w-full flex-col gap-y-4 p-5 sm:w-4/5 lg:w-1/2"
+        className="relative flex size-full w-full flex-col justify-between"
         onSubmit={handleSubmit(createProfile)}
       >
-        <div className="flex flex-col gap-2">
-          <StepComponent />
+        <div className="mx-auto flex w-full max-w-lg p-5">
+          <StepComponent key={activeStep} />
         </div>
 
-        <div className="mt-5 flex flex-col items-center justify-stretch gap-2">
-          {isBackButtonVisible && (
-            <Button className="w-full" variant="secondary" onClick={onBack}>
-              {t('back')}
-            </Button>
-          )}
-          <Button
-            className="w-full"
-            disabled={isLastStep && !isValid}
-            onClick={isLastStep ? undefined : onNext}
-            type={isLastStep ? 'submit' : 'button'}
-          >
-            {isLastStep ? t('create') : t('next')}
-          </Button>
+        <div>
+          <Progress
+            indicatorClassName="bg-primary/70"
+            className="h-2 rounded-none"
+            value={progressValue}
+          />
+          <div className="flex w-full items-center justify-center bg-white p-3 dark:bg-background">
+            <div className="mx-auto flex w-full max-w-lg items-center gap-2">
+              {isBackButtonVisible && (
+                <Button
+                  size="lg"
+                  className="flex-1"
+                  variant="secondary"
+                  onClick={onBack}
+                >
+                  {t('back')}
+                </Button>
+              )}
+              <Button
+                className="flex-1"
+                size="lg"
+                disabled={isLastStep && !isValid}
+                onClick={isLastStep ? undefined : onNext}
+                type={isLastStep ? 'submit' : 'button'}
+              >
+                {isLastStep ? t('create') : t('next')}
+              </Button>
+            </div>
+          </div>
         </div>
       </form>
     </Form>

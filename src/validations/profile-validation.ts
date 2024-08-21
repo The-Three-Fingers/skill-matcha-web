@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-const MAX_FILE_SIZE = 5 * 1024 * 1024;
+const MAX_FILE_SIZE = 1024 * 1024;
 
 export const ProfileValidation = z.object({
   // Personal info
@@ -21,29 +21,26 @@ export const ProfileValidation = z.object({
       message: 'Last name must be maximum 150 characters',
     }),
 
-  avatarURL: z
-    .custom<FileList | null>()
-    .transform((file) => (file && file.length > 0 ? file.item(0) : null))
-    .refine((file) => !file || (!!file && file.size <= MAX_FILE_SIZE), {
-      message: 'The profile picture must be a maximum of 10MB.',
-    })
-    .optional(),
+  avatarURL: (typeof window === 'undefined'
+    ? z.any()
+    : z.instanceof(File).refine((file) => file.size <= MAX_FILE_SIZE, {
+        message: 'The profile picture must be a maximum of 1MB',
+      })
+  ).optional(),
 
   aboutInfo: z.string().max(1000).min(10).optional(),
   languages: z.array(z.string().min(2).max(5)).default([]),
-  location: z.string().min(2).max(2).optional(),
+  location: z.string().optional(),
   // Role
-  roles: z
-    .array(z.string())
-    .min(1, {
-      message: 'Please choose one role',
-    })
-    .max(1),
+  // TODO: make it as array later for multi roles
+  roles: z.string({
+    message: 'Please choose one role',
+  }),
   subRoles: z.array(z.string()).max(5).default([]),
   services: z
     .array(z.string())
     .min(1, {
-      message: 'At least one item is required',
+      message: 'At least one service is required',
     })
     .max(10),
   // Idea
