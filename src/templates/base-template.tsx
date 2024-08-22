@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -30,16 +31,25 @@ const BaseTemplate = ({
   return (
     <div className="flex size-full flex-col antialiased">
       <header
-        className={cn('h-20 flex-none bg-primary/15', {
+        className={cn('h-24 flex-none bg-primary/15', {
           'border-b bg-white dark:bg-background h-14': !isPublicPage,
         })}
       >
         <div className="mx-auto flex h-full max-w-screen-lg items-center px-4">
-          <Link href="/" className="mr-auto">
+          <Link href="/" className="mr-auto flex items-center gap-4">
+            <Image
+              src="/assets/images/logo.png"
+              alt="logo"
+              width={60}
+              height={60}
+            />
             <h1
-              className={cn('font-bold uppercase text-primary text-3xl', {
-                'text-xl': !isPublicPage,
-              })}
+              className={cn(
+                'font-bold uppercase text-primary sm:text-3xl text-xl',
+                {
+                  'text-xl': !isPublicPage,
+                },
+              )}
             >
               {AppConfig.name}
             </h1>

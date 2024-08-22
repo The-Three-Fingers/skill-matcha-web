@@ -1,5 +1,6 @@
 import '@/styles/global.css';
 
+import { GoogleTagManager } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google';
 import { cookies, headers } from 'next/headers';
@@ -66,12 +67,25 @@ export default async function RootLayout(props: {
 
   return (
     <html lang={props.params.locale}>
+      <GoogleTagManager gtmId="GTM-MWX2L65H" />
       <body
         className={cn(
           'h-screen font-sans antialiased selection:bg-primary selection:text-primary-foreground',
           fontSans.variable,
         )}
       >
+        <noscript>
+          <iframe
+            title="Google Tag Manager"
+            src="https://www.googletagmanager.com/ns.html?id=GTM-MWX2L65H"
+            height={0}
+            width={0}
+            style={{
+              display: 'none',
+              visibility: 'hidden',
+            }}
+          />
+        </noscript>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
