@@ -1,7 +1,5 @@
 import { getTranslations, unstable_setRequestLocale } from 'next-intl/server';
 
-import { AppConfig } from '@/utils/AppConfig';
-
 import { LandingPage } from './components';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
@@ -14,9 +12,9 @@ export async function generateMetadata(props: { params: { locale: string } }) {
     title: t('meta_title'),
     description: t('meta_description'),
     openGraph: {
-      images: '',
-      title: AppConfig.name,
-      description: '',
+      images: '/assets/images/og-image.png',
+      title: t('meta_title'),
+      description: t('meta_description'),
     },
   };
 }
