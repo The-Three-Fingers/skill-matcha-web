@@ -24,6 +24,9 @@ const config = {
       fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans],
       },
+      backgroundImage: {
+        landing: 'url(/assets/images/background.svg)',
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',

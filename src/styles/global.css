@@ -32,7 +32,7 @@
     --card-foreground: 107 0% 100%;
     --popover: 107 10% 5%;
     --popover-foreground: 107 0% 100%;
-    --primary: 107 57.1% 42.9%;
+    --primary: 91 66% 53%;
     --primary-foreground: 0 0% 100%;
     --secondary: 107 10% 20%;
     --secondary-foreground: 0 0% 100%;
@@ -65,3 +65,22 @@
     @apply bg-background text-foreground;
   }
 }
+
+.marquee-vertical {
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.marquee-vertical .marquee-vertical__child{
+  padding-top: 50%;
+  animation: marquee 15s linear infinite;
+}
+
+.marquee-vertical_down .marquee-vertical__child {
+  animation-direction: reverse;
+}
+
+@keyframes marquee {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-48.5%); }
+}
+

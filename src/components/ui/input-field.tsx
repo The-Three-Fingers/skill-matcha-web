@@ -11,7 +11,7 @@ import { Input } from '@/components/ui/input';
 
 type InputFieldProps = {
   name: string;
-  label: string;
+  label?: string;
   placeholder: string;
 };
 
@@ -24,7 +24,7 @@ const InputField = ({ name, label, placeholder }: InputFieldProps) => {
       name={name}
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{label}</FormLabel>
+          {label && <FormLabel>{label}</FormLabel>}
           <FormControl>
             <Input placeholder={placeholder} {...field} />
           </FormControl>

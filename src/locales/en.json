@@ -22,8 +22,8 @@
     "description": "Match by your skills faster with our platform"
   },
   "Index": {
-    "meta_title": "Match by your skills faster",
-    "meta_description": "Match by your skills faster with our platform"
+    "meta_title": "SKILLMATCHA - AI-Powered Matchmaking for Startup Success",
+    "meta_description": "Find Your Perfect Startup Partner with AI"
   },
   "CreateProfile": {
     "meta_title": "Create profile",
@@ -296,6 +296,34 @@
   "account": {
     "metaTitle": "Account",
     "metaDescription": "Manage your account settings."
+  },
+  "landing": {
+    "heroTitle1": "Find Your",
+    "heroTitle2": "Perfect Startup Partner",
+    "heroTitle3": "with AI",
+    "heroDescription1": "Let AI match your ideas with the right talent for your startup.",
+    "heroDescription2": "Effortlessly find, select, and team up to build your unicorn.",
+    "heroButton": "Send Request",
+    "ctaTitle": "Get Early Access",
+    "ctaDescription1": "Send request to stay in the loop",
+    "ctaDescription2": "Be the first to know when we launch",
+    "ctaDescription3": "Experience our platform before anyone else",
+    "descriptionButton": "Send Request",
+    "featuresTitle": "Why Choose Us?",
+    "featuresCardTitle1": "Find Your Perfect Match",
+    "featuresCardDescription1": "Discover co-founders with the skills you need and align your startup vision for success.",
+    "featuresCardTitle2": "AI-Powered Matching",
+    "featuresCardDescription2": "Use our AI to find compatible partners and streamline your path to startup success",
+    "featuresCardTitle3": "Expand Your Network",
+    "featuresCardDescription3": "Tap into a vast talent pool to build your dream team and create the best product together.",
+    "dialogTitle": "Get Early Access",
+    "dialogDescription": "Send request to stay in the loop and be among the first to experience our platform when it launches",
+    "dialogSuccessTitle": "Thank you!",
+    "dialogSuccessDescription": "We will reach out to you shortly 🚀"
+  },
+  "externalLinks": {
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Use"
   },
   "Navigation": {
     "settings": "Settings",
