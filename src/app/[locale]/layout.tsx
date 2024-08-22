@@ -22,6 +22,7 @@ const fontSans = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://skillmatcha.app'),
   icons: [
     {
       rel: 'apple-touch-icon',
