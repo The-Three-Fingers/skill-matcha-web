@@ -257,14 +257,18 @@
   "Settings": {
     "meta_title": "Profile settings",
     "meta_description": "Update your profile settings",
-    "profile_settings": "Profile settings",
-    "account_settings": "Account settings",
+    "profileSettings": "Profile settings",
+    "preferencesSettings": "Match Preferences Settings",
     "page_title": "Settings",
-    "page_description": "Manage your profile and account settings"
+    "page_description": "Manage your profile and preferences settings"
   },
   "profile": {
     "metaTitle": "Profile",
     "metaDescription": "This is how others will see you on the site.",
+    "nameTitle": "Update your name",
+    "namePlaceholder": "Enter your name",
+    "lastNameTitle": "Update your last name",
+    "lastNamePlaceholder": "Enter your last name",
     "aboutMe": "About Me",
     "aboutMeDescription": "Use this space to tell others more about who you. Share your passions, hobbies, or a fun fact!",
     "aboutMePlaceholder": "Share a bit about yourself – hobbies, interests, or fun facts!",
