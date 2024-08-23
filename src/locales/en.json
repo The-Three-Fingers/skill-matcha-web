@@ -217,8 +217,12 @@
       "targetedAdvertising": "Targeted Advertising",
       "socialMediaCrisis": "Social Media Crisis Management"
     },
-    "idea": "Idea",
-    "ideaPlaceholder": "Enter your idea",
+    "idea": {
+      "noOption": "No",
+      "yesOption": "Yes"
+    },
+    "ideaStageLabel": "Idea stage",
+    "ideaIndustryLabel": "Idea industry",
     "back": "Back",
     "next": "Next",
     "create": "Create profile"

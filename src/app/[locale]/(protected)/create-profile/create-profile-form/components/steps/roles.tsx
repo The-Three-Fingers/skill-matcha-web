@@ -135,7 +135,7 @@ const Roles = () => {
             label={t('servicesLabel')}
             name="services"
             options={servicesOptions}
-            isMultiple
+            type="multiple"
           />
         )}
       </div>
