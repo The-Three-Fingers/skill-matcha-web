@@ -10,12 +10,19 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 
 type TextareaFieldProps = {
+  textAreaClassName?: string;
   name: string;
   label: string;
-  placeholder: string;
+  placeholder?: string;
+  isResizable?: boolean;
 };
 
-const TextareaField = ({ name, label, placeholder }: TextareaFieldProps) => {
+const TextareaField = ({
+  textAreaClassName,
+  name,
+  label,
+  placeholder,
+}: TextareaFieldProps) => {
   const { control } = useFormContext();
 
   return (
@@ -26,7 +33,11 @@ const TextareaField = ({ name, label, placeholder }: TextareaFieldProps) => {
         <FormItem>
           <FormLabel>{label}</FormLabel>
           <FormControl>
-            <Textarea placeholder={placeholder} {...field} />
+            <Textarea
+              className={textAreaClassName}
+              placeholder={placeholder}
+              {...field}
+            />
           </FormControl>
           <FormMessage />
         </FormItem>

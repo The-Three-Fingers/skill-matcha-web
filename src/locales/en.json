@@ -33,7 +33,7 @@
     "stepTitles": {
       "personal": "Personal information",
       "roles": "What is your role",
-      "idea": "Do you have a project idea?",
+      "idea": "Do you have a startup idea?",
       "searchRoles": "Who are you looking for?"
     },
     "name": "Name",
@@ -222,7 +222,8 @@
       "yesOption": "Yes"
     },
     "ideaStageLabel": "Idea stage",
-    "ideaIndustryLabel": "Idea industry",
+    "ideaDescriptionLabel": "Idea description",
+    "ideaDescriptionPlaceholder": "Describe your idea",
     "back": "Back",
     "next": "Next",
     "create": "Create profile"

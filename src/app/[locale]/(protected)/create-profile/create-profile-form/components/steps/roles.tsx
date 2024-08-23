@@ -123,7 +123,7 @@ const Roles = () => {
 
   return (
     <div className="flex w-full flex-col items-center gap-10">
-      <TypographyH3 className="mb-4">{t(`stepTitles.roles`)}</TypographyH3>
+      <TypographyH3>{t(`stepTitles.roles`)}</TypographyH3>
 
       <div className="flex flex-col items-center gap-4">
         <RolesField options={roleOptions} />

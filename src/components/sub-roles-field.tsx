@@ -27,7 +27,7 @@ const SubRolesField = ({
         <FormItem>
           <FormLabel>{t('subRolesLabel')}</FormLabel>
           <FormControl>
-            <MultiCombobox isClearable options={options} {...field} />
+            <MultiCombobox isSearchable={false} isClearable options={options} {...field} />
           </FormControl>
           <FormMessage />
         </FormItem>

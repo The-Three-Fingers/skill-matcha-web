@@ -29,6 +29,7 @@ const MultiCombobox = React.forwardRef<
   {
     className?: string;
     isClearable?: boolean;
+    isSearchable?: boolean;
     onChange?: (value: string[]) => void;
     options: Option[];
     placeholder?: string;
@@ -41,6 +42,7 @@ const MultiCombobox = React.forwardRef<
     {
       className,
       isClearable,
+      isSearchable = true,
       onChange,
       options,
       placeholder = 'Select ...',
@@ -159,7 +161,7 @@ const MultiCombobox = React.forwardRef<
           }}
         >
           <Command>
-            <CommandInput placeholder={searchPlaceholder} />
+            {isSearchable && <CommandInput placeholder={searchPlaceholder} />}
             <CommandList>
               <CommandEmpty>Nothing found.</CommandEmpty>
               <CommandGroup>

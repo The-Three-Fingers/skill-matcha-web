@@ -1,7 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { useFormContext } from 'react-hook-form';
 
-import { Combobox } from '@/components/ui/combobox';
 import {
   FormControl,
   FormField,
@@ -9,27 +8,32 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
+import { useIdeaStages } from '@/hooks/queries/use-idea-stages';
 
-const RolesField = ({
-  options,
-}: {
-  options: { value: string; label: string }[];
-}) => {
-  const t = useTranslations('profileForm');
+import { Combobox } from './ui/combobox';
 
+const IdeaStageField = () => {
   const { control } = useFormContext();
+
+  const t = useTranslations('profileForm');
+  const { data: ideaStages = [] } = useIdeaStages();
+
+  const ideaStagesOptions = ideaStages.map((ideaStage) => ({
+    label: ideaStage.name,
+    value: ideaStage.id,
+  }));
 
   return (
     <FormField
       control={control}
-      name="roles"
+      name="ideaStage"
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{t('role')}</FormLabel>
+          <FormLabel>{t('ideaStageLabel')}</FormLabel>
           <FormControl>
             <Combobox
               isSearchable={false}
-              options={options}
+              options={ideaStagesOptions}
               className="flex"
               isClearable
               {...field}
@@ -42,4 +46,4 @@ const RolesField = ({
   );
 };
 
-export { RolesField };
+export { IdeaStageField };
