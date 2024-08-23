@@ -17,9 +17,6 @@ import ProfileFormFields from './profile-form-fields';
 type ProfileFormValues = z.infer<typeof ProfileValidation>;
 
 // добавить из регистрации когда будет готова
-// имя+фамилия
-// languages
-// location
 // roles
 // subRoles
 // services
@@ -31,10 +28,10 @@ const ProfileForm = () => {
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(ProfileValidation),
     defaultValues: {
-      // name: '',
-      // lastName: '',
-      // languages: [],
-      // location: '',
+      name: 'test',
+      lastName: 'test',
+      languages: [],
+      location: '',
       // roles: [],
       // subRoles: [],
       // services: [],

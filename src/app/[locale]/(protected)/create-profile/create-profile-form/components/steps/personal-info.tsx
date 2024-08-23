@@ -2,10 +2,12 @@
 
 import { useTranslations } from 'next-intl';
 
-import { AvatarUploadField } from '@/components/avatar-upload-field';
+import {
+  AvatarUploadField,
+  LanguagesSelector,
+  LocationSelector,
+} from '@/components';
 import InputField from '@/components/input-field';
-import { LanguagesSelector } from '@/components/languages-selector';
-import { LocationSelector } from '@/components/location-selector';
 import { TypographyH3 } from '@/components/ui/typography';
 
 const PersonalInfo = () => {

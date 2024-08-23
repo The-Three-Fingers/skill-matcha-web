@@ -27,11 +27,11 @@ const Settings = ({ children }: SettingsProps) => {
 
   const sidebarNavItems = [
     {
-      title: t('profile_settings'),
+      title: t('profileSettings'),
       href: '/settings/profile',
     },
     {
-      title: t('account_settings'),
+      title: t('preferencesSettings'),
       href: '/settings/account',
     },
   ];
