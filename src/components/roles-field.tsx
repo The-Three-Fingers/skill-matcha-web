@@ -28,6 +28,7 @@ const RolesField = ({
           <FormLabel>{t('role')}</FormLabel>
           <FormControl>
             <Combobox
+              isSearchable={false}
               options={options}
               className="flex"
               isClearable

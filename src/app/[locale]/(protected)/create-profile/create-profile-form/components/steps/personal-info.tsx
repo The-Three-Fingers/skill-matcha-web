@@ -14,7 +14,7 @@ const PersonalInfo = () => {
   const t = useTranslations('profileForm');
 
   return (
-    <div className="flex w-full flex-col items-center gap-8">
+    <div className="flex w-full flex-col items-center gap-10">
       <TypographyH3>{t(`stepTitles.personal`)}</TypographyH3>
 
       <div className="flex w-full flex-col items-center gap-4">

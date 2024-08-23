@@ -21,6 +21,7 @@ const defaultValues = {
   languages: [],
   location: '',
   roles: '',
+  hasIdea: 'false',
   subRoles: [],
   services: [],
   searchRoles: [],
@@ -54,7 +55,7 @@ const CreateForm = ({
 
   const { mutateAsync } = useCreateProfile();
 
-  const form = useForm({
+  const form = useForm<ProfileFormFields>({
     resolver: zodResolver(ProfileValidation),
     defaultValues,
   });

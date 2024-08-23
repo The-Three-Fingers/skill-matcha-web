@@ -8,29 +8,34 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { MultiCombobox } from '@/components/ui/multi-combobox';
+import { useIdeaStages } from '@/hooks/queries/use-idea-stages';
 
-const SubRolesField = ({
-  options,
-}: {
-  options: { value: string; label: string }[];
-}) => {
-  const t = useTranslations('profileForm');
+import { Combobox } from './ui/combobox';
 
+const IdeaStageField = () => {
   const { control } = useFormContext();
+
+  const t = useTranslations('profileForm');
+  const { data: ideaStages = [] } = useIdeaStages();
+
+  const ideaStagesOptions = ideaStages.map((ideaStage) => ({
+    label: ideaStage.name,
+    value: ideaStage.id,
+  }));
 
   return (
     <FormField
       control={control}
-      name="subRoles"
+      name="ideaStage"
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{t('subRolesLabel')}</FormLabel>
+          <FormLabel>{t('ideaStageLabel')}</FormLabel>
           <FormControl>
-            <MultiCombobox
+            <Combobox
               isSearchable={false}
+              options={ideaStagesOptions}
+              className="flex"
               isClearable
-              options={options}
               {...field}
             />
           </FormControl>
@@ -41,4 +46,4 @@ const SubRolesField = ({
   );
 };
 
-export { SubRolesField };
+export { IdeaStageField };

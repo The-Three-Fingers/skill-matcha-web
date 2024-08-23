@@ -44,16 +44,9 @@ export const ProfileValidation = z.object({
     })
     .max(10),
   // Idea
-  idea: z
-    .object({
-      stage: z.string().min(1, {
-        message: 'Idea stage must be selected',
-      }),
-      area: z.string().min(1, {
-        message: 'Idea area must be selected',
-      }),
-    })
-    .optional(),
+  hasIdea: z.string().default('false'),
+  ideaStage: z.string().optional(),
+  ideaDescription: z.string().max(1000).optional(),
   // Search preferences
   searchRoles: z.array(z.string()).default([]),
   searchSubRoles: z.array(z.string()).max(5).default([]),

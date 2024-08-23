@@ -29,6 +29,7 @@ const Combobox = React.forwardRef<
       SelectedValue?: React.ElementType;
     };
     isClearable?: boolean;
+    isSearchable?: boolean;
     onChange?: (value: string) => void;
     options: Record<string, any>[];
     placeholder?: string;
@@ -42,6 +43,7 @@ const Combobox = React.forwardRef<
       className,
       components,
       isClearable,
+      isSearchable = true,
       onChange,
       options,
       placeholder = 'Select ...',
@@ -122,7 +124,7 @@ const Combobox = React.forwardRef<
         >
           <Command>
             {/* Fix bug with search */}
-            <CommandInput placeholder={searchPlaceholder} />
+            {isSearchable && <CommandInput placeholder={searchPlaceholder} />}
             <CommandList>
               <CommandEmpty>Nothing found.</CommandEmpty>
               <CommandGroup>
