@@ -1,15 +1,15 @@
 import { useTranslations } from 'next-intl';
 
-import InputField from '@/components/ui/input-field';
+import InputField from '@/components/input-field';
 
 const Idea = () => {
-  const t = useTranslations('createProfileForm');
+  const t = useTranslations('profileForm');
 
   return (
     <InputField
       name="idea"
       label={t('idea')}
-      placeholder={t('idea_placeholder')}
+      placeholder={t('ideaPlaceholder')}
     />
   );
 };

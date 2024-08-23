@@ -13,7 +13,13 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 
-const AvatarUploadField = ({ name }: { name: string }) => {
+const AvatarUploadField = ({
+  className,
+  name,
+}: {
+  className?: string;
+  name: string;
+}) => {
   const { control, watch, setValue } = useFormContext();
 
   const labelRef = useRef<HTMLLabelElement | null>(null);
@@ -52,7 +58,7 @@ const AvatarUploadField = ({ name }: { name: string }) => {
         control={control}
         name={name}
         render={({ field: { value: _value, onChange, ...fieldProps } }) => (
-          <FormItem>
+          <FormItem className={className}>
             <FormLabel ref={labelRef}>{t('avatar')}</FormLabel>
             <FormControl>
               <Input
@@ -75,7 +81,7 @@ const AvatarUploadField = ({ name }: { name: string }) => {
                   className="size-full rounded-full object-cover"
                 />
               ) : (
-                <div className="flex size-full items-center justify-center rounded-full border border-input bg-background text-muted-foreground">
+                <div className="flex size-full items-center justify-center rounded-full border border-input bg-background text-foreground/80">
                   <UserRound className="size-12" />
                 </div>
               )}

@@ -29,23 +29,20 @@
     "meta_title": "Create profile",
     "meta_description": "Create your profile"
   },
-  "createProfileForm": {
+  "profileForm": {
     "stepTitles": {
-      "personal": "Tell us about yourself",
+      "personal": "Personal information",
       "roles": "What is your role",
       "idea": "Do you have a project idea?",
       "searchRoles": "Who are you looking for?"
     },
     "name": "Name",
-    "name_placeholder": "Enter your name",
-    "last_name": "Last name",
-    "last_name_placeholder": "Enter your last name",
-    "location": "Location",
-    "location_placeholder": "Select your location",
-    "languages": "Languages",
-    "languages_placeholder": "Select languages you speak",
-    "select_your_role": "Select your role",
-    "select_search_role": "Who are you looking for?",
+    "namePlaceholder": "Enter here ...",
+    "lastName": "Last name",
+    "lastNamePlaceholder": "Enter here ...",
+    "location": "Your location",
+    "languages": "Languages you speak",
+    "role": "Your role",
     "roleOptions": {
       "developer": "Developer",
       "designer": "Designer",
@@ -65,7 +62,7 @@
       "gameDeveloper": "Games",
       "embeddedDeveloper": "Hardware",
       "uiUx": "UI/UX",
-      "graphic": "Graphic",
+      "graphics": "Graphics",
       "motion": "Motion",
       "3d": "3D",
       "dataAnalyst": "Data Analyst",
@@ -220,17 +217,8 @@
       "targetedAdvertising": "Targeted Advertising",
       "socialMediaCrisis": "Social Media Crisis Management"
     },
-    "search_options": {
-      "developer": "Developer",
-      "designer": "Designer",
-      "product_manager": "Product Manager",
-      "founder": "Founder",
-      "marketing_specialist": "Marketing Specialist",
-      "cto": "CTO",
-      "other": "Other"
-    },
     "idea": "Idea",
-    "idea_placeholder": "Enter your idea",
+    "ideaPlaceholder": "Enter your idea",
     "back": "Back",
     "next": "Next",
     "create": "Create profile"

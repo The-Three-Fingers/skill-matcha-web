@@ -2,17 +2,20 @@ import { useTranslations } from 'next-intl';
 import { useEffect, useMemo } from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import ToggleGroupField from '@/components/ui/toggle-group-field';
+import { RolesField } from '@/components/roles-field';
+import { SubRolesField } from '@/components/sub-roles-field';
+import ToggleGroupField from '@/components/toggle-group-field';
 import { TypographyH3 } from '@/components/ui/typography';
 import type { SubRoleId } from '@/hooks/queries/use-roles';
 import { useRoles } from '@/hooks/queries/use-roles';
+import useIsFirstRender from '@/hooks/use-is-first-render';
 
-import type { CreateProfileFormFields } from '../../types';
+import type { ProfileFormFields } from '../../types';
 
 const Roles = () => {
-  const t = useTranslations('createProfileForm');
+  const t = useTranslations('profileForm');
 
-  const { watch, setValue } = useFormContext<CreateProfileFormFields>();
+  const { watch, setValue } = useFormContext<ProfileFormFields>();
 
   const { data: roles } = useRoles();
 
@@ -79,9 +82,13 @@ const Roles = () => {
     return [...new Set(allServices)];
   }, [roles, subRoles, rolesValue, subRolesValue]);
 
+  const isFirstRender = useIsFirstRender();
+
   useEffect(() => {
-    // setValue('subRoles', []);
-    // setValue('services', []);
+    if (isFirstRender) return;
+
+    setValue('subRoles', []);
+    setValue('services', []);
   }, [setValue, rolesValue]);
 
   useEffect(() => {
@@ -118,24 +125,20 @@ const Roles = () => {
     <div className="flex w-full flex-col items-center gap-10">
       <TypographyH3 className="mb-4">{t(`stepTitles.roles`)}</TypographyH3>
 
-      <ToggleGroupField name="roles" options={roleOptions} />
-      {isSubrolesFieldVisible && (
-        <ToggleGroupField
-          label={t('subRolesLabel')}
-          name="subRoles"
-          options={subRolesOptions}
-          isMultiple
-        />
-      )}
+      <div className="flex flex-col items-center gap-4">
+        <RolesField options={roleOptions} />
 
-      {isServicesFieldVisible && (
-        <ToggleGroupField
-          label={t('servicesLabel')}
-          name="services"
-          options={servicesOptions}
-          isMultiple
-        />
-      )}
+        {isSubrolesFieldVisible && <SubRolesField options={subRolesOptions} />}
+
+        {isServicesFieldVisible && (
+          <ToggleGroupField
+            label={t('servicesLabel')}
+            name="services"
+            options={servicesOptions}
+            isMultiple
+          />
+        )}
+      </div>
     </div>
   );
 };

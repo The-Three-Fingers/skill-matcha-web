@@ -3,9 +3,9 @@
 import { useTranslations } from 'next-intl';
 import React from 'react';
 
-import { AvatarUploadField } from '@/components/ui/avatar-upload-field';
-import NumberInputField from '@/components/ui/number-input-field';
-import TextareaField from '@/components/ui/textarea-field';
+import { AvatarUploadField } from '@/components/avatar-upload-field';
+import NumberInputField from '@/components/number-input-field';
+import TextareaField from '@/components/textarea-field';
 
 const ProfileFormFields = () => {
   const t = useTranslations('profile');

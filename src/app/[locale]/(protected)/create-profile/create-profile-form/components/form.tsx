@@ -12,7 +12,7 @@ import { useCreateProfile } from '@/hooks/mutations/use-create-profile';
 import { ProfileValidation } from '@/validations/profile-validation';
 
 import { steps } from '../constants';
-import type { CreateProfileFormFields } from '../types';
+import type { ProfileFormFields } from '../types';
 import { Idea, PersonalInfo, Roles, SearchRoles } from './steps';
 
 const defaultValues = {
@@ -50,7 +50,7 @@ const CreateForm = ({
 }) => {
   const router = useRouter();
 
-  const t = useTranslations('createProfileForm');
+  const t = useTranslations('profileForm');
 
   const { mutateAsync } = useCreateProfile();
 
@@ -65,7 +65,7 @@ const CreateForm = ({
     formState: { isValid },
   } = form;
 
-  const createProfile = async (data: CreateProfileFormFields) => {
+  const createProfile = async (data: ProfileFormFields) => {
     await mutateAsync(data);
 
     reset();

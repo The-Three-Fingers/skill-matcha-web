@@ -3,6 +3,7 @@ import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
 import type { z } from 'zod';
 
+import InputField from '@/components/input-field';
 import { Button } from '@/components/ui/button';
 import {
   DialogDescription,
@@ -11,7 +12,6 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { Form } from '@/components/ui/form';
-import InputField from '@/components/ui/input-field';
 import { TypographyH3, TypographyP } from '@/components/ui/typography';
 import { useSendLead } from '@/hooks/mutations/use-send-lead';
 import { SendLeadForm } from '@/validations/lead-email-form';
@@ -62,7 +62,7 @@ export const LeadForm = () => {
           )}
         </DialogHeader>
         {!isSubmitSuccessful ? (
-          <InputField name="email" placeholder="Email" />
+          <InputField name="email" type="email" placeholder="Email" />
         ) : (
           <>
             <TypographyH3>{t('dialogSuccessTitle')}</TypographyH3>

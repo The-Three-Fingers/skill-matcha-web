@@ -32,7 +32,7 @@ const BaseTemplate = ({
     <div className="flex size-full flex-col antialiased">
       <header
         className={cn('h-24 flex-none bg-primary/15', {
-          'border-b bg-white dark:bg-background h-14': !isPublicPage,
+          'border-b bg-white dark:bg-background h-20': !isPublicPage,
         })}
       >
         <div className="mx-auto flex h-full max-w-screen-lg items-center px-4">
@@ -43,14 +43,7 @@ const BaseTemplate = ({
               width={60}
               height={60}
             />
-            <h1
-              className={cn(
-                'font-bold uppercase text-primary sm:text-3xl text-xl',
-                {
-                  'text-xl': !isPublicPage,
-                },
-              )}
-            >
+            <h1 className="text-xl font-bold uppercase text-primary sm:text-3xl">
               {AppConfig.name}
             </h1>
           </Link>

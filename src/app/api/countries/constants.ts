@@ -150,11 +150,6 @@ export const countries = [
     flag: '🇧🇷',
   },
   {
-    name: 'British Indian Ocean Territory',
-    code: 'IO',
-    flag: '🇮🇴',
-  },
-  {
     name: 'Brunei Darussalam',
     code: 'BN',
     flag: '🇧🇳',
@@ -236,7 +231,7 @@ export const countries = [
     flag: '🇨🇬',
   },
   {
-    name: 'Congo, Democratic Republic of the',
+    name: 'Congo',
     code: 'CD',
     flag: '🇨🇩',
   },
@@ -427,11 +422,6 @@ export const countries = [
     flag: '🇭🇹',
   },
   {
-    name: 'Heard Island and McDonald Islands',
-    code: 'HM',
-    flag: '🇭🇲',
-  },
-  {
     name: 'Holy See',
     code: 'VA',
     flag: '🇻🇦',
@@ -468,7 +458,7 @@ export const countries = [
     flag: '🇮🇩',
   },
   {
-    name: 'Iran, Islamic Republic of',
+    name: 'Iran',
     code: 'IR',
     flag: '🇮🇷',
   },
@@ -533,12 +523,12 @@ export const countries = [
     flag: '🇰🇮',
   },
   {
-    name: "Korea, Democratic People's Republic of",
+    name: 'North Korea',
     code: 'KP',
     flag: '🇰🇵',
   },
   {
-    name: 'Korea, Republic of',
+    name: 'South Korea',
     code: 'KR',
     flag: '🇰🇷',
   },
@@ -656,12 +646,12 @@ export const countries = [
     flag: '🇲🇽',
   },
   {
-    name: 'Micronesia, Federated States of',
+    name: 'Micronesia',
     code: 'FM',
     flag: '🇫🇲',
   },
   {
-    name: 'Moldova, Republic of',
+    name: 'Moldova',
     code: 'MD',
     flag: '🇲🇩',
   },
@@ -759,7 +749,7 @@ export const countries = [
     flag: '🇵🇼',
   },
   {
-    name: 'Palestine, State of',
+    name: 'Palestine',
     code: 'PS',
     flag: '🇵🇸',
   },
@@ -816,7 +806,7 @@ export const countries = [
     flag: '🇷🇴',
   },
   {
-    name: 'Russian Federation',
+    name: 'Russia',
     code: 'RU',
     flag: '🇷🇺',
   },
@@ -957,7 +947,7 @@ export const countries = [
     flag: '🇸🇾',
   },
   {
-    name: 'Taiwan, Province of China',
+    name: 'Taiwan',
     code: 'TW',
     flag: '🇹🇼',
   },
@@ -967,7 +957,7 @@ export const countries = [
     flag: '🇹🇯',
   },
   {
-    name: 'Tanzania, United Republic of',
+    name: 'Tanzania',
     code: 'TZ',
     flag: '🇹🇿',
   },
@@ -1030,17 +1020,17 @@ export const countries = [
     flag: '🇺🇦',
   },
   {
-    name: 'United Arab Emirates',
+    name: 'UAE',
     code: 'AE',
     flag: '🇦🇪',
   },
   {
-    name: 'United Kingdom',
+    name: 'UK',
     code: 'UK',
     flag: '🇬🇧',
   },
   {
-    name: 'United States of America',
+    name: 'USA',
     code: 'US',
     flag: '🇺🇸',
   },
@@ -1060,7 +1050,7 @@ export const countries = [
     flag: '🇻🇺',
   },
   {
-    name: 'Venezuela (Bolivarian Republic of)',
+    name: 'Venezuela',
     code: 'VE',
     flag: '🇻🇪',
   },

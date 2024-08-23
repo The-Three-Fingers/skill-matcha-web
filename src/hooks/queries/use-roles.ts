@@ -18,7 +18,7 @@ export type SubRoleId =
   | 'gameDeveloper'
   | 'embeddedDeveloper'
   | 'uiUx'
-  | 'graphic'
+  | 'graphics'
   | 'motion'
   | '3d'
   | 'dataAnalyst'
