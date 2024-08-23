@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { useFormContext } from 'react-hook-form';
 
 import {
@@ -7,27 +8,26 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
+import { MultiCombobox } from '@/components/ui/multi-combobox';
 
-import { Textarea } from './textarea';
+const SubRolesField = ({
+  options,
+}: {
+  options: { value: string; label: string }[];
+}) => {
+  const t = useTranslations('profileForm');
 
-type TextareaFieldProps = {
-  name: string;
-  label: string;
-  placeholder: string;
-};
-
-const TextareaField = ({ name, label, placeholder }: TextareaFieldProps) => {
   const { control } = useFormContext();
 
   return (
     <FormField
       control={control}
-      name={name}
+      name="subRoles"
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{label}</FormLabel>
+          <FormLabel>{t('subRolesLabel')}</FormLabel>
           <FormControl>
-            <Textarea placeholder={placeholder} {...field} />
+            <MultiCombobox isClearable options={options} {...field} />
           </FormControl>
           <FormMessage />
         </FormItem>
@@ -36,4 +36,4 @@ const TextareaField = ({ name, label, placeholder }: TextareaFieldProps) => {
   );
 };
 
-export default TextareaField;
+export { SubRolesField };

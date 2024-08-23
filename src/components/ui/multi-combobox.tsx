@@ -31,7 +31,7 @@ const MultiCombobox = React.forwardRef<
     isClearable?: boolean;
     onChange?: (value: string[]) => void;
     options: Option[];
-    placeholder: string;
+    placeholder?: string;
     searchPlaceholder?: string;
     value?: string[];
     width?: number;
@@ -96,7 +96,6 @@ const MultiCombobox = React.forwardRef<
         <PopoverTrigger asChild>
           <div
             ref={ref}
-            role="combobox"
             aria-expanded={open}
             style={{
               width: width ?? 350,

@@ -55,7 +55,7 @@ export const rolesList = [
         'usabilityImprovement',
         'userJourney',
       ],
-      graphic: [
+      graphics: [
         'visualStyle',
         'logo',
         'illustrations',

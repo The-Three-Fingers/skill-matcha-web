@@ -1,5 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 
+import { getPageTitleWithAppName } from '@/libs/utils';
+
 import { CreateProfileForm } from './create-profile-form';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
@@ -9,7 +11,7 @@ export async function generateMetadata(props: { params: { locale: string } }) {
   });
 
   return {
-    title: t('meta_title'),
+    title: getPageTitleWithAppName(t('meta_title')),
   };
 }
 

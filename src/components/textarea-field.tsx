@@ -7,15 +7,15 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
-type InputFieldProps = {
+type TextareaFieldProps = {
   name: string;
-  label?: string;
+  label: string;
   placeholder: string;
 };
 
-const InputField = ({ name, label, placeholder }: InputFieldProps) => {
+const TextareaField = ({ name, label, placeholder }: TextareaFieldProps) => {
   const { control } = useFormContext();
 
   return (
@@ -24,9 +24,9 @@ const InputField = ({ name, label, placeholder }: InputFieldProps) => {
       name={name}
       render={({ field }) => (
         <FormItem>
-          {label && <FormLabel>{label}</FormLabel>}
+          <FormLabel>{label}</FormLabel>
           <FormControl>
-            <Input placeholder={placeholder} {...field} />
+            <Textarea placeholder={placeholder} {...field} />
           </FormControl>
           <FormMessage />
         </FormItem>
@@ -35,4 +35,4 @@ const InputField = ({ name, label, placeholder }: InputFieldProps) => {
   );
 };
 
-export default InputField;
+export default TextareaField;

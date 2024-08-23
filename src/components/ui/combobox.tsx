@@ -31,7 +31,7 @@ const Combobox = React.forwardRef<
     isClearable?: boolean;
     onChange?: (value: string) => void;
     options: Record<string, any>[];
-    placeholder: string;
+    placeholder?: string;
     searchPlaceholder?: string;
     value?: string;
     width?: number;
