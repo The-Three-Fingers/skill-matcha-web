@@ -1,21 +1,19 @@
 import { useTranslations } from 'next-intl';
 import { useEffect, useMemo } from 'react';
 import { useFormContext } from 'react-hook-form';
+import type { z } from 'zod';
 
-import { RolesField } from '@/components/roles-field';
-import { SubRolesField } from '@/components/sub-roles-field';
-import ToggleGroupField from '@/components/toggle-group-field';
-import { TypographyH3 } from '@/components/ui/typography';
-import type { SubRoleId } from '@/hooks/queries/use-roles';
-import { useRoles } from '@/hooks/queries/use-roles';
-import useIsFirstRender from '@/hooks/use-is-first-render';
+import type { Role } from '@/validations/profile-validation';
 
-import type { ProfileFormFields } from '../../types';
+import { type SubRoleId, useRoles } from './queries/use-roles';
+import useIsFirstRender from './use-is-first-render';
 
-const Roles = () => {
+export type RoleFormFields = z.infer<typeof Role>;
+
+const useRoleFormFields = () => {
   const t = useTranslations('profileForm');
 
-  const { watch, setValue } = useFormContext<ProfileFormFields>();
+  const { watch, setValue } = useFormContext<RoleFormFields>();
 
   const { data: roles } = useRoles();
 
@@ -35,14 +33,14 @@ const Roles = () => {
     [] as { label: string; value: string }[],
   );
 
-  const rolesValue = watch('roles') as (typeof rolesList)[0];
+  const roleValue = watch('role') as (typeof rolesList)[0];
   const subRolesValue = watch('subRoles') as SubRoleId[];
   const servicesValue = watch('services') as string[];
 
-  const subRoles = roles?.find((role) => role.id === rolesValue)?.subRoles;
+  const subRoles = roles?.find((role) => role.id === roleValue)?.subRoles;
 
   const subRolesList =
-    rolesValue && subRoles ? (Object.keys(subRoles) as SubRoleId[]) : [];
+    roleValue && subRoles ? (Object.keys(subRoles) as SubRoleId[]) : [];
 
   const subRolesOptions = subRolesList.reduce(
     (acc, subRole) => {
@@ -59,13 +57,11 @@ const Roles = () => {
   );
 
   const services = useMemo(() => {
-    if (!rolesValue) return [];
+    if (!roleValue) return [];
 
     const allServices = [] as string[];
 
-    const roleServices = roles?.find(
-      (role) => role.id === rolesValue,
-    )?.services;
+    const roleServices = roles?.find((role) => role.id === roleValue)?.services;
 
     if (subRoles && subRolesValue.length > 0) {
       subRolesValue.forEach((subRole) => {
@@ -80,7 +76,7 @@ const Roles = () => {
     }
 
     return [...new Set(allServices)];
-  }, [roles, subRoles, rolesValue, subRolesValue]);
+  }, [roles, subRoles, roleValue, subRolesValue]);
 
   const isFirstRender = useIsFirstRender();
 
@@ -89,7 +85,7 @@ const Roles = () => {
 
     setValue('subRoles', []);
     setValue('services', []);
-  }, [setValue, rolesValue]);
+  }, [setValue, roleValue]);
 
   useEffect(() => {
     const newServicesValue = servicesValue.filter((service) =>
@@ -121,26 +117,13 @@ const Roles = () => {
     (isSubrolesFieldVisible && subRolesValue && subRolesValue.length > 0) ||
     services.length > 0;
 
-  return (
-    <div className="flex w-full flex-col items-center gap-10">
-      <TypographyH3>{t(`stepTitles.roles`)}</TypographyH3>
-
-      <div className="flex flex-col items-center gap-4">
-        <RolesField options={roleOptions} />
-
-        {isSubrolesFieldVisible && <SubRolesField options={subRolesOptions} />}
-
-        {isServicesFieldVisible && (
-          <ToggleGroupField
-            label={t('servicesLabel')}
-            name="services"
-            options={servicesOptions}
-            type="multiple"
-          />
-        )}
-      </div>
-    </div>
-  );
+  return {
+    roleOptions,
+    subRolesOptions,
+    servicesOptions,
+    isSubrolesFieldVisible,
+    isServicesFieldVisible,
+  };
 };
 
-export { Roles };
+export { useRoleFormFields };

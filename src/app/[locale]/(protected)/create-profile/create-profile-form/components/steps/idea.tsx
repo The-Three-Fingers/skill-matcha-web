@@ -24,6 +24,7 @@ const Idea = () => {
   useEffect(() => {
     if (hasIdeaValue === 'false') {
       setValue('ideaStage', undefined);
+      setValue('ideaDescription', undefined);
     }
   }, [hasIdeaValue, setValue]);
 

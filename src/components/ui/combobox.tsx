@@ -54,10 +54,8 @@ const Combobox = React.forwardRef<
     ref,
   ) => {
     const [open, setOpen] = useState(false);
-    const [currentvalue, setCurrentValue] = useState(value);
 
     const handleChange = (newValue: string) => {
-      setCurrentValue(newValue === currentvalue ? '' : newValue);
       onChange?.(newValue);
 
       setOpen(false);
@@ -66,8 +64,6 @@ const Combobox = React.forwardRef<
     const handleClear: MouseEventHandler = (event) => {
       event.preventDefault();
       event.stopPropagation();
-
-      setCurrentValue('');
 
       onChange?.('');
     };

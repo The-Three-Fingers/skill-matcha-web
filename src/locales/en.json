@@ -31,10 +31,10 @@
   },
   "profileForm": {
     "stepTitles": {
-      "personal": "Personal information",
-      "roles": "What is your role",
+      "personal": "Tell us about yourself",
+      "roles": "Who are you?",
       "idea": "Do you have a startup idea?",
-      "searchRoles": "Who are you looking for?"
+      "searchPreferences": "Add your match preferences"
     },
     "name": "Name",
     "namePlaceholder": "Enter here ...",
@@ -42,7 +42,7 @@
     "lastNamePlaceholder": "Enter here ...",
     "location": "Your location",
     "languages": "Languages you speak",
-    "role": "Your role",
+    "roleLabel": "Your role",
     "roleOptions": {
       "developer": "Developer",
       "designer": "Designer",
@@ -224,9 +224,15 @@
     "ideaStageLabel": "Idea stage",
     "ideaDescriptionLabel": "Idea description",
     "ideaDescriptionPlaceholder": "Describe your idea",
+    "searchRoleLabel": "Role",
+    "searchSubrolesLabel": "Specializations",
+    "searchServicesLabel": "Services you need",
+    "addSearchPreferencesDialogTitle": "Add search preferences",
     "back": "Back",
     "next": "Next",
-    "create": "Create profile"
+    "create": "Create profile",
+    "add": "Add",
+    "update": "Update"
   },
   "About": {
     "meta_title": "About",

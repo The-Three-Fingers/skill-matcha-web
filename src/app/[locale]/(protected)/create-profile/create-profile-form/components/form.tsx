@@ -13,27 +13,27 @@ import { ProfileValidation } from '@/validations/profile-validation';
 
 import { steps } from '../constants';
 import type { ProfileFormFields } from '../types';
-import { Idea, PersonalInfo, Roles, SearchRoles } from './steps';
+import { Idea, PersonalInfo, Role, SearchPreferences } from './steps';
 
 const defaultValues = {
   name: '',
   lastName: '',
   languages: [],
   location: '',
-  roles: '',
-  hasIdea: 'false',
+  role: '',
   subRoles: [],
   services: [],
-  searchRoles: [],
-  searchSubRoles: [],
-  searchServices: [],
+  hasIdea: 'false',
+  ideaStage: '',
+  ideaDescription: '',
+  searchPreferences: [],
 };
 
 const stepRenreders = {
   personal: PersonalInfo,
-  roles: Roles,
+  role: Role,
   idea: Idea,
-  searchRoles: SearchRoles,
+  searchPreferences: SearchPreferences,
 };
 
 const CreateForm = ({
@@ -55,7 +55,7 @@ const CreateForm = ({
 
   const { mutateAsync } = useCreateProfile();
 
-  const form = useForm<ProfileFormFields>({
+  const form = useForm({
     resolver: zodResolver(ProfileValidation),
     defaultValues,
   });
@@ -84,41 +84,39 @@ const CreateForm = ({
   return (
     <Form {...form}>
       <form
-        className="relative flex size-full w-full flex-col justify-between"
+        className="relative flex size-full w-full flex-col"
         onSubmit={handleSubmit(createProfile)}
       >
-        <div className="mx-auto flex w-full max-w-lg p-5">
+        <Progress
+          indicatorClassName="bg-primary/70"
+          className="h-2 rounded-none"
+          value={progressValue}
+        />
+        <div className="mx-auto flex w-full max-w-lg flex-1 items-center p-5">
           <StepComponent key={activeStep} />
         </div>
 
-        <div>
-          <Progress
-            indicatorClassName="bg-primary/70"
-            className="h-2 rounded-none"
-            value={progressValue}
-          />
-          <div className="flex w-full items-center justify-center bg-white p-3 dark:bg-background">
-            <div className="mx-auto flex w-full max-w-lg items-center gap-2">
-              {isBackButtonVisible && (
-                <Button
-                  size="lg"
-                  className="flex-1"
-                  variant="secondary"
-                  onClick={onBack}
-                >
-                  {t('back')}
-                </Button>
-              )}
+        <div className="flex w-full items-center justify-center bg-white p-3 dark:bg-background">
+          <div className="mx-auto flex w-full max-w-lg items-center gap-2">
+            {isBackButtonVisible && (
               <Button
-                className="flex-1"
                 size="lg"
-                disabled={isLastStep && !isValid}
-                onClick={isLastStep ? undefined : onNext}
-                type={isLastStep ? 'submit' : 'button'}
+                className="flex-1"
+                variant="secondary"
+                onClick={onBack}
               >
-                {isLastStep ? t('create') : t('next')}
+                {t('back')}
               </Button>
-            </div>
+            )}
+            <Button
+              className="flex-1"
+              size="lg"
+              disabled={isLastStep && !isValid}
+              onClick={isLastStep ? undefined : onNext}
+              type={isLastStep ? 'submit' : 'button'}
+            >
+              {isLastStep ? t('create') : t('next')}
+            </Button>
           </div>
         </div>
       </form>

@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl';
 import { useFormContext } from 'react-hook-form';
 
 import {
@@ -11,12 +10,12 @@ import {
 import { MultiCombobox } from '@/components/ui/multi-combobox';
 
 const SubRolesField = ({
+  label,
   options,
 }: {
+  label: string;
   options: { value: string; label: string }[];
 }) => {
-  const t = useTranslations('profileForm');
-
   const { control } = useFormContext();
 
   return (
@@ -25,7 +24,7 @@ const SubRolesField = ({
       name="subRoles"
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{t('subRolesLabel')}</FormLabel>
+          <FormLabel>{label}</FormLabel>
           <FormControl>
             <MultiCombobox
               isSearchable={false}

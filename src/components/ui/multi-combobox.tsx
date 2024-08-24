@@ -54,35 +54,28 @@ const MultiCombobox = React.forwardRef<
   ) => {
     const [open, setOpen] = useState(false);
 
-    const [selected, setSelected] = useState<Option[]>(
-      options.filter((option) => (value ?? []).includes(option.value)),
+    const selected = options.filter((option) =>
+      (value ?? []).includes(option.value),
     );
 
     const handleSelect = (option: Option) => {
-      setSelected((prev) => {
-        const newSelected = [...prev, option];
-        onChange?.(newSelected.map((selectedOption) => selectedOption.value));
+      const newSelected = [...selected, option];
 
-        return newSelected;
-      });
+      onChange?.(newSelected.map((selectedOption) => selectedOption.value));
     };
 
     const handleUnselect = (option: Option) => {
-      setSelected((prev) => {
-        const newSelected = prev.filter(
-          (selectedOption) => selectedOption.value !== option.value,
-        );
-        onChange?.(newSelected.map((selectedOption) => selectedOption.value));
+      const newSelected = selected.filter(
+        (selectedOption) => selectedOption.value !== option.value,
+      );
 
-        return newSelected;
-      });
+      onChange?.(newSelected.map((selectedOption) => selectedOption.value));
     };
 
     const handleClear: MouseEventHandler = (event) => {
       event.preventDefault();
       event.stopPropagation();
 
-      setSelected([]);
       onChange?.([]);
     };
 

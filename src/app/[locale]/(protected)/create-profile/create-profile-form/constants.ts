@@ -1,1 +1,1 @@
-export const steps = ['personal', 'roles', 'idea', 'searchRoles'] as const;
+export const steps = ['personal', 'role', 'idea', 'searchPreferences'] as const;

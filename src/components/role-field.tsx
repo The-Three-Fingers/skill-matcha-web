@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl';
 import { useFormContext } from 'react-hook-form';
 
 import { Combobox } from '@/components/ui/combobox';
@@ -10,22 +9,22 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 
-const RolesField = ({
+const RoleField = ({
+  label,
   options,
 }: {
+  label: string;
   options: { value: string; label: string }[];
 }) => {
-  const t = useTranslations('profileForm');
-
   const { control } = useFormContext();
 
   return (
     <FormField
       control={control}
-      name="roles"
+      name="role"
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{t('role')}</FormLabel>
+          <FormLabel>{label}</FormLabel>
           <FormControl>
             <Combobox
               isSearchable={false}
@@ -42,4 +41,4 @@ const RolesField = ({
   );
 };
 
-export { RolesField };
+export { RoleField };

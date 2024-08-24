@@ -6,12 +6,14 @@ import { FormField, FormItem, FormLabel } from '@/components/ui/form';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 
 const ToggleGroupField = ({
+  className,
   type = 'single',
   label,
   name,
   isRadioGroup = false,
   options,
 }: {
+  className?: string;
   type?: 'single' | 'multiple';
   label?: string;
   name: string;
@@ -25,7 +27,7 @@ const ToggleGroupField = ({
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem>
+        <FormItem className={className}>
           {label && (
             <FormLabel className="mb-4 flex justify-center">{label}</FormLabel>
           )}
