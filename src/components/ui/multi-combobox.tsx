@@ -31,6 +31,7 @@ const MultiCombobox = React.forwardRef<
     isClearable?: boolean;
     isSearchable?: boolean;
     onChange?: (value: string[]) => void;
+    maxSelectable?: number;
     options: Option[];
     placeholder?: string;
     searchPlaceholder?: string;
@@ -44,6 +45,7 @@ const MultiCombobox = React.forwardRef<
       isClearable,
       isSearchable = true,
       onChange,
+      maxSelectable,
       options,
       placeholder = 'Select ...',
       searchPlaceholder = 'Search ...',
@@ -59,6 +61,8 @@ const MultiCombobox = React.forwardRef<
     );
 
     const handleSelect = (option: Option) => {
+      if (maxSelectable && selected.length >= maxSelectable) return;
+
       const newSelected = [...selected, option];
 
       onChange?.(newSelected.map((selectedOption) => selectedOption.value));
@@ -165,6 +169,10 @@ const MultiCombobox = React.forwardRef<
                       e.preventDefault();
                       e.stopPropagation();
                     }}
+                    disabled={
+                      maxSelectable !== undefined &&
+                      selected.length >= maxSelectable
+                    }
                     onSelect={() => {
                       handleSelect(option);
                     }}

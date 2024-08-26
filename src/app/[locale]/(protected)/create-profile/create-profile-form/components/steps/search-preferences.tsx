@@ -61,12 +61,14 @@ const FormFields = () => {
         <SubRolesField
           label={t('searchSubrolesLabel')}
           options={subRolesOptions}
+          maxSelectable={2}
         />
       )}
 
       {isServicesFieldVisible && (
         <ToggleGroupField
           className="mt-4"
+          maxSelectable={4}
           name="services"
           options={servicesOptions}
           type="multiple"
@@ -93,7 +95,7 @@ const RoleForm = ({
   });
 
   const {
-    handleSubmit,
+    getValues,
     formState: { isValid },
   } = form;
 
@@ -101,7 +103,9 @@ const RoleForm = ({
 
   const isEditMode = index !== undefined;
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = () => {
+    const data = getValues();
+
     if (isEditMode) {
       const updatedPreferences = searchPreferences.map(
         (searchPreference, searchPreferenceIndex) => {
@@ -126,38 +130,42 @@ const RoleForm = ({
 
   return (
     <Form {...form}>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="flex w-full flex-col gap-4"
-      >
+      <div className="flex w-full flex-col gap-4">
         <DialogHeader className="sm:text-center">
           <DialogTitle>{t('addSearchPreferencesDialogTitle')}</DialogTitle>
         </DialogHeader>
         <FormFields />
         <DialogFooter className="sm:justify-center">
           <DialogClose asChild>
-            <Button type="submit" className="mt-4 min-w-24" disabled={!isValid}>
+            <Button
+              form="search-preference-form"
+              className="mt-4 min-w-24"
+              onClick={onSubmit}
+              disabled={!isValid}
+            >
               {t(isEditMode ? 'update' : 'add')}
             </Button>
           </DialogClose>
         </DialogFooter>
-      </form>
+      </div>
     </Form>
   );
 };
 
 const SearchPreferencesDialog = ({
+  container,
   children,
   index,
   searchPreference,
 }: {
+  container?: HTMLElement | null;
   children: React.ReactNode;
   index?: number;
   searchPreference?: FormData;
 }) => (
   <Dialog>
     <DialogTrigger asChild>{children}</DialogTrigger>
-    <DialogPortal>
+    <DialogPortal container={container}>
       <DialogContent
         className="sm:max-w-md"
         onInteractOutside={(event) => event.preventDefault()}
@@ -170,6 +178,8 @@ const SearchPreferencesDialog = ({
 );
 
 const SearchPreferences = () => {
+  const container = document.getElementById('dialog-portal');
+
   const t = useTranslations('profileForm');
 
   const { watch, setValue } = useFormContext<ProfileFormFields>();
@@ -193,11 +203,11 @@ const SearchPreferences = () => {
       <TypographyH3>{t(`stepTitles.searchPreferences`)}</TypographyH3>
       <div className="flex w-full flex-col items-center gap-4">
         {hasSearchPreferences && (
-          <ul className="flex w-full flex-col gap-4">
+          <ul className="flex w-9/12 flex-col gap-4">
             {searchPreferences.map((searchPreference, index) => (
               // eslint-disable-next-line react/no-array-index-key
               <li key={`${searchPreference.role}_${index}`}>
-                <Card className="w-full transition-all hover:border-primary">
+                <Card className="transition-all hover:border-primary">
                   <CardHeader>
                     <div className="flex items-center justify-between">
                       <CardTitle className="text-center">
@@ -250,8 +260,8 @@ const SearchPreferences = () => {
         )}
 
         {isAddButtonVisible && (
-          <SearchPreferencesDialog>
-            <Card className="h-20 w-full cursor-pointer border-2 border-dashed shadow-none transition-all hover:border-primary">
+          <SearchPreferencesDialog container={container}>
+            <Card className="h-20 w-9/12 cursor-pointer border-2 border-dashed shadow-none transition-all hover:border-primary">
               <div className="flex size-full items-center justify-center">
                 <div className="flex items-center gap-2">
                   <Plus className="size-4" />

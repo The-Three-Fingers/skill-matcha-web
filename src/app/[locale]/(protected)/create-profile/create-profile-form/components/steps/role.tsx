@@ -22,16 +22,22 @@ const Role = () => {
       <TypographyH3>{t(`stepTitles.roles`)}</TypographyH3>
 
       <div className="flex flex-col items-center gap-4">
-        <RoleField label={t('roleLabel')} options={roleOptions} />
+        <RoleField isRequired label={t('roleLabel')} options={roleOptions} />
 
         {isSubrolesFieldVisible && (
-          <SubRolesField label={t('subRolesLabel')} options={subRolesOptions} />
+          <SubRolesField
+            maxSelectable={2}
+            label={t('subRolesLabel')}
+            options={subRolesOptions}
+          />
         )}
 
         {isServicesFieldVisible && (
           <ToggleGroupField
             className="mt-4"
+            maxSelectable={4}
             name="services"
+            label={t('servicesLabel')}
             options={servicesOptions}
             type="multiple"
           />

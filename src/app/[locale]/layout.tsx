@@ -102,6 +102,7 @@ export default async function RootLayout(props: {
             </AuthProvider>
           </NextIntlClientProvider>
         </ThemeProvider>
+        <div id="dialog-portal" />
       </body>
     </html>
   );

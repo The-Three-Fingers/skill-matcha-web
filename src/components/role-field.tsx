@@ -11,9 +11,11 @@ import {
 
 const RoleField = ({
   label,
+  isRequired,
   options,
 }: {
   label: string;
+  isRequired?: boolean;
   options: { value: string; label: string }[];
 }) => {
   const { control } = useFormContext();
@@ -24,7 +26,9 @@ const RoleField = ({
       name="role"
       render={({ field }) => (
         <FormItem>
-          <FormLabel>{label}</FormLabel>
+          <FormLabel>
+            {label} {isRequired && <span className="text-destructive">*</span>}
+          </FormLabel>
           <FormControl>
             <Combobox
               isSearchable={false}

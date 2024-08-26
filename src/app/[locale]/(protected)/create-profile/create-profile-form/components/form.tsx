@@ -3,6 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
@@ -61,8 +62,8 @@ const CreateForm = ({
   });
 
   const {
-    handleSubmit,
     reset,
+    getValues,
     formState: { isValid },
   } = form;
 
@@ -71,6 +72,37 @@ const CreateForm = ({
 
     reset();
     router.refresh();
+  };
+
+  const formValues = getValues();
+
+  const isStepValid = useMemo(() => {
+    switch (activeStep) {
+      case 'personal':
+        return Boolean(formValues.name && formValues.lastName);
+      case 'role':
+        return Boolean(formValues.role) && formValues.services.length > 0;
+      case 'idea':
+        return formValues.hasIdea === 'true'
+          ? Boolean(formValues.ideaStage)
+          : true;
+      case 'searchPreferences':
+        return isValid;
+      default:
+        return false;
+    }
+  }, [activeStep, formValues, isValid]);
+
+  const handleNext = () => {
+    if (!isStepValid) return;
+
+    if (isLastStep) {
+      createProfile(formValues);
+
+      return;
+    }
+
+    onNext();
   };
 
   const StepComponent = stepRenreders[activeStep];
@@ -83,16 +115,13 @@ const CreateForm = ({
 
   return (
     <Form {...form}>
-      <form
-        className="relative flex size-full w-full flex-col"
-        onSubmit={handleSubmit(createProfile)}
-      >
+      <div className="relative flex size-full w-full flex-col">
         <Progress
           indicatorClassName="bg-primary/70"
           className="h-2 rounded-none"
           value={progressValue}
         />
-        <div className="mx-auto flex w-full max-w-lg flex-1 items-center p-5">
+        <div className="mx-auto flex w-full max-w-lg flex-1 p-5">
           <StepComponent key={activeStep} />
         </div>
 
@@ -111,15 +140,14 @@ const CreateForm = ({
             <Button
               className="flex-1"
               size="lg"
-              disabled={isLastStep && !isValid}
-              onClick={isLastStep ? undefined : onNext}
-              type={isLastStep ? 'submit' : 'button'}
+              disabled={!isStepValid}
+              onClick={handleNext}
             >
               {isLastStep ? t('create') : t('next')}
             </Button>
           </div>
         </div>
-      </form>
+      </div>
     </Form>
   );
 };

@@ -11,9 +11,11 @@ import { MultiCombobox } from '@/components/ui/multi-combobox';
 
 const SubRolesField = ({
   label,
+  maxSelectable,
   options,
 }: {
   label: string;
+  maxSelectable?: number;
   options: { value: string; label: string }[];
 }) => {
   const { control } = useFormContext();
@@ -28,6 +30,7 @@ const SubRolesField = ({
           <FormControl>
             <MultiCombobox
               isSearchable={false}
+              maxSelectable={maxSelectable}
               isClearable
               options={options}
               {...field}

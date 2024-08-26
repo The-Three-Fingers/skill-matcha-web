@@ -9,6 +9,7 @@ const ToggleGroupField = ({
   className,
   type = 'single',
   label,
+  maxSelectable,
   name,
   isRadioGroup = false,
   options,
@@ -16,6 +17,7 @@ const ToggleGroupField = ({
   className?: string;
   type?: 'single' | 'multiple';
   label?: string;
+  maxSelectable?: number;
   name: string;
   isRadioGroup?: boolean;
   options: { label: string; value: string }[];
@@ -46,6 +48,12 @@ const ToggleGroupField = ({
             {options.map((option) => (
               <ToggleGroupItem
                 key={option.value}
+                disabled={
+                  type === 'multiple' &&
+                  maxSelectable !== undefined &&
+                  field.value.length >= maxSelectable &&
+                  !field.value.includes(option.value)
+                }
                 value={option.value}
                 aria-label={option.label}
                 className="min-w-20 max-w-60 justify-center"
