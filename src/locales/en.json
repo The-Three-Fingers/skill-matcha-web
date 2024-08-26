@@ -270,6 +270,12 @@
   "profile": {
     "metaTitle": "Profile",
     "metaDescription": "This is how others will see you on the site.",
+    "personalSectionTitle": "Personal information",
+    "personalSectionDescription": "Update your personal information to help others get to know you better.",
+    "ideaSectionTitle": "Startup idea",
+    "ideaSectionDescription": "Share your startup idea to attract potential co-founders.",
+    "rolesSectionTitle": "Your role",
+    "rolesSectionDescription": "Select your role and specialization to help others understand your skills.",
     "nameTitle": "Update your name",
     "namePlaceholder": "Enter your name",
     "lastNameTitle": "Update your last name",

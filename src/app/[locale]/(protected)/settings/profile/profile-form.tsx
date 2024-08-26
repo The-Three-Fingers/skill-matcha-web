@@ -11,8 +11,10 @@ import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/components/ui/use-toast';
 import { ProfileValidation } from '@/validations/profile-validation';
 
+import IdeaSection from './idea-section';
+import PersonalSection from './personal-section';
 import ProfileEmailSection from './profile-email-section';
-import ProfileFormFields from './profile-form-fields';
+import RoleSection from './role-section';
 
 type ProfileFormValues = z.infer<typeof ProfileValidation>;
 
@@ -73,7 +75,14 @@ const ProfileForm = () => {
     <div className="flex flex-col gap-10">
       <FormProvider {...form}>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-          <ProfileFormFields />
+          <div className="space-y-8">
+            <IdeaSection />
+
+            <RoleSection />
+
+            <PersonalSection />
+          </div>
+
           <Button type="submit" disabled={!isValid} className="w-full">
             {t('submitButton')}
           </Button>
