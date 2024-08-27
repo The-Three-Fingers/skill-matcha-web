@@ -23,6 +23,7 @@ const PersonalInfo = () => {
         <InputField
           className="w-[350px]"
           name="name"
+          isRequired
           label={t('name')}
           placeholder={t('namePlaceholder')}
         />
@@ -30,6 +31,7 @@ const PersonalInfo = () => {
         <InputField
           className="w-[350px]"
           name="lastName"
+          isRequired
           label={t('lastName')}
           placeholder={t('lastNamePlaceholder')}
         />

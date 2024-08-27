@@ -1,6 +1,6 @@
 import { type QueryFunction, useQuery } from '@tanstack/react-query';
 
-type RoleId =
+export type RoleId =
   | 'developer'
   | 'designer'
   | 'qa'

@@ -31,10 +31,10 @@
   },
   "profileForm": {
     "stepTitles": {
-      "personal": "Personal information",
-      "roles": "What is your role",
+      "personal": "Tell us about yourself",
+      "roles": "Who are you?",
       "idea": "Do you have a startup idea?",
-      "searchRoles": "Who are you looking for?"
+      "searchPreferences": "Add your search preferences"
     },
     "name": "Name",
     "namePlaceholder": "Enter here ...",
@@ -42,7 +42,7 @@
     "lastNamePlaceholder": "Enter here ...",
     "location": "Your location",
     "languages": "Languages you speak",
-    "role": "Your role",
+    "roleLabel": "Select your role",
     "roleOptions": {
       "developer": "Developer",
       "designer": "Designer",
@@ -53,7 +53,7 @@
       "marketer": "Marketer",
       "contentCreator": "Content Creator"
     },
-    "subRolesLabel": "What is your specialization?",
+    "subRolesLabel": "Select the most relevant specializations? (max 2)",
     "subRoleOptions": {
       "frontend": "Frontend",
       "backend": "Backend",
@@ -75,7 +75,7 @@
       "mediaContent": "Media Content",
       "smmManager": "SMM Manager"
     },
-    "servicesLabel": "What can you offer?",
+    "servicesLabel": "Select the skills you are best at? (max 4)",
     "serviceOptions": {
       "prototyping": "Prototyping",
       "spa": "SPA Development",
@@ -224,9 +224,15 @@
     "ideaStageLabel": "Idea stage",
     "ideaDescriptionLabel": "Idea description",
     "ideaDescriptionPlaceholder": "Describe your idea",
+    "searchRoleLabel": "Role",
+    "searchSubrolesLabel": "Specializations (max 2)",
+    "searchServicesLabel": "Skills you need (max 4)",
+    "addSearchPreferencesDialogTitle": "Add search preferences",
     "back": "Back",
     "next": "Next",
-    "create": "Create profile"
+    "create": "Create profile",
+    "add": "Add",
+    "update": "Update"
   },
   "About": {
     "meta_title": "About",

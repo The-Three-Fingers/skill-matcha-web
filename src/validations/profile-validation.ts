@@ -2,60 +2,55 @@ import { z } from 'zod';
 
 const MAX_FILE_SIZE = 1024 * 1024;
 
-export const ProfileValidation = z.object({
-  // Personal info
-  name: z
-    .string()
-    .min(1, {
-      message: 'Name must be at least 1 character',
-    })
-    .max(150, {
-      message: 'Last name must be maximum 150 characters',
-    }),
-  lastName: z
-    .string()
-    .min(1, {
-      message: 'Last name must be at least 1 character',
-    })
-    .max(150, {
-      message: 'Last name must be maximum 150 characters',
-    }),
-
-  avatarURL: (typeof window === 'undefined'
-    ? z.any()
-    : z.instanceof(File).refine((file) => file.size <= MAX_FILE_SIZE, {
-        message: 'The profile picture must be a maximum of 1MB',
-      })
-  ).optional(),
-
-  aboutInfo: z.string().max(1000).min(10).optional(),
-  languages: z.array(z.string().min(2).max(5)).default([]),
-  location: z.string().optional(),
-  // Role
+export const Role = z.object({
   // TODO: make it as array later for multi roles
-  roles: z.string({
-    message: 'Please choose one role',
+  role: z.string().min(1, {
+    message: 'Please choose a role',
   }),
-  subRoles: z.array(z.string()).max(5).default([]),
-  services: z
-    .array(z.string())
-    .min(1, {
-      message: 'At least one service is required',
-    })
-    .max(10),
-  // Idea
-  hasIdea: z.string().default('false'),
-  ideaStage: z.string().optional(),
-  ideaDescription: z.string().max(1000).optional(),
-  // Search preferences
-  searchRoles: z.array(z.string()).default([]),
-  searchSubRoles: z.array(z.string()).max(5).default([]),
-  searchServices: z.array(z.string()).max(10).default([]),
-  // Others
-  availabilityTime: z
-    .number()
-    .int()
-    .or(z.string())
-    .pipe(z.coerce.number().int())
-    .optional(),
+  subRoles: z.array(z.string()).max(2).default([]),
+  services: z.array(z.string()).max(4).default([]),
 });
+
+export const ProfileValidation = z
+  .object({
+    // Personal info
+    name: z
+      .string()
+      .min(1, {
+        message: 'Name must be at least 1 character',
+      })
+      .max(150, {
+        message: 'Last name must be maximum 150 characters',
+      }),
+    lastName: z
+      .string()
+      .min(1, {
+        message: 'Last name must be at least 1 character',
+      })
+      .max(150, {
+        message: 'Last name must be maximum 150 characters',
+      }),
+    avatarURL: (typeof window === 'undefined'
+      ? z.any()
+      : z.instanceof(File).refine((file) => file.size <= MAX_FILE_SIZE, {
+          message: 'The profile picture must be a maximum of 1MB',
+        })
+    ).optional(),
+    aboutInfo: z.string().max(1000).min(40).optional(),
+    languages: z.array(z.string().min(2).max(5)).default([]),
+    location: z.string().optional(),
+    // Idea
+    hasIdea: z.string().default('false'),
+    ideaStage: z.string().optional(),
+    ideaDescription: z.string().max(1000).optional(),
+    // Search preferences
+    searchPreferences: z.array(Role).default([]),
+    // Others
+    availabilityTime: z
+      .number()
+      .int()
+      .or(z.string())
+      .pipe(z.coerce.number().int())
+      .optional(),
+  })
+  .and(Role);

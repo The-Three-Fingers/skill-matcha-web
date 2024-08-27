@@ -31,6 +31,7 @@ const MultiCombobox = React.forwardRef<
     isClearable?: boolean;
     isSearchable?: boolean;
     onChange?: (value: string[]) => void;
+    maxSelectable?: number;
     options: Option[];
     placeholder?: string;
     searchPlaceholder?: string;
@@ -44,6 +45,7 @@ const MultiCombobox = React.forwardRef<
       isClearable,
       isSearchable = true,
       onChange,
+      maxSelectable,
       options,
       placeholder = 'Select ...',
       searchPlaceholder = 'Search ...',
@@ -54,35 +56,30 @@ const MultiCombobox = React.forwardRef<
   ) => {
     const [open, setOpen] = useState(false);
 
-    const [selected, setSelected] = useState<Option[]>(
-      options.filter((option) => (value ?? []).includes(option.value)),
+    const selected = options.filter((option) =>
+      (value ?? []).includes(option.value),
     );
 
     const handleSelect = (option: Option) => {
-      setSelected((prev) => {
-        const newSelected = [...prev, option];
-        onChange?.(newSelected.map((selectedOption) => selectedOption.value));
+      if (maxSelectable && selected.length >= maxSelectable) return;
 
-        return newSelected;
-      });
+      const newSelected = [...selected, option];
+
+      onChange?.(newSelected.map((selectedOption) => selectedOption.value));
     };
 
     const handleUnselect = (option: Option) => {
-      setSelected((prev) => {
-        const newSelected = prev.filter(
-          (selectedOption) => selectedOption.value !== option.value,
-        );
-        onChange?.(newSelected.map((selectedOption) => selectedOption.value));
+      const newSelected = selected.filter(
+        (selectedOption) => selectedOption.value !== option.value,
+      );
 
-        return newSelected;
-      });
+      onChange?.(newSelected.map((selectedOption) => selectedOption.value));
     };
 
     const handleClear: MouseEventHandler = (event) => {
       event.preventDefault();
       event.stopPropagation();
 
-      setSelected([]);
       onChange?.([]);
     };
 
@@ -172,6 +169,10 @@ const MultiCombobox = React.forwardRef<
                       e.preventDefault();
                       e.stopPropagation();
                     }}
+                    disabled={
+                      maxSelectable !== undefined &&
+                      selected.length >= maxSelectable
+                    }
                     onSelect={() => {
                       handleSelect(option);
                     }}

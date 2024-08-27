@@ -14,7 +14,7 @@ const Idea = () => {
 
   const { watch, setValue } = useFormContext<ProfileFormFields>();
 
-  const hsaIdeaOptions = [
+  const hasIdeaOptions = [
     { value: 'false', label: t('idea.noOption') },
     { value: 'true', label: t('idea.yesOption') },
   ];
@@ -24,6 +24,7 @@ const Idea = () => {
   useEffect(() => {
     if (hasIdeaValue === 'false') {
       setValue('ideaStage', undefined);
+      setValue('ideaDescription', undefined);
     }
   }, [hasIdeaValue, setValue]);
 
@@ -36,18 +37,19 @@ const Idea = () => {
           isRadioGroup
           type="single"
           name="hasIdea"
-          options={hsaIdeaOptions}
+          options={hasIdeaOptions}
         />
 
-        {hasIdeaValue === 'true' && <IdeaStageField />}
-
         {hasIdeaValue === 'true' && (
-          <TextareaField
-            textAreaClassName="min-h-32 resize-none"
-            placeholder={t('ideaDescriptionPlaceholder')}
-            name="ideaDescription"
-            label={t('ideaDescriptionLabel')}
-          />
+          <>
+            <IdeaStageField />
+            <TextareaField
+              textAreaClassName="min-h-32 resize-none"
+              placeholder={t('ideaDescriptionPlaceholder')}
+              name="ideaDescription"
+              label={t('ideaDescriptionLabel')}
+            />
+          </>
         )}
       </div>
     </div>

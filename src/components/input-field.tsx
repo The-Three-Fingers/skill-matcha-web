@@ -11,6 +11,7 @@ import { Input } from '@/components/ui/input';
 
 type InputFieldProps = {
   className?: string;
+  isRequired?: boolean;
   name: string;
   type?: string;
   label?: string;
@@ -19,6 +20,7 @@ type InputFieldProps = {
 
 const InputField = ({
   className,
+  isRequired = false,
   name,
   type,
   label,
@@ -32,7 +34,12 @@ const InputField = ({
       name={name}
       render={({ field }) => (
         <FormItem className={className}>
-          {label && <FormLabel>{label}</FormLabel>}
+          {label && (
+            <FormLabel>
+              {label}{' '}
+              {isRequired && <span className="text-destructive">*</span>}
+            </FormLabel>
+          )}
           <FormControl>
             <Input placeholder={placeholder} {...field} type={type} />
           </FormControl>

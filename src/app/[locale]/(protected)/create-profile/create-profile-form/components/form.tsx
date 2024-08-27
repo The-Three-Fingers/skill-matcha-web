@@ -3,6 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
+import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
@@ -13,27 +14,27 @@ import { ProfileValidation } from '@/validations/profile-validation';
 
 import { steps } from '../constants';
 import type { ProfileFormFields } from '../types';
-import { Idea, PersonalInfo, Roles, SearchRoles } from './steps';
+import { Idea, PersonalInfo, Role, SearchPreferences } from './steps';
 
 const defaultValues = {
   name: '',
   lastName: '',
   languages: [],
   location: '',
-  roles: '',
-  hasIdea: 'false',
+  role: '',
   subRoles: [],
   services: [],
-  searchRoles: [],
-  searchSubRoles: [],
-  searchServices: [],
+  hasIdea: 'false',
+  ideaStage: '',
+  ideaDescription: '',
+  searchPreferences: [],
 };
 
 const stepRenreders = {
   personal: PersonalInfo,
-  roles: Roles,
+  role: Role,
   idea: Idea,
-  searchRoles: SearchRoles,
+  searchPreferences: SearchPreferences,
 };
 
 const CreateForm = ({
@@ -55,14 +56,14 @@ const CreateForm = ({
 
   const { mutateAsync } = useCreateProfile();
 
-  const form = useForm<ProfileFormFields>({
+  const form = useForm({
     resolver: zodResolver(ProfileValidation),
     defaultValues,
   });
 
   const {
-    handleSubmit,
     reset,
+    getValues,
     formState: { isValid },
   } = form;
 
@@ -71,6 +72,37 @@ const CreateForm = ({
 
     reset();
     router.refresh();
+  };
+
+  const formValues = getValues();
+
+  const isStepValid = useMemo(() => {
+    switch (activeStep) {
+      case 'personal':
+        return Boolean(formValues.name && formValues.lastName);
+      case 'role':
+        return Boolean(formValues.role) && formValues.services.length > 0;
+      case 'idea':
+        return formValues.hasIdea === 'true'
+          ? Boolean(formValues.ideaStage)
+          : true;
+      case 'searchPreferences':
+        return isValid;
+      default:
+        return false;
+    }
+  }, [activeStep, formValues, isValid]);
+
+  const handleNext = () => {
+    if (!isStepValid) return;
+
+    if (isLastStep) {
+      createProfile(formValues);
+
+      return;
+    }
+
+    onNext();
   };
 
   const StepComponent = stepRenreders[activeStep];
@@ -83,45 +115,39 @@ const CreateForm = ({
 
   return (
     <Form {...form}>
-      <form
-        className="relative flex size-full w-full flex-col justify-between"
-        onSubmit={handleSubmit(createProfile)}
-      >
-        <div className="mx-auto flex w-full max-w-lg p-5">
+      <div className="relative flex size-full w-full flex-col">
+        <Progress
+          indicatorClassName="bg-primary/70"
+          className="h-2 rounded-none"
+          value={progressValue}
+        />
+        <div className="mx-auto flex w-full max-w-lg flex-1 p-5">
           <StepComponent key={activeStep} />
         </div>
 
-        <div>
-          <Progress
-            indicatorClassName="bg-primary/70"
-            className="h-2 rounded-none"
-            value={progressValue}
-          />
-          <div className="flex w-full items-center justify-center bg-white p-3 dark:bg-background">
-            <div className="mx-auto flex w-full max-w-lg items-center gap-2">
-              {isBackButtonVisible && (
-                <Button
-                  size="lg"
-                  className="flex-1"
-                  variant="secondary"
-                  onClick={onBack}
-                >
-                  {t('back')}
-                </Button>
-              )}
+        <div className="flex w-full items-center justify-center bg-white p-3 dark:bg-background">
+          <div className="mx-auto flex w-full max-w-lg items-center gap-2">
+            {isBackButtonVisible && (
               <Button
-                className="flex-1"
                 size="lg"
-                disabled={isLastStep && !isValid}
-                onClick={isLastStep ? undefined : onNext}
-                type={isLastStep ? 'submit' : 'button'}
+                className="flex-1"
+                variant="secondary"
+                onClick={onBack}
               >
-                {isLastStep ? t('create') : t('next')}
+                {t('back')}
               </Button>
-            </div>
+            )}
+            <Button
+              className="flex-1"
+              size="lg"
+              disabled={!isStepValid}
+              onClick={handleNext}
+            >
+              {isLastStep ? t('create') : t('next')}
+            </Button>
           </div>
         </div>
-      </form>
+      </div>
     </Form>
   );
 };
