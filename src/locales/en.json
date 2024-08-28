@@ -286,9 +286,12 @@
       "aboutMe": "About Me",
       "aboutMeDescription": "Use this space to tell others more about who you. Share your passions, hobbies, or a fun fact!",
       "aboutMePlaceholder": "Share a bit about yourself – hobbies, interests, or fun facts!",
-      "availabilityTime": "Availability time",
-      "availabilityTimeDescription": "How many hours per week are you available to work on a project?",
-      "availabilityTimePlaceholder": "Enter the number of hours you're available per week",
+      "availabilityTime": "How many hours per week are you available to work on a project?",
+      "availabilityOption1": "Up to 10 hours per week",
+      "availabilityOption2": "10-20 hours per week",
+      "availabilityOption3": "20-30 hours per week",
+      "availabilityOption4": "30-40 hours per week",
+      "availabilityOption5": "40+ hours per week",
       "avatar": "Avatar",
       "avatarDescription": "Upload a photo of yourself to personalize your profile."
     },
@@ -315,7 +318,7 @@
     "unlinkToastDescription": "You can now log in with a different email address."
   },
   "matchPreferences": {
-    "metaTitle": "match preferences",
+    "metaTitle": "Match preferences",
     "metaDescription": "Manage your match preferences settings."
   },
   "landing": {

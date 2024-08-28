@@ -13,6 +13,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { TypographyP } from '@/components/ui/typography';
+import useIsFirstRender from '@/hooks/use-is-first-render';
 
 import type { ProfileFormFields } from '../types';
 
@@ -27,11 +28,16 @@ const IdeaSection = () => {
 
   const hasIdeaValue = watch('hasIdea');
 
+  const isFirstRender = useIsFirstRender();
+
   useEffect(() => {
+    if (isFirstRender) return;
+
     if (hasIdeaValue === 'false') {
-      setValue('ideaStage', undefined);
-      setValue('ideaDescription', undefined);
+      setValue('ideaStage', '');
+      setValue('ideaDescription', '');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasIdeaValue, setValue]);
 
   return (

@@ -6,8 +6,8 @@ import {
   LanguagesSelector,
   LocationSelector,
 } from '@/components';
+import { AvailabilityTimeField } from '@/components/availability-time-field';
 import InputField from '@/components/input-field';
-import NumberInputField from '@/components/number-input-field';
 import TextareaField from '@/components/textarea-field';
 import {
   Card,
@@ -20,6 +20,14 @@ import {
 const PersonalSection = () => {
   const t = useTranslations('profile.personalSection');
 
+  const availabilityTimeOptions = [
+    { value: 'zero-to-ten', label: t('availabilityOption1') },
+    { value: 'ten-to-twenty', label: t('availabilityOption2') },
+    { value: 'twenty-to-thirty', label: t('availabilityOption3') },
+    { value: 'thirty-to-forty', label: t('availabilityOption4') },
+    { value: 'forty-plus', label: t('availabilityOption5') },
+  ];
+
   return (
     <Card>
       <CardHeader>
@@ -30,17 +38,21 @@ const PersonalSection = () => {
       <CardContent className="flex flex-col gap-6">
         <AvatarUploadField name="avatarURL" />
 
-        <InputField
-          name="name"
-          label={t('nameTitle')}
-          placeholder={t('namePlaceholder')}
-        />
+        <div className="flex w-full flex-col gap-6 sm:flex-row">
+          <InputField
+            name="name"
+            className="flex-1"
+            label={t('nameTitle')}
+            placeholder={t('namePlaceholder')}
+          />
 
-        <InputField
-          name="lastName"
-          label={t('lastNameTitle')}
-          placeholder={t('lastNamePlaceholder')}
-        />
+          <InputField
+            className="flex-1"
+            name="lastName"
+            label={t('lastNameTitle')}
+            placeholder={t('lastNamePlaceholder')}
+          />
+        </div>
 
         <TextareaField
           name="aboutInfo"
@@ -48,13 +60,11 @@ const PersonalSection = () => {
           placeholder={t('aboutMePlaceholder')}
         />
 
-        <div className="w-[350px]">
-          <NumberInputField
-            name="availabilityTime"
-            label={t('availabilityTime')}
-            placeholder={t('availabilityTimeDescription')}
-          />
-        </div>
+        <AvailabilityTimeField
+          className="w-full"
+          label={t('availabilityTime')}
+          options={availabilityTimeOptions}
+        />
 
         <LocationSelector />
 
