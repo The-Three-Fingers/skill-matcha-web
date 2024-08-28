@@ -56,7 +56,7 @@ const CreateForm = ({
 
   const { mutateAsync } = useCreateProfile();
 
-  const form = useForm({
+  const form = useForm<ProfileFormFields>({
     mode: 'all',
     resolver: zodResolver(ProfileValidation),
     defaultValues,
