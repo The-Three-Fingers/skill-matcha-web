@@ -276,25 +276,37 @@
   "profile": {
     "metaTitle": "Profile",
     "metaDescription": "This is how others will see you on the site.",
-    "personalSectionTitle": "Personal information",
-    "personalSectionDescription": "Update your personal information to help others get to know you better.",
-    "ideaSectionTitle": "Startup idea",
-    "ideaSectionDescription": "Share your startup idea to attract potential co-founders.",
+    "personalSection": {
+      "title": "Personal information",
+      "description": "Update your personal information to help others get to know you better.",
+      "nameTitle": "Update your name",
+      "namePlaceholder": "Enter your name",
+      "lastNameTitle": "Update your last name",
+      "lastNamePlaceholder": "Enter your last name",
+      "aboutMe": "About Me",
+      "aboutMeDescription": "Use this space to tell others more about who you. Share your passions, hobbies, or a fun fact!",
+      "aboutMePlaceholder": "Share a bit about yourself – hobbies, interests, or fun facts!",
+      "availabilityTime": "Availability time",
+      "availabilityTimeDescription": "How many hours per week are you available to work on a project?",
+      "availabilityTimePlaceholder": "Enter the number of hours you're available per week",
+      "avatar": "Avatar",
+      "avatarDescription": "Upload a photo of yourself to personalize your profile."
+    },
+    "ideaSection": {
+      "ideaSectionTitle": "Update your startup idea information",
+      "ideaSectionDescription": "Share your startup idea to attract potential co-founders.",
+      "ideaTitle": "Do you have a startup idea?",
+      "yesOption": "Yes",
+      "noOption": "No",
+      "ideaDescriptionPlaceholder": "It's important to describe your idea in detail to attract potential co-founders.",
+      "ideaDescriptionLabel": "Describe your startup idea"
+    },
+    "ideaPlaceholder": "Describe your startup idea",
     "rolesSectionTitle": "Your role",
     "rolesSectionDescription": "Select your role and specialization to help others understand your skills.",
-    "nameTitle": "Update your name",
-    "namePlaceholder": "Enter your name",
-    "lastNameTitle": "Update your last name",
-    "lastNamePlaceholder": "Enter your last name",
-    "aboutMe": "About Me",
-    "aboutMeDescription": "Use this space to tell others more about who you. Share your passions, hobbies, or a fun fact!",
-    "aboutMePlaceholder": "Share a bit about yourself – hobbies, interests, or fun facts!",
     "submitButton": "Update profile",
-    "availabilityTime": "Availability time",
-    "availabilityTimeDescription": "How many hours per week are you available to work on a project?",
-    "availabilityTimePlaceholder": "Enter the number of hours you're available per week",
-    "avatar": "Avatar",
-    "avatarDescription": "Upload a photo of yourself to personalize your profile.",
+    "resetButton": "Discard changes",
+
     "email": "Your email",
     "emailDescription": "Your email address will not be visible to others. You can't change your email address.",
     "unlinkEmail": "Unlink email",
@@ -302,9 +314,9 @@
     "unlinkToastTitle": "You successfully unlinked your email",
     "unlinkToastDescription": "You can now log in with a different email address."
   },
-  "account": {
-    "metaTitle": "Account",
-    "metaDescription": "Manage your account settings."
+  "matchPreferences": {
+    "metaTitle": "match preferences",
+    "metaDescription": "Manage your match preferences settings."
   },
   "landing": {
     "heroTitle1": "Find Your",

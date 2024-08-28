@@ -18,13 +18,13 @@ import {
 } from '@/components/ui/card';
 
 const PersonalSection = () => {
-  const t = useTranslations('profile');
+  const t = useTranslations('profile.personalSection');
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{t('personalSectionTitle')}</CardTitle>
-        <CardDescription>{t('personalSectionDescription')}</CardDescription>
+        <CardTitle>{t('title')}</CardTitle>
+        <CardDescription>{t('description')}</CardDescription>
       </CardHeader>
 
       <CardContent className="flex flex-col gap-6">
@@ -35,6 +35,7 @@ const PersonalSection = () => {
           label={t('nameTitle')}
           placeholder={t('namePlaceholder')}
         />
+
         <InputField
           name="lastName"
           label={t('lastNameTitle')}

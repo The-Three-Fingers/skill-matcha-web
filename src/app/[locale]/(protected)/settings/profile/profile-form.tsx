@@ -2,56 +2,81 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { type z } from 'zod';
 
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/components/ui/use-toast';
+import { useGetProfile } from '@/hooks/queries/use-get-profile';
 import { ProfileValidation } from '@/validations/profile-validation';
 
+import Loading from '../../loading';
 import IdeaSection from './idea-section';
 import PersonalSection from './personal-section';
 import ProfileEmailSection from './profile-email-section';
 import RoleSection from './role-section';
 
-type ProfileFormValues = z.infer<typeof ProfileValidation>;
-
 // добавить из регистрации когда будет готова
 // roles
 // subRoles
 // services
-// idea
 
 // !! TODO дописать логику отвязки профайла
 
+type ProfileFormValues = z.infer<typeof ProfileValidation>;
+
+const defaultValues = {
+  name: '',
+  lastName: '',
+  languages: [],
+  location: '',
+  hasIdea: 'false',
+  ideaStage: '',
+  ideaDescription: '',
+  aboutInfo: '',
+  availabilityTime: 20,
+  // roles: [],
+  // subRoles: [],
+  // services: [],
+};
+
 const ProfileForm = () => {
+  const { data: profile, isLoading } = useGetProfile();
+  const t = useTranslations('profile');
+  const { toast } = useToast();
+
   const form = useForm<ProfileFormValues>({
     resolver: zodResolver(ProfileValidation),
-    defaultValues: {
-      name: 'test',
-      lastName: 'test',
-      languages: [],
-      location: '',
-      // roles: [],
-      // subRoles: [],
-      // services: [],
-      // idea: [],
-      aboutInfo: '',
-      availabilityTime: 20,
-    },
-    mode: 'onChange',
+    defaultValues,
+    mode: 'onTouched',
   });
 
   const {
     handleSubmit,
-    formState: { isValid },
+    reset,
+    formState: { isValid, dirtyFields },
   } = form;
 
-  const t = useTranslations('profile');
+  useEffect(() => {
+    if (!profile) {
+      return;
+    }
 
-  const { toast } = useToast();
+    resetForm();
+  }, [profile, reset]);
+
+  const resetForm = () => {
+    if (!profile) {
+      return;
+    }
+
+    reset({
+      ...defaultValues,
+      ...profile,
+    });
+  };
 
   function onSubmit(data: ProfileFormValues) {
     toast({
@@ -71,6 +96,16 @@ const ProfileForm = () => {
     });
   };
 
+  const handleResetChanges = () => {
+    resetForm();
+  };
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  const isFormModified = Boolean(Object.keys(dirtyFields).length);
+
   return (
     <div className="flex flex-col gap-10">
       <FormProvider {...form}>
@@ -83,9 +118,20 @@ const ProfileForm = () => {
             <PersonalSection />
           </div>
 
-          <Button type="submit" disabled={!isValid} className="w-full">
-            {t('submitButton')}
-          </Button>
+          <div className="flex flex-col gap-4 sm:flex-row">
+            <Button type="submit" disabled={!isValid} className="w-full">
+              {t('submitButton')}
+            </Button>
+
+            <Button
+              className={`w-full ${!isFormModified && 'hidden'}`}
+              variant="secondary"
+              disabled={!isFormModified}
+              onClick={handleResetChanges}
+            >
+              {t('resetButton')}
+            </Button>
+          </div>
         </form>
       </FormProvider>
 

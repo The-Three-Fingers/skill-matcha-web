@@ -24,7 +24,7 @@ const AvatarUploadField = ({
 
   const labelRef = useRef<HTMLLabelElement | null>(null);
 
-  const t = useTranslations('profile');
+  const t = useTranslations('profile.personalSection');
 
   const supportedFileFormats = 'image/*';
 

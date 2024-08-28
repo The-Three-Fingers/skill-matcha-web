@@ -30,6 +30,7 @@ export const ProfileValidation = z
       .max(150, {
         message: 'Last name must be maximum 150 characters',
       }),
+
     avatarURL:
       typeof window === 'undefined'
         ? z.any()
@@ -47,7 +48,14 @@ export const ProfileValidation = z
               return file.type.startsWith('image/');
             }, 'File must be an image')
             .optional(),
-    aboutInfo: z.string().max(1000).min(40).optional(),
+
+    aboutInfo: z.preprocess((value) => {
+      if (typeof value === 'string' && value.trim() === '') {
+        return undefined;
+      }
+      return value;
+    }, z.string().max(1000).min(40).optional()),
+
     languages: z.array(z.string().min(2).max(5)).default([]),
     location: z.string().optional(),
     // Idea
