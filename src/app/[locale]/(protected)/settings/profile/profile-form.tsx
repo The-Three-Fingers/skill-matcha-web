@@ -59,14 +59,6 @@ const ProfileForm = () => {
     formState: { isValid, dirtyFields },
   } = form;
 
-  useEffect(() => {
-    if (!profile) {
-      return;
-    }
-
-    resetForm();
-  }, [profile, reset]);
-
   const resetForm = () => {
     if (!profile) {
       return;
@@ -77,6 +69,14 @@ const ProfileForm = () => {
       ...profile,
     });
   };
+
+  useEffect(() => {
+    if (!profile) {
+      return;
+    }
+
+    resetForm();
+  }, [profile, reset]);
 
   function onSubmit(data: ProfileFormValues) {
     toast({
