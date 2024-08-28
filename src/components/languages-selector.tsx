@@ -11,7 +11,7 @@ import {
 import { MultiCombobox } from '@/components/ui/multi-combobox';
 import { useLanguages } from '@/hooks/queries/use-languages';
 
-const LanguagesSelector = () => {
+const LanguagesSelector = ({ className }: { className?: string }) => {
   const t = useTranslations('profileForm');
 
   const { control } = useFormContext();
@@ -26,7 +26,7 @@ const LanguagesSelector = () => {
       control={control}
       name="languages"
       render={({ field }) => (
-        <FormItem>
+        <FormItem className={className}>
           <FormLabel>{t('languages')}</FormLabel>
           <FormControl>
             <MultiCombobox isClearable options={languagesOptions} {...field} />

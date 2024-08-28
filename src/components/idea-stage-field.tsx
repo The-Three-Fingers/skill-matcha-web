@@ -12,7 +12,7 @@ import { useIdeaStages } from '@/hooks/queries/use-idea-stages';
 
 import { Combobox } from './ui/combobox';
 
-const IdeaStageField = () => {
+const IdeaStageField = ({ className }: { className?: string }) => {
   const { control } = useFormContext();
 
   const t = useTranslations('profileForm');
@@ -28,7 +28,7 @@ const IdeaStageField = () => {
       control={control}
       name="ideaStage"
       render={({ field }) => (
-        <FormItem>
+        <FormItem className={className}>
           <FormLabel>{t('ideaStageLabel')}</FormLabel>
           <FormControl>
             <Combobox

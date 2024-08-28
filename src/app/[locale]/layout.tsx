@@ -10,6 +10,7 @@ import { getMessages, unstable_setRequestLocale } from 'next-intl/server';
 
 import { AuthProvider } from '@/auth/AuthProvider';
 import { authConfig } from '@/config/server-config';
+import { Env } from '@/libs/Env';
 import { cn } from '@/libs/utils';
 import { ReactQueryProvider } from '@/providers/ReactQueryProvider';
 import { ThemeProvider } from '@/providers/ThemeProvider';
@@ -68,7 +69,9 @@ export default async function RootLayout(props: {
 
   return (
     <html lang={props.params.locale}>
-      <GoogleTagManager gtmId="GTM-MWX2L65H" />
+      {Env.NODE_ENV === 'production' && (
+        <GoogleTagManager gtmId="GTM-MWX2L65H" />
+      )}
       <body
         className={cn(
           'h-screen font-sans antialiased selection:bg-primary selection:text-primary-foreground',

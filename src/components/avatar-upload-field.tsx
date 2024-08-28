@@ -26,7 +26,7 @@ const AvatarUploadField = ({
 
   const t = useTranslations('profile');
 
-  const supportedFileFormats = 'image/png, image/jpeg, image/jpg';
+  const supportedFileFormats = 'image/*';
 
   const getImageURL = (file: File | undefined) => {
     if (!file) return '';

@@ -10,10 +10,12 @@ import {
 import { MultiCombobox } from '@/components/ui/multi-combobox';
 
 const SubRolesField = ({
+  className,
   label,
   maxSelectable,
   options,
 }: {
+  className?: string;
   label: string;
   maxSelectable?: number;
   options: { value: string; label: string }[];
@@ -25,7 +27,7 @@ const SubRolesField = ({
       control={control}
       name="subRoles"
       render={({ field }) => (
-        <FormItem>
+        <FormItem className={className}>
           <FormLabel>{label}</FormLabel>
           <FormControl>
             <MultiCombobox

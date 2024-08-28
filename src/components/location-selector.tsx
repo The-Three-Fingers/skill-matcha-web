@@ -34,7 +34,7 @@ const CountrySelectedValue = ({
   </div>
 );
 
-const LocationSelector = () => {
+const LocationSelector = ({ className }: { className?: string }) => {
   const t = useTranslations('profileForm');
 
   const { control } = useFormContext();
@@ -51,7 +51,7 @@ const LocationSelector = () => {
       control={control}
       name="location"
       render={({ field }) => (
-        <FormItem>
+        <FormItem className={className}>
           <FormLabel>{t('location')}</FormLabel>
           <FormControl>
             <Combobox

@@ -54,11 +54,16 @@ const FormFields = () => {
   } = useRoleFormFields();
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      <RoleField label={t('searchRoleLabel')} options={roleOptions} />
+    <div className="flex w-full flex-col items-center gap-4">
+      <RoleField
+        className="w-full"
+        label={t('searchRoleLabel')}
+        options={roleOptions}
+      />
 
       {isSubrolesFieldVisible && (
         <SubRolesField
+          className="w-full"
           label={t('searchSubrolesLabel')}
           options={subRolesOptions}
           maxSelectable={2}
@@ -203,7 +208,7 @@ const SearchPreferences = () => {
       <TypographyH3>{t(`stepTitles.searchPreferences`)}</TypographyH3>
       <div className="flex w-full flex-col items-center gap-4">
         {hasSearchPreferences && (
-          <ul className="flex w-9/12 flex-col gap-4">
+          <ul className="flex w-full flex-col gap-4">
             {searchPreferences.map((searchPreference, index) => (
               // eslint-disable-next-line react/no-array-index-key
               <li key={`${searchPreference.role}_${index}`}>
@@ -261,7 +266,7 @@ const SearchPreferences = () => {
 
         {isAddButtonVisible && (
           <SearchPreferencesDialog container={container}>
-            <Card className="h-20 w-9/12 cursor-pointer border-2 border-dashed shadow-none transition-all hover:border-primary">
+            <Card className="h-20 w-full cursor-pointer border-2 border-dashed shadow-none transition-all hover:border-primary">
               <div className="flex size-full items-center justify-center">
                 <div className="flex items-center gap-2">
                   <Plus className="size-4" />

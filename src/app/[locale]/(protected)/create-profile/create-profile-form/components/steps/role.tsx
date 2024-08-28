@@ -21,11 +21,17 @@ const Role = () => {
     <div className="flex w-full flex-col items-center gap-10">
       <TypographyH3>{t(`stepTitles.roles`)}</TypographyH3>
 
-      <div className="flex flex-col items-center gap-4">
-        <RoleField isRequired label={t('roleLabel')} options={roleOptions} />
+      <div className="flex w-full flex-col items-center gap-4">
+        <RoleField
+          className="w-full"
+          isRequired
+          label={t('roleLabel')}
+          options={roleOptions}
+        />
 
         {isSubrolesFieldVisible && (
           <SubRolesField
+            className="w-full"
             maxSelectable={2}
             label={t('subRolesLabel')}
             options={subRolesOptions}

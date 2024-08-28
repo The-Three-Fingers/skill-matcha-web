@@ -32,7 +32,7 @@ const Idea = () => {
     <div className="flex w-full flex-col items-center gap-10">
       <TypographyH3>{t(`stepTitles.idea`)}</TypographyH3>
 
-      <div className="flex flex-col gap-4">
+      <div className="flex w-full flex-col gap-4">
         <ToggleGroupField
           isRadioGroup
           type="single"
@@ -42,7 +42,7 @@ const Idea = () => {
 
         {hasIdeaValue === 'true' && (
           <>
-            <IdeaStageField />
+            <IdeaStageField className="w-full" />
             <TextareaField
               textAreaClassName="min-h-32 resize-none"
               placeholder={t('ideaDescriptionPlaceholder')}
