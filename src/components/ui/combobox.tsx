@@ -4,7 +4,6 @@ import { ChevronsUpDown, X } from 'lucide-react';
 import React from 'react';
 import { type MouseEventHandler, useState } from 'react';
 
-import { Button } from '@/components/ui/button';
 import {
   Command,
   CommandEmpty,
@@ -21,7 +20,7 @@ import {
 import { cn } from '@/libs/utils';
 
 const Combobox = React.forwardRef<
-  HTMLButtonElement,
+  HTMLDivElement,
   {
     className?: string;
     components?: {
@@ -35,7 +34,6 @@ const Combobox = React.forwardRef<
     placeholder?: string;
     searchPlaceholder?: string;
     value?: string;
-    width?: number;
   }
 >(
   (
@@ -49,7 +47,6 @@ const Combobox = React.forwardRef<
       placeholder = 'Select ...',
       searchPlaceholder = 'Search ...',
       value,
-      width,
     },
     ref,
   ) => {
@@ -86,16 +83,11 @@ const Combobox = React.forwardRef<
     return (
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
-          <Button
+          <div
             ref={ref}
-            variant="ring"
-            role="combobox"
             aria-expanded={open}
-            style={{
-              width: width ?? 350,
-            }}
             className={cn(
-              'justify-between',
+              'flex items-center cursor-pointer justify-between whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background text-muted-foreground hover:text-accent-foreground min-h-10 px-4 py-2',
               value ? 'text-foreground' : '',
               className,
             )}
@@ -110,14 +102,9 @@ const Combobox = React.forwardRef<
               )}
               <ChevronsUpDown className="size-4 shrink-0 opacity-50" />
             </div>
-          </Button>
+          </div>
         </PopoverTrigger>
-        <PopoverContent
-          className="p-0"
-          style={{
-            width: width ?? 350,
-          }}
-        >
+        <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0">
           <Command>
             {/* Fix bug with search */}
             {isSearchable && <CommandInput placeholder={searchPlaceholder} />}

@@ -15,13 +15,18 @@ const PersonalInfo = () => {
 
   return (
     <div className="flex w-full flex-col items-center gap-10">
-      <TypographyH3>{t(`stepTitles.personal`)}</TypographyH3>
+      <TypographyH3 className="text-center">
+        {t(`stepTitles.personal`)}
+      </TypographyH3>
 
       <div className="flex w-full flex-col items-center gap-4">
-        <AvatarUploadField className="text-center" name="avatarURL" />
+        <AvatarUploadField
+          className="flex flex-col items-center text-center"
+          name="avatarURL"
+        />
 
         <InputField
-          className="w-[350px]"
+          className="w-full"
           name="name"
           isRequired
           label={t('name')}
@@ -29,16 +34,16 @@ const PersonalInfo = () => {
         />
 
         <InputField
-          className="w-[350px]"
+          className="w-full"
           name="lastName"
           isRequired
           label={t('lastName')}
           placeholder={t('lastNamePlaceholder')}
         />
 
-        <LanguagesSelector />
+        <LanguagesSelector className="w-full" />
 
-        <LocationSelector />
+        <LocationSelector className="w-full" />
       </div>
     </div>
   );

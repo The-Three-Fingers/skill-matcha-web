@@ -36,7 +36,6 @@ const MultiCombobox = React.forwardRef<
     placeholder?: string;
     searchPlaceholder?: string;
     value?: string[];
-    width?: number;
   }
 >(
   (
@@ -50,7 +49,6 @@ const MultiCombobox = React.forwardRef<
       placeholder = 'Select ...',
       searchPlaceholder = 'Search ...',
       value,
-      width,
     },
     ref,
   ) => {
@@ -96,9 +94,6 @@ const MultiCombobox = React.forwardRef<
           <div
             ref={ref}
             aria-expanded={open}
-            style={{
-              width: width ?? 350,
-            }}
             className={cn(
               'flex items-center cursor-pointer justify-between whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background text-muted-foreground hover:text-accent-foreground min-h-10 px-4 py-2',
               className,
@@ -151,12 +146,7 @@ const MultiCombobox = React.forwardRef<
             </div>
           </div>
         </PopoverTrigger>
-        <PopoverContent
-          className="p-0"
-          style={{
-            width: width ?? 350,
-          }}
-        >
+        <PopoverContent className="w-[var(--radix-popover-trigger-width)] p-0">
           <Command>
             {isSearchable && <CommandInput placeholder={searchPlaceholder} />}
             <CommandList>

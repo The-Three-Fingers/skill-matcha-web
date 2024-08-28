@@ -30,12 +30,23 @@ export const ProfileValidation = z
       .max(150, {
         message: 'Last name must be maximum 150 characters',
       }),
-    avatarURL: (typeof window === 'undefined'
-      ? z.any()
-      : z.instanceof(File).refine((file) => file.size <= MAX_FILE_SIZE, {
-          message: 'The profile picture must be a maximum of 1MB',
-        })
-    ).optional(),
+    avatarURL:
+      typeof window === 'undefined'
+        ? z.any()
+        : z
+            .instanceof(File)
+            .refine(
+              (file) => {
+                return file.size <= MAX_FILE_SIZE;
+              },
+              {
+                message: 'The profile picture must be a maximum of 1MB',
+              },
+            )
+            .refine((file) => {
+              return file.type.startsWith('image/');
+            }, 'File must be an image')
+            .optional(),
     aboutInfo: z.string().max(1000).min(40).optional(),
     languages: z.array(z.string().min(2).max(5)).default([]),
     location: z.string().optional(),

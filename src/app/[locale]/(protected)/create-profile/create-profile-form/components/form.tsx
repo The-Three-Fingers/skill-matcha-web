@@ -57,6 +57,7 @@ const CreateForm = ({
   const { mutateAsync } = useCreateProfile();
 
   const form = useForm({
+    mode: 'all',
     resolver: zodResolver(ProfileValidation),
     defaultValues,
   });
@@ -64,7 +65,7 @@ const CreateForm = ({
   const {
     reset,
     getValues,
-    formState: { isValid },
+    formState: { isValid, errors },
   } = form;
 
   const createProfile = async (data: ProfileFormFields) => {
@@ -79,7 +80,9 @@ const CreateForm = ({
   const isStepValid = useMemo(() => {
     switch (activeStep) {
       case 'personal':
-        return Boolean(formValues.name && formValues.lastName);
+        return (
+          Boolean(formValues.name && formValues.lastName) && !errors.avatarURL
+        );
       case 'role':
         return Boolean(formValues.role) && formValues.services.length > 0;
       case 'idea':
@@ -115,17 +118,17 @@ const CreateForm = ({
 
   return (
     <Form {...form}>
-      <div className="relative flex size-full w-full flex-col">
+      <div className="relative flex size-full flex-col pb-[70px]">
         <Progress
           indicatorClassName="bg-primary/70"
           className="h-2 rounded-none"
           value={progressValue}
         />
-        <div className="mx-auto flex w-full max-w-lg flex-1 p-5">
+        <div className="mx-auto flex w-full max-w-md flex-1 p-5">
           <StepComponent key={activeStep} />
         </div>
 
-        <div className="flex w-full items-center justify-center bg-white p-3 dark:bg-background">
+        <div className="fixed bottom-0 left-0 z-50 flex h-[70px] w-full items-center justify-center bg-white p-3 dark:bg-background">
           <div className="mx-auto flex w-full max-w-lg items-center gap-2">
             {isBackButtonVisible && (
               <Button

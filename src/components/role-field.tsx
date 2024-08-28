@@ -10,10 +10,12 @@ import {
 } from '@/components/ui/form';
 
 const RoleField = ({
+  className,
   label,
   isRequired,
   options,
 }: {
+  className?: string;
   label: string;
   isRequired?: boolean;
   options: { value: string; label: string }[];
@@ -25,7 +27,7 @@ const RoleField = ({
       control={control}
       name="role"
       render={({ field }) => (
-        <FormItem>
+        <FormItem className={className}>
           <FormLabel>
             {label} {isRequired && <span className="text-destructive">*</span>}
           </FormLabel>
