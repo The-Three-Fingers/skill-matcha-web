@@ -17,7 +17,7 @@ export const DEFAULT_PROFILE = {
   services: [],
 };
 
-const MAX_FILE_SIZE = 1024 * 1024;
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
 export const Role = z.object({
   // TODO: make it as array later for multi roles
@@ -47,7 +47,6 @@ export const ProfileValidation = z
       .max(150, {
         message: 'Last name must be maximum 150 characters',
       }),
-
     avatarURL:
       typeof window === 'undefined'
         ? z.any()
@@ -65,23 +64,16 @@ export const ProfileValidation = z
               return file.type.startsWith('image/');
             }, 'File must be an image')
             .optional(),
-
-    aboutInfo: z.preprocess((value) => {
-      if (typeof value === 'string' && value.trim() === '') {
-        return undefined;
-      }
-      return value;
-    }, z.string().max(1000).min(40).optional()),
-
+    aboutInfo: z.string().max(1000).default(''),
     languages: z.array(z.string().min(2).max(5)).default([]),
-    location: z.string().optional(),
+    location: z.string().default(''),
     // Idea
     hasIdea: z.string().default('false'),
     ideaStage: z.string().optional().default(''),
-    ideaDescription: z.string().max(1000).optional().default(''),
+    ideaDescription: z.string().max(1000).default(''),
     // Search preferences
     searchPreferences: z.array(Role).default([]),
     // Others
-    availabilityTime: z.string().optional().default(''),
+    availabilityTime: z.string().default(''),
   })
   .and(Role);
