@@ -13,6 +13,7 @@ const ToggleGroupField = ({
   name,
   isRadioGroup = false,
   options,
+  isRequired,
 }: {
   className?: string;
   type?: 'single' | 'multiple';
@@ -21,6 +22,7 @@ const ToggleGroupField = ({
   name: string;
   isRadioGroup?: boolean;
   options: { label: string; value: string }[];
+  isRequired?: boolean;
 }) => {
   const { control } = useFormContext();
 
@@ -31,7 +33,10 @@ const ToggleGroupField = ({
       render={({ field }) => (
         <FormItem className={className}>
           {label && (
-            <FormLabel className="mb-4 flex justify-center">{label}</FormLabel>
+            <FormLabel>
+              {label}{' '}
+              {isRequired && <span className="text-destructive">*</span>}
+            </FormLabel>
           )}
           <ToggleGroup
             className="flex-wrap"
