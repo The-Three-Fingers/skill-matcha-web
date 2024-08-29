@@ -14,11 +14,13 @@ const SubRolesField = ({
   label,
   maxSelectable,
   options,
+  isRequired,
 }: {
   className?: string;
   label: string;
   maxSelectable?: number;
   options: { value: string; label: string }[];
+  isRequired?: boolean;
 }) => {
   const { control } = useFormContext();
 
@@ -28,7 +30,9 @@ const SubRolesField = ({
       name="subRoles"
       render={({ field }) => (
         <FormItem className={className}>
-          <FormLabel>{label}</FormLabel>
+          <FormLabel>
+            {label} {isRequired && <span className="text-destructive">*</span>}
+          </FormLabel>
           <FormControl>
             <MultiCombobox
               isSearchable={false}

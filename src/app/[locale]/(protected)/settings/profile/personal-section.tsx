@@ -40,6 +40,7 @@ const PersonalSection = () => {
 
         <div className="flex w-full flex-col gap-6 sm:flex-row">
           <InputField
+            isRequired
             name="name"
             className="flex-1"
             label={t('nameTitle')}
@@ -47,6 +48,7 @@ const PersonalSection = () => {
           />
 
           <InputField
+            isRequired
             className="flex-1"
             name="lastName"
             label={t('lastNameTitle')}
@@ -54,13 +56,16 @@ const PersonalSection = () => {
           />
         </div>
 
-        <TextareaField
-          className="w-full"
-          textAreaClassName="min-h-32 resize-none"
-          name="aboutInfo"
-          label={t('aboutMe')}
-          placeholder={t('aboutMePlaceholder')}
-        />
+        <div>
+          <TextareaField
+            className="w-full"
+            textAreaClassName="min-h-32 resize-none"
+            name="aboutInfo"
+            label={t('aboutMe')}
+            placeholder={t('aboutMePlaceholder')}
+          />
+          <CardDescription>{t('aboutMeDescription')}</CardDescription>
+        </div>
 
         <AvailabilityTimeField
           className="w-full"

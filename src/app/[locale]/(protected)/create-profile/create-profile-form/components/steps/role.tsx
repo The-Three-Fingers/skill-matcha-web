@@ -33,6 +33,7 @@ const Role = () => {
           <SubRolesField
             className="w-full"
             maxSelectable={2}
+            isRequired
             label={t('subRolesLabel')}
             options={subRolesOptions}
           />
@@ -43,6 +44,7 @@ const Role = () => {
             className="mt-4"
             maxSelectable={4}
             name="services"
+            isRequired
             label={t('servicesLabel')}
             options={servicesOptions}
             type="multiple"
