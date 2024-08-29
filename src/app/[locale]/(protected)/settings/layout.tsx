@@ -32,7 +32,7 @@ const Settings = ({ children }: SettingsProps) => {
     },
     {
       title: t('preferencesSettings'),
-      href: '/settings/account',
+      href: '/settings/match-preferences',
     },
   ];
 

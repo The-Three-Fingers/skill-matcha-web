@@ -18,7 +18,8 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 }
 
 const SettingsAccountPage = () => {
-  const t = useTranslations('account');
+  const t = useTranslations('matchPreferences');
+
   return (
     <div className="space-y-6">
       <div>

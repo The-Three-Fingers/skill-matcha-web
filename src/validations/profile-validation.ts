@@ -1,6 +1,23 @@
 import { z } from 'zod';
 
-const MAX_FILE_SIZE = 1024 * 1024;
+export const DEFAULT_PROFILE = {
+  name: '',
+  lastName: '',
+  avatarURL: undefined,
+  aboutInfo: '',
+  languages: [],
+  location: '',
+  hasIdea: 'false',
+  ideaStage: '',
+  ideaDescription: '',
+  searchPreferences: [],
+  availabilityTime: '',
+  role: '',
+  subRoles: [],
+  services: [],
+};
+
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
 export const Role = z.object({
   // TODO: make it as array later for multi roles
@@ -47,21 +64,16 @@ export const ProfileValidation = z
               return file.type.startsWith('image/');
             }, 'File must be an image')
             .optional(),
-    aboutInfo: z.string().max(1000).min(40).optional(),
+    aboutInfo: z.string().max(1000).default(''),
     languages: z.array(z.string().min(2).max(5)).default([]),
-    location: z.string().optional(),
+    location: z.string().default(''),
     // Idea
     hasIdea: z.string().default('false'),
-    ideaStage: z.string().optional(),
-    ideaDescription: z.string().max(1000).optional(),
+    ideaStage: z.string().optional().default(''),
+    ideaDescription: z.string().max(1000).default(''),
     // Search preferences
     searchPreferences: z.array(Role).default([]),
     // Others
-    availabilityTime: z
-      .number()
-      .int()
-      .or(z.string())
-      .pipe(z.coerce.number().int())
-      .optional(),
+    availabilityTime: z.string().default(''),
   })
   .and(Role);

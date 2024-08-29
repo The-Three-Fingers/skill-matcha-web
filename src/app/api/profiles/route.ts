@@ -26,8 +26,6 @@ export async function GET() {
 
     const query = await db.collection('profiles').doc(decodedToken.uid).get();
 
-    const profile = await query.data();
-
     if (!query.exists) {
       return new NextResponse(
         JSON.stringify({
@@ -38,6 +36,8 @@ export async function GET() {
         },
       );
     }
+
+    const profile = await query.data();
 
     return NextResponse.json(profile);
   } catch (error) {

@@ -10,25 +10,14 @@ import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { Progress } from '@/components/ui/progress';
 import { useCreateProfile } from '@/hooks/mutations/use-create-profile';
-import { ProfileValidation } from '@/validations/profile-validation';
+import {
+  DEFAULT_PROFILE,
+  ProfileValidation,
+} from '@/validations/profile-validation';
 
 import { steps } from '../constants';
 import type { ProfileFormFields } from '../types';
 import { Idea, PersonalInfo, Role, SearchPreferences } from './steps';
-
-const defaultValues = {
-  name: '',
-  lastName: '',
-  languages: [],
-  location: '',
-  role: '',
-  subRoles: [],
-  services: [],
-  hasIdea: 'false',
-  ideaStage: '',
-  ideaDescription: '',
-  searchPreferences: [],
-};
 
 const stepRenreders = {
   personal: PersonalInfo,
@@ -59,7 +48,7 @@ const CreateForm = ({
   const form = useForm<ProfileFormFields>({
     mode: 'all',
     resolver: zodResolver(ProfileValidation),
-    defaultValues,
+    defaultValues: DEFAULT_PROFILE,
   });
 
   const {
@@ -94,7 +83,7 @@ const CreateForm = ({
       default:
         return false;
     }
-  }, [activeStep, formValues, isValid]);
+  }, [activeStep, formValues, isValid, errors]);
 
   const handleNext = () => {
     if (!isStepValid) return;

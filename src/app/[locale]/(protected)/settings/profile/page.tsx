@@ -1,8 +1,9 @@
 import { getTranslations } from 'next-intl/server';
 
 import { Separator } from '@/components/ui/separator';
+import { getPageTitleWithAppName } from '@/libs/utils';
 
-import { ProfileForm } from './profile-form';
+import { Profile } from './profile';
 import { ProfileHeaderContent } from './profile-header-content';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
@@ -12,7 +13,7 @@ export async function generateMetadata(props: { params: { locale: string } }) {
   });
 
   return {
-    title: t('metaTitle'),
+    title: getPageTitleWithAppName(t('metaTitle')),
   };
 }
 
@@ -21,7 +22,7 @@ const SettingsProfilePage = () => {
     <div className="space-y-6">
       <ProfileHeaderContent />
       <Separator />
-      <ProfileForm />
+      <Profile />
     </div>
   );
 };

@@ -2,12 +2,12 @@ import { useTranslations } from 'next-intl';
 import React from 'react';
 
 import {
+  AvailabilityTimeField,
   AvatarUploadField,
   LanguagesSelector,
   LocationSelector,
 } from '@/components';
 import InputField from '@/components/input-field';
-import NumberInputField from '@/components/number-input-field';
 import TextareaField from '@/components/textarea-field';
 import {
   Card,
@@ -18,46 +18,59 @@ import {
 } from '@/components/ui/card';
 
 const PersonalSection = () => {
-  const t = useTranslations('profile');
+  const t = useTranslations('profile.personalSection');
+
+  const availabilityTimeOptions = [
+    { value: 'upTo10', label: t('upTo10') },
+    { value: '10to20', label: t('10to20') },
+    { value: '20to30', label: t('20to30') },
+    { value: '30to40', label: t('30to40') },
+    { value: '40plus', label: t('40plus') },
+  ];
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{t('personalSectionTitle')}</CardTitle>
-        <CardDescription>{t('personalSectionDescription')}</CardDescription>
+        <CardTitle>{t('title')}</CardTitle>
+        <CardDescription>{t('description')}</CardDescription>
       </CardHeader>
 
-      <CardContent className="flex flex-col gap-6">
-        <AvatarUploadField name="avatarURL" />
+      <CardContent className="flex flex-col items-center gap-6">
+        <AvatarUploadField className="text-center" name="avatarURL" />
 
-        <InputField
-          name="name"
-          label={t('nameTitle')}
-          placeholder={t('namePlaceholder')}
-        />
-        <InputField
-          name="lastName"
-          label={t('lastNameTitle')}
-          placeholder={t('lastNamePlaceholder')}
-        />
+        <div className="flex w-full flex-col gap-6 sm:flex-row">
+          <InputField
+            name="name"
+            className="flex-1"
+            label={t('nameTitle')}
+            placeholder={t('namePlaceholder')}
+          />
+
+          <InputField
+            className="flex-1"
+            name="lastName"
+            label={t('lastNameTitle')}
+            placeholder={t('lastNamePlaceholder')}
+          />
+        </div>
 
         <TextareaField
+          className="w-full"
+          textAreaClassName="min-h-32 resize-none"
           name="aboutInfo"
           label={t('aboutMe')}
           placeholder={t('aboutMePlaceholder')}
         />
 
-        <div className="w-[350px]">
-          <NumberInputField
-            name="availabilityTime"
-            label={t('availabilityTime')}
-            placeholder={t('availabilityTimeDescription')}
-          />
-        </div>
+        <AvailabilityTimeField
+          className="w-full"
+          label={t('availabilityTime')}
+          options={availabilityTimeOptions}
+        />
 
-        <LocationSelector />
+        <LocationSelector className="w-full" />
 
-        <LanguagesSelector />
+        <LanguagesSelector className="w-full" />
       </CardContent>
     </Card>
   );
