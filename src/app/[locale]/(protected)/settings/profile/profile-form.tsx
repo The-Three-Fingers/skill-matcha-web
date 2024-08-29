@@ -14,7 +14,7 @@ import {
   ProfileValidation,
 } from '@/validations/profile-validation';
 
-import type { ProfileFormFields } from '../types';
+import type { GeneralFormFields } from '../types';
 import IdeaSection from './idea-section';
 import PersonalSection from './personal-section';
 import ProfileEmailSection from './profile-email-section';
@@ -22,11 +22,11 @@ import RoleSection from './role-section';
 
 // !! TODO дописать логику отвязки профайла
 
-const ProfileForm = ({ profile }: { profile: ProfileFormFields }) => {
+const ProfileForm = ({ profile }: { profile: GeneralFormFields }) => {
   const t = useTranslations('profile');
   const { toast } = useToast();
 
-  const form = useForm<ProfileFormFields>({
+  const form = useForm<GeneralFormFields>({
     resolver: zodResolver(ProfileValidation),
     defaultValues: {
       ...DEFAULT_PROFILE,
@@ -44,7 +44,7 @@ const ProfileForm = ({ profile }: { profile: ProfileFormFields }) => {
     reset(profile);
   };
 
-  function onSubmit(data: ProfileFormFields) {
+  function onSubmit(data: GeneralFormFields) {
     toast({
       title: 'You submitted the following values:',
       description: (
