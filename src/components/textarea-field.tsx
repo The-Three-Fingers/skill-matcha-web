@@ -10,6 +10,7 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 
 type TextareaFieldProps = {
+  className?: string;
   textAreaClassName?: string;
   name: string;
   label: string;
@@ -18,6 +19,7 @@ type TextareaFieldProps = {
 };
 
 const TextareaField = ({
+  className,
   textAreaClassName,
   name,
   label,
@@ -30,7 +32,7 @@ const TextareaField = ({
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem>
+        <FormItem className={className}>
           <FormLabel>{label}</FormLabel>
           <FormControl>
             <Textarea

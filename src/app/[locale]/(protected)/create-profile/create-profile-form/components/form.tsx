@@ -83,7 +83,7 @@ const CreateForm = ({
       default:
         return false;
     }
-  }, [activeStep, formValues, isValid]);
+  }, [activeStep, formValues, isValid, errors]);
 
   const handleNext = () => {
     if (!isStepValid) return;

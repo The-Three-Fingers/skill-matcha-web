@@ -266,12 +266,12 @@
     "personal_interests": "Personal interests"
   },
   "Settings": {
-    "meta_title": "Profile settings",
-    "meta_description": "Update your profile settings",
-    "profileSettings": "Profile settings",
-    "preferencesSettings": "Match Preferences Settings",
+    "meta_title": "Profile",
+    "meta_description": "Update your profile",
+    "profileSettings": "Profile",
+    "preferencesSettings": "Match Preferences",
     "page_title": "Settings",
-    "page_description": "Manage your profile and preferences settings"
+    "page_description": "Manage your profile and match preferences"
   },
   "profile": {
     "metaTitle": "Profile",
@@ -279,24 +279,24 @@
     "personalSection": {
       "title": "Personal information",
       "description": "Update your personal information to help others get to know you better.",
-      "nameTitle": "Update your name",
+      "nameTitle": "Name",
       "namePlaceholder": "Enter your name",
-      "lastNameTitle": "Update your last name",
+      "lastNameTitle": "Last name",
       "lastNamePlaceholder": "Enter your last name",
       "aboutMe": "About Me",
       "aboutMeDescription": "Use this space to tell others more about who you. Share your passions, hobbies, or a fun fact!",
       "aboutMePlaceholder": "Share a bit about yourself – hobbies, interests, or fun facts!",
       "availabilityTime": "How many hours per week are you available to work on a project?",
-      "availabilityOption1": "Up to 10 hours per week",
-      "availabilityOption2": "10-20 hours per week",
-      "availabilityOption3": "20-30 hours per week",
-      "availabilityOption4": "30-40 hours per week",
-      "availabilityOption5": "40+ hours per week",
+      "upTo10": "Up to 10 hours per week",
+      "10to20": "10-20 hours per week",
+      "20to30": "20-30 hours per week",
+      "30to40": "30-40 hours per week",
+      "40plus": "40+ hours per week",
       "avatar": "Avatar",
       "avatarDescription": "Upload a photo of yourself to personalize your profile."
     },
     "ideaSection": {
-      "ideaSectionTitle": "Update your startup idea information",
+      "ideaSectionTitle": "Your startup idea",
       "ideaSectionDescription": "Share your startup idea to attract potential co-founders.",
       "ideaTitle": "Do you have a startup idea?",
       "yesOption": "Yes",
@@ -309,7 +309,6 @@
     "rolesSectionDescription": "Select your role and specialization to help others understand your skills.",
     "submitButton": "Update profile",
     "resetButton": "Discard changes",
-
     "email": "Your email",
     "emailDescription": "Your email address will not be visible to others. You can't change your email address.",
     "unlinkEmail": "Unlink email",

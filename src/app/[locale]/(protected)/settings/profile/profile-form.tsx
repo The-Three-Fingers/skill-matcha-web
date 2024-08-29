@@ -3,9 +3,10 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
 import React from 'react';
-import { FormProvider, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
+import { Form } from '@/components/ui/form';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/components/ui/use-toast';
 import {
@@ -18,11 +19,6 @@ import IdeaSection from './idea-section';
 import PersonalSection from './personal-section';
 import ProfileEmailSection from './profile-email-section';
 import RoleSection from './role-section';
-
-// добавить из регистрации когда будет готова
-// roles
-// subRoles
-// services
 
 // !! TODO дописать логику отвязки профайла
 
@@ -57,8 +53,6 @@ const ProfileForm = ({ profile }: { profile: ProfileFormFields }) => {
         </pre>
       ),
     });
-
-    resetForm();
   }
 
   const handleUnlinkClick = () => {
@@ -76,14 +70,12 @@ const ProfileForm = ({ profile }: { profile: ProfileFormFields }) => {
 
   return (
     <div className="flex flex-col gap-10">
-      <FormProvider {...form}>
+      <Form {...form}>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
           <div className="space-y-8">
-            <IdeaSection />
-
-            <RoleSection />
-
             <PersonalSection />
+            <RoleSection />
+            <IdeaSection />
           </div>
 
           <div className="flex flex-col gap-4 sm:flex-row">
@@ -106,7 +98,7 @@ const ProfileForm = ({ profile }: { profile: ProfileFormFields }) => {
             </Button>
           </div>
         </form>
-      </FormProvider>
+      </Form>
 
       <Separator />
 
