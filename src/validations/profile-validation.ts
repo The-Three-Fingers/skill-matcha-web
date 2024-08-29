@@ -17,7 +17,7 @@ export const DEFAULT_PROFILE = {
   services: [],
 };
 
-const MAX_FILE_SIZE = 5 * 1024 * 1024;
+const MAX_FILE_SIZE = 2 * 1024 * 1024;
 
 export const Role = z.object({
   // TODO: make it as array later for multi roles

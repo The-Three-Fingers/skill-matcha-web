@@ -1,16 +1,16 @@
 import { useMutation } from '@tanstack/react-query';
-import type { z } from 'zod';
 
-import type { ProfileValidation } from '@/validations/profile-validation';
-
-const mutationFn = async (data: z.infer<typeof ProfileValidation>) => {
-  await fetch(`/api/profiles`, {
+const mutationFn = async (data: FormData) => {
+  const res = await fetch(`/api/profiles`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
+    body: data,
   });
+
+  if (!res.ok) {
+    const body = await res.json();
+
+    throw new Error(body.error);
+  }
 };
 
 export const useCreateProfile = () => {

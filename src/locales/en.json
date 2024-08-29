@@ -232,7 +232,8 @@
     "next": "Next",
     "create": "Create profile",
     "add": "Add",
-    "update": "Update"
+    "update": "Update",
+    "errorTitle": "Some went wrong"
   },
   "About": {
     "meta_title": "About",

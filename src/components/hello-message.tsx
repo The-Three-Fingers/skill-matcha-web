@@ -2,19 +2,16 @@
 
 import { useTranslations } from 'next-intl';
 
-import { useAuth } from '@/auth/AuthContext';
+import { useProfile } from '@/providers/ProfileContext';
 
 import { TypographyP } from './ui/typography';
 
 const HelloMessage = () => {
   const t = useTranslations('Dashboard');
-
-  const { user } = useAuth();
+  const { profile } = useProfile();
 
   return (
-    <TypographyP>
-      👋 {t('hello_message', { name: user?.displayName })}
-    </TypographyP>
+    <TypographyP>👋 {t('hello_message', { name: profile?.name })}</TypographyP>
   );
 };
 
