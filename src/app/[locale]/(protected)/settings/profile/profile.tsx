@@ -19,7 +19,7 @@ const Profile = () => {
   // eslint-disable-next-line unused-imports/no-unused-vars
   const { id, createdAt, updatedAt, ...rest } = profile;
 
-  return <ProfileForm profile={rest} />;
+  return <ProfileForm />;
 };
 
 export { Profile };

@@ -2,13 +2,14 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/components/ui/use-toast';
+import { ProfileContext } from '@/providers/ProfileContext';
 import { SearchPreferences } from '@/validations/profile-validation';
 
 import type { SearchPreferencesFormFields } from '../types';
@@ -25,11 +26,8 @@ const defaultValues: SearchPreferencesFormFields = {
   ],
 };
 
-const PreferencesForm = ({
-  searchPreferences,
-}: {
-  searchPreferences: SearchPreferencesFormFields[];
-}) => {
+const PreferencesForm = () => {
+  const { profile } = useContext(ProfileContext);
   const t = useTranslations('profile');
   const { toast } = useToast();
 
@@ -37,7 +35,7 @@ const PreferencesForm = ({
     resolver: zodResolver(SearchPreferences),
     defaultValues: {
       ...defaultValues,
-      ...searchPreferences,
+      ...profile.SearchPreferences,
     },
   });
 
@@ -68,44 +66,18 @@ const PreferencesForm = ({
 
   const isSubmitButtonDisabled = !isValid || !isDirty;
 
-  console.log('searchPreferences', searchPreferences);
+  console.log('searchPreferences', profile.SearchPreferences);
 
   return (
     <div className="flex flex-col gap-10">
       <Form {...form}>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-          <div className="h-20 bg-pink-700">
-            <div className="search-preferences">
-              {searchPreferences.map((preference, index) => (
-                <div key={index}>
-                  <h3>Role: {preference.role || 'No role specified'}</h3>
-                  <div>
-                    <h4>SubRoles:</h4>
-                    {preference.subRoles && preference.subRoles.length > 0 ? (
-                      <ul>
-                        {preference.subRoles.map((subRole, subIndex) => (
-                          <li key={subIndex}>{subRole}</li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <p>No subRoles specified</p>
-                    )}
-                  </div>
-                  <div>
-                    <h4>Services:</h4>
-                    {preference.services && preference.services.length > 0 ? (
-                      <ul>
-                        {preference.services.map((service, serviceIndex) => (
-                          <li key={serviceIndex}>{service}</li>
-                        ))}
-                      </ul>
-                    ) : (
-                      <p>No services specified</p>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div>
+            {!profile.SearchPreferences ? (
+              <p>no data</p>
+            ) : (
+              <p>we have some data</p>
+            )}
           </div>
           <div className="flex flex-col gap-4 sm:flex-row">
             {isDirty && (

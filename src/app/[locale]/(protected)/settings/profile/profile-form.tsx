@@ -2,13 +2,14 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/components/ui/use-toast';
+import { ProfileContext } from '@/providers/ProfileContext';
 import {
   DEFAULT_PROFILE,
   ProfileValidation,
@@ -22,7 +23,8 @@ import RoleSection from './role-section';
 
 // !! TODO дописать логику отвязки профайла
 
-const ProfileForm = ({ profile }: { profile: GeneralFormFields }) => {
+const ProfileForm = () => {
+  const { profile } = useContext(ProfileContext);
   const t = useTranslations('profile');
   const { toast } = useToast();
 
