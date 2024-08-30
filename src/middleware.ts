@@ -65,6 +65,8 @@ function redirectToLogin(request: NextRequest) {
 }
 
 export async function middleware(request: NextRequest) {
+  request.headers.set('x-current-pathname', request.nextUrl.pathname);
+
   return authMiddleware(request, {
     loginPath: '/api/login',
     logoutPath: '/api/logout',

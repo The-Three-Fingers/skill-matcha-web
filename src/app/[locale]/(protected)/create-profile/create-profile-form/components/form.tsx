@@ -9,7 +9,10 @@ import { useForm } from 'react-hook-form';
 import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { Progress } from '@/components/ui/progress';
+import { Spinner } from '@/components/ui/spinner';
+import { useToast } from '@/components/ui/use-toast';
 import { useCreateProfile } from '@/hooks/mutations/use-create-profile';
+import { cn } from '@/libs/utils';
 import {
   DEFAULT_PROFILE,
   ProfileValidation,
@@ -40,10 +43,11 @@ const CreateForm = ({
   onNext: () => void;
 }) => {
   const router = useRouter();
+  const { toast } = useToast();
 
   const t = useTranslations('profileForm');
 
-  const { mutateAsync } = useCreateProfile();
+  const { mutateAsync, isPending } = useCreateProfile();
 
   const form = useForm<ProfileFormFields>({
     mode: 'all',
@@ -52,16 +56,33 @@ const CreateForm = ({
   });
 
   const {
-    reset,
     getValues,
     formState: { isValid, errors },
   } = form;
 
   const createProfile = async (data: ProfileFormFields) => {
-    await mutateAsync(data);
+    try {
+      const formData = new FormData();
 
-    reset();
-    router.refresh();
+      Object.entries(data).forEach(([key, value]) => {
+        if (value !== undefined) {
+          const formattedValue = Array.isArray(value)
+            ? JSON.stringify(value)
+            : value;
+
+          formData.append(key, formattedValue);
+        }
+      });
+
+      await mutateAsync(formData);
+
+      router.replace('/dashboard');
+    } catch (error: any) {
+      toast({
+        title: t('errorTitle'),
+        variant: 'destructive',
+      });
+    }
   };
 
   const formValues = getValues();
@@ -103,11 +124,17 @@ const CreateForm = ({
     return null;
   }
 
+  const nextButtonContent = isLastStep ? t('create') : t('next');
+
   const progressValue = ((steps.indexOf(activeStep) + 1) / steps.length) * 100;
 
   return (
     <Form {...form}>
-      <div className="relative flex size-full flex-col pb-[70px]">
+      <div
+        className={cn('relative flex size-full flex-col pb-[70px]', {
+          'pointer-events-none': isPending,
+        })}
+      >
         <Progress
           indicatorClassName="bg-primary/70"
           className="h-2 rounded-none"
@@ -124,6 +151,7 @@ const CreateForm = ({
                 size="lg"
                 className="flex-1"
                 variant="secondary"
+                disabled={isPending}
                 onClick={onBack}
               >
                 {t('back')}
@@ -132,10 +160,10 @@ const CreateForm = ({
             <Button
               className="flex-1"
               size="lg"
-              disabled={!isStepValid}
+              disabled={!isStepValid || isPending}
               onClick={handleNext}
             >
-              {isLastStep ? t('create') : t('next')}
+              {isPending ? <Spinner /> : nextButtonContent}
             </Button>
           </div>
         </div>

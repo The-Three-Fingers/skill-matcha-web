@@ -1,4 +1,6 @@
 import admin from 'firebase-admin';
+import { getFirestore } from 'firebase-admin/firestore';
+import { getStorage } from 'firebase-admin/storage';
 
 import { authConfig } from '../config/server-config';
 
@@ -17,7 +19,13 @@ export const getFirebaseAdminApp = () => {
     return admin.apps[0] as admin.app.App;
   }
 
-  // admin.firestore.setLogFunction(console.log);
-
   return initializeApp();
+};
+
+export const getFirebaseDB = () => {
+  return getFirestore(getFirebaseAdminApp());
+};
+
+export const getFirebaseStorage = () => {
+  return getStorage(getFirebaseAdminApp());
 };
