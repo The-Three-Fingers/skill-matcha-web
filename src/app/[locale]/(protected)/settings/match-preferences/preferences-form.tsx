@@ -14,18 +14,6 @@ import { SearchPreferences } from '@/validations/profile-validation';
 
 import type { SearchPreferencesFormFields } from '../types';
 
-// TODO RoleSection поменять на преф - когда будет готово
-
-const defaultValues: SearchPreferencesFormFields = {
-  searchPreferences: [
-    {
-      role: '',
-      subRoles: [],
-      services: [],
-    },
-  ],
-};
-
 const PreferencesForm = () => {
   const { profile } = useProfile();
   const t = useTranslations('profile');
@@ -33,10 +21,7 @@ const PreferencesForm = () => {
 
   const form = useForm<SearchPreferencesFormFields>({
     resolver: zodResolver(SearchPreferences),
-    defaultValues: {
-      ...defaultValues,
-      ...profile.SearchPreferences,
-    },
+    defaultValues: profile,
   });
 
   const {
@@ -65,19 +50,10 @@ const PreferencesForm = () => {
 
   const isSubmitButtonDisabled = !isValid || !isDirty;
 
-  console.log('searchPreferences', profile.SearchPreferences);
-
   return (
     <div className="flex flex-col gap-10">
       <Form {...form}>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-          <div>
-            {!profile.SearchPreferences ? (
-              <p>no data</p>
-            ) : (
-              <p>we have some data</p>
-            )}
-          </div>
           <div className="flex flex-col gap-4 sm:flex-row">
             {isDirty && (
               <Button

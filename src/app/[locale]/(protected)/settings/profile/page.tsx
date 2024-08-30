@@ -3,7 +3,7 @@ import { getTranslations } from 'next-intl/server';
 import { Separator } from '@/components/ui/separator';
 import { getPageTitleWithAppName } from '@/libs/utils';
 
-import { Profile } from './profile';
+import { ProfileForm } from './profile-form';
 import { ProfileHeaderContent } from './profile-header-content';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
@@ -22,7 +22,7 @@ const SettingsProfilePage = () => {
     <div className="space-y-6">
       <ProfileHeaderContent />
       <Separator />
-      <Profile />
+      <ProfileForm />
     </div>
   );
 };
