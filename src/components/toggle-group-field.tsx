@@ -33,7 +33,7 @@ const ToggleGroupField = ({
       render={({ field }) => (
         <FormItem className={className}>
           {label && (
-            <FormLabel>
+            <FormLabel className="mb-4 flex justify-center">
               {label}{' '}
               {isRequired && <span className="text-destructive">*</span>}
             </FormLabel>
