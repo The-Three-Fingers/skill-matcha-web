@@ -1,5 +1,9 @@
 import type { z } from 'zod';
 
-import type { ProfileValidation } from '@/validations/profile-validation';
+import type {
+  GeneralProfile,
+  SearchPreferences,
+} from '@/validations/profile-validation';
 
-export type ProfileFormFields = z.infer<typeof ProfileValidation>;
+export type SearchPreferencesFormFields = z.infer<typeof SearchPreferences>;
+export type GeneralFormFields = z.infer<typeof GeneralProfile>;

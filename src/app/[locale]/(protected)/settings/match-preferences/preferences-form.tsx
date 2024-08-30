@@ -10,43 +10,30 @@ import { Form } from '@/components/ui/form';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/components/ui/use-toast';
 import { useProfile } from '@/providers/ProfileContext';
-import {
-  DEFAULT_PROFILE,
-  ProfileValidation,
-} from '@/validations/profile-validation';
+import { SearchPreferences } from '@/validations/profile-validation';
 
-import type { GeneralFormFields } from '../types';
-import IdeaSection from './idea-section';
-import PersonalSection from './personal-section';
-import ProfileEmailSection from './profile-email-section';
-import RoleSection from './role-section';
+import type { SearchPreferencesFormFields } from '../types';
 
-// !! TODO дописать логику отвязки профайла
-
-const ProfileForm = () => {
+const PreferencesForm = () => {
   const { profile } = useProfile();
   const t = useTranslations('profile');
   const { toast } = useToast();
 
-  const form = useForm<GeneralFormFields>({
-    resolver: zodResolver(ProfileValidation),
-    defaultValues: {
-      ...DEFAULT_PROFILE,
-      ...profile,
-    },
+  const form = useForm<SearchPreferencesFormFields>({
+    resolver: zodResolver(SearchPreferences),
+    defaultValues: profile,
   });
 
   const {
     handleSubmit,
-    reset,
     formState: { isDirty, isValid },
   } = form;
 
   const resetForm = () => {
-    reset(profile);
+    console.log('reset');
   };
 
-  function onSubmit(data: GeneralFormFields) {
+  function onSubmit(data: SearchPreferencesFormFields) {
     toast({
       title: 'You submitted the following values:',
       description: (
@@ -56,13 +43,6 @@ const ProfileForm = () => {
       ),
     });
   }
-
-  const handleUnlinkClick = () => {
-    toast({
-      title: t('unlinkToastTitle'),
-      description: t('unlinkToastDescription'),
-    });
-  };
 
   const handleResetChanges = () => {
     resetForm();
@@ -74,12 +54,6 @@ const ProfileForm = () => {
     <div className="flex flex-col gap-10">
       <Form {...form}>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-          <div className="space-y-8">
-            <PersonalSection />
-            <RoleSection />
-            <IdeaSection />
-          </div>
-
           <div className="flex flex-col gap-4 sm:flex-row">
             {isDirty && (
               <Button
@@ -103,10 +77,8 @@ const ProfileForm = () => {
       </Form>
 
       <Separator />
-
-      <ProfileEmailSection onUnlinkClick={handleUnlinkClick} />
     </div>
   );
 };
 
-export { ProfileForm };
+export { PreferencesForm };

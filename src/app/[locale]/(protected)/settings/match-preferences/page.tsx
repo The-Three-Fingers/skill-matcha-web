@@ -4,7 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import { Separator } from '@/components/ui/separator';
 import { TypographyH3, TypographyP } from '@/components/ui/typography';
 
-import { MatchPreferencesForm } from './match-preferences-form';
+import { PreferencesForm } from './preferences-form';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
   const t = await getTranslations({
@@ -27,7 +27,7 @@ const SettingsAccountPage = () => {
         <TypographyP>{t('metaDescription')}</TypographyP>
       </div>
       <Separator />
-      <MatchPreferencesForm />
+      <PreferencesForm />
     </div>
   );
 };

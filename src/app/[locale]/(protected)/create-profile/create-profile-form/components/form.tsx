@@ -1,7 +1,6 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
@@ -42,7 +41,6 @@ const CreateForm = ({
   onBack: () => void;
   onNext: () => void;
 }) => {
-  const router = useRouter();
   const { toast } = useToast();
 
   const t = useTranslations('profileForm');
@@ -76,7 +74,7 @@ const CreateForm = ({
 
       await mutateAsync(formData);
 
-      router.replace('/dashboard');
+      window.location.reload();
     } catch (error: any) {
       toast({
         title: t('errorTitle'),
