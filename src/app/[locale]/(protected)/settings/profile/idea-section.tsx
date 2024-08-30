@@ -15,11 +15,11 @@ import {
 import { TypographyP } from '@/components/ui/typography';
 import useIsFirstRender from '@/hooks/use-is-first-render';
 
-import type { ProfileFormFields } from '../types';
+import type { GeneralFormFields } from '../types';
 
 const IdeaSection = () => {
   const t = useTranslations('profile.ideaSection');
-  const { watch, setValue } = useFormContext<ProfileFormFields>();
+  const { watch, setValue } = useFormContext<GeneralFormFields>();
 
   const hasIdeaOptions = [
     { value: 'false', label: t('noOption') },
