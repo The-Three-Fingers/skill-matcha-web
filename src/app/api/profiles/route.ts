@@ -144,7 +144,6 @@ export async function POST(request: NextRequest) {
     }
 
     const updatedProfile = {
-      ...profile,
       updatedAt: FieldValue.serverTimestamp(),
       ...parse.data,
     };

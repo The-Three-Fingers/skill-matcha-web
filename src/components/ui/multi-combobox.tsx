@@ -95,7 +95,8 @@ const MultiCombobox = React.forwardRef<
             ref={ref}
             aria-expanded={open}
             className={cn(
-              'flex items-center cursor-pointer justify-between whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background text-muted-foreground hover:text-accent-foreground min-h-10 px-4 py-2',
+              'flex items-center cursor-pointer justify-between whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring text-muted-foreground focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background min-h-10 px-4 py-2',
+              selected.length > 0 ? 'text-foreground' : '',
               className,
             )}
           >
@@ -104,7 +105,10 @@ const MultiCombobox = React.forwardRef<
                 {selected.map((option) => {
                   return (
                     <li key={option.value}>
-                      <Badge variant="primary-border">
+                      <Badge
+                        variant="primary-border"
+                        className="text-muted-foreground hover:text-accent-foreground"
+                      >
                         {option.label}
                         <button
                           className="ml-1 rounded-full outline-none ring-offset-background focus:ring-2 focus:ring-ring focus:ring-offset-2"
@@ -139,7 +143,7 @@ const MultiCombobox = React.forwardRef<
               {isClearable && selected.length > 0 && (
                 <X
                   onClick={handleClear}
-                  className="size-4 shrink-0 text-muted-foreground opacity-50 hover:text-foreground"
+                  className="size-4 shrink-0 opacity-50 hover:opacity-80"
                 />
               )}
               <ChevronsUpDown className="size-4 shrink-0 opacity-50" />

@@ -1,6 +1,6 @@
 import { MatchCard } from './match-card';
 
-const SwipePage = () => {
+const MatchesPage = () => {
   return (
     <div className="mx-auto flex flex-col justify-center">
       <MatchCard />
@@ -8,4 +8,4 @@ const SwipePage = () => {
   );
 };
 
-export default SwipePage;
+export default MatchesPage;

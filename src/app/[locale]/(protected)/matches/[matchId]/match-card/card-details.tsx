@@ -12,7 +12,6 @@ const CardDetails = () => {
 
   const cardSectionsContent = [
     { title: t('my_ideas'), content: MOCK_PROFILE.ideaDescription },
-    { title: t('background'), content: MOCK_PROFILE.experience.background },
     { title: t('about_me'), content: MOCK_PROFILE.experience.aboutMe },
   ];
 
@@ -31,8 +30,8 @@ const CardDetails = () => {
   ];
 
   return (
-    <div className="flex w-full justify-center gap-6 bg-zinc-300 p-10 px-6 md:px-24 lg:mx-auto">
-      <div className="flex flex-col gap-6 rounded-sm lg:w-10/12 xl:w-[800px]">
+    <div className="px-4 py-10">
+      <div className="mx-auto flex w-full max-w-screen-lg flex-col gap-6 rounded-sm">
         {cardSectionsContent.map((section) => (
           <CardSection
             key={section.title}
@@ -46,7 +45,7 @@ const CardDetails = () => {
             Additional Information
           </TypographySmall>
 
-          <div className="flex flex-col gap-2 rounded-b-sm bg-white p-6">
+          <ul className="flex flex-col gap-2 rounded-b-sm bg-white p-6">
             {cardDetailItems.map((item) => (
               <CardDetailItem
                 key={item.label}
@@ -54,7 +53,7 @@ const CardDetails = () => {
                 value={item.value}
               />
             ))}
-          </div>
+          </ul>
         </div>
       </div>
     </div>

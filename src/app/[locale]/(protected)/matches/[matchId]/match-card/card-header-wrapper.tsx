@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Card, CardTitle } from '@/components/ui/card';
 import { TypographyH4, TypographySmall } from '@/components/ui/typography';
 
 import { MOCK_PROFILE } from './mock-profile';
@@ -9,13 +10,15 @@ import mockImage from './mock-profile-photo.jpg';
 
 const CardHeaderWrapper = () => {
   return (
-    <div className="flex w-full justify-center bg-primary px-6 py-10 md:px-24 lg:mx-auto">
-      <div className="flex w-full gap-6 rounded-md bg-white p-6 lg:w-10/12 xl:w-[800px]">
-        <div className="flex w-20 flex-col justify-between">
-          <div className="size-20 bg-slate-300">
-            <Image src={mockImage} alt="Profile Photo" className="rounded-md" />
-          </div>
-        </div>
+    <div className="bg-primary/70 px-4 py-10 dark:bg-primary/50">
+      <Card className="mx-auto flex w-full max-w-screen-lg items-start gap-6 p-6">
+        <Image
+          width={96}
+          height={96}
+          src={mockImage}
+          alt="Profile Photo"
+          className="size-24 rounded-full object-cover"
+        />
 
         <div className="flex flex-1 flex-col gap-2">
           <div>
@@ -29,7 +32,7 @@ const CardHeaderWrapper = () => {
                 ))}
               </ul>
             </div>
-            <TypographySmall>I am a: {MOCK_PROFILE.role}</TypographySmall>
+            <TypographySmall>I am: {MOCK_PROFILE.role}</TypographySmall>
 
             <h4>
               I am looking for:
@@ -57,16 +60,13 @@ const CardHeaderWrapper = () => {
           <TypographyH4 className="mb-2">Matching with you</TypographyH4>
           <ul className="flex flex-wrap gap-2">
             {MOCK_PROFILE.howICanHelp.map((howICanHelp) => (
-              <li
-                key={howICanHelp}
-                className="inline-flex items-center rounded-full bg-purple-300 px-3 py-1 text-sm text-purple-800"
-              >
-                {howICanHelp}
+              <li key={howICanHelp}>
+                <Badge variant="primary-border">{howICanHelp}</Badge>
               </li>
             ))}
           </ul>
         </div>
-      </div>
+      </Card>
     </div>
   );
 };

@@ -7,7 +7,7 @@ type CardDetailItemProps = {
 
 const CardDetailItem = ({ label, value }: CardDetailItemProps) => {
   return (
-    <CardDescription className="rounded-md bg-zinc-100 p-3">
+    <CardDescription className="rounded-md bg-accent p-3 dark:bg-accent-foreground">
       {label}: {value}
     </CardDescription>
   );
