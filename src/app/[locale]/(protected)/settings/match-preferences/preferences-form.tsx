@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/components/ui/use-toast';
-import { useCreateProfile } from '@/hooks/mutations/use-create-profile';
+import { usePostProfile } from '@/hooks/mutations';
 import { useProfile } from '@/providers/ProfileContext';
 import { SearchPreferences } from '@/validations/profile-validation';
 
@@ -19,7 +19,7 @@ import type { ProfileFormFields, SearchPreferencesFormFields } from '../types';
 type Preference = ProfileFormFields['searchPreferences'][number];
 
 const PreferencesForm = () => {
-  const { mutateAsync } = useCreateProfile();
+  const { mutateAsync } = usePostProfile();
   const { profile } = useProfile();
   const t = useTranslations('profile');
   const { toast } = useToast();
