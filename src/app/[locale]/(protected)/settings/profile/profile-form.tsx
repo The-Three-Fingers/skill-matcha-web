@@ -9,6 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/components/ui/use-toast';
+import { usePostProfile } from '@/hooks/mutations';
 import { useProfile } from '@/providers/ProfileContext';
 import {
   DEFAULT_PROFILE,
@@ -24,6 +25,7 @@ import RoleSection from './role-section';
 // !! TODO дописать логику отвязки профайла
 
 const ProfileForm = () => {
+  const { mutateAsync } = usePostProfile();
   const { profile } = useProfile();
   const t = useTranslations('profile');
   const { toast } = useToast();
@@ -46,15 +48,35 @@ const ProfileForm = () => {
     reset(profile);
   };
 
-  function onSubmit(data: GeneralFormFields) {
-    toast({
-      title: 'You submitted the following values:',
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
+  async function onSubmit(data: GeneralFormFields) {
+    try {
+      const formData = new FormData();
+
+      Object.entries(data).forEach(([key, value]) => {
+        if (value !== undefined) {
+          const formattedValue = Array.isArray(value)
+            ? JSON.stringify(value)
+            : value;
+
+          formData.append(key, formattedValue);
+        }
+      });
+
+      await mutateAsync(formData);
+
+      reset({ ...data });
+
+      toast({
+        title: t('successToastTitle'),
+        description: t('successToastDescription'),
+      });
+    } catch (error: any) {
+      toast({
+        title: t('errorToastTitle'),
+        description: t('errorToastDescription'),
+        variant: 'destructive',
+      });
+    }
   }
 
   const handleUnlinkClick = () => {
