@@ -314,6 +314,10 @@
       "servicesLabel": "Select the skills you are best at? (max 4)"
     },
     "submitButton": "Update profile",
+    "successToastTitle": "Success!",
+    "successToastDescription": "Your profile has been successfully updated.",
+    "errorToastTitle": "Sorry, profile update failed",
+    "errorToastDescription": "Something went wrong. Please try again later.",
     "resetButton": "Discard changes",
     "email": "Your email",
     "emailDescription": "Your email address will not be visible to others. You can't change your email address.",
@@ -324,7 +328,13 @@
   },
   "matchPreferences": {
     "metaTitle": "Match preferences",
-    "metaDescription": "Manage your match preferences settings."
+    "metaDescription": "Manage your match preferences settings.",
+    "submitButton": "Update profile",
+    "resetButton": "Discard changes",
+    "successToastTitle": "Success!",
+    "successToastDescription": "Your match preferences has been successfully updated.",
+    "errorToastTitle": "Sorry, match preferences update failed",
+    "errorToastDescription": "Something went wrong. Please try again later."
   },
   "landing": {
     "heroTitle1": "Find Your",
