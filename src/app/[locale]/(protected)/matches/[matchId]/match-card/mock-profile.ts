@@ -2,36 +2,36 @@
 
 export const MOCK_PROFILE = {
   idea: true,
-  name: 'Emily Thompson',
+  name: 'Emily',
   role: 'Product Manager', // tags
-  status: ['Have an idea for a startup', 'Looking for a technical co-founder'], // tags
-  ideaArea: ['GreenTech', 'WasteReduction', 'SustainableE-commerce'], // tags
+  hasIdea: true, // tags
+  // ideaArea: ['GreenTech', 'WasteReduction', 'SustainableE-commerce'], // tags
   language: ['English, Spanish'], // multi Select
   location: 'San Francisco, CA, USA', // Select
-  interests: {
-    personalInterests: ['Hiking', 'Reading', 'Traveling'], // multi Select
-    areasOfInterest: ['Green technology', 'User Experience', 'Social Impact'], // multi Select
-    areasOfDisinterest: ['Traditional Retail', 'High-frequency Trading'], // multi Select
-  },
-  experience: {
-    yearsOfExperience: 8, // select
-    aboutMe:
-      'I am a product manager with a passion for sustainability and green technology.  am a product manager with a passion for sustainability and green technology.  am a product manager with a passion for sustainability and green technology.  am a product manager with a passion for sustainability and green technology.  am a product manager with a passion for sustainability and green technology.  am a product manager with a passion for sustainability and green technology. am a product manager with a passion for sustainability and green technology.', // textarea
-    background:
-      'Over 8 years of experience in leading cross-functional teams in product management and user experience design, specializing in developing intuitive and scalable digital products for tech startups.', // textarea
-    expertise:
-      'Expertise in driving sustainable growth in early-stage tech startups, with a strong focus on user-centered design, developing environmentally sustainable solutions, and implementing customer-centric product development strategies.',
-  }, // textarea
+  aboutMe:
+    'I am a product manager with a passion for sustainability and green technology.  am a product manager with a passion for sustainability and green technology.  am a product manager with a passion for sustainability and green technology.  am a product manager with a passion for sustainability and green technology.  am a product manager with a passion for sustainability and green technology.  am a product manager with a passion for sustainability and green technology. am a product manager with a passion for sustainability and green technology.', // textarea
+  // interests: {
+  //   personalInterests: ['Hiking', 'Reading', 'Traveling'], // multi Select
+  //   areasOfInterest: ['Green technology', 'User Experience', 'Social Impact'], // multi Select
+  //   areasOfDisinterest: ['Traditional Retail', 'High-frequency Trading'], // multi Select
+  // },
+  // experience: {
+  //   yearsOfExperience: 8, // select
+  //   background:
+  //     'Over 8 years of experience in leading cross-functional teams in product management and user experience design, specializing in developing intuitive and scalable digital products for tech startups.', // textarea
+  //   expertise:
+  //     'Expertise in driving sustainable growth in early-stage tech startups, with a strong focus on user-centered design, developing environmentally sustainable solutions, and implementing customer-centric product development strategies.',
+  // }, // textarea
   timeCommitment: '10-15 hours per week', // select
 
   // !! TODO collaborationTerms будет строка или тэги?
-  collaborationTerms: [
-    'Equity-Based Compensation',
-    'Percentage of Future Profits',
-  ], // tags
+  // collaborationTerms: [
+  //   'Equity-Based Compensation',
+  //   'Percentage of Future Profits',
+  // ], // tags
   seeking: {
     who: ['Technical Co-founder', 'Funding Partners'], // tags
-    goal: 'To build and scale a sustainable e-commerce platform', // строка свободной формы
+    // goal: 'To build and scale a sustainable e-commerce platform', // строка свободной формы
   },
   howICanHelp: [
     'Product Strategy',

@@ -3,18 +3,16 @@
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
+import { Spinner } from '@/components/ui/spinner';
 import {
   type MatchProfile,
   useGetMatches,
 } from '@/hooks/queries/use-get-matches';
-import { useProfile } from '@/providers/ProfileContext';
 
 const Matches = () => {
   const router = useRouter();
 
-  const { profile } = useProfile();
-
-  const { data: matches, isLoading } = useGetMatches(profile.searchPreferences);
+  const { data: matches, isLoading } = useGetMatches();
 
   const hasMatches = Boolean(matches?.length);
 
@@ -29,7 +27,11 @@ const Matches = () => {
   }, [hasMatches, matches, router]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex size-full items-center justify-center">
+        <Spinner className="size-20 text-primary" />
+      </div>
+    );
   }
 
   return !hasMatches && <div>No Matches Found</div>;

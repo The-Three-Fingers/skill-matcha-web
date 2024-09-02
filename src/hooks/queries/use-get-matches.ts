@@ -33,7 +33,7 @@ const fetchMatches: QueryFunction<
   return response.json();
 };
 
-export const useGetMatches = (variables: { offset: number }) =>
+export const useGetMatches = (variables: { offset?: number } = {}) =>
   useQuery({
     queryFn: fetchMatches,
     queryKey: ['matches', variables],

@@ -6,7 +6,11 @@ import { getFirebaseDB } from '@/app/firebase';
 import { verifyIdToken } from '@/auth/verifyIdToken';
 import type { ProfileValidation } from '@/validations/profile-validation';
 
-type Profile = z.infer<typeof ProfileValidation>;
+type ClientProfile = z.infer<typeof ProfileValidation>;
+type ServerProfile = Omit<ClientProfile, 'searchPreferences'> & {
+  searchPreference1?: ClientProfile['searchPreferences'][0];
+  searchPreference2?: ClientProfile['searchPreferences'][1];
+};
 
 export async function GET(request: NextRequest) {
   const offsetParam = Number(request.nextUrl.searchParams.get('offset') ?? '0');
@@ -40,14 +44,15 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const profile = (await query.data()) as Profile;
+    const profile = (await query.data()) as ServerProfile;
 
-    if (profile.searchPreferences.length > 0) {
-      const searchServices = profile.searchPreferences.flatMap(
-        (searchPreference) => searchPreference.services,
-      );
+    if (profile.searchPreference1 || profile.searchPreference2) {
+      const searchServices = [
+        ...(profile.searchPreference1?.services ?? []),
+        ...(profile.searchPreference2?.services ?? []),
+      ];
 
-      const matchesDataByServices = await db
+      const matchesDataBySearchServices = await db
         .collection('profiles')
         .where('id', '!=', decodedToken.uid)
         .where('services', 'array-contains-any', searchServices)
@@ -56,7 +61,7 @@ export async function GET(request: NextRequest) {
         .orderBy('role')
         .get();
 
-      const matches = matchesDataByServices.docs.map((doc) => {
+      const matches = matchesDataBySearchServices.docs.map((doc) => {
         const { createdAt, updatedAt, ...restData } = doc.data();
 
         return {
@@ -69,6 +74,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json(matches);
     }
 
+    // Case when no search preferences are set we look for matches who are looking for by the profile services
     const profileServices = profile.services;
 
     const matchesDataByProfileServices = await db
