@@ -1,6 +1,6 @@
 import { MatchCard } from './match-card';
 
-const MatchesPage = () => {
+const MatcheCardPage = () => {
   return (
     <div className="mx-auto flex flex-col justify-center">
       <MatchCard />
@@ -8,4 +8,4 @@ const MatchesPage = () => {
   );
 };
 
-export default MatchesPage;
+export default MatcheCardPage;

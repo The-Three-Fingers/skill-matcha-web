@@ -8,7 +8,7 @@ import CardSection from './card-section';
 import { MOCK_PROFILE } from './mock-profile';
 
 const CardDetails = () => {
-  const t = useTranslations('MatchesProfiles');
+  const t = useTranslations('matches');
 
   const cardSectionsContent = [
     { title: t('my_ideas'), content: MOCK_PROFILE.ideaDescription },

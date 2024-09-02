@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 
 const FooterButtons = () => {
-  const t = useTranslations('MatchesProfiles');
+  const t = useTranslations('matches');
 
   return (
     <div className="fixed bottom-0 left-0 z-50 flex h-[70px] w-full items-center justify-center gap-4 bg-white p-3 dark:border-t dark:bg-background">

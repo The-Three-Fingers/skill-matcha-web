@@ -252,10 +252,9 @@
     "meta_title": "Dashboard",
     "hello_message": "Hello, {name}!"
   },
-  "MatchesProfiles": {
-    "meta_title": "matches",
-    "meta_description": "Find your matches",
-    "save_button": "Save",
+  "matches": {
+    "meta_title": "Matches",
+    "meta_description": "Find your perfect match",
     "contact_button": "Contact",
     "my_ideas": "My ideas",
     "background": "Background",
