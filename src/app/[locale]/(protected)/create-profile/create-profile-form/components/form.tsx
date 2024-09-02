@@ -10,7 +10,7 @@ import { Form } from '@/components/ui/form';
 import { Progress } from '@/components/ui/progress';
 import { Spinner } from '@/components/ui/spinner';
 import { useToast } from '@/components/ui/use-toast';
-import { usePostProfile } from '@/hooks/mutations';
+import { useCreateProfile } from '@/hooks/mutations';
 import { cn } from '@/libs/utils';
 import {
   DEFAULT_PROFILE,
@@ -45,7 +45,7 @@ const CreateForm = ({
 
   const t = useTranslations('profileForm');
 
-  const { mutateAsync, isPending } = usePostProfile();
+  const { mutateAsync, isPending } = useCreateProfile();
 
   const form = useForm<ProfileFormFields>({
     mode: 'all',

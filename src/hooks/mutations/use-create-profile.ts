@@ -13,7 +13,7 @@ const mutationFn = async (data: FormData) => {
   }
 };
 
-export const usePostProfile = () => {
+export const useCreateProfile = () => {
   return useMutation({
     mutationFn,
   });
