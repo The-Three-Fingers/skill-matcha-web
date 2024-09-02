@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Form } from '@/components/ui/form';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/components/ui/use-toast';
-import { usePostProfile } from '@/hooks/mutations';
+import { useUpdateProfile } from '@/hooks/mutations';
 import { useProfile } from '@/providers/ProfileContext';
 import {
   DEFAULT_PROFILE,
@@ -25,7 +25,7 @@ import RoleSection from './role-section';
 // !! TODO дописать логику отвязки профайла
 
 const ProfileForm = () => {
-  const { mutateAsync } = usePostProfile();
+  const { mutateAsync } = useUpdateProfile();
   const { profile } = useProfile();
   const t = useTranslations('profile');
   const { toast } = useToast();
