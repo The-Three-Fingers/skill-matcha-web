@@ -21,7 +21,7 @@ const CollectEmailButton = ({
           {children}
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md lg:max-w-2xl lg:p-10">
         <LeadForm />
       </DialogContent>
     </Dialog>
