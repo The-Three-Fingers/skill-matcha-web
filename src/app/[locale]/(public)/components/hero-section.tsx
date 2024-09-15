@@ -35,7 +35,7 @@ export default async function HeroSection() {
       </div>
       <CollectEmailButton
         size="lg"
-        className="2xl:h-18 w-1/2 sm:w-1/3 lg:h-14 lg:text-xl xl:text-2xl 2xl:w-1/2 2xl:text-3xl"
+        className="2xl:h-18 w-2/3 sm:w-1/3 lg:h-14 lg:text-xl xl:text-2xl 2xl:w-1/2 2xl:text-3xl"
       >
         {t('heroButton')}
       </CollectEmailButton>
