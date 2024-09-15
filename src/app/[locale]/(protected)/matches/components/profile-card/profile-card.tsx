@@ -124,7 +124,7 @@ const ProfileCard = ({ matchProfile }: { matchProfile: MatchProfile }) => {
               {searchRoles.map((searchRole) => (
                 <Badge
                   variant="primary-border"
-                  key={role}
+                  key={searchRole}
                   className="px-2 py-1 text-base"
                 >
                   {searchRole}
