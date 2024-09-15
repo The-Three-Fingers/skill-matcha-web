@@ -7,6 +7,7 @@ import { authConfig } from '@/config/server-config';
 import { Env } from '@/libs/Env';
 import { ProfileProvider } from '@/providers/ProfileProvider';
 import { BaseTemplate } from '@/templates/base-template';
+import type { Profile } from '@/providers/ProfileContext';
 
 const CREATE_PROFILE_PATH = '/create-profile';
 const DASHBOARD_PATH = '/dashboard';
@@ -28,13 +29,16 @@ const getProfileData = async (profileId: string | undefined) => {
     return null;
   }
 
-  const { createdAt, updatedAt, ...restData } = data;
+  const { createdAt, updatedAt, searchPreference1,  searchPreference2, ...restData } = data;
+
+  const searchPreferences = [searchPreference1, searchPreference2].filter(Boolean);
 
   return {
     ...restData,
+    searchPreferences,
     createdAt: createdAt.toDate(),
     updatedAt: updatedAt.toDate(),
-  };
+  } as Profile;
 };
 
 export default async function Layout(props: { children: React.ReactNode }) {

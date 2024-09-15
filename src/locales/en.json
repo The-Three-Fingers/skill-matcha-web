@@ -255,15 +255,17 @@
   "matches": {
     "meta_title": "Matches",
     "meta_description": "Find your perfect match",
-    "contact_button": "Contact",
+    "noMatchedProfilesFound": "No matched profiles found",
+    "goToPreferencesSettings": "Go to preferences settings",
+    "contactButton": "Contact",
     "idea": "Idea",
+    "expertise": "Expertise",
     "background": "Background",
-    "about_me": "About me",
+    "about": "About",
     "languages": "Languages",
-    "availability": "Available time per week",
+    "availability": "Availability",
     "location": "Location",
-    "years_of_experience": "Years of experience",
-    "personal_interests": "Personal interests"
+    "lookingFor": "Looking for"
   },
   "Settings": {
     "meta_title": "Profile",
@@ -287,13 +289,15 @@
       "aboutMeDescription": "Let potential co-founders know who you are! Use this space to share your goals, expertise, and what you're looking for in a partner. A detailed 'About Me' can spark the right connection.",
       "aboutMePlaceholder": "Share a bit about yourself – hobbies, interests, or fun facts!",
       "availabilityTime": "How many hours per week are you available to work on a project?",
+      "avatar": "Avatar",
+      "avatarDescription": "Upload a photo of yourself to personalize your profile."
+    },
+    "availabilityOptions": {
       "upTo10": "Up to 10",
       "10to20": "10-20",
       "20to30": "20-30",
       "30to40": "30-40",
-      "40plus": "40+",
-      "avatar": "Avatar",
-      "avatarDescription": "Upload a photo of yourself to personalize your profile."
+      "40plus": "40+"
     },
     "ideaSection": {
       "ideaSectionTitle": "Your startup idea",

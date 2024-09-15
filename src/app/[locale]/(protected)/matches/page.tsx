@@ -16,11 +16,7 @@ export async function generateMetadata(props: { params: { locale: string } }) {
 }
 
 const MatchesPage = () => {
-  return (
-    <div className="mx-auto size-full max-w-screen-lg px-4 py-10">
-      <Matches />
-    </div>
-  );
+  return <Matches />;
 };
 
 export default MatchesPage;

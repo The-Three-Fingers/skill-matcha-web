@@ -261,7 +261,7 @@ export async function PATCH(request: NextRequest) {
       });
     }
 
-    return NextResponse.json('success', { status: 204 });
+    return NextResponse.json('success');
   } catch (error) {
     return NextResponse.json(JSON.stringify({ error }), {
       status: 500,

@@ -1,7 +1,5 @@
-import { MatchCard } from './match-card';
-
 const MatcheCardPage = () => {
-  return <MatchCard />;
+  return null;
 };
 
 export default MatcheCardPage;

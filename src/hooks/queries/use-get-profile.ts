@@ -3,13 +3,13 @@ import type { z } from 'zod';
 
 import type { ProfileValidation } from '@/validations/profile-validation';
 
-const fetchProfile: QueryFunction<
-  z.infer<typeof ProfileValidation> & {
-    createdAt: string;
-    updatedAt: string;
-    id: string;
-  }
-> = async () => {
+type Profile = z.infer<typeof ProfileValidation> & {
+  createdAt: string;
+  updatedAt: string;
+  id: string;
+};
+
+const fetchProfile: QueryFunction<Profile> = async () => {
   const response = await fetch('/api/profiles');
   return response.json();
 };

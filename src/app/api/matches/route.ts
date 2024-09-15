@@ -8,8 +8,29 @@ import type { ProfileValidation } from '@/validations/profile-validation';
 
 type ClientProfile = z.infer<typeof ProfileValidation>;
 type ServerProfile = Omit<ClientProfile, 'searchPreferences'> & {
+  createdAt: FirebaseFirestore.Timestamp;
+  updatedAt: FirebaseFirestore.Timestamp;
   searchPreference1?: ClientProfile['searchPreferences'][0];
   searchPreference2?: ClientProfile['searchPreferences'][1];
+};
+
+const prepareMatches = (matches: ServerProfile[]) => {
+  return matches.map((match) => {
+    const {
+      createdAt,
+      updatedAt,
+      searchPreference1,
+      searchPreference2,
+      ...restData
+    } = match;
+
+    return {
+      ...restData,
+      searchPreferences: [searchPreference1, searchPreference2].filter(Boolean),
+      createdAt: createdAt.toDate(),
+      updatedAt: updatedAt.toDate(),
+    };
+  });
 };
 
 export async function GET(request: NextRequest) {
@@ -61,15 +82,11 @@ export async function GET(request: NextRequest) {
         .orderBy('role')
         .get();
 
-      const matches = matchesDataBySearchServices.docs.map((doc) => {
-        const { createdAt, updatedAt, ...restData } = doc.data();
-
-        return {
-          ...restData,
-          createdAt: createdAt.toDate(),
-          updatedAt: updatedAt.toDate(),
-        };
-      });
+      const matches = prepareMatches(
+        matchesDataBySearchServices.docs.map((doc) =>
+          doc.data(),
+        ) as ServerProfile[],
+      );
 
       return NextResponse.json(matches);
     }
@@ -99,15 +116,11 @@ export async function GET(request: NextRequest) {
       .orderBy('role')
       .get();
 
-    const matches = matchesDataByProfileServices.docs.map((doc) => {
-      const { createdAt, updatedAt, ...restData } = doc.data();
-
-      return {
-        ...restData,
-        createdAt: createdAt.toDate(),
-        updatedAt: updatedAt.toDate(),
-      };
-    });
+    const matches = prepareMatches(
+      matchesDataByProfileServices.docs.map((doc) =>
+        doc.data(),
+      ) as ServerProfile[],
+    );
 
     return NextResponse.json(matches);
   } catch (error) {

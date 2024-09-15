@@ -19,13 +19,14 @@ import {
 
 const PersonalSection = () => {
   const t = useTranslations('profile.personalSection');
+  const availabilityT = useTranslations('profile.availabilityOptions');
 
   const availabilityTimeOptions = [
-    { value: 'upTo10', label: t('upTo10') },
-    { value: '10to20', label: t('10to20') },
-    { value: '20to30', label: t('20to30') },
-    { value: '30to40', label: t('30to40') },
-    { value: '40plus', label: t('40plus') },
+    { value: 'upTo10', label: availabilityT('upTo10') },
+    { value: '10to20', label: availabilityT('10to20') },
+    { value: '20to30', label: availabilityT('20to30') },
+    { value: '30to40', label: availabilityT('30to40') },
+    { value: '40plus', label: availabilityT('40plus') },
   ];
 
   return (
