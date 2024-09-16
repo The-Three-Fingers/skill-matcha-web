@@ -31,8 +31,8 @@ const BaseTemplate = ({
   return (
     <div className="flex size-full flex-col antialiased">
       <header
-        className={cn('h-24 flex-none bg-primary/15', {
-          'border-b bg-white dark:bg-background h-14': !isPublicPage,
+        className={cn('h-24 flex-none bg-background/15 border-b-[1px] dark:border-b-slate-700', {
+          'border-b bg-white dark:bg-background h-20': !isPublicPage,
         })}
       >
         <div className="mx-auto flex h-full max-w-screen-lg items-center px-4">
