@@ -5,18 +5,54 @@ import { getTokens } from 'next-firebase-auth-edge';
 import { getFirebaseDB } from '@/app/firebase';
 import { authConfig } from '@/config/server-config';
 import { Env } from '@/libs/Env';
+import type { Profile } from '@/providers/ProfileContext';
 import { ProfileProvider } from '@/providers/ProfileProvider';
 import { BaseTemplate } from '@/templates/base-template';
 
 const CREATE_PROFILE_PATH = '/create-profile';
 const DASHBOARD_PATH = '/dashboard';
 
+const getProfileData = async (profileId: string | undefined) => {
+  if (!profileId) return null;
+
+  const db = getFirebaseDB();
+
+  const query = await db.collection('profiles').doc(profileId).get();
+
+  if (!query.exists) {
+    return null;
+  }
+
+  const data = await query.data();
+
+  if (!data) {
+    return null;
+  }
+
+  const {
+    createdAt,
+    updatedAt,
+    searchPreference1,
+    searchPreference2,
+    ...restData
+  } = data;
+
+  const searchPreferences = [searchPreference1, searchPreference2].filter(
+    Boolean,
+  );
+
+  return {
+    ...restData,
+    searchPreferences,
+    createdAt: createdAt.toDate(),
+    updatedAt: updatedAt.toDate(),
+  } as Profile;
+};
+
 export default async function Layout(props: { children: React.ReactNode }) {
   if (Env.NODE_ENV !== 'development') {
     redirect('/');
   }
-
-  let profile = null;
 
   const currentPathname = headers().get('x-current-pathname');
 
@@ -25,36 +61,16 @@ export default async function Layout(props: { children: React.ReactNode }) {
     headers: headers(),
   });
 
-  if (tokens) {
-    const db = getFirebaseDB();
+  const profile = await getProfileData(tokens?.decodedToken.uid);
 
-    const query = await db
-      .collection('profiles')
-      .doc(tokens.decodedToken.uid)
-      .get();
-
-    if (!query.exists) {
-      if (!currentPathname?.includes(CREATE_PROFILE_PATH)) {
-        redirect(CREATE_PROFILE_PATH);
-      }
+  if (!profile) {
+    if (!currentPathname?.includes(CREATE_PROFILE_PATH)) {
+      redirect(CREATE_PROFILE_PATH);
     }
+  }
 
-    if (query.exists && currentPathname?.includes(CREATE_PROFILE_PATH)) {
-      redirect(DASHBOARD_PATH);
-    }
-
-    const data = await query.data();
-
-    if (data) {
-      // eslint-disable-next-line unused-imports/no-unused-vars
-      const { createdAt, updatedAt, ...restData } = data;
-
-      profile = {
-        ...restData,
-        createdAt: createdAt.toDate(),
-        updatedAt: updatedAt.toDate(),
-      };
-    }
+  if (profile && currentPathname?.includes(CREATE_PROFILE_PATH)) {
+    redirect(DASHBOARD_PATH);
   }
 
   return (

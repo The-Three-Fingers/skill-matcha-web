@@ -142,7 +142,7 @@ const CreateForm = ({
           <StepComponent key={activeStep} />
         </div>
 
-        <div className="fixed bottom-0 left-0 z-50 flex h-[70px] w-full items-center justify-center bg-white p-3 dark:bg-background">
+        <div className="fixed bottom-0 left-0 z-50 flex h-[70px] w-full items-center justify-center bg-white p-3 dark:border-t dark:bg-background">
           <div className="mx-auto flex w-full max-w-lg items-center gap-2">
             {isBackButtonVisible && (
               <Button

@@ -90,7 +90,7 @@ export default async function CTASection() {
         </TypographyP>
         <CollectEmailButton
           size="lg"
-          className="mx-auto w-1/2 lg:h-14 lg:w-2/3 lg:text-xl xl:text-2xl 2xl:w-2/3 2xl:text-3xl"
+          className="mx-auto w-2/3 lg:h-14 lg:w-2/3 lg:text-xl xl:text-2xl 2xl:w-2/3 2xl:text-3xl"
         >
           {t('descriptionButton')}
         </CollectEmailButton>

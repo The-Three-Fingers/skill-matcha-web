@@ -32,7 +32,7 @@ const BaseTemplate = ({
     <div className="flex size-full flex-col antialiased">
       <header
         className={cn('h-24 flex-none bg-primary/15', {
-          'border-b bg-white dark:bg-background h-20': !isPublicPage,
+          'border-b bg-white dark:bg-background h-14': !isPublicPage,
         })}
       >
         <div className="mx-auto flex h-full max-w-screen-lg items-center px-4">
@@ -40,15 +40,22 @@ const BaseTemplate = ({
             <Image
               src="/assets/images/logo.png"
               alt="logo"
-              width={60}
-              height={60}
+              width={isPublicPage ? 60 : 40}
+              height={isPublicPage ? 60 : 40}
             />
-            <h1 className="text-xl font-bold uppercase text-primary sm:text-3xl">
+            <h1
+              className={cn(
+                'text-xl font-bold uppercase text-primary sm:text-3xl',
+                {
+                  'text-lg sm:text-lg': !isPublicPage,
+                },
+              )}
+            >
               {AppConfig.name}
             </h1>
           </Link>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-8">
             {!isPublicPage && (
               <div className="flex items-center gap-2">
                 {user ? (
@@ -71,12 +78,6 @@ const BaseTemplate = ({
           </div>
         </div>
       </header>
-
-      {/* <main className="flex-1 p-3">
-        <div className="mx-auto flex h-full max-w-screen-lg">
-          {props.children}
-        </div>
-      </main> */}
 
       <main className="flex-1">{children}</main>
       <Toaster />

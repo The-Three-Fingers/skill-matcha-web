@@ -45,7 +45,7 @@ const ProfileForm = () => {
   } = form;
 
   const resetForm = () => {
-    reset(profile);
+    reset(profile ?? undefined);
   };
 
   async function onSubmit(data: GeneralFormFields) {

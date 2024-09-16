@@ -1,5 +1,6 @@
 'use client';
 
+import { MessagesSquare, SearchCheck, UserRound } from 'lucide-react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import React from 'react';
@@ -12,31 +13,31 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Icons } from '@/components/ui/icons';
+import { useProfile } from '@/providers/ProfileContext';
 
 type NavItem = {
   icon: React.ComponentType<{ className?: string }>;
   href?: string;
-  onClick: () => void;
 };
 
 const NavbarButtons: React.FC = () => {
+  const { profile } = useProfile();
+
   const navItems: NavItem[] = [
-    { icon: Icons.Home, href: '/', onClick: () => console.log('home clicked') },
-    { icon: Icons.Mail, onClick: () => console.log('mail clicked') },
+    { icon: SearchCheck, href: '/matches' },
+    { icon: MessagesSquare, href: '/messages' },
   ];
 
   const t = useTranslations('Navigation');
 
   return (
     <div className="flex gap-2">
-      {navItems.map(({ icon: Icon, href, onClick }) => (
+      {navItems.map(({ icon: Icon, href }) => (
         <Button
-          key={href || 'mail'}
+          key={href}
           size="icon"
           className="flex size-10 justify-center"
           variant="ghost"
-          onClick={onClick}
         >
           {href ? (
             <Link href={href}>
@@ -51,15 +52,17 @@ const NavbarButtons: React.FC = () => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" size="icon">
-            <Icons.AccountSettings className="size-5" />
+            <UserRound className="size-5" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuItem>
-            <Link href="/settings" className="w-full">
-              {t('settings')}
-            </Link>
-          </DropdownMenuItem>
+          {profile && (
+            <DropdownMenuItem>
+              <Link href="/settings" className="w-full">
+                {t('settings')}
+              </Link>
+            </DropdownMenuItem>
+          )}
           <DropdownMenuItem>
             <LogOutButton className="w-full text-left" />
           </DropdownMenuItem>

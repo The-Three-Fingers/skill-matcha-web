@@ -29,7 +29,9 @@ export async function GET() {
 
     const query = await db.collection('profiles').doc(decodedToken.uid).get();
 
-    if (!query.exists) {
+    const profile = await query.data();
+
+    if (!query.exists || !profile) {
       return new NextResponse(
         JSON.stringify({
           error: 'No profile found',
@@ -40,9 +42,12 @@ export async function GET() {
       );
     }
 
-    const profile = await query.data();
+    const { searchPreference1, searchPreference2, ...rest } = profile;
 
-    return NextResponse.json(profile);
+    return NextResponse.json({
+      ...rest,
+      searchPreferences: [searchPreference1, searchPreference2].filter(Boolean),
+    });
   } catch (error) {
     return new NextResponse(JSON.stringify({ error }), {
       status: 500,
@@ -64,8 +69,6 @@ export async function POST(request: NextRequest) {
         },
       );
     }
-
-    const db = getFirebaseDB();
 
     const requestFormData = await request.formData();
     const requestData = Object.fromEntries(requestFormData.entries());
@@ -96,12 +99,18 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const db = getFirebaseDB();
     const query = await db.collection('profiles').doc(decodedToken.uid).get();
-
     const profile = await query.data();
 
     if (!query.exists || !profile) {
-      const avatarFile = parse.data.avatarURL as File | undefined;
+      const profileData = parse.data;
+
+      const {
+        avatarURL: avatarFile,
+        searchPreferences,
+        ...restData
+      } = profileData;
 
       if (avatarFile) {
         // TODO: save the avatar URL to the profile
@@ -132,26 +141,32 @@ export async function POST(request: NextRequest) {
         delete parse.data.avatarURL;
       }
 
+      const preparedSearchPreferences = searchPreferences.reduce(
+        (acc, searchPreference, index) => {
+          return {
+            ...acc,
+            [`searchPreference${index + 1}`]: searchPreference,
+          };
+        },
+        {} as Record<string, (typeof searchPreferences)[number]>,
+      );
+
       const newProfile = {
         id: decodedToken.uid,
         createdAt: FieldValue.serverTimestamp(),
         updatedAt: FieldValue.serverTimestamp(),
-        ...parse.data,
+        ...preparedSearchPreferences,
+        ...restData,
       };
 
       await query.ref.create(newProfile);
       return NextResponse.json(newProfile, { status: 201 });
     }
 
-    const updatedProfile = {
-      ...profile,
-      updatedAt: FieldValue.serverTimestamp(),
-      ...parse.data,
-    };
-
-    await query.ref.update(updatedProfile);
-
-    return NextResponse.json(updatedProfile);
+    return NextResponse.json(
+      { error: 'Profile already exists' },
+      { status: 409 },
+    );
   } catch (error) {
     return NextResponse.json(JSON.stringify({ error }), {
       status: 500,
@@ -173,8 +188,6 @@ export async function PATCH(request: NextRequest) {
         },
       );
     }
-
-    const db = getFirebaseDB();
 
     const requestFormData = await request.formData();
     const requestData = Object.fromEntries(requestFormData.entries());
@@ -207,6 +220,8 @@ export async function PATCH(request: NextRequest) {
       );
     }
 
+    const db = getFirebaseDB();
+
     const query = await db.collection('profiles').doc(decodedToken.uid).get();
 
     if (!query.exists) {
@@ -220,23 +235,33 @@ export async function PATCH(request: NextRequest) {
       );
     }
 
-    if ('avatarURL' in parse.data) {
-      const avatarFile = parse.data.avatarURL as File | undefined;
+    const updatedData = parse.data;
 
-      if (avatarFile) {
-        // TODO: save the avatar URL to the profile
-        delete parse.data.avatarURL;
+    if ('searchPreferences' in updatedData) {
+      const { searchPreferences } = updatedData;
+
+      await query.ref.update({
+        updatedAt: FieldValue.serverTimestamp(),
+        searchPreference1: searchPreferences[0] ?? null,
+        searchPreference2: searchPreferences[1] ?? null,
+      });
+    } else {
+      if ('avatarURL' in updatedData) {
+        const avatarFile = updatedData.avatarURL;
+
+        if (avatarFile) {
+          // TODO: save the avatar URL to the profile
+          delete updatedData.avatarURL;
+        }
       }
+
+      await query.ref.update({
+        updatedAt: FieldValue.serverTimestamp(),
+        ...updatedData,
+      });
     }
 
-    const updatedProfile = {
-      updatedAt: FieldValue.serverTimestamp(),
-      ...parse.data,
-    };
-
-    await query.ref.update(updatedProfile);
-
-    return NextResponse.json(updatedProfile);
+    return NextResponse.json('success');
   } catch (error) {
     return NextResponse.json(JSON.stringify({ error }), {
       status: 500,

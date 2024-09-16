@@ -8,6 +8,7 @@ import { useLoadingCallback } from 'react-loading-hook';
 
 import { logout } from '@/api';
 import { getFirebaseAuth } from '@/auth/firebase';
+import { cn } from '@/libs/utils';
 
 const LogOutButton = ({ className }: { className?: string }) => {
   const router = useRouter();
@@ -27,7 +28,11 @@ const LogOutButton = ({ className }: { className?: string }) => {
   });
 
   return (
-    <button type="button" className={className} onClick={handleLogout}>
+    <button
+      type="button"
+      className={cn('text-destructive', className)}
+      onClick={handleLogout}
+    >
       {t('log_out_link')}
     </button>
   );

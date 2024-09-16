@@ -1,11 +1,22 @@
-import { MatchCard } from './match-card';
+import { getTranslations } from 'next-intl/server';
 
-const SwipePage = () => {
-  return (
-    <div className="mx-auto flex flex-col justify-center">
-      <MatchCard />
-    </div>
-  );
+import { getPageTitleWithAppName } from '@/libs/utils';
+
+import { Matches } from './matches';
+
+export async function generateMetadata(props: { params: { locale: string } }) {
+  const t = await getTranslations({
+    locale: props.params.locale,
+    namespace: 'matches',
+  });
+
+  return {
+    title: getPageTitleWithAppName(t('meta_title')),
+  };
+}
+
+const MatchesPage = () => {
+  return <Matches />;
 };
 
-export default SwipePage;
+export default MatchesPage;

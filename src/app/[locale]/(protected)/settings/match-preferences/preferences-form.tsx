@@ -21,6 +21,7 @@ type Preference = ProfileFormFields['searchPreferences'][number];
 const PreferencesForm = () => {
   const { mutateAsync } = useUpdateProfile();
   const { profile } = useProfile();
+
   const t = useTranslations('profile');
   const { toast } = useToast();
 

@@ -16,7 +16,7 @@ export const Env = createEnv({
     COOKIE_SECRET_PREVIOUS: z.string().optional(),
   },
   client: {
-    NEXT_PUBLIC_APP_URL: z.string().optional(),
+    NEXT_PUBLIC_APP_URL: z.string().optional().default('http://localhost:3000'),
     NEXT_PUBLIC_FIREBASE_API_KEY: z.string().optional(),
     NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: z.string().optional(),
     NEXT_PUBLIC_FIREBASE_PROJECT_ID: z.string().optional(),

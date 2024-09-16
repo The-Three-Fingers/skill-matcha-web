@@ -87,7 +87,7 @@ const Combobox = React.forwardRef<
             ref={ref}
             aria-expanded={open}
             className={cn(
-              'flex items-center cursor-pointer justify-between whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background text-muted-foreground hover:text-accent-foreground min-h-10 px-4 py-2',
+              'flex items-center cursor-pointer justify-between whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background text-muted-foreground min-h-10 px-4 py-2',
               value ? 'text-foreground' : '',
               className,
             )}
