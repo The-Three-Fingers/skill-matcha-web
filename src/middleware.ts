@@ -10,7 +10,7 @@ import { authConfig } from './config/server-config';
 import { AppConfig } from './utils/AppConfig';
 
 const AUTH_PATHS = ['/login', '/sign-up'];
-const PUBLIC_PATHS = ['/'];
+const PUBLIC_PATHS = ['/', '/terms-of-use', '/privacy-policy'];
 const LOCALE_LIST = AppConfig.locales;
 const LOCALE_REGEXP = /^\/([a-z]{2})(\/.+)?$/;
 const LOCALE_SET = new Set(LOCALE_LIST);
