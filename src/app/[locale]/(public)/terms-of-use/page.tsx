@@ -1,4 +1,5 @@
 import { getTranslations } from 'next-intl/server';
+
 import { TermsOfUse } from './terms-of-use';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
