@@ -10,7 +10,7 @@ import {
 
 const TermsOfUse = () => {
   return (
-    <div className="mx-auto flex h-full max-w-screen-lg flex-col gap-4 p-4 lg:gap-6 xl:gap-9 2xl:gap-11">
+    <div className="mx-auto flex h-full max-w-screen-lg flex-col gap-4 lg:gap-6 xl:gap-9 2xl:gap-11">
       <div className="flex flex-col gap-2 xl:gap-4">
         <TypographyH1>Terms of Service</TypographyH1>
 
