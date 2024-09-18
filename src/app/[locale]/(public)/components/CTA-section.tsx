@@ -70,7 +70,7 @@ export default async function CTASection() {
   }));
 
   return (
-    <div className="lg:gap-18 flex w-full flex-col items-center gap-10 bg-primary/15 py-20 md:gap-14 lg:py-32 xl:gap-20">
+    <div className="lg:gap-18 flex w-full flex-col items-center gap-10 py-20 dark:bg-card md:gap-14 lg:py-32 xl:gap-20">
       <div className="flex h-1/3 w-full flex-col justify-start gap-1 overflow-hidden lg:gap-5">
         <StagesLines line={stagesLines[0] as Line} />
         <StagesLines line={stagesLines[1] as Line} />

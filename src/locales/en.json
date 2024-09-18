@@ -248,6 +248,10 @@
     "meta_title": "Sign up",
     "meta_description": "Create an account to get started."
   },
+  "termsOfUse": {
+    "metaTitle": "Terms of Use - Guidelines and Policies",
+    "metaDescription": "Read our Terms of Use to understand the guidelines, policies, and legal framework governing the use of our website and services."
+  },
   "Dashboard": {
     "meta_title": "Dashboard",
     "hello_message": "Hello, {name}!"
