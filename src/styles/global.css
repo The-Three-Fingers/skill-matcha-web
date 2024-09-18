@@ -27,7 +27,6 @@
   }
   .dark {
     --background: 20 14% 4%;
-    --background-light: 20 4% 9%;
     --foreground: 107 0% 100%;
     --card: 107 0% 10%;
     --card-foreground: 107 0% 100%;

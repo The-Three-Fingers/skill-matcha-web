@@ -5,12 +5,12 @@ import { TermsOfUse } from './terms-of-use';
 export async function generateMetadata(props: { params: { locale: string } }) {
   const t = await getTranslations({
     locale: props.params.locale,
-    namespace: 'TermsOfUse',
+    namespace: 'termsOfUse',
   });
 
   return {
-    title: t('meta_title'),
-    description: t('meta_description'),
+    title: t('metaTitle'),
+    description: t('metaDescription'),
   };
 }
 
