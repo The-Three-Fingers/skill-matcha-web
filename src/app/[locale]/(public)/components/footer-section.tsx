@@ -18,7 +18,7 @@ export default async function FooterSection() {
           {t('termsOfService')}
         </Link>
 
-        <Link href="/" className="transition hover:text-primary">
+        <Link href="/privacy-policy" className="transition hover:text-primary">
           {t('privacyPolicy')}
         </Link>
       </div>
