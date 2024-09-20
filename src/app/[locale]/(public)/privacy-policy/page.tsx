@@ -1,11 +1,11 @@
 import { getTranslations } from 'next-intl/server';
 
-import { TermsOfUse } from './terms-of-use';
+import { PrivacyPolicy } from './privacy-policy';
 
 export async function generateMetadata(props: { params: { locale: string } }) {
   const t = await getTranslations({
     locale: props.params.locale,
-    namespace: 'termsOfUse',
+    namespace: 'privacyPolicy',
   });
 
   return {
@@ -14,10 +14,10 @@ export async function generateMetadata(props: { params: { locale: string } }) {
   };
 }
 
-const TermsOfUsePage = () => (
+const PrivacyPolicyPage = () => (
   <div className="mx-auto flex size-full max-w-screen-xl flex-col items-center justify-center p-4 pb-16">
-    <TermsOfUse />
+    <PrivacyPolicy />
   </div>
 );
 
-export default TermsOfUsePage;
+export default PrivacyPolicyPage;

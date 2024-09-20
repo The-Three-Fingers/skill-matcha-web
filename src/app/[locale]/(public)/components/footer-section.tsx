@@ -1,10 +1,11 @@
 import { Linkedin } from 'lucide-react';
+import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
 
-// import { getTranslations } from 'next-intl/server';
 import { TypographyH4 } from '@/components/ui/typography';
 
 export default async function FooterSection() {
-  // const t = await getTranslations('externalLinks');
+  const t = await getTranslations('externalLinks');
 
   const year = new Date().getFullYear();
 
@@ -13,13 +14,13 @@ export default async function FooterSection() {
       <div className="flex flex-col gap-2">
         <TypographyH4>© {year} SKILLMATCHA</TypographyH4>
 
-        {/* <Link href="/" className="hover:text-primary-500 transition">
+        <Link href="/terms-of-use" className="hover:text-primary">
           {t('termsOfService')}
         </Link>
 
-        <Link href="/" className="hover:text-primary-500 transition">
+        <Link href="/privacy-policy" className="hover:text-primary">
           {t('privacyPolicy')}
-        </Link> */}
+        </Link>
       </div>
 
       <div className="flex justify-center">

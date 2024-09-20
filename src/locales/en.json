@@ -252,6 +252,10 @@
     "metaTitle": "Terms of Use - Guidelines and Policies",
     "metaDescription": "Read our Terms of Use to understand the guidelines, policies, and legal framework governing the use of our website and services."
   },
+  "privacyPolicy": {
+    "metaTitle": "Privacy Policy - Data Protection and Privacy",
+    "metaDescription": "Read our Privacy Policy to understand how we collect, use, and protect your personal data."
+  },
   "Dashboard": {
     "meta_title": "Dashboard",
     "hello_message": "Hello, {name}!"
