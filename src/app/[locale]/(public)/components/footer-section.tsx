@@ -14,11 +14,11 @@ export default async function FooterSection() {
       <div className="flex flex-col gap-2">
         <TypographyH4>© {year} SKILLMATCHA</TypographyH4>
 
-        <Link href="/terms-of-use" className="transition hover:text-primary">
+        <Link href="/terms-of-use" className="hover:text-primary">
           {t('termsOfService')}
         </Link>
 
-        <Link href="/privacy-policy" className="transition hover:text-primary">
+        <Link href="/privacy-policy" className="hover:text-primary">
           {t('privacyPolicy')}
         </Link>
       </div>
