@@ -5,7 +5,6 @@ import { useTranslations } from 'next-intl';
 import { useGetFavorites } from '@/hooks/queries/use-get-favorites';
 
 import { FavoriteCard } from './favorite-card';
-import { useDeleteFavorite } from '@/hooks/mutations';
 
 const favoriteAccounts = [
   {
@@ -132,7 +131,7 @@ const Favorites = () => {
 
   console.log('favorites', favorites);
 
-  const removeFavoriteMutation = useDeleteFavorite();
+  // const removeFavoriteMutation = useDeleteFavorite();
   // const handleDeleteFavorite = (id: string) => {
   //   removeFavoriteMutation.mutate(id);
   // };

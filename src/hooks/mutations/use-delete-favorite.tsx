@@ -1,4 +1,8 @@
-import { useMutation, useQueryClient, type UseMutationResult } from '@tanstack/react-query';
+import {
+  useMutation,
+  type UseMutationResult,
+  useQueryClient,
+} from '@tanstack/react-query';
 import type { z } from 'zod';
 
 import type { ProfileValidation } from '@/validations/profile-validation';

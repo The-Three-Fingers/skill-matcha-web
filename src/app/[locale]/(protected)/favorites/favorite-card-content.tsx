@@ -1,7 +1,7 @@
 import { Clock, Globe, Lightbulb, MapPin } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { CardContent } from '@/components/ui/card';
-import { useTranslations } from 'next-intl';
 
 type FavoriteCardContentProps = {
   location: string;
@@ -41,7 +41,9 @@ const FavoriteCardContent = ({
           {hasIdea === 'true' ? (
             <div className="flex items-center gap-1 text-sm">
               <Lightbulb size={16} className="text-muted-foreground" />
-              <span className="truncate">{t('idea')}: {ideaStage || ''}</span>
+              <span className="truncate">
+                {t('idea')}: {ideaStage || ''}
+              </span>
             </div>
           ) : (
             ' '
