@@ -35,7 +35,7 @@ const ProfileCard = ({ matchProfile }: { matchProfile: MatchProfile }) => {
     ? locationsData?.find((loc) => loc.code === location)?.name
     : null;
 
-  const languagesNames = languages
+  const formattedLanguages = languages
     .map((langCode) => {
       return languagesData?.find((language) => language.code === langCode)
         ?.name;
@@ -50,12 +50,14 @@ const ProfileCard = ({ matchProfile }: { matchProfile: MatchProfile }) => {
   return (
     <Card className="mx-auto w-full max-w-4xl shadow-lg">
       <CardHeader className="flex flex-col items-center gap-4 border-b p-4 sm:flex-row sm:gap-6 sm:p-6">
-        <Avatar className="size-24 border-2 border-primary">
-          <AvatarImage alt={name} />
-          <AvatarFallback className="bg-primary text-primary-foreground">
-            {name[0]?.toLocaleUpperCase()}
-          </AvatarFallback>
-        </Avatar>
+        {Avatar && (
+          <Avatar className="size-24 border-2 border-primary">
+            <AvatarImage alt={name} />
+            <AvatarFallback className="bg-primary text-primary-foreground">
+              {name[0]?.toLocaleUpperCase()}
+            </AvatarFallback>
+          </Avatar>
+        )}
         <div className="grow text-center sm:text-left">
           <div className="flex flex-col items-center justify-between gap-2 sm:flex-row sm:items-start">
             <TypographyH3 className="text-2xl font-bold sm:text-3xl">
@@ -133,13 +135,13 @@ const ProfileCard = ({ matchProfile }: { matchProfile: MatchProfile }) => {
             </div>
           </div>
         )}
-        {languagesNames.length > 0 && (
+        {formattedLanguages.length > 0 && (
           <div>
             <h3 className="mb-2 text-xl font-semibold">
               {matchesT('languages')}
             </h3>
             <div className="flex items-center gap-2">
-              <span className="text-muted-foreground">{languagesNames}</span>
+              <span className="text-muted-foreground">{formattedLanguages}</span>
             </div>
           </div>
         )}
