@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 
 import { useGetFavorites } from '@/hooks/queries/use-get-favorites';
 
-import { FavoriteCard } from './favorite-card';
+import { CardLayout } from './card-layout';
 
 const favoriteAccounts = [
   {
@@ -39,7 +39,7 @@ const favoriteAccounts = [
   },
   {
     id: '22',
-    name: 'Bob',
+    name: 'Aaron',
     lastName: 'Smith',
     avatarURL: '/placeholder.svg?height=100&width=100',
     aboutInfo:
@@ -144,7 +144,7 @@ const Favorites = () => {
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3">
         {favoriteAccounts.map((account) => (
-          <FavoriteCard
+          <CardLayout
             key={account.id}
             account={account}
             onDelete={(id) => {

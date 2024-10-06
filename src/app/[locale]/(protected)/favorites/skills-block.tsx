@@ -3,15 +3,12 @@ import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
 import { CardContent } from '@/components/ui/card';
 
-type ExpertiseAndServicesProps = {
+type SkillsBlockProps = {
   subRoles: string[];
   services: string[];
 };
 
-const FavoriteCardSkills = ({
-  subRoles,
-  services,
-}: ExpertiseAndServicesProps) => {
+const SkillsBlock = ({ subRoles, services }: SkillsBlockProps) => {
   const t = useTranslations('favorites');
 
   return (
@@ -36,4 +33,4 @@ const FavoriteCardSkills = ({
   );
 };
 
-export { FavoriteCardSkills };
+export { SkillsBlock };

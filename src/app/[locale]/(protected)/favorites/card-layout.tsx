@@ -5,21 +5,21 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import type { ProfileValidation } from '@/validations/profile-validation';
 
-import { FavoriteCardContent } from './favorite-card-content';
-import { FavoriteCardFooter } from './favorite-card-footer';
-import { FavoriteCardHeader } from './favorite-card-header';
-import { FavoriteCardSkills } from './favorite-card-skills';
+import { ContentBlock } from './content-block';
+import { FooterBlock } from './footer-block';
+import { HeaderBlock } from './header-block';
+import { SkillsBlock } from './skills-block';
 
 type FavoriteAccount = z.infer<typeof ProfileValidation> & {
   id: string;
 };
 
-type FavoriteCardProps = {
+type CardLayoutProps = {
   account: FavoriteAccount;
   onDelete: (id: string) => void;
 };
 
-const FavoriteCard = ({ account, onDelete }: FavoriteCardProps) => (
+const CardLayout = ({ account, onDelete }: CardLayoutProps) => (
   <Card className="relative flex flex-col overflow-hidden">
     <Button
       variant="ghost"
@@ -30,14 +30,14 @@ const FavoriteCard = ({ account, onDelete }: FavoriteCardProps) => (
       <X size={20} />
     </Button>
 
-    <FavoriteCardHeader
+    <HeaderBlock
       name={account.name}
       lastName={account.lastName}
       avatarURL={account.avatarURL}
       role={account.role}
     />
 
-    <FavoriteCardContent
+    <ContentBlock
       location={account.location}
       languages={account.languages}
       availabilityTime={account.availabilityTime}
@@ -46,13 +46,10 @@ const FavoriteCard = ({ account, onDelete }: FavoriteCardProps) => (
       aboutInfo={account.aboutInfo}
     />
 
-    <FavoriteCardSkills
-      subRoles={account.subRoles}
-      services={account.services}
-    />
+    <SkillsBlock subRoles={account.subRoles} services={account.services} />
 
-    <FavoriteCardFooter />
+    <FooterBlock />
   </Card>
 );
 
-export { FavoriteCard };
+export { CardLayout };

@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 
 import { CardContent } from '@/components/ui/card';
 
-type FavoriteCardContentProps = {
+type ContentBlockProps = {
   location: string;
   languages: string[];
   availabilityTime: string;
@@ -12,14 +12,14 @@ type FavoriteCardContentProps = {
   aboutInfo: string;
 };
 
-const FavoriteCardContent = ({
+const ContentBlock = ({
   location,
   languages,
   availabilityTime,
   hasIdea,
   ideaStage,
   aboutInfo,
-}: FavoriteCardContentProps) => {
+}: ContentBlockProps) => {
   const t = useTranslations('favorites');
 
   return (
@@ -60,4 +60,4 @@ const FavoriteCardContent = ({
   );
 };
 
-export { FavoriteCardContent };
+export { ContentBlock };

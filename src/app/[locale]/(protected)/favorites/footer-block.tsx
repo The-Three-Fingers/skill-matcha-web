@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import { Button } from '@/components/ui/button';
 import { CardFooter } from '@/components/ui/card';
 
-const FavoriteCardFooter = () => {
+const FooterBlock = () => {
   const t = useTranslations('favorites');
 
   return (
@@ -13,4 +13,4 @@ const FavoriteCardFooter = () => {
   );
 };
 
-export { FavoriteCardFooter };
+export { FooterBlock };

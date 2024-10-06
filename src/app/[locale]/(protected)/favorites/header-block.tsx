@@ -3,19 +3,14 @@ import { Star } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { CardHeader, CardTitle } from '@/components/ui/card';
 
-type FavoriteCardHeaderProps = {
+type HeaderBlockProps = {
   name: string;
   lastName: string;
   avatarURL: string;
   role: string;
 };
 
-const FavoriteCardHeader = ({
-  name,
-  lastName,
-  avatarURL,
-  role,
-}: FavoriteCardHeaderProps) => (
+const HeaderBlock = ({ name, lastName, avatarURL, role }: HeaderBlockProps) => (
   <CardHeader className="pb-2">
     <div className="flex items-start justify-between">
       <div className="flex items-center gap-4">
@@ -38,4 +33,4 @@ const FavoriteCardHeader = ({
   </CardHeader>
 );
 
-export { FavoriteCardHeader };
+export { HeaderBlock };
