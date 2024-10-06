@@ -3,13 +3,12 @@ import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
 import { CardContent } from '@/components/ui/card';
 
-type SkillsBlockProps = {
-  subRoles: string[];
-  services: string[];
-};
+import type { FavoriteProfile } from './types';
 
-const SkillsBlock = ({ subRoles, services }: SkillsBlockProps) => {
+const SkillsBlock = ({ profile }: { profile: FavoriteProfile }) => {
   const t = useTranslations('favorites');
+
+  const { subRoles, services } = profile;
 
   return (
     <CardContent className="grow pt-4">

@@ -6,11 +6,12 @@ import { useGetFavorites } from '@/hooks/queries/use-get-favorites';
 
 import { CardLayout } from './card-layout';
 
-const favoriteAccounts = [
+const favoriteProfiles = [
   {
     id: '1',
     name: 'Alice',
     lastName: 'Johnson',
+    ideaDescription: '',
     avatarURL: '/placeholder.svg?height=100&width=100',
     aboutInfo:
       'Passionate about creating user-friendly interfaces and solving complex problems.',
@@ -18,8 +19,6 @@ const favoriteAccounts = [
     location: 'San Francisco, USA',
     hasIdea: 'true',
     ideaStage: 'Concept',
-    ideaDescription:
-      'A platform for connecting local artisans with global markets.',
     availabilityTime: 'Full-time',
     role: 'Software Engineer',
     subRoles: ['Frontend Developer', 'Mobile Developer'],
@@ -41,6 +40,7 @@ const favoriteAccounts = [
     id: '22',
     name: 'Aaron',
     lastName: 'Smith',
+    ideaDescription: '',
     avatarURL: '/placeholder.svg?height=100&width=100',
     aboutInfo:
       'Experienced in bringing products from concept to market. Love working with cross-functional teams.',
@@ -67,6 +67,7 @@ const favoriteAccounts = [
   },
   {
     id: '2',
+    ideaDescription: '',
     name: 'Bob',
     lastName: 'Smith',
     avatarURL: '/placeholder.svg?height=100&width=100',
@@ -95,6 +96,7 @@ const favoriteAccounts = [
   },
   {
     id: '3',
+    ideaDescription: '',
     name: 'Carol',
     lastName: 'Williams',
     avatarURL: '/placeholder.svg?height=100&width=100',
@@ -104,8 +106,6 @@ const favoriteAccounts = [
     location: 'Berlin, Germany',
     hasIdea: 'true',
     ideaStage: 'MVP',
-    ideaDescription:
-      'An AI-powered personal styling assistant for sustainable fashion choices.',
     availabilityTime: 'Flexible',
     role: 'UX Designer',
     subRoles: ['UI Designer', 'User Researcher'],
@@ -143,10 +143,10 @@ const Favorites = () => {
       </h1>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-2 xl:grid-cols-3">
-        {favoriteAccounts.map((account) => (
+        {favoriteProfiles.map((profile) => (
           <CardLayout
-            key={account.id}
-            account={account}
+            key={profile.id}
+            profile={profile}
             onDelete={(id) => {
               console.log('onDelete', id);
             }}

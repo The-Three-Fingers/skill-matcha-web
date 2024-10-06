@@ -3,24 +3,19 @@ import { useTranslations } from 'next-intl';
 
 import { CardContent } from '@/components/ui/card';
 
-type ContentBlockProps = {
-  location: string;
-  languages: string[];
-  availabilityTime: string;
-  hasIdea: string;
-  ideaStage?: string;
-  aboutInfo: string;
-};
+import type { FavoriteProfile } from './types';
 
-const ContentBlock = ({
-  location,
-  languages,
-  availabilityTime,
-  hasIdea,
-  ideaStage,
-  aboutInfo,
-}: ContentBlockProps) => {
+const ContentBlock = ({ profile }: { profile: FavoriteProfile }) => {
   const t = useTranslations('favorites');
+
+  const {
+    location,
+    languages,
+    availabilityTime,
+    hasIdea,
+    ideaStage,
+    aboutInfo,
+  } = profile;
 
   return (
     <CardContent className="grow pt-4">
@@ -38,15 +33,13 @@ const ContentBlock = ({
             <Clock size={16} className="text-muted-foreground" />
             <span className="truncate">{availabilityTime}</span>
           </div>
-          {hasIdea === 'true' ? (
+          {hasIdea === 'true' && (
             <div className="flex items-center gap-1 text-sm">
               <Lightbulb size={16} className="text-muted-foreground" />
               <span className="truncate">
                 {t('idea')}: {ideaStage || ''}
               </span>
             </div>
-          ) : (
-            ' '
           )}
         </div>
         <div>
