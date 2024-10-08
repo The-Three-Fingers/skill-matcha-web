@@ -5,7 +5,7 @@ import { CardHeader, CardTitle } from '@/components/ui/card';
 
 import type { FavoriteProfile } from './types';
 
-const HeaderBlock = ({ profile }: { profile: FavoriteProfile }) => {
+const Header = ({ profile }: { profile: FavoriteProfile }) => {
   const { name, lastName, avatarURL, role } = profile;
 
   return (
@@ -32,4 +32,4 @@ const HeaderBlock = ({ profile }: { profile: FavoriteProfile }) => {
   );
 };
 
-export { HeaderBlock };
+export { Header };

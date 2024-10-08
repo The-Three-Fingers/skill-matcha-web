@@ -3,10 +3,10 @@ import { X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 
-import { ContentBlock } from './content-block';
-import { FooterBlock } from './footer-block';
-import { HeaderBlock } from './header-block';
-import { SkillsBlock } from './skills-block';
+import { Content } from './content';
+import { Footer } from './footer';
+import { Header } from './header';
+import { Skills } from './skills';
 import type { FavoriteProfile } from './types';
 
 type CardLayoutProps = {
@@ -25,13 +25,13 @@ const CardLayout = ({ profile, onDelete }: CardLayoutProps) => (
       <X size={20} />
     </Button>
 
-    <HeaderBlock profile={profile} />
+    <Header profile={profile} />
 
-    <ContentBlock profile={profile} />
+    <Content profile={profile} />
 
-    <SkillsBlock profile={profile} />
+    <Skills profile={profile} />
 
-    <FooterBlock />
+    <Footer />
   </Card>
 );
 

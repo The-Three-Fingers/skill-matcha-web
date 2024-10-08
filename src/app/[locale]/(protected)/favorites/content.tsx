@@ -5,7 +5,7 @@ import { CardContent } from '@/components/ui/card';
 
 import type { FavoriteProfile } from './types';
 
-const ContentBlock = ({ profile }: { profile: FavoriteProfile }) => {
+const Content = ({ profile }: { profile: FavoriteProfile }) => {
   const t = useTranslations('favorites');
 
   const {
@@ -53,4 +53,4 @@ const ContentBlock = ({ profile }: { profile: FavoriteProfile }) => {
   );
 };
 
-export { ContentBlock };
+export { Content };

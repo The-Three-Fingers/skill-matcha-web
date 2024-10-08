@@ -1,47 +1,19 @@
-import {
-  useMutation,
-  type UseMutationResult,
-  useQueryClient,
-} from '@tanstack/react-query';
-import type { z } from 'zod';
+import { useMutation } from '@tanstack/react-query';
 
-import type { ProfileValidation } from '@/validations/profile-validation';
-
-type Favorite = z.infer<typeof ProfileValidation> & {
-  id: string;
-};
-
-const deleteFavorite = async (id: string): Promise<void> => {
-  const response = await fetch(`/api/favorites/${id}`, {
+const mutationFn = async (favoriteId: string) => {
+  const res = await fetch(`/api/favorites/${favoriteId}`, {
     method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-    },
   });
 
-  if (!response.ok) {
-    throw new Error('Failed to remove favorite');
+  if (!res.ok) {
+    const body = await res.json();
+
+    throw new Error(body.error);
   }
 };
 
-export const useDeleteFavorite = (): UseMutationResult<void, Error, string> => {
-  const queryClient = useQueryClient();
-
+export const useDeleteFavorite = () => {
   return useMutation({
-    mutationFn: deleteFavorite,
-
-    onMutate: async (removedId: string) => {
-      await queryClient.cancelQueries({ queryKey: ['favorites'] });
-
-      queryClient.setQueryData<Favorite[]>(
-        ['favorites'],
-        (oldFavorites) =>
-          oldFavorites?.filter((favorite) => favorite.id !== removedId) || [],
-      );
-    },
-
-    onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ['favorites'] });
-    },
+    mutationFn,
   });
 };

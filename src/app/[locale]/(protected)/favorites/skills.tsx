@@ -5,7 +5,7 @@ import { CardContent } from '@/components/ui/card';
 
 import type { FavoriteProfile } from './types';
 
-const SkillsBlock = ({ profile }: { profile: FavoriteProfile }) => {
+const Skills = ({ profile }: { profile: FavoriteProfile }) => {
   const t = useTranslations('favorites');
 
   const { subRoles, services } = profile;
@@ -32,4 +32,4 @@ const SkillsBlock = ({ profile }: { profile: FavoriteProfile }) => {
   );
 };
 
-export { SkillsBlock };
+export { Skills };
