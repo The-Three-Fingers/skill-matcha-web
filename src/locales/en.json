@@ -260,6 +260,16 @@
     "meta_title": "Dashboard",
     "hello_message": "Hello, {name}!"
   },
+  "favorites": {
+    "metaTitle": "Favorites",
+    "metaDescription": "Manage your favorite profiles",
+    "pageTitle": "Your favorite profiles",
+    "expertise": "Expertise",
+    "services": "Services",
+    "idea": "Idea",
+    "about": "About",
+    "connect": "Connect"
+  },
   "matches": {
     "meta_title": "Matches",
     "meta_description": "Find your perfect match",
